@@ -1,13 +1,23 @@
-export type ScenarioStatus = "passed" | "failed" | "inconclusive";
+import { bracketPathScenario } from "./scenarios/bracket-path.js";
+import { midBuildMutationScenario } from "./scenarios/mid-build-mutation.js";
+
+export type ScenarioStatus =
+  | "PASS"
+  | "STALE_HIT"
+  | "UNSAFE_SAVE"
+  | "INCONCLUSIVE"
+  | "ENVIRONMENT_ERROR";
 
 export interface ScenarioContext {
   fixturePath: string;
+  timeoutMs?: number;
 }
 
 export interface ScenarioResult {
   scenarioId: string;
   status: ScenarioStatus;
   message: string;
+  evidence: unknown;
 }
 
 export interface Scenario {
@@ -16,5 +26,4 @@ export interface Scenario {
   run(context: ScenarioContext): Promise<ScenarioResult>;
 }
 
-// Phase 2 registers the two Turbo scenarios here.
-export const scenarios: readonly Scenario[] = [];
+export const scenarios: readonly Scenario[] = [bracketPathScenario, midBuildMutationScenario];

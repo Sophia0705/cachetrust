@@ -65,7 +65,7 @@ export function createCli(
       for (const scenario of selected) {
         const result = await scenario.run({ fixturePath: options.fixture });
         io.out(`${result.status.toUpperCase()} ${result.scenarioId}: ${result.message}`);
-        failed ||= result.status !== "passed";
+        failed ||= result.status !== "PASS";
       }
       if (failed) process.exitCode = 1;
     });

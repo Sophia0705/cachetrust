@@ -1,0 +1,9 @@
+{
+  "name": "cachetrust-bracket-path",
+  "private": true,
+  "packageManager": "npm@10.9.2",
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "turbo": "2.11.9"
+  }
+}

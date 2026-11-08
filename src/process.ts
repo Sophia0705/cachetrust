@@ -51,7 +51,11 @@ export function runProcess(
       ? undefined
       : setTimeout(() => {
           timedOut = true;
-          child.kill();
+          if (process.platform === "win32" && child.pid !== undefined) {
+            spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], { windowsHide: true });
+          } else {
+            child.kill();
+          }
         }, options.timeoutMs);
 
     child.once("close", (exitCode, signal) => {

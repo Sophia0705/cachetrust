@@ -1,0 +1,9 @@
+{
+  "name": "cachetrust-mid-build-mutation",
+  "private": true,
+  "packageManager": "npm@10.9.4",
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "turbo": "2.11.8"
+  }
+}

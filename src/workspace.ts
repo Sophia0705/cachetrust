@@ -1,6 +1,5 @@
 import { cp, mkdir, mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 export interface TemporaryWorkspace {
   root: string;
@@ -10,12 +9,14 @@ export interface TemporaryWorkspace {
 }
 
 export async function createTemporaryWorkspace(fixturePath: string): Promise<TemporaryWorkspace> {
-  const root = await mkdtemp(join(tmpdir(), "cachetrust-"));
+  const source = resolve(fixturePath);
+  // Turbo's native Windows binary cannot atomically rename cache files in AppContainer temp paths.
+  const root = await mkdtemp(join(dirname(source), ".cachetrust-"));
   const fixture = join(root, "workspace");
   const cache = join(root, "cache");
 
   try {
-    await cp(fixturePath, fixture, { recursive: true, errorOnExist: true });
+    await cp(source, fixture, { recursive: true, errorOnExist: true });
     await mkdir(cache);
   } catch (error) {
     await rm(root, { recursive: true, force: true });

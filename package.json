@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@types/node": "24.10.0",
+    "turbo": "2.11.9",
+    "turbo-2-11-8": "npm:turbo@2.11.8",
     "typescript": "5.9.3",
     "vitest": "4.0.8"
   }

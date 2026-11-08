@@ -6,7 +6,11 @@ import { afterEach, describe, expect, it } from "vitest";
 import { createTemporaryWorkspace, withTemporaryWorkspace } from "../src/workspace.js";
 
 const testRoots: string[] = [];
-afterEach(async () => Promise.all(testRoots.splice(0).map((path) => rm(path, { recursive: true, force: true }))));
+afterEach(async () => {
+  for (const path of testRoots.splice(0).sort((left, right) => right.length - left.length)) {
+    await rm(path, { recursive: true, force: true });
+  }
+});
 
 async function fixture(): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), "cachetrust-test-"));
