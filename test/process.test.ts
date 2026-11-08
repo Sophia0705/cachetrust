@@ -17,6 +17,11 @@ describe("runProcess", () => {
     expect(result.exitCode).toBe(7);
   });
 
+  it("rejects a spawn error without leaving the timeout active", async () => {
+    await expect(runProcess("cachetrust-command-that-does-not-exist", [], { timeoutMs: 2_000 }))
+      .rejects.toMatchObject({ code: "ENOENT" });
+  });
+
   it("terminates a process after the timeout", async () => {
     const result = await runProcess(execPath, ["-e", "setInterval(() => {}, 1000)"], {
       timeoutMs: 100,
@@ -24,4 +29,19 @@ describe("runProcess", () => {
     expect(result.timedOut).toBe(true);
     expect(result.exitCode).not.toBe(0);
   });
+
+  it.runIf(process.platform === "win32")("terminates the Windows process tree", async () => {
+    const result = await runProcess(execPath, [
+      "-e",
+      `const { spawn } = require("node:child_process");
+       const child = spawn(process.execPath, ["-e", "setInterval(() => {}, 1000)"], { stdio: "inherit" });
+       console.log(child.pid);
+       setInterval(() => {}, 1000);`,
+    ], { timeoutMs: 250 });
+
+    const childPid = Number(result.stdout.trim());
+    expect(result.timedOut).toBe(true);
+    expect(childPid).toBeGreaterThan(0);
+    expect(() => process.kill(childPid, 0)).toThrow();
+  }, 5_000);
 });

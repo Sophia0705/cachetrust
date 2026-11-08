@@ -45,18 +45,29 @@ export function runProcess(
     child.stderr.setEncoding("utf8").on("data", (chunk: string) => {
       stderr += chunk;
     });
-    child.once("error", reject);
-
     const timer = options.timeoutMs === undefined
       ? undefined
       : setTimeout(() => {
           timedOut = true;
           if (process.platform === "win32" && child.pid !== undefined) {
-            spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], { windowsHide: true });
+            const killer = spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], {
+              windowsHide: true,
+            });
+            const fallback = setTimeout(() => child.kill(), 250);
+            killer.once("error", () => child.kill());
+            killer.once("close", () => {
+              clearTimeout(fallback);
+              child.kill();
+            });
           } else {
             child.kill();
           }
         }, options.timeoutMs);
+
+    child.once("error", (error) => {
+      if (timer !== undefined) clearTimeout(timer);
+      reject(error);
+    });
 
     child.once("close", (exitCode, signal) => {
       if (timer !== undefined) clearTimeout(timer);

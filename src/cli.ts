@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 import { Command, CommanderError } from "commander";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
 import { pathToFileURL } from "node:url";
-import { scenarios, type Scenario } from "./scenario.js";
+import { scenarios, type Scenario, type ScenarioResult } from "./scenario.js";
 
 export interface CliIo {
   out(message: string): void;
   error(message: string): void;
+}
+
+export function exitCodeFor(results: readonly ScenarioResult[]): number {
+  if (results.some((result) => result.status === "ENVIRONMENT_ERROR")) return 3;
+  if (results.some((result) => result.status === "INCONCLUSIVE")) return 2;
+  if (results.some((result) => result.status === "STALE_HIT" || result.status === "UNSAFE_SAVE")) return 1;
+  return 0;
 }
 
 const defaultIo: CliIo = {
@@ -45,7 +54,8 @@ export function createCli(
     .description("Run all scenarios or one scenario")
     .argument("[scenario]", "scenario id")
     .requiredOption("--fixture <path>", "source fixture directory")
-    .action(async (scenarioId: string | undefined, options: { fixture: string }) => {
+    .option("--evidence <path>", "save JSON evidence, including reproduction logs")
+    .action(async (scenarioId: string | undefined, options: { fixture: string; evidence?: string }) => {
       const selected = scenarioId === undefined
         ? registeredScenarios
         : registeredScenarios.filter((scenario) => scenario.id === scenarioId);
@@ -61,13 +71,17 @@ export function createCli(
         return;
       }
 
-      let failed = false;
+      const results: ScenarioResult[] = [];
       for (const scenario of selected) {
         const result = await scenario.run({ fixturePath: options.fixture });
+        results.push(result);
         io.out(`${result.status.toUpperCase()} ${result.scenarioId}: ${result.message}`);
-        failed ||= result.status !== "PASS";
       }
-      if (failed) process.exitCode = 1;
+      if (options.evidence !== undefined) {
+        await mkdir(dirname(options.evidence), { recursive: true });
+        await writeFile(options.evidence, `${JSON.stringify({ results }, null, 2)}\n`);
+      }
+      process.exitCode = exitCodeFor(results);
     });
 
   return program;
