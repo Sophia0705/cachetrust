@@ -1,0 +1,1552 @@
+[
+  {
+    "path": "apps/docs/.next/app-path-routes-manifest.json",
+    "bytes": 138,
+    "sha256": "d4365c43a35078eed7ef3a5166b2253527ceb9ff2ce867b6c582ac243b46c128"
+  },
+  {
+    "path": "apps/docs/.next/BUILD_ID",
+    "bytes": 21,
+    "sha256": "f1fb2b07c36e43294511ca57249c1aeb6af940b2abbb11580499eb8169953a2c"
+  },
+  {
+    "path": "apps/docs/.next/build-manifest.json",
+    "bytes": 607,
+    "sha256": "0dc6feb40116cbb57c8a3e1a3bbac3a1ed24ee689bcdeca6d5ed4461938d61e1"
+  },
+  {
+    "path": "apps/docs/.next/diagnostics/build-diagnostics.json",
+    "bytes": 93,
+    "sha256": "e4932338188cf0fbd08fb45f8b04421b523d0b2d9b90f197b5ad2e24fec94306"
+  },
+  {
+    "path": "apps/docs/.next/diagnostics/framework.json",
+    "bytes": 37,
+    "sha256": "4713025810406ff9b436e2439ee69ec12095567bbb69022b22f3866db8308378"
+  },
+  {
+    "path": "apps/docs/.next/diagnostics/route-bundle-stats.json",
+    "bytes": 781,
+    "sha256": "9e5b12c6b11ce24d703efd96514b90548fdb92e7c8ac5f934345304f05adcc3e"
+  },
+  {
+    "path": "apps/docs/.next/export-marker.json",
+    "bytes": 111,
+    "sha256": "82356527db218adb95bd1eca0ede6f3391165b38b22d667d064e62e6b539d974"
+  },
+  {
+    "path": "apps/docs/.next/fallback-build-manifest.json",
+    "bytes": 366,
+    "sha256": "cee2c1c15d4522eaaa0c97be6ce188770ed3bdddc77787690c5142b7e35bb508"
+  },
+  {
+    "path": "apps/docs/.next/images-manifest.json",
+    "bytes": 1193,
+    "sha256": "89153990319006e8e53593d4cee9a741db8a01b9dd8897513bd4e0a4685d2f42"
+  },
+  {
+    "path": "apps/docs/.next/next-minimal-server.js.nft.json",
+    "bytes": 18246,
+    "sha256": "c1af214058a7bc3b880ff177ed58438b9151dc8f8466ec1dca8e345bb5e908fb"
+  },
+  {
+    "path": "apps/docs/.next/next-server.js.nft.json",
+    "bytes": 166909,
+    "sha256": "176c455229c8f57cee489029f5caef02e481fba5a234edee6be70ac41c4bfdc3"
+  },
+  {
+    "path": "apps/docs/.next/package.json",
+    "bytes": 20,
+    "sha256": "091a04fa67c7907b98e106fcff8b964e13129754fce72d24f3025b97c4887fa3"
+  },
+  {
+    "path": "apps/docs/.next/prerender-manifest.json",
+    "bytes": 3472,
+    "sha256": "f82e5924d674fe815c5a9b0e9aa559019e44f1aeb1a728bb6c9ee1fa48185a98"
+  },
+  {
+    "path": "apps/docs/.next/required-server-files.js",
+    "bytes": 10315,
+    "sha256": "48c725e04826e7f31efc0d44ee856ac5c39c406f353626e1fb0f4c25e8de527d"
+  },
+  {
+    "path": "apps/docs/.next/required-server-files.json",
+    "bytes": 10286,
+    "sha256": "5c5650a2176c5ccda4ccfb35b7cf07e93a85738f6185484f3bbbd51d9a61f1c3"
+  },
+  {
+    "path": "apps/docs/.next/routes-manifest.json",
+    "bytes": 1723,
+    "sha256": "ef0e02b2709f8a976883fc76713fbba917b6b026d3dc447c397732bf0db3ef5c"
+  },
+  {
+    "path": "apps/docs/.next/server/app-paths-manifest.json",
+    "bytes": 182,
+    "sha256": "9bdd7b337276c342c2b9e421ea46119e56246e374ae17afb6cf16ca34feaed4f"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.html",
+    "bytes": 9117,
+    "sha256": "66988f5aa25cc66d77a630947ef6d85e2cd94cccf8f779bd41f6a3fb20d7aabe"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.meta",
+    "bytes": 676,
+    "sha256": "909f5986ec494f6136f1f6738d36df13a49e05892a43e68c8eb97d0fd0b6d3e9"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.rsc",
+    "bytes": 4944,
+    "sha256": "3c77d97e3183314c717c9065123a131442528f258ebb5cd6320b5e6af92fd543"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.segments/__PAGE__.segment.rsc",
+    "bytes": 4648,
+    "sha256": "2e47759af4e0a84e80a2904b5cc5ee600c58dbe42bfbbb9603b5d8f5ed4f7356"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.segments/_full.segment.rsc",
+    "bytes": 4944,
+    "sha256": "3c77d97e3183314c717c9065123a131442528f258ebb5cd6320b5e6af92fd543"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error.segments/_tree.segment.rsc",
+    "bytes": 195,
+    "sha256": "23fc59a0f1f36af7c5e63e8946e66a3ea80e623dc408cce4c97f5f3d4f47e6a6"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page_client-reference-manifest.js",
+    "bytes": 4609,
+    "sha256": "6b6398c134e4e617aea05fb7faa9bdbd06bb2a4ac949a34d6d3b12444cc0d365"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page.js",
+    "bytes": 571,
+    "sha256": "b1e94f4069fac419cd667267d9ba2f5999d3da6caa1b493b50b1f3ffad13f2f8"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page.js.nft.json",
+    "bytes": 23269,
+    "sha256": "e470e5da47d74a7fbd548fbbfa962432b19be18632fc5e09d9baf2d93dc86ebb"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page/app-paths-manifest.json",
+    "bytes": 56,
+    "sha256": "67d788223a06e3479a7e8372879e18c1595dae22d20db1434676dfa06f2b154c"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page/next-font-manifest.json",
+    "bytes": 94,
+    "sha256": "dc1719fb3b97327924884a5839c5cfa68896e28803f0cd5e969b7c20f519d1e5"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_global-error/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.html",
+    "bytes": 8190,
+    "sha256": "1fa5ed4661724d86d33572f7ef1e875c15a9369de9f0eb13e38a7c7f5e97bd07"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.meta",
+    "bytes": 766,
+    "sha256": "4b112114c74c5dc53232472280e8b7ed0c236907b5f245e47dd2967d0f2bdef2"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.rsc",
+    "bytes": 5296,
+    "sha256": "d42a257fa032e0ee95e43cdcb25976bbf4ab0f2c67d9bbafb5373b6a6e2d62e0"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.segments/_full.segment.rsc",
+    "bytes": 5296,
+    "sha256": "d42a257fa032e0ee95e43cdcb25976bbf4ab0f2c67d9bbafb5373b6a6e2d62e0"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.segments/_not-found/__PAGE__.segment.rsc",
+    "bytes": 4402,
+    "sha256": "b195dc6b3a004f14f3f95ef749526e95a7940dcc314699d7384caa2573e56395"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found.segments/_tree.segment.rsc",
+    "bytes": 327,
+    "sha256": "09a5021bccf8aafcf1da0d4bb06f8e68810a7d96b7abfeb01f11aba18a5aaf59"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page_client-reference-manifest.js",
+    "bytes": 4900,
+    "sha256": "7bb35f3efa5228878a5f1a741c8c361ce27d2bdd004c17d909e64ea6e2326f14"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page.js",
+    "bytes": 790,
+    "sha256": "1ac73a471314980666928d86eff28abb100ba5f6a09034a3b8068ce9c6c3d958"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page.js.nft.json",
+    "bytes": 23656,
+    "sha256": "b280581daa0ee060793280c2ceab88125f4311b89365f2af95b750a91e8f4ec9"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page/app-paths-manifest.json",
+    "bytes": 50,
+    "sha256": "e96e120dd8e4ae7f5c12a0e9695e528fd90b9b885af3e592cd2695ba972bebe1"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page/next-font-manifest.json",
+    "bytes": 275,
+    "sha256": "7db370af16996788c78f28c7bbf51986338f14b92d32fac5c5bd9ae1c727b446"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/docs/.next/server/app/_not-found/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico.body",
+    "bytes": 25931,
+    "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico.meta",
+    "bytes": 419,
+    "sha256": "c540ff0fd325bc9160c94e04ae3c7da316a275e11f718b27c89d140d789a9a00"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico/route.js",
+    "bytes": 341,
+    "sha256": "cab4b261500f2a188298e9394248698c1d35fc29f2875e2c7c17c0037e7c8278"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico/route.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico/route.js.nft.json",
+    "bytes": 22847,
+    "sha256": "2676ee4ba0c308ae82dceb350e82521d8411e865b5606421b074a880eabd2841"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico/route/app-paths-manifest.json",
+    "bytes": 54,
+    "sha256": "6d628eefccaaab63658823ad2bb96120c5d1756cac1f9f30629fbf5c76ea8939"
+  },
+  {
+    "path": "apps/docs/.next/server/app/favicon.ico/route/build-manifest.json",
+    "bytes": 255,
+    "sha256": "e4bd095c1cd1f90f87a2e8a0687076d901758d47de688103471925b023ce71f7"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.html",
+    "bytes": 12269,
+    "sha256": "eb3b1cc41c84913ad38cf3d4825686ff31cb6348cf2f4e20e3ad50da1b7060fe"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.meta",
+    "bytes": 595,
+    "sha256": "364b5f5dfdd03a659407755e2d891feb1100a3e1242d1753888957d41158c31c"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.rsc",
+    "bytes": 7044,
+    "sha256": "8070946d9f0ee03c40c08199c94d8fc05d7992083a4612a540f5b7ebeca08c69"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.segments/__PAGE__.segment.rsc",
+    "bytes": 6248,
+    "sha256": "1c8374206ebc8526a74caf71735b42810954631c45f099f91ac4165e6a0ae14e"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.segments/_full.segment.rsc",
+    "bytes": 7044,
+    "sha256": "8070946d9f0ee03c40c08199c94d8fc05d7992083a4612a540f5b7ebeca08c69"
+  },
+  {
+    "path": "apps/docs/.next/server/app/index.segments/_tree.segment.rsc",
+    "bytes": 513,
+    "sha256": "ffcf46ea95c4c48c88b91891f10b10d2f1d571b6e2202a95bef4f4e8026f2fdb"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page_client-reference-manifest.js",
+    "bytes": 6360,
+    "sha256": "1b176b3e44ca6468627ae5cdd41bd1f5b74bc6bfccf5742992550b90e9fc51fc"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page.js",
+    "bytes": 912,
+    "sha256": "921bb70fb51892a62ab183164cfadd0f56d701966bb923a6fd269e3d3b971c73"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page.js.nft.json",
+    "bytes": 23648,
+    "sha256": "6c5292bc7f628f029301f40aa07fc4bf70277625da7555dca493d302da0b50e5"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page/app-paths-manifest.json",
+    "bytes": 28,
+    "sha256": "e0be75c853555b01e1a9823abf81903c8d8934e5c7ca49e887afd6d00905d77a"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page/next-font-manifest.json",
+    "bytes": 264,
+    "sha256": "c8ed1974845cece47420862b17534111f1255d00c2fa42243dac48258047ac2a"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/docs/.next/server/app/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[externals]__12s2uxr._.js",
+    "bytes": 1548,
+    "sha256": "a8943043616a81b0a0e5ace9450b170d8aba398ee60c40759ebb08cc04e60a2a"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[externals]__12s2uxr._.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[root-of-the-server]__1z8sk4z._.js",
+    "bytes": 214128,
+    "sha256": "90db14186709a9973c3f7acc139a0f4bd620d82a2986788405eb21bca382fec7"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[root-of-the-server]__1z8sk4z._.js.map",
+    "bytes": 920731,
+    "sha256": "ee0d5b69edc10d608aee5f19a9349b380e07b205770e691750ae4170084c58ca"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[turbopack]_runtime.js",
+    "bytes": 32206,
+    "sha256": "a5fac123040b866d68c96761863037900d2f83d9222b553ae6effd4d37647f71"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/[turbopack]_runtime.js.map",
+    "bytes": 55280,
+    "sha256": "c2a20475e7a2e6065de472a0255a5a49d996efa4d11d771de84428b6be80da35"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/1vm5_basic_apps_docs__next-internal_server_app_favicon_ico_route_actions_194h_mr.js",
+    "bytes": 158,
+    "sha256": "e9e7ee1b465d05b4e6a59640108d4621a7128fd0206334a3b3338e76d5fbf551"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/1vm5_basic_apps_docs__next-internal_server_app_favicon_ico_route_actions_194h_mr.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0942tcv._.js",
+    "bytes": 221203,
+    "sha256": "3edba55e1828d8cbd6e708b7006ae1690f33f723d830cd79f55933050995a464"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0942tcv._.js.map",
+    "bytes": 1372934,
+    "sha256": "30239a9093385b8e5983d030c0696c4c3b9ee6cab112386f01b4a1994cc6c860"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0dtf2-s._.js",
+    "bytes": 8026,
+    "sha256": "71e47a0b4f008491be4e70b43a8e08de527c66728b7c88d75308c091820f3b68"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0dtf2-s._.js.map",
+    "bytes": 15792,
+    "sha256": "0f173d66f96516b77354f6669eb48eac620bdaf0b428dee1eb064c9b538c9f1e"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0tdgqoa._.js",
+    "bytes": 4509,
+    "sha256": "bb5656b63f86dd9702cc6d4387db694c20ab42b578669d8e156ff122c996519c"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__0tdgqoa._.js.map",
+    "bytes": 9557,
+    "sha256": "8f645075ce2772739a07dae7da58820d826dad4b523a1abf4e1d47ff218da721"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__145bvqd._.js",
+    "bytes": 8342,
+    "sha256": "7d2aa609dfe51b353a054fbbd6abc808ec9390d21ea8924f228515b72106aae1"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__145bvqd._.js.map",
+    "bytes": 13037,
+    "sha256": "9fe72ffbb11e81bba4ab9185c7c917ba47b3379638a96bc9d1e367aefa40f6cf"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__19f51h_._.js",
+    "bytes": 4088,
+    "sha256": "801d115db3f3d555f4105deeb26a5af910ace8d247f757c29ef5da051c301192"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__19f51h_._.js.map",
+    "bytes": 6383,
+    "sha256": "b4dc1e96a80ef106a2665126068b136846b8107db5cf76c911a502e67e420b52"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__1dbbub2._.js",
+    "bytes": 1574,
+    "sha256": "ae760c0ff63b84682f8855f76d47d67ccc3c80cb50036effd80fe832744439f1"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__1dbbub2._.js.map",
+    "bytes": 3174,
+    "sha256": "7e21167801a47d3a91e2132fbb832a78f5e1508ee9d951309cc2e7bdd8596faa"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__1f-p58-._.js",
+    "bytes": 3275,
+    "sha256": "029b86d46cc0cb588cf953c3bf4a266c1a183e48c370348f6da7cfbd71699c9a"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[root-of-the-server]__1f-p58-._.js.map",
+    "bytes": 7638,
+    "sha256": "41b9eb9ec7536d31aad1fc48d74dac6aee6e905203b8f2699b72400a0c98b08a"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[turbopack]_runtime.js",
+    "bytes": 32216,
+    "sha256": "2b66061bcec959c60b82006b9692588abfa8681c1724af6c4d918a2b942d8d19"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/[turbopack]_runtime.js.map",
+    "bytes": 55280,
+    "sha256": "c2a20475e7a2e6065de472a0255a5a49d996efa4d11d771de84428b6be80da35"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1dwv_@swc_helpers_cjs__interop_require_default_cjs_0bh8_ej._.js",
+    "bytes": 193,
+    "sha256": "b97a03e5193bd32afc84e9125d0c09b63fe23043e766a2361e9dabc6c8630eaa"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1dwv_@swc_helpers_cjs__interop_require_default_cjs_0bh8_ej._.js.map",
+    "bytes": 577,
+    "sha256": "d5ce2466f92aefe842e61aad87fe6fe71631203fe022cda1e0ef4d5ed5a0befa"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1gf6__pnpm_17p7-e4._.js",
+    "bytes": 6519,
+    "sha256": "646bff929805ef76fc769696cf0cc8c50d9fbb27f518442c6d9419300233c22f"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1gf6__pnpm_17p7-e4._.js.map",
+    "bytes": 12697,
+    "sha256": "9740d7ed2fcd0769329cfd9c4684b6861e4f39601464f0ea381b1416d26058b8"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_072au3w._.js",
+    "bytes": 25132,
+    "sha256": "f5bc12d76c49a8a1380945699f99c27240ec0aadb875e23243be123eef4209d7"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_072au3w._.js.map",
+    "bytes": 138060,
+    "sha256": "9002c0f2ea30d419716b41a8a8f8d787f05694bfccf251fe20f053ddd85c75fe"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_0muqd--._.js",
+    "bytes": 52942,
+    "sha256": "b95b18c8b1372f452e3bf6a7f8f252ab6082a5453f40372fb3df78b06e0f3969"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_0muqd--._.js.map",
+    "bytes": 1003893,
+    "sha256": "5d08f3808f1f74bbd928b92d0317c3abc74e01e58ff4da2aceeb129cd135a7d9"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_0cejbq9._.js",
+    "bytes": 2519,
+    "sha256": "512fd48634b7be0977aa141f4787eac37ce6dc71881b156267b5788f30502a66"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_0cejbq9._.js.map",
+    "bytes": 4647,
+    "sha256": "84fcadb382484372aaea90c41a0321eb8266fa113654ccb71e9c11c7a5140b00"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_forbidden_0-d1767.js",
+    "bytes": 651,
+    "sha256": "d9ddd6b9a20d7a655ff827433aa142b2aaa3058adb53d1d0cdd8c36c5fb9b479"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_forbidden_0-d1767.js.map",
+    "bytes": 735,
+    "sha256": "54a54ed695c967e7e939df088e5ab4923a6c521d3655f97b3b0a33dc4486a6fb"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_global-error_1i1hgpf.js",
+    "bytes": 430,
+    "sha256": "67b2410b59dc5fe8a421ff017771fa0ba31dacafd38325ee83af0dec260df397"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_global-error_1i1hgpf.js.map",
+    "bytes": 3482,
+    "sha256": "3d7cf08297c8cc0386183699f4cc07117d7d405b7af9e003d4e8a8569a8b9d8a"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_unauthorized_1hk_4lt.js",
+    "bytes": 664,
+    "sha256": "30b19d5aea826e7d4eb04427f28dcc9c4ee0eb84f4823b56314a63731b6dc8ae"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_unauthorized_1hk_4lt.js.map",
+    "bytes": 754,
+    "sha256": "243df67b2e97ee815e6d4f0960792a16ed1f8ed4d09ef80ccd761c9381d80dcf"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1vm5_basic_apps_docs__next-internal_server_app__global-error_page_actions_0qxlvbg.js",
+    "bytes": 160,
+    "sha256": "6345e7e82cb8926529b36cda8149190a1c9f61627d92d3cf450b2ba7cbb97916"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1vm5_basic_apps_docs__next-internal_server_app__global-error_page_actions_0qxlvbg.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1vm5_basic_apps_docs__next-internal_server_app__not-found_page_actions_1jq5h23.js",
+    "bytes": 157,
+    "sha256": "afe42447dbc10a50238c1d1310a4146923f2dc90b1c601b5e16d96d71b149693"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/1vm5_basic_apps_docs__next-internal_server_app__not-found_page_actions_1jq5h23.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_0o6kar7._.js",
+    "bytes": 12798,
+    "sha256": "3da82ec55aca246023b34d74a5f6c51510499b76bf71228c88f2f4a3dce81fd7"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_0o6kar7._.js.map",
+    "bytes": 80337,
+    "sha256": "8c61462183038b2d5c7c308d2d105bc51a0ac6fac1d406bc07772a300051ea98"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_0w2yg7s._.js",
+    "bytes": 16034,
+    "sha256": "8e134d724123ffb921cffe3fa529f042d55a71302df0c48347637c8369196a4e"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_0w2yg7s._.js.map",
+    "bytes": 94725,
+    "sha256": "a6b25fb5f27f8714aaf41b751f3175ffbfe7911027e7f681e703c5e7b5b2729c"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_apps_docs__next-internal_server_app_page_actions_105pj6b.js",
+    "bytes": 150,
+    "sha256": "adf8fce8c59aedce444ea8d717f6075f7bebefe434515840d572cf8d27d2fc93"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_apps_docs__next-internal_server_app_page_actions_105pj6b.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_apps_docs_app_0fh959s._.js",
+    "bytes": 999,
+    "sha256": "fed5a4c21fd735ee298de66e7799335bf416d66622bd24c775cdc56eb2695114"
+  },
+  {
+    "path": "apps/docs/.next/server/chunks/ssr/examples_basic_apps_docs_app_0fh959s._.js.map",
+    "bytes": 3499,
+    "sha256": "a77edfc39c8189b9bd3d87153fa04901acef4b07037beb63881048eda9eb4629"
+  },
+  {
+    "path": "apps/docs/.next/server/functions-config-manifest.json",
+    "bytes": 37,
+    "sha256": "e7d9c7de4b1a0e8ed521c8ca071261fb4a0de053afc0040538c0a50e5e4c1ee4"
+  },
+  {
+    "path": "apps/docs/.next/server/interception-route-rewrite-manifest.js",
+    "bytes": 48,
+    "sha256": "fc5133e40acf09e6517b073ddd7b5c0c218d09938848902210f2cc13f08e1c81"
+  },
+  {
+    "path": "apps/docs/.next/server/middleware-build-manifest.js",
+    "bytes": 639,
+    "sha256": "94c0933ccc4a863bbede0ff4dc6d99870c3b304c0b7a0b6ed1b648ccdb047e11"
+  },
+  {
+    "path": "apps/docs/.next/server/middleware-manifest.json",
+    "bytes": 83,
+    "sha256": "3e662212864bc4c124cfc53fa5d428813c619852b447c9fd2d9926cd39d7a4a6"
+  },
+  {
+    "path": "apps/docs/.next/server/next-font-manifest.js",
+    "bytes": 506,
+    "sha256": "d045271c2e258e57e9b24c51b1bde557ad40d76de8ce6d0338a73d09a9deb871"
+  },
+  {
+    "path": "apps/docs/.next/server/next-font-manifest.json",
+    "bytes": 444,
+    "sha256": "cb18f5f4bbb78f5d774c047333657aaee06533228f5dc85bcb26d1564bbd2d6b"
+  },
+  {
+    "path": "apps/docs/.next/server/pages-manifest.json",
+    "bytes": 58,
+    "sha256": "c354059caa217e72bdeb145e351b2038990972872c52df215cb1e4105c35097b"
+  },
+  {
+    "path": "apps/docs/.next/server/pages/404.html",
+    "bytes": 8190,
+    "sha256": "1fa5ed4661724d86d33572f7ef1e875c15a9369de9f0eb13e38a7c7f5e97bd07"
+  },
+  {
+    "path": "apps/docs/.next/server/pages/500.html",
+    "bytes": 9117,
+    "sha256": "66988f5aa25cc66d77a630947ef6d85e2cd94cccf8f779bd41f6a3fb20d7aabe"
+  },
+  {
+    "path": "apps/docs/.next/server/prefetch-hints.json",
+    "bytes": 491,
+    "sha256": "bc01cc6d9b026fa2426d22ef586168edad9c9c0a7a481b4cdae1c4097cadecc4"
+  },
+  {
+    "path": "apps/docs/.next/server/server-reference-manifest.js",
+    "bytes": 138,
+    "sha256": "f568f95b04911617440498c5167678df8ac16e180d778c6102004f3d53893a04"
+  },
+  {
+    "path": "apps/docs/.next/server/server-reference-manifest.json",
+    "bytes": 97,
+    "sha256": "46e23768e2343024ae9bc8499d105009d751cc26019293c6f40ce86f65398542"
+  },
+  {
+    "path": "apps/docs/.next/static/5SyCo4k02PbIfD7hqNwXe/_buildManifest.js",
+    "bytes": 219,
+    "sha256": "9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea"
+  },
+  {
+    "path": "apps/docs/.next/static/5SyCo4k02PbIfD7hqNwXe/_clientMiddlewareManifest.js",
+    "bytes": 96,
+    "sha256": "5483e3295dc35dfe29ea932efc85341c916f10ff78ff5b0e965e003710893a4a"
+  },
+  {
+    "path": "apps/docs/.next/static/5SyCo4k02PbIfD7hqNwXe/_ssgManifest.js",
+    "bytes": 80,
+    "sha256": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/0cz1d0mv5g_q7.js",
+    "bytes": 112594,
+    "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/1r_d7iktsh5yx.js",
+    "bytes": 22231,
+    "sha256": "86f24d6aff3f3c7efc2825f3bcfed99648a92b6565fb800eec18abec9a3b8dc0"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/1ri7h-a38ymj9.css",
+    "bytes": 1392,
+    "sha256": "915a229b53e82bdd498e3b436f3e4b27602c68ad17f341a8ad62c8029cb0aaea"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/2m0153s8qemnh.css",
+    "bytes": 3012,
+    "sha256": "59aa940226dff8101fd16c62d08fe6a42e03548f8c6cf3d6a4cb019b996cf3e8"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/2uqv8mm1kww34.js",
+    "bytes": 15742,
+    "sha256": "ddb39b7f58b85661453eb14fd08aad3d2969e4e1e76a2794e6cca1cf3eec02a1"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/3kag5pog31gon.js",
+    "bytes": 228916,
+    "sha256": "b1bf13cbf32f00a7027fb5a5ae6ca976f61914d46cbd761faa22a8e10226c9c7"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/3qcrcc54u_kow.js",
+    "bytes": 178240,
+    "sha256": "b9b9e321cecd10cc653f8945f4d41a55b1663b238367efba050710d2ed217120"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/43_s7_xnu7-el.js",
+    "bytes": 14378,
+    "sha256": "88b55070f85a19488b05a5ae6f51a9084f72d0f57259650163e3a84d23808add"
+  },
+  {
+    "path": "apps/docs/.next/static/chunks/turbopack-2pjlt12mzemjy.js",
+    "bytes": 9688,
+    "sha256": "eda33fae7e64c7022e8fbfe100d2517d5c92f000bcdbffeaeeed764e83113d3a"
+  },
+  {
+    "path": "apps/docs/.next/static/media/favicon.2vob68tjqpejf.ico",
+    "bytes": 25931,
+    "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+  },
+  {
+    "path": "apps/docs/.next/static/media/GeistMonoVF-s.p.1lv5tp2fpjxdz.woff",
+    "bytes": 67864,
+    "sha256": "e8b65928f551b17e3d67c3f709721b952c39842d14b00701f9232057fde73608"
+  },
+  {
+    "path": "apps/docs/.next/static/media/GeistVF-s.p.0e569l9b0bre8.woff",
+    "bytes": 66268,
+    "sha256": "296fafafd41304f7c992079054b8af914dbbd865f32de97c66d0f613b55755d6"
+  },
+  {
+    "path": "apps/docs/.next/trace",
+    "bytes": 5978,
+    "sha256": "6c12568603eec46ed4d47b4a9abfd47603ace280b3236a0486e5601af13d3298"
+  },
+  {
+    "path": "apps/docs/.next/trace-build",
+    "bytes": 1499,
+    "sha256": "a6bf7fa8ea14475def41e4cc4852ee1a6649ed226c3badbdee9c5b3c2f087c8f"
+  },
+  {
+    "path": "apps/docs/.next/turbopack",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "apps/docs/.next/types/cache-life.d.ts",
+    "bytes": 5905,
+    "sha256": "4f984436b10cfb43ccf7fc3114dcb851cbefa4d58b7d8ae741aaae0f6e330129"
+  },
+  {
+    "path": "apps/docs/.next/types/root-params.d.ts",
+    "bytes": 101,
+    "sha256": "f3387dd7800eec3c34273f7a8efad13e864598c7e8f788d321e407390989bb59"
+  },
+  {
+    "path": "apps/docs/.next/types/routes.d.ts",
+    "bytes": 1397,
+    "sha256": "a384610388221cd70cffb4503cee7853b8b076f2b4a55324b20a4bdbd25a3538"
+  },
+  {
+    "path": "apps/docs/.next/types/validator.ts",
+    "bytes": 2095,
+    "sha256": "8c738d7ab02122bec55d98eab2f5e875f5306ebffe56a6be96f2da0916a7ea71"
+  },
+  {
+    "path": "apps/web/.next/app-path-routes-manifest.json",
+    "bytes": 138,
+    "sha256": "d4365c43a35078eed7ef3a5166b2253527ceb9ff2ce867b6c582ac243b46c128"
+  },
+  {
+    "path": "apps/web/.next/BUILD_ID",
+    "bytes": 21,
+    "sha256": "5e5865ea648b766e373c2a275f3b44b5be70b63b806ef73a83ee4a84fb9a8c85"
+  },
+  {
+    "path": "apps/web/.next/build-manifest.json",
+    "bytes": 607,
+    "sha256": "1f4c80b7a36d12a5e6e3c38c0091a3d90f97fd1bf83d0ce80c8b26bedf7bc45b"
+  },
+  {
+    "path": "apps/web/.next/diagnostics/build-diagnostics.json",
+    "bytes": 93,
+    "sha256": "e4932338188cf0fbd08fb45f8b04421b523d0b2d9b90f197b5ad2e24fec94306"
+  },
+  {
+    "path": "apps/web/.next/diagnostics/framework.json",
+    "bytes": 37,
+    "sha256": "4713025810406ff9b436e2439ee69ec12095567bbb69022b22f3866db8308378"
+  },
+  {
+    "path": "apps/web/.next/diagnostics/route-bundle-stats.json",
+    "bytes": 781,
+    "sha256": "9e5b12c6b11ce24d703efd96514b90548fdb92e7c8ac5f934345304f05adcc3e"
+  },
+  {
+    "path": "apps/web/.next/export-marker.json",
+    "bytes": 111,
+    "sha256": "82356527db218adb95bd1eca0ede6f3391165b38b22d667d064e62e6b539d974"
+  },
+  {
+    "path": "apps/web/.next/fallback-build-manifest.json",
+    "bytes": 366,
+    "sha256": "ac1f5159846ec8dbb6b1e3f2055a597c9648d398593d8be995c0c0cf5ab0e44f"
+  },
+  {
+    "path": "apps/web/.next/images-manifest.json",
+    "bytes": 1193,
+    "sha256": "89153990319006e8e53593d4cee9a741db8a01b9dd8897513bd4e0a4685d2f42"
+  },
+  {
+    "path": "apps/web/.next/next-minimal-server.js.nft.json",
+    "bytes": 18246,
+    "sha256": "c1af214058a7bc3b880ff177ed58438b9151dc8f8466ec1dca8e345bb5e908fb"
+  },
+  {
+    "path": "apps/web/.next/next-server.js.nft.json",
+    "bytes": 166909,
+    "sha256": "176c455229c8f57cee489029f5caef02e481fba5a234edee6be70ac41c4bfdc3"
+  },
+  {
+    "path": "apps/web/.next/package.json",
+    "bytes": 20,
+    "sha256": "091a04fa67c7907b98e106fcff8b964e13129754fce72d24f3025b97c4887fa3"
+  },
+  {
+    "path": "apps/web/.next/prerender-manifest.json",
+    "bytes": 3472,
+    "sha256": "1a0c60e26844c140b09444f7dff9212988e7b6292a2cd412d1f88d28395da76a"
+  },
+  {
+    "path": "apps/web/.next/required-server-files.js",
+    "bytes": 10313,
+    "sha256": "babcd7b4d014d132b4c10c9ebee5643d02d1845d72a6f3ca3a4c38f9fdd83413"
+  },
+  {
+    "path": "apps/web/.next/required-server-files.json",
+    "bytes": 10284,
+    "sha256": "8e0f4bfbdc242213ee768c87755342e3c403517f9d210cb231ae996cbf6349b4"
+  },
+  {
+    "path": "apps/web/.next/routes-manifest.json",
+    "bytes": 1723,
+    "sha256": "ef0e02b2709f8a976883fc76713fbba917b6b026d3dc447c397732bf0db3ef5c"
+  },
+  {
+    "path": "apps/web/.next/server/app-paths-manifest.json",
+    "bytes": 182,
+    "sha256": "9bdd7b337276c342c2b9e421ea46119e56246e374ae17afb6cf16ca34feaed4f"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.html",
+    "bytes": 9117,
+    "sha256": "2e34b1252be427983f7aaf98cf85c7e80b9781669805fdfe2dfaafe6d69a2edb"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.meta",
+    "bytes": 676,
+    "sha256": "909f5986ec494f6136f1f6738d36df13a49e05892a43e68c8eb97d0fd0b6d3e9"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.rsc",
+    "bytes": 4944,
+    "sha256": "12b83e87c45ec6bc250e3a4667c6668f832c7fc0bdc2d87b7e9bfc7666ba3e5b"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.segments/__PAGE__.segment.rsc",
+    "bytes": 4648,
+    "sha256": "2360e4387aef911448254b0b619c7d89c57ce30cf9bc93cb5a67aa3920fbaacb"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.segments/_full.segment.rsc",
+    "bytes": 4944,
+    "sha256": "12b83e87c45ec6bc250e3a4667c6668f832c7fc0bdc2d87b7e9bfc7666ba3e5b"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error.segments/_tree.segment.rsc",
+    "bytes": 195,
+    "sha256": "49c1d303ed6e1ab0a169291dcee5871b4f724cab862cc0eb26ebbcbc75f0cfb8"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page_client-reference-manifest.js",
+    "bytes": 4609,
+    "sha256": "6b6398c134e4e617aea05fb7faa9bdbd06bb2a4ac949a34d6d3b12444cc0d365"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page.js",
+    "bytes": 568,
+    "sha256": "49ae747770a4b844fae4144fb3b9783ef30fcbe06d53947916392cc2ad7ae809"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page.js.nft.json",
+    "bytes": 23268,
+    "sha256": "90ae506fda49ad8ae14e5eb49813e8ad61d46839f3502d2d08adf693d0d0aa01"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page/app-paths-manifest.json",
+    "bytes": 56,
+    "sha256": "67d788223a06e3479a7e8372879e18c1595dae22d20db1434676dfa06f2b154c"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page/next-font-manifest.json",
+    "bytes": 94,
+    "sha256": "dc1719fb3b97327924884a5839c5cfa68896e28803f0cd5e969b7c20f519d1e5"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/web/.next/server/app/_global-error/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.html",
+    "bytes": 8190,
+    "sha256": "f89c066b52267d50c2cefb2ef860011c65eb19bae3b0d53ad01a20edd89ae6e0"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.meta",
+    "bytes": 766,
+    "sha256": "4b112114c74c5dc53232472280e8b7ed0c236907b5f245e47dd2967d0f2bdef2"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.rsc",
+    "bytes": 5296,
+    "sha256": "b4420e6c83ef8b548957bf096e0239e16bed2bd4ece98652a858b647ab4c2096"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.segments/_full.segment.rsc",
+    "bytes": 5296,
+    "sha256": "b4420e6c83ef8b548957bf096e0239e16bed2bd4ece98652a858b647ab4c2096"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.segments/_not-found/__PAGE__.segment.rsc",
+    "bytes": 4402,
+    "sha256": "54f7a3293783feb30ef0705ffebe308b1e913c31d9ec2ef96f99113340521f56"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found.segments/_tree.segment.rsc",
+    "bytes": 327,
+    "sha256": "ffc8df0d22205954fd3c3853c0e854b13917abadf62a32563faa7af70e5a1317"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page_client-reference-manifest.js",
+    "bytes": 4898,
+    "sha256": "e3b42598fc484cc34a4cbc1eee2d7945281b5cc2f386336425f4e42b521c4671"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page.js",
+    "bytes": 788,
+    "sha256": "29646ed348549067c820d1251d7a21e1678c48356629643f195c3a31880cbb27"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page.js.nft.json",
+    "bytes": 23654,
+    "sha256": "9c0bc29a77c6047ceba8821ebd2386591e10affb591fdd3c5a6c9b1c97020205"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page/app-paths-manifest.json",
+    "bytes": 50,
+    "sha256": "e96e120dd8e4ae7f5c12a0e9695e528fd90b9b885af3e592cd2695ba972bebe1"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page/next-font-manifest.json",
+    "bytes": 274,
+    "sha256": "4fe1df4f9e9d480808b167b8ef4bcf29c7cc5abe0ff05bcbb7d0a0d2ec8aaa2b"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/web/.next/server/app/_not-found/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico.body",
+    "bytes": 25931,
+    "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico.meta",
+    "bytes": 419,
+    "sha256": "c540ff0fd325bc9160c94e04ae3c7da316a275e11f718b27c89d140d789a9a00"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico/route.js",
+    "bytes": 340,
+    "sha256": "dc6e109d7d39a5cbfeb1db55d7b47b00f4b80233003d46f88d48f5bbd32d181b"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico/route.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico/route.js.nft.json",
+    "bytes": 22846,
+    "sha256": "8cc33338619c45236b6a53c7d83c53b69a17fdc0d247545e58495659bb3d6352"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico/route/app-paths-manifest.json",
+    "bytes": 54,
+    "sha256": "6d628eefccaaab63658823ad2bb96120c5d1756cac1f9f30629fbf5c76ea8939"
+  },
+  {
+    "path": "apps/web/.next/server/app/favicon.ico/route/build-manifest.json",
+    "bytes": 255,
+    "sha256": "e4bd095c1cd1f90f87a2e8a0687076d901758d47de688103471925b023ce71f7"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.html",
+    "bytes": 12266,
+    "sha256": "572f1486e480b0e760bc37c07afdef52bdb63ba60036bc0c09489a6bda61ea47"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.meta",
+    "bytes": 595,
+    "sha256": "364b5f5dfdd03a659407755e2d891feb1100a3e1242d1753888957d41158c31c"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.rsc",
+    "bytes": 7042,
+    "sha256": "c229de7b271c4eb31813c728bdb6877cae016214ce0721c864cea7862a30f9f1"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.segments/__PAGE__.segment.rsc",
+    "bytes": 6246,
+    "sha256": "c765a34e0f80c78b946dc1b98fb4a5217d7c104042cbf5d7753cbaf308ba7eb4"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.segments/_full.segment.rsc",
+    "bytes": 7042,
+    "sha256": "c229de7b271c4eb31813c728bdb6877cae016214ce0721c864cea7862a30f9f1"
+  },
+  {
+    "path": "apps/web/.next/server/app/index.segments/_tree.segment.rsc",
+    "bytes": 513,
+    "sha256": "f835d4a575a8d11fb1b6129e5f0c472a392be5a214ea84f067fe038f04359696"
+  },
+  {
+    "path": "apps/web/.next/server/app/page_client-reference-manifest.js",
+    "bytes": 6356,
+    "sha256": "d0a45da240a0c6c3de4027a4a0e711a8a97745fac709587f906a1275a7936628"
+  },
+  {
+    "path": "apps/web/.next/server/app/page.js",
+    "bytes": 910,
+    "sha256": "03be2689737d53874ba0ae1d81089f120dd008d5ee7727ed94aca95bcf293bfa"
+  },
+  {
+    "path": "apps/web/.next/server/app/page.js.map",
+    "bytes": 53,
+    "sha256": "a8ae20908e3aa88a005bf3b5cadedd7f1107cf28a6e4db9da80280fe9f54de95"
+  },
+  {
+    "path": "apps/web/.next/server/app/page.js.nft.json",
+    "bytes": 23646,
+    "sha256": "6871efbe8b53da57885d2494bf67a4a5b8a730fdf96d13ca83b6bd1226c0d4af"
+  },
+  {
+    "path": "apps/web/.next/server/app/page/app-paths-manifest.json",
+    "bytes": 28,
+    "sha256": "e0be75c853555b01e1a9823abf81903c8d8934e5c7ca49e887afd6d00905d77a"
+  },
+  {
+    "path": "apps/web/.next/server/app/page/build-manifest.json",
+    "bytes": 459,
+    "sha256": "b2adb2b5c213c437f1c432849c9a4cee7ee15dfdb4834474739b1b435af1c5cc"
+  },
+  {
+    "path": "apps/web/.next/server/app/page/next-font-manifest.json",
+    "bytes": 263,
+    "sha256": "b40963c894315e0c436b8610bda7e32f7d238bac283f115a04825baf09062901"
+  },
+  {
+    "path": "apps/web/.next/server/app/page/react-loadable-manifest.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "apps/web/.next/server/app/page/server-reference-manifest.json",
+    "bytes": 30,
+    "sha256": "d0c7f70e7b24a0f6f6b52e64bddbd51705dad21e63403dddeb723b03e70be9a5"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[externals]__12s2uxr._.js",
+    "bytes": 1548,
+    "sha256": "a8943043616a81b0a0e5ace9450b170d8aba398ee60c40759ebb08cc04e60a2a"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[externals]__12s2uxr._.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[root-of-the-server]__04k6s01._.js",
+    "bytes": 214129,
+    "sha256": "0bfeccd2516d8d691d04aa88fb1e49bde3fd09abd0e1a867386aa1ca0470b915"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[root-of-the-server]__04k6s01._.js.map",
+    "bytes": 920729,
+    "sha256": "ed299683d5e27d903bade97f4da15d60f16013136bd031d722144e4819d3c0eb"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[turbopack]_runtime.js",
+    "bytes": 32206,
+    "sha256": "a5fac123040b866d68c96761863037900d2f83d9222b553ae6effd4d37647f71"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/[turbopack]_runtime.js.map",
+    "bytes": 55280,
+    "sha256": "c2a20475e7a2e6065de472a0255a5a49d996efa4d11d771de84428b6be80da35"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/1vm5_basic_apps_web__next-internal_server_app_favicon_ico_route_actions_1nd7p_c.js",
+    "bytes": 157,
+    "sha256": "cd22248c4759b93311e9434ba9b6444fdc34c77905db8f57c1eb714d2ade360e"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/1vm5_basic_apps_web__next-internal_server_app_favicon_ico_route_actions_1nd7p_c.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0942tcv._.js",
+    "bytes": 221203,
+    "sha256": "3edba55e1828d8cbd6e708b7006ae1690f33f723d830cd79f55933050995a464"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0942tcv._.js.map",
+    "bytes": 1372934,
+    "sha256": "30239a9093385b8e5983d030c0696c4c3b9ee6cab112386f01b4a1994cc6c860"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0dtf2-s._.js",
+    "bytes": 8026,
+    "sha256": "71e47a0b4f008491be4e70b43a8e08de527c66728b7c88d75308c091820f3b68"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0dtf2-s._.js.map",
+    "bytes": 15792,
+    "sha256": "0f173d66f96516b77354f6669eb48eac620bdaf0b428dee1eb064c9b538c9f1e"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0f8ik3t._.js",
+    "bytes": 4088,
+    "sha256": "c59f7dd7fb8d64246143d26a44138824d9a96370f2316a02fb96d162178e9af7"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__0f8ik3t._.js.map",
+    "bytes": 6380,
+    "sha256": "8abbb9ce082974b29482cae40e8f578c400a6ccf022e9b4b7663e350b8eba4f9"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1dbbub2._.js",
+    "bytes": 1574,
+    "sha256": "ae760c0ff63b84682f8855f76d47d67ccc3c80cb50036effd80fe832744439f1"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1dbbub2._.js.map",
+    "bytes": 3174,
+    "sha256": "7e21167801a47d3a91e2132fbb832a78f5e1508ee9d951309cc2e7bdd8596faa"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1e7jy_h._.js",
+    "bytes": 8344,
+    "sha256": "6bdc2f0d4a4b708b6392cf1ff550cdc197497d3c12f7082a9f7e8bc03a2a4595"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1e7jy_h._.js.map",
+    "bytes": 13036,
+    "sha256": "0285177254ba3bc43826b3215ec5540940150f69200e36a50a7693cc37c4118e"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1f-p58-._.js",
+    "bytes": 3275,
+    "sha256": "029b86d46cc0cb588cf953c3bf4a266c1a183e48c370348f6da7cfbd71699c9a"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1f-p58-._.js.map",
+    "bytes": 7638,
+    "sha256": "41b9eb9ec7536d31aad1fc48d74dac6aee6e905203b8f2699b72400a0c98b08a"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1ieb3js._.js",
+    "bytes": 4512,
+    "sha256": "3fe4243c047059b059623a716965710a392078ab14a987dae107e4ffe06a58a0"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[root-of-the-server]__1ieb3js._.js.map",
+    "bytes": 9555,
+    "sha256": "833dcee61e79fa7d762a6fb3d0e02ab1f01061409fe896553f33bf91b05f1fb6"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[turbopack]_runtime.js",
+    "bytes": 32216,
+    "sha256": "2b66061bcec959c60b82006b9692588abfa8681c1724af6c4d918a2b942d8d19"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/[turbopack]_runtime.js.map",
+    "bytes": 55280,
+    "sha256": "c2a20475e7a2e6065de472a0255a5a49d996efa4d11d771de84428b6be80da35"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1dwv_@swc_helpers_cjs__interop_require_default_cjs_0bh8_ej._.js",
+    "bytes": 193,
+    "sha256": "b97a03e5193bd32afc84e9125d0c09b63fe23043e766a2361e9dabc6c8630eaa"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1dwv_@swc_helpers_cjs__interop_require_default_cjs_0bh8_ej._.js.map",
+    "bytes": 577,
+    "sha256": "d5ce2466f92aefe842e61aad87fe6fe71631203fe022cda1e0ef4d5ed5a0befa"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1gf6__pnpm_17p7-e4._.js",
+    "bytes": 6519,
+    "sha256": "646bff929805ef76fc769696cf0cc8c50d9fbb27f518442c6d9419300233c22f"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1gf6__pnpm_17p7-e4._.js.map",
+    "bytes": 12697,
+    "sha256": "9740d7ed2fcd0769329cfd9c4684b6861e4f39601464f0ea381b1416d26058b8"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_072au3w._.js",
+    "bytes": 25132,
+    "sha256": "f5bc12d76c49a8a1380945699f99c27240ec0aadb875e23243be123eef4209d7"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_072au3w._.js.map",
+    "bytes": 138060,
+    "sha256": "9002c0f2ea30d419716b41a8a8f8d787f05694bfccf251fe20f053ddd85c75fe"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_0muqd--._.js",
+    "bytes": 52942,
+    "sha256": "b95b18c8b1372f452e3bf6a7f8f252ab6082a5453f40372fb3df78b06e0f3969"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_0muqd--._.js.map",
+    "bytes": 1003893,
+    "sha256": "5d08f3808f1f74bbd928b92d0317c3abc74e01e58ff4da2aceeb129cd135a7d9"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_0cejbq9._.js",
+    "bytes": 2519,
+    "sha256": "512fd48634b7be0977aa141f4787eac37ce6dc71881b156267b5788f30502a66"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_0cejbq9._.js.map",
+    "bytes": 4647,
+    "sha256": "84fcadb382484372aaea90c41a0321eb8266fa113654ccb71e9c11c7a5140b00"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_forbidden_0-d1767.js",
+    "bytes": 651,
+    "sha256": "d9ddd6b9a20d7a655ff827433aa142b2aaa3058adb53d1d0cdd8c36c5fb9b479"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_forbidden_0-d1767.js.map",
+    "bytes": 735,
+    "sha256": "54a54ed695c967e7e939df088e5ab4923a6c521d3655f97b3b0a33dc4486a6fb"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_global-error_1i1hgpf.js",
+    "bytes": 430,
+    "sha256": "67b2410b59dc5fe8a421ff017771fa0ba31dacafd38325ee83af0dec260df397"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_global-error_1i1hgpf.js.map",
+    "bytes": 3482,
+    "sha256": "3d7cf08297c8cc0386183699f4cc07117d7d405b7af9e003d4e8a8569a8b9d8a"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_unauthorized_1hk_4lt.js",
+    "bytes": 664,
+    "sha256": "30b19d5aea826e7d4eb04427f28dcc9c4ee0eb84f4823b56314a63731b6dc8ae"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1v_1_next_dist_client_components_builtin_unauthorized_1hk_4lt.js.map",
+    "bytes": 754,
+    "sha256": "243df67b2e97ee815e6d4f0960792a16ed1f8ed4d09ef80ccd761c9381d80dcf"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1vm5_basic_apps_web__next-internal_server_app__global-error_page_actions_10tcxnh.js",
+    "bytes": 159,
+    "sha256": "e428c660ed3afc399f395a7fac7b0b16d607074ee3b695e52fc0f02832669c8e"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1vm5_basic_apps_web__next-internal_server_app__global-error_page_actions_10tcxnh.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1vm5_basic_apps_web__next-internal_server_app__not-found_page_actions_1j5cb1m.js",
+    "bytes": 156,
+    "sha256": "de44248e547a31e8b339bf7a81c656e80ef047a99a30bdd826e1eabc12271227"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/1vm5_basic_apps_web__next-internal_server_app__not-found_page_actions_1j5cb1m.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_0j4d_-i._.js",
+    "bytes": 12794,
+    "sha256": "420b55bc6d102fbd710aad6aa3ac67be87e38e6d02f5eb770261a62debbaaabe"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_0j4d_-i._.js.map",
+    "bytes": 80333,
+    "sha256": "e108a8aa1ec073deabce6fed12a67c11c807232dc8ed8e4e77d32c7387c05734"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_0w2yg7s._.js",
+    "bytes": 16034,
+    "sha256": "8e134d724123ffb921cffe3fa529f042d55a71302df0c48347637c8369196a4e"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_0w2yg7s._.js.map",
+    "bytes": 94725,
+    "sha256": "a6b25fb5f27f8714aaf41b751f3175ffbfe7911027e7f681e703c5e7b5b2729c"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_apps_web__next-internal_server_app_page_actions_0q0oasx.js",
+    "bytes": 149,
+    "sha256": "c7ae2920b5d164dd4ffbc97c1744247b51824708635c1c39dc2dcf4b03b9d254"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_apps_web__next-internal_server_app_page_actions_0q0oasx.js.map",
+    "bytes": 51,
+    "sha256": "bba91168b8031003cc96ad9268cf613f0df3f39694a6b6dfa788d47ed5b30c18"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_apps_web_app_0jtoa8x._.js",
+    "bytes": 998,
+    "sha256": "6565b6a83e43dce487657a2a834e7e84a4c2b901454ba00a23fbd190cb860c08"
+  },
+  {
+    "path": "apps/web/.next/server/chunks/ssr/examples_basic_apps_web_app_0jtoa8x._.js.map",
+    "bytes": 3494,
+    "sha256": "c3b74f22192b8428a2ea42fb125a0d16131df0b9423fb545d72f38de2038d512"
+  },
+  {
+    "path": "apps/web/.next/server/functions-config-manifest.json",
+    "bytes": 37,
+    "sha256": "e7d9c7de4b1a0e8ed521c8ca071261fb4a0de053afc0040538c0a50e5e4c1ee4"
+  },
+  {
+    "path": "apps/web/.next/server/interception-route-rewrite-manifest.js",
+    "bytes": 48,
+    "sha256": "fc5133e40acf09e6517b073ddd7b5c0c218d09938848902210f2cc13f08e1c81"
+  },
+  {
+    "path": "apps/web/.next/server/middleware-build-manifest.js",
+    "bytes": 639,
+    "sha256": "3fc9fcb27c113cd5838b9b6af8201111bfea466619d09302b1631c3e3077ae84"
+  },
+  {
+    "path": "apps/web/.next/server/middleware-manifest.json",
+    "bytes": 83,
+    "sha256": "3e662212864bc4c124cfc53fa5d428813c619852b447c9fd2d9926cd39d7a4a6"
+  },
+  {
+    "path": "apps/web/.next/server/next-font-manifest.js",
+    "bytes": 504,
+    "sha256": "2b52b6a93f299d1c0397eea7fa7a56cafbb63cfea4be4695e70cb5339891584f"
+  },
+  {
+    "path": "apps/web/.next/server/next-font-manifest.json",
+    "bytes": 442,
+    "sha256": "2313324bb519816cf2b3688a9b0094e07193fb71425a15948c494642d7ee91e5"
+  },
+  {
+    "path": "apps/web/.next/server/pages-manifest.json",
+    "bytes": 58,
+    "sha256": "c354059caa217e72bdeb145e351b2038990972872c52df215cb1e4105c35097b"
+  },
+  {
+    "path": "apps/web/.next/server/pages/404.html",
+    "bytes": 8190,
+    "sha256": "f89c066b52267d50c2cefb2ef860011c65eb19bae3b0d53ad01a20edd89ae6e0"
+  },
+  {
+    "path": "apps/web/.next/server/pages/500.html",
+    "bytes": 9117,
+    "sha256": "2e34b1252be427983f7aaf98cf85c7e80b9781669805fdfe2dfaafe6d69a2edb"
+  },
+  {
+    "path": "apps/web/.next/server/prefetch-hints.json",
+    "bytes": 491,
+    "sha256": "bc01cc6d9b026fa2426d22ef586168edad9c9c0a7a481b4cdae1c4097cadecc4"
+  },
+  {
+    "path": "apps/web/.next/server/server-reference-manifest.js",
+    "bytes": 138,
+    "sha256": "0186af5d018530fec0902b4060e0d317cc97fd8103784bebb5d1dc2da03eeffe"
+  },
+  {
+    "path": "apps/web/.next/server/server-reference-manifest.json",
+    "bytes": 97,
+    "sha256": "0803aba0b1892fae79d42d08d1ec13280911f9697a6d74a79a7bd4ecad963fdb"
+  },
+  {
+    "path": "apps/web/.next/static/2ISCrvESwP7TJ6q-TKqPW/_buildManifest.js",
+    "bytes": 219,
+    "sha256": "9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea"
+  },
+  {
+    "path": "apps/web/.next/static/2ISCrvESwP7TJ6q-TKqPW/_clientMiddlewareManifest.js",
+    "bytes": 96,
+    "sha256": "5483e3295dc35dfe29ea932efc85341c916f10ff78ff5b0e965e003710893a4a"
+  },
+  {
+    "path": "apps/web/.next/static/2ISCrvESwP7TJ6q-TKqPW/_ssgManifest.js",
+    "bytes": 80,
+    "sha256": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/0cz1d0mv5g_q7.js",
+    "bytes": 112594,
+    "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/1dm76wo004u5r.css",
+    "bytes": 1392,
+    "sha256": "f053301a1a0b258da51d9800b4c5a0984dfb8514b5b7b1f26d953e7f58734464"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/1r_d7iktsh5yx.js",
+    "bytes": 22231,
+    "sha256": "86f24d6aff3f3c7efc2825f3bcfed99648a92b6565fb800eec18abec9a3b8dc0"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/2uqv8mm1kww34.js",
+    "bytes": 15742,
+    "sha256": "ddb39b7f58b85661453eb14fd08aad3d2969e4e1e76a2794e6cca1cf3eec02a1"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/3kag5pog31gon.js",
+    "bytes": 228916,
+    "sha256": "b1bf13cbf32f00a7027fb5a5ae6ca976f61914d46cbd761faa22a8e10226c9c7"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/3qcrcc54u_kow.js",
+    "bytes": 178240,
+    "sha256": "b9b9e321cecd10cc653f8945f4d41a55b1663b238367efba050710d2ed217120"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/43_s7_xnu7-el.js",
+    "bytes": 14378,
+    "sha256": "88b55070f85a19488b05a5ae6f51a9084f72d0f57259650163e3a84d23808add"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/4588ccc1tshla.css",
+    "bytes": 3012,
+    "sha256": "6fcc338c8c556d22ecbeb11c0c1cf6afd0ccf0247d777f9d1ee01a8d9f500df7"
+  },
+  {
+    "path": "apps/web/.next/static/chunks/turbopack-2pjlt12mzemjy.js",
+    "bytes": 9688,
+    "sha256": "eda33fae7e64c7022e8fbfe100d2517d5c92f000bcdbffeaeeed764e83113d3a"
+  },
+  {
+    "path": "apps/web/.next/static/media/favicon.2vob68tjqpejf.ico",
+    "bytes": 25931,
+    "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+  },
+  {
+    "path": "apps/web/.next/static/media/GeistMonoVF-s.p.1lv5tp2fpjxdz.woff",
+    "bytes": 67864,
+    "sha256": "e8b65928f551b17e3d67c3f709721b952c39842d14b00701f9232057fde73608"
+  },
+  {
+    "path": "apps/web/.next/static/media/GeistVF-s.p.0e569l9b0bre8.woff",
+    "bytes": 66268,
+    "sha256": "296fafafd41304f7c992079054b8af914dbbd865f32de97c66d0f613b55755d6"
+  },
+  {
+    "path": "apps/web/.next/trace",
+    "bytes": 5981,
+    "sha256": "6c3465631094c11f7b3524df80a0d22c10efea4066a68a9f98b03eae87cfb149"
+  },
+  {
+    "path": "apps/web/.next/trace-build",
+    "bytes": 1501,
+    "sha256": "9f60670c85cd15bf7f10f03a809bc1027ba792e5fee79ca2bbe0cafd9dd1ed95"
+  },
+  {
+    "path": "apps/web/.next/turbopack",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "apps/web/.next/types/cache-life.d.ts",
+    "bytes": 5905,
+    "sha256": "4f984436b10cfb43ccf7fc3114dcb851cbefa4d58b7d8ae741aaae0f6e330129"
+  },
+  {
+    "path": "apps/web/.next/types/root-params.d.ts",
+    "bytes": 101,
+    "sha256": "f3387dd7800eec3c34273f7a8efad13e864598c7e8f788d321e407390989bb59"
+  },
+  {
+    "path": "apps/web/.next/types/routes.d.ts",
+    "bytes": 1397,
+    "sha256": "a384610388221cd70cffb4503cee7853b8b076f2b4a55324b20a4bdbd25a3538"
+  },
+  {
+    "path": "apps/web/.next/types/validator.ts",
+    "bytes": 2095,
+    "sha256": "8c738d7ab02122bec55d98eab2f5e875f5306ebffe56a6be96f2da0916a7ea71"
+  }
+]

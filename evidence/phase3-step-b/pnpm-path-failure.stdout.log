@@ -1,0 +1,28 @@
+Scope: all 6 workspace projects
+✓ Lockfile passes supply-chain policies (verified 2m ago)
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 1.5s using pnpm v11.25.0
+
+   • Packages in scope: @repo/eslint-config, @repo/typescript-config, @repo/ui, docs, web
+   • Running build in 5 packages
+   • Remote caching disabled
+
+web:build: cache miss, executing c30eb01a395cb7f6
+docs:build: cache miss, executing 5efde0342e983072
+web:build: [ERROR] This project is configured to use 11.25.0 of pnpm. Your current pnpm is v11.20.0
+web:build: Corepack invoked pnpm with this version, and pnpm does not switch versions when running under corepack.
+web:build: Align the "packageManager" field in package.json with "devEngines.packageManager", or invoke pnpm directly (without corepack) so it can switch versions automatically.
+web:build: If you want to bypass this version check, you can set the "pmOnFail" configuration to "warn" or "ignore" (e.g. via --pm-on-fail=ignore). If using "devEngines.packageManager", you can set its "onFail" to "warn" or "ignore"
+docs:build: [ERROR] This project is configured to use 11.25.0 of pnpm. Your current pnpm is v11.20.0
+docs:build: Corepack invoked pnpm with this version, and pnpm does not switch versions when running under corepack.
+docs:build: Align the "packageManager" field in package.json with "devEngines.packageManager", or invoke pnpm directly (without corepack) so it can switch versions automatically.
+docs:build: If you want to bypass this version check, you can set the "pmOnFail" configuration to "warn" or "ignore" (e.g. via --pm-on-fail=ignore). If using "devEngines.packageManager", you can set its "onFail" to "warn" or "ignore"
+
+  Tasks:    0 successful, 2 total
+ Cached:    0 cached, 2 total
+   Time:    1.393s 
+Summary:    C:\Users\SOPHIA\.codex\visualizations\2026\11\08\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\phase3-step-b\source\examples\basic\.turbo\runs\3Lp8lKNgwgXM7OAfBkWunHQ8GTt.json
+ Failed:    web#build
+

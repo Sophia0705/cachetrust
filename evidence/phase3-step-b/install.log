@@ -1,0 +1,43 @@
+Scope: all 6 workspace projects
+? Verifying lockfile against supply-chain policies (255 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +198
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 198, reused 101, downloaded 0, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: C:\Users\SOPHIA\AppData\Local\pnpm\store\v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 198, reused 143, downloaded 47, added 32
+Progress: resolved 198, reused 143, downloaded 47, added 39
+
+   ╭────────────────────────────────────────────────────────────────────────╮
+   │                                                                        │
+   │                  Update available! 11.25.0 → 12.18.0.                  │
+   │                  Changelog: https://pnpm.io/v/12.18.0                  │
+   │   To update, run: Invoke-WebRequest https://get.pnpm.io/install.ps1    │
+   │                 -UseBasicParsing | Invoke-Expression                   │
+   │                                                                        │
+   ╰────────────────────────────────────────────────────────────────────────╯
+
+Progress: resolved 198, reused 143, downloaded 47, added 86
+Progress: resolved 198, reused 143, downloaded 47, added 87
+Progress: resolved 198, reused 143, downloaded 50, added 124
+Progress: resolved 198, reused 143, downloaded 51, added 187
+Progress: resolved 198, reused 143, downloaded 51, added 190
+Progress: resolved 198, reused 143, downloaded 52, added 195
+✓ Lockfile passes supply-chain policies (255 entries in 10.3s)
+Progress: resolved 198, reused 143, downloaded 53, added 195
+Progress: resolved 198, reused 143, downloaded 53, added 196
+Progress: resolved 198, reused 143, downloaded 54, added 196
+Progress: resolved 198, reused 143, downloaded 54, added 197
+Progress: resolved 198, reused 143, downloaded 55, added 197
+Progress: resolved 198, reused 143, downloaded 55, added 198
+Progress: resolved 198, reused 143, downloaded 55, added 198, done
+
+devDependencies:
++ prettier 3.9.6
++ turbo 2.10.12
++ typescript 7.0.2
+
+Done in 52.8s using pnpm v11.25.0

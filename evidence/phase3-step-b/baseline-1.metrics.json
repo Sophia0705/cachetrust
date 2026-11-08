@@ -1,0 +1,8 @@
+{
+  "run": "baseline-1",
+  "exitCode": 0,
+  "startedAt": "2026-11-08T21:13:22.4439705+09:00",
+  "durationMs": 21174.3,
+  "observedPeakNodeWorkingSetBytes": 2802601984.0,
+  "cacheDir": "C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\caches\\baseline-1"
+}
