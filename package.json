@@ -1,0 +1,29 @@
+{
+  "name": "cachetrust",
+  "version": "0.1.0",
+  "description": "Scenario-driven build cache correctness verification CLI",
+  "type": "module",
+  "bin": {
+    "cachetrust": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "commander": "14.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "typescript": "5.9.3",
+    "vitest": "4.0.8"
+  }
+}
