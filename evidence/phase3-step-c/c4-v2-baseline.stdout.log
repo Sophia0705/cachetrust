@@ -1,0 +1,61 @@
+
+   • Packages in scope: @repo/eslint-config, @repo/typescript-config, @repo/ui, docs, web
+   • Running build in 5 packages
+   • Remote caching disabled
+
+web:build: cache miss, executing 81becf9272865116
+docs:build: cache miss, executing 4f5b83823a362943
+web:build: $ next build
+docs:build: $ next build
+docs:build: ▲ Next.js 16.3.8 (Turbopack)
+web:build: ▲ Next.js 16.3.8 (Turbopack)
+docs:build: ✓ Running next.config.js took 26ms
+web:build: ✓ Running next.config.js took 24ms
+docs:build: ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+web:build: ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+web:build: 
+docs:build: 
+docs:build:   Creating an optimized production build ...
+web:build:   Creating an optimized production build ...
+web:build: ✓ Compiled successfully in 4.9s
+docs:build: ✓ Compiled successfully in 4.9s
+web:build:   Running TypeScript ...
+docs:build:   Running TypeScript ...
+docs:build:   Finished TypeScript in 944ms ...
+docs:build:   Collecting page data using 5 workers ...
+web:build:   Finished TypeScript in 987ms ...
+web:build:   Collecting page data using 5 workers ...
+docs:build:   Generating static pages using 5 workers (0/4) ...
+web:build:   Generating static pages using 5 workers (0/4) ...
+docs:build:   Generating static pages using 5 workers (1/4) 
+docs:build:   Generating static pages using 5 workers (2/4) 
+docs:build:   Generating static pages using 5 workers (3/4) 
+docs:build: ✓ Generating static pages using 5 workers (4/4) in 1455ms
+web:build:   Generating static pages using 5 workers (1/4) 
+docs:build:   Finalizing page optimization ...
+docs:build: 
+docs:build: Route (app)
+docs:build: ┌ ○ /
+docs:build: └ ○ /_not-found
+docs:build: 
+docs:build: 
+docs:build: ○  (Static)  prerendered as static content
+docs:build: 
+web:build:   Generating static pages using 5 workers (2/4) 
+web:build:   Generating static pages using 5 workers (3/4) 
+web:build: ✓ Generating static pages using 5 workers (4/4) in 1435ms
+web:build:   Finalizing page optimization ...
+web:build: 
+web:build: Route (app)
+web:build: ┌ ○ /
+web:build: └ ○ /_not-found
+web:build: 
+web:build: 
+web:build: ○  (Static)  prerendered as static content
+web:build: 
+
+  Tasks:    2 successful, 2 total
+ Cached:    0 cached, 2 total
+   Time:    12.073s 
+Summary:    C:\Users\SOPHIA\.codex\visualizations\2026\11\08\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\phase3-step-c\workspaces\c4\.turbo\runs\3LpSUXI3YNEZoAeRPtbsMsJ5Hlp.json
+

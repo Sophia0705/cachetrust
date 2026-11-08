@@ -1,0 +1,13 @@
+diff --git "a/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\source\\examples\\basic\\packages\\ui\\src\\button.tsx" "b/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-c\\workspaces\\c3\\packages\\ui\\src\\button.tsx"
+index 78e5420..a604849 100644
+--- "a/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\source\\examples\\basic\\packages\\ui\\src\\button.tsx"
++++ "b/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-c\\workspaces\\c3\\packages\\ui\\src\\button.tsx"
+@@ -12,7 +12,7 @@ export const Button = ({ children, className, appName }: ButtonProps) => {
+   return (
+     <button
+       className={className}
+-      onClick={() => alert(`Hello from your ${appName} app!`)}
++      onClick={() => alert(`CACHE_TRUST_C3_V2 shared UI for ${appName}`)}
+     >
+       {children}
+     </button>

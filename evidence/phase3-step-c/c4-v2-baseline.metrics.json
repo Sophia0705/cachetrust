@@ -1,0 +1,8 @@
+{
+  "run": "c4-v2-baseline",
+  "exitCode": 0,
+  "startedAt": "2026-11-08T23:51:58.3245294+09:00",
+  "durationMs": 16757.2,
+  "observedPeakNodeWorkingSetBytes": 2685349888.0,
+  "cacheDir": "C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-c\\caches\\c4-baseline"
+}

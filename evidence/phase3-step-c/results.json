@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "17691acd9bc80171e5ef4b3532ff0748ba231813",
+  "node": "24.19.0",
+  "pnpm": "11.25.0",
+  "turbo": "2.10.12",
+  "normalization": {
+    "normalizeBuildId": true,
+    "normalizeServerActionEncryptionKey": true,
+    "normalizePreviewKeys": true,
+    "excludeTraceFiles": [
+      ".next/trace",
+      ".next/trace-build"
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "C1",
+      "status": "PASS",
+      "evidence": "../phase3-step-b"
+    },
+    {
+      "id": "C2",
+      "status": "PASS",
+      "v1Tasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "6d81d2f140cad23b",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "41ae4b5e2f67928e",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "6d81d2f140cad23b",
+          "status": "HIT",
+          "local": true
+        },
+        {
+          "taskId": "web#build",
+          "hash": "047451cd3f8fffec",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "baselineTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "6d81d2f140cad23b",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "047451cd3f8fffec",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheRawManifestSha256": "58be444f18bead551fb7cac6a2fa23c04fd55e08433f98f3eb3f0fd3b1df08e4",
+      "baselineRawManifestSha256": "c59adf13c9e7331436d8ab9c0dd48fbd13bc79f32437c80824943d801bc5469f",
+      "cacheNormalizedManifestSha256": "eaf910ee26eac31616e157b8f717618c373571bfa9b0dc3aceacd67a12d98586",
+      "baselineNormalizedManifestSha256": "eaf910ee26eac31616e157b8f717618c373571bfa9b0dc3aceacd67a12d98586",
+      "markerInCache": true,
+      "markerInBaseline": true
+    },
+    {
+      "id": "C3",
+      "status": "PASS",
+      "v1Tasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "6d81d2f140cad23b",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "41ae4b5e2f67928e",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "b3552379525545f4",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "bd459ef9d5aca530",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "baselineTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "b3552379525545f4",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "bd459ef9d5aca530",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheNormalizedManifestSha256": "fc0da383770100c137b57aed2fbd65173c813a989801456f68df85af5ad80ba7",
+      "baselineNormalizedManifestSha256": "fc0da383770100c137b57aed2fbd65173c813a989801456f68df85af5ad80ba7",
+      "markerInCache": true,
+      "markerInBaseline": true
+    },
+    {
+      "id": "C4",
+      "status": "MISMATCH",
+      "injected": true,
+      "v1Tasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "4f5b83823a362943",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "81becf9272865116",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "4f5b83823a362943",
+          "status": "HIT",
+          "local": true
+        },
+        {
+          "taskId": "web#build",
+          "hash": "81becf9272865116",
+          "status": "HIT",
+          "local": true
+        }
+      ],
+      "baselineTasks": [
+        {
+          "taskId": "docs#build",
+          "hash": "4f5b83823a362943",
+          "status": "MISS",
+          "local": false
+        },
+        {
+          "taskId": "web#build",
+          "hash": "81becf9272865116",
+          "status": "MISS",
+          "local": false
+        }
+      ],
+      "cacheNormalizedManifestSha256": "1fdabbdec2267b8cf0534095cdd9fde8904ffa03735a501ebe8e838f3e908d44",
+      "baselineNormalizedManifestSha256": "32de74c1d6daf3f5808941263155f9f1011b7ff0d35225e042a5cfe43918945b",
+      "v2MarkerInCache": false,
+      "v2MarkerInBaseline": true,
+      "meaningfulChangedFiles": [
+        {
+          "path": "apps/web/.next/prerender-manifest.json",
+          "bytes": 3376,
+          "sha256": "f739d861c707db2604069feb12e89dc46dd5a74a21b7b8960a2c802fe1ba3123"
+        },
+        {
+          "path": "apps/web/.next/server/app/index.html",
+          "bytes": 12282,
+          "sha256": "9ffa67a5b1f3b1ef86b1273d426652a36b6dd69f25e2859b1bebf309e72b37e6"
+        },
+        {
+          "path": "apps/web/.next/server/app/index.rsc",
+          "bytes": 7045,
+          "sha256": "43db5b6251ea03e4082b94abba86f015e94993f66e5377f97867de7a6accd7a2"
+        },
+        {
+          "path": "apps/web/.next/server/app/index.segments/__PAGE__.segment.rsc",
+          "bytes": 6249,
+          "sha256": "e9851850cb87efd62ade9a804060b1dc13f386256eed291e9e7354b5d08105fc"
+        },
+        {
+          "path": "apps/web/.next/server/app/index.segments/_full.segment.rsc",
+          "bytes": 7045,
+          "sha256": "43db5b6251ea03e4082b94abba86f015e94993f66e5377f97867de7a6accd7a2"
+        },
+        {
+          "path": "apps/web/.next/server/app/page.js.nft.json",
+          "bytes": 23596,
+          "sha256": "2aaae300d6bc62ff9967de432e3be975bcaa974213a8bf4649895433090d8cbd"
+        },
+        {
+          "path": "apps/web/.next/server/chunks/ssr/_1na6dfv._.js",
+          "bytes": 12772,
+          "sha256": "d7167183fb1e30e47692303ca8ccc69b368554b2633b1ebc89080a034e1a4b15"
+        },
+        {
+          "path": "apps/web/.next/server/chunks/ssr/_1na6dfv._.js.map",
+          "bytes": 80049,
+          "sha256": "361941510fabddc5ff0095283071c8cb2ece645b45814014d2b3cb9d32964e8e"
+        }
+      ]
+    }
+  ]
+}

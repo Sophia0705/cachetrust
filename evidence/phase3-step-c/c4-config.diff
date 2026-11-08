@@ -1,0 +1,13 @@
+diff --git "a/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\source\\examples\\basic\\turbo.json" "b/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-c\\workspaces\\c4\\turbo.json"
+index 6bde259..a726cd4 100644
+--- "a/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\source\\examples\\basic\\turbo.json"
++++ "b/C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-c\\workspaces\\c4\\turbo.json"
+@@ -4,7 +4,7 @@
+   "tasks": {
+     "build": {
+       "dependsOn": ["^build"],
+-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
++      "inputs": ["$TURBO_DEFAULT$", ".env*", "!app/page.tsx"],
+       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**"]
+     },
+     "lint": {
