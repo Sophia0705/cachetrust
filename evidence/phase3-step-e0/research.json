@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1",
+  "researchDate": "2026-11-09",
+  "repository": "https://github.com/shadcn-ui/ui.git",
+  "requestedCommit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "revParseHead": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "checkout": {
+    "kind": "temporary partial sparse checkout outside CacheTrust",
+    "location": "<system-temp>/cachetrust-e0-shadcn-de60adb7ea684fbb9146df0939dca1b2",
+    "absolutePathRedacted": true,
+    "clean": true,
+    "dependenciesInstalled": false,
+    "dryRunExecuted": false,
+    "buildExecuted": false
+  },
+  "toolchain": {
+    "packageManager": "pnpm@10.33.4",
+    "turboDeclared": "^2.9.18",
+    "turboLocked": "2.9.18",
+    "tsupLocked": "8.5.0"
+  },
+  "workspaces": [
+    { "name": "v4", "manifest": "apps/v4/package.json" },
+    { "name": "@shadcn/helpers", "manifest": "packages/helpers/package.json" },
+    { "name": "@shadcn/react", "manifest": "packages/react/package.json" },
+    { "name": "@shadcn/registry", "manifest": "packages/registry/package.json" },
+    { "name": "shadcn", "manifest": "packages/shadcn/package.json" },
+    { "name": "tests", "manifest": "packages/tests/package.json" }
+  ],
+  "dependencyEvidence": {
+    "downstream": "shadcn",
+    "upstream": "@shadcn/registry",
+    "manifestDeclaration": "@shadcn/registry: workspace:*",
+    "lockfileResolution": "link:../registry",
+    "representativeImport": {
+      "file": "packages/shadcn/src/utils/registry-api.ts",
+      "line": 2,
+      "text": "import { logger } from \"@shadcn/registry/internal/logger\""
+    },
+    "productionLoggerImportCount": 32
+  },
+  "turboBuildTask": {
+    "dependsOn": ["^build"],
+    "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/r/styles/**", "styles/**"]
+  },
+  "e3MutationContract": {
+    "file": "packages/registry/src/logger.ts",
+    "line": 3,
+    "before": "export const logger = {",
+    "after": "export const CACHE_TRUST_E3 = \"CACHE_TRUST_E3\"\n\nexport const logger = {",
+    "preconditionSha256": "6d8cc3391257b828d25fda1ff2cfa3b7ceb8ab69d0ee3a0e5baafa9f3260d285",
+    "functionalCheck": "CACHE_TRUST_E3 appears in packages/registry/dist/logger.js in cache-v2 and both baselines"
+  }
+}
