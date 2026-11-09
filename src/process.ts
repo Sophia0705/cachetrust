@@ -4,6 +4,7 @@ export interface ProcessOptions {
   cwd?: string;
   env?: NodeJS.ProcessEnv;
   timeoutMs?: number;
+  signal?: AbortSignal;
 }
 
 export interface ProcessResult {
@@ -38,6 +39,7 @@ export function runProcess(
     let stdout = "";
     let stderr = "";
     let timedOut = false;
+    let terminationStarted = false;
 
     child.stdout.setEncoding("utf8").on("data", (chunk: string) => {
       stdout += chunk;
@@ -45,32 +47,40 @@ export function runProcess(
     child.stderr.setEncoding("utf8").on("data", (chunk: string) => {
       stderr += chunk;
     });
-    const timer = options.timeoutMs === undefined
-      ? undefined
-      : setTimeout(() => {
-          timedOut = true;
-          if (process.platform === "win32" && child.pid !== undefined) {
-            const killer = spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], {
-              windowsHide: true,
-            });
-            const fallback = setTimeout(() => child.kill(), 250);
-            killer.once("error", () => child.kill());
-            killer.once("close", () => {
-              clearTimeout(fallback);
-              child.kill();
-            });
-          } else {
-            child.kill();
-          }
-        }, options.timeoutMs);
+    const terminate = () => {
+      if (terminationStarted) return;
+      terminationStarted = true;
+      if (process.platform === "win32" && child.pid !== undefined) {
+        const killer = spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], {
+          windowsHide: true,
+        });
+        const fallback = setTimeout(() => child.kill(), 250);
+        killer.once("error", () => child.kill());
+        killer.once("close", () => {
+          clearTimeout(fallback);
+          child.kill();
+        });
+      } else {
+        child.kill();
+      }
+    };
+    const timer = options.timeoutMs === undefined ? undefined : setTimeout(() => {
+      timedOut = true;
+      terminate();
+    }, options.timeoutMs);
+    const abort = () => terminate();
+    options.signal?.addEventListener("abort", abort, { once: true });
+    if (options.signal?.aborted === true) terminate();
 
     child.once("error", (error) => {
       if (timer !== undefined) clearTimeout(timer);
+      options.signal?.removeEventListener("abort", abort);
       reject(error);
     });
 
     child.once("close", (exitCode, signal) => {
       if (timer !== undefined) clearTimeout(timer);
+      options.signal?.removeEventListener("abort", abort);
       resolve({
         command,
         args,

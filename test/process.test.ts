@@ -30,6 +30,17 @@ describe("runProcess", () => {
     expect(result.exitCode).not.toBe(0);
   });
 
+  it("terminates a process when cancelled", async () => {
+    const controller = new AbortController();
+    const run = runProcess(execPath, ["-e", "setInterval(() => {}, 1000)"], {
+      signal: controller.signal,
+    });
+    setTimeout(() => controller.abort(), 100);
+    const result = await run;
+    expect(result.timedOut).toBe(false);
+    expect(result.exitCode).not.toBe(0);
+  });
+
   it.runIf(process.platform === "win32")("terminates the Windows process tree", async () => {
     const result = await runProcess(execPath, [
       "-e",
