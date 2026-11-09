@@ -2,7 +2,7 @@
 
 ## 상태
 
-**DESIGN COMPLETE / EXECUTION NOT AUTHORIZED**
+**READY FOR EXPLICIT EXECUTION APPROVAL / EXECUTION NOT AUTHORIZED**
 
 이 문서는 Phase 3 E-1에서 관찰된 clean-build nondeterminism의 원인을 찾기 위한 후속
 진단 실험만 설계한다. 실험은 실행하지 않았으며 E-1 판정은 계속
@@ -32,6 +32,34 @@ Turbo 2.9.18이다. 선택 task는 `@shadcn/registry#build`와 `shadcn#build`다
 
 Turbo task graph와 bundler chunk graph는 서로 다른 증거다. 전자는 task 의존성과 cache
 관찰에만 사용하고, 후자는 보존된 JavaScript에서 별도로 복원한다.
+
+## 실행 준비 검토 결정
+
+네 가지 필수 미확정 항목을 기존 evidence와 read-only 구현 검사로 해결했다.
+
+| 항목 | 근거 | 결정 |
+| --- | --- | --- |
+| Timeout | E-1 build 4회의 최장 duration 75.786초; E-1A 62.829초; `runProcess`의 timeout/tree termination 및 partial stream 반환 동작 | build별 **300,000ms**, install별 **300,000ms** |
+| 실행 경로 | 현재 `node.exe`와 `corepack.cmd`의 absolute path, E-1 argv, 설치 workspace의 Turbo launcher 구조, pinned tree 최대 상대 경로 112자 확인 | 아래의 고정 short root, executable, cwd 및 argv 사용 |
+| Chunk graph | E-1 baseline raw file은 삭제됐고 sourcemap은 비활성; 보존된 E-1A output은 A/B 비교에 불충분; TypeScript 5.9.2는 lockfile에 존재 | 새 A/B raw output을 보존한 뒤 최소 read-only AST helper 사용 |
+| Storage | 기존 raw output 873,323 bytes/build, build+install stream 약 34KB/baseline, inventory 54,931 bytes, config 약 10KB | temporary root **6GiB**, repository-retained evidence **32MiB**, disk gate **8GiB** |
+
+이 결정은 실행 승인이 아니다. RAM, disk, source cleanliness와 cache emptiness처럼 실행
+직전에만 관찰할 수 있는 항목은 아래 gate에서 다시 측정해야 한다. 그 gate는 설계
+미확정 사항이 아니라 승인된 stop condition이다.
+
+요청된 실행 계약의 readiness는 다음과 같다.
+
+| 계약 | Readiness 결정 |
+| --- | --- |
+| Frozen install integrity | pnpm 10.33.4, `--frozen-lockfile`, lockfile pre/post SHA-256 비교로 확정 |
+| 독립 workspace/cache | archive 1개를 두 directory에 별도 추출하고 workspace-local install 및 서로 다른 empty cache 사용 |
+| 순차 clean build 2회 | A 보존/gate 완료 후에만 B 실행, 각 1회, concurrency 1 |
+| 실제 MISS | 각 summary에서 두 task 모두 `MISS`, `local=false`, `remote=false` 필수 |
+| RAM | 10초 이상 간격의 두 측정이 모두 4GiB 이상이어야 함 |
+| Disk | 시작 및 A 후 C: free 8GiB 이상이어야 함 |
+| Retry/normalization | 자동 retry 0, normalization 없음 |
+| 범위 | diagnostic build 2회만 허용; E1/E2/E3는 실행하지 않음 |
 
 ## 명시적 가설
 
@@ -72,8 +100,9 @@ Turbo task graph와 bundler chunk graph는 서로 다른 증거다. 전자는 ta
 3. `pnpm-lock.yaml` SHA-256이 기존 값
    `095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862`와 일치하는지
    확인한다.
-4. Node 실행 파일과 버전을 기록한다. 기존 성공 환경은 Node 24.19.0이지만 실제 실행
-   시 같은 binary인지 **TO VERIFY**다. 선택 package의 `>=20.18.1` engine을 충족해야 한다.
+4. Node 실행 파일은 `C:\Program Files\nodejs\node.exe`로 확인됐고 기존 성공 환경은
+   Node 24.19.0이다. 실행 직전 같은 파일이 여전히 존재하고 version이 24.19.0인지
+   재확인하며, 다르면 중단한다. 선택 package의 `>=20.18.1` engine도 충족한다.
 5. 격리 provisioning으로 pnpm 10.33.4를 probe한다. global pnpm을 변경하지 않는다.
 6. install 후 각 workspace-local Turbo가 2.9.18, tsup이 8.5.0인지 확인한다. lockfile의
    esbuild 0.25.11, Rollup 4.60.1, TypeScript 5.9.2 resolution도 기록한다.
@@ -90,25 +119,46 @@ Turbo task graph와 bundler chunk graph는 서로 다른 증거다. 전자는 ta
 - baseline A install/build 후 free space와 experiment-root 크기를 다시 측정한다. free가
   8GiB 아래로 내려가거나 전체 실행이 승인된 임시 footprint 상한을 넘을 전망이면 B를
   시작하지 않는다.
-- 임시 workspace 전체 상한은 **6GiB**, 최종 retained evidence 상한은 **64MiB**로 제안한다.
-  실제 실행 승인 전에 이 두 상한을 명시적으로 승인받아야 하므로 현재는 **TO VERIFY**다.
+- 임시 workspace 전체 상한은 **6GiB**, repository에 보존할 최종 evidence 상한은
+  **32MiB**로 확정한다. 기존 두 설치 workspace의 단순 합은 약 2.70GB이고 raw output
+  두 벌은 약 1.67MiB이므로 충분한 여유가 있다. 6GiB 또는 32MiB를 늘려 우회하지 않는다.
 - process-tree peak RAM을 신뢰성 있게 측정할 도구는 현재 확정되지 않았다. 실행 시
   available RAM의 주기 표본과 관찰 가능한 direct-process working set만 기록하고,
   process-tree peak는 `NOT MEASURED`로 남긴다. 측정값을 추정하지 않는다.
 
 ### 시간과 실패 안전성
 
-기존 E-1에서 사용한 install/build timeout의 정확한 값은 공개 evidence에 남아 있지 않다.
-후속 승인 전에 각 command의 timeout을 정해 기록해야 하며 현재 **TO VERIFY**다. timeout,
-비정상 exit, summary 부재 또는 예기치 않은 새 파일은 실패이며 재실행하지 않는다.
+#### Timeout 결정과 partial evidence
+
+build timeout은 command별 **300,000ms(5분)**로 확정한다. 기존 E-1의 네 build는
+1.195~75.786초, E-1A build는 62.829초였으므로 관찰된 최장 build의 약 3.96배다. 정상
+변동에는 충분한 여유를 주면서 hang을 제한한다. Frozen install도 기존 최장 112.921초의
+약 2.66배인 **300,000ms**로 확정한다. version probe는 기존 runner와 같이 최대
+30,000ms다.
+
+현재 `runProcess`는 timeout 시 `timedOut=true`를 설정하고 Windows에서
+`taskkill /pid <pid> /T /F`로 process tree 종료를 시작하며, 250ms 후 parent kill fallback을
+사용한다. process close 후 exit code/signal, duration과 그때까지 수집한 stdout/stderr를
+반환한다. Verification engine은 timeout을 `ENVIRONMENT_ERROR / TIMEOUT`으로 기록할 수
+있지만 마지막에 workspace를 정리하므로, raw output 보존이 목적인 이 진단에서는 전체
+`verifyProject` workflow를 사용하지 않는다.
+
+진단 controller는 기존 `runProcess`를 변경 없이 사용하되 반환 직후 partial streams,
+command, timeout flag, exit code/signal과 현재 `dist` inventory를 failure evidence에 쓴다.
+timeout output은 성공 baseline이나 A/B 비교 입력으로 사용하지 않는다. process tree close가
+확인된 뒤에만 일반 파일을 `partial/raw`로 복사하고 reparse/size/secret gate를 동일하게
+적용한다. A timeout이면 B를 시작하지 않고, B timeout이면 A와 B의 partial evidence를
+보존한 뒤 종료한다. 자동 재시도는 없다.
 
 ## 제안 workspace 및 cache 구조
 
-개인 경로가 없는 짧은 owned root를 사용한다. 아래 실제 root와 run ID는 실행 직전에
-확정하므로 **TO VERIFY**다.
+개인 경로가 없는 고정 short root `C:\ct-e1c\run-001`을 사용한다. 현재 이 경로는
+존재하지 않으며 실행 시작 시에도 non-existent여야 한다. 다른 run ID나 기존 directory를
+재사용하지 않는다. C: root에 이 directory를 만들 권한이 없으면 대체 경로를 임의로
+선택하지 않고 readiness를 다시 검토한다.
 
 ```text
-<owned-short-root>/e1c-<run-id>/
+C:/ct-e1c/run-001/
   source.tar
   work/
     baseline-a/
@@ -126,19 +176,61 @@ Turbo task graph와 bundler chunk graph는 서로 다른 증거다. 전자는 ta
 directory를 workspace 사이에 복사하거나 연결하지 않는다. source checkout에는 어떤
 worktree metadata도 추가하지 않기 위해 `git worktree`를 사용하지 않는다.
 
+실행 직전 아래 조건을 모두 확인한다.
+
+```powershell
+Test-Path -LiteralPath C:\ct-e1c\run-001
+Test-Path -LiteralPath C:\ct-e1c\run-001\work\baseline-a\packages\registry\dist
+Test-Path -LiteralPath C:\ct-e1c\run-001\work\baseline-a\packages\shadcn\dist
+Test-Path -LiteralPath C:\ct-e1c\run-001\work\baseline-b\packages\registry\dist
+Test-Path -LiteralPath C:\ct-e1c\run-001\work\baseline-b\packages\shadcn\dist
+```
+
+첫 검사는 root 생성 전에 `False`여야 하고, 나머지 네 검사는 archive 추출/install 후에도
+`False`여야 한다. Cache directory는 build 직전에 새로 만든 뒤
+`Get-ChildItem -LiteralPath <cache> -Force` 결과가 0개인지 확인한다. Cache emptiness를 위해
+기존 directory를 삭제하거나 정리하지 않는다. 비어 있지 않으면 중단한다.
+
+Pinned tree의 최대 relative path는 112자이고 baseline A root를 붙인 source path는 최대
+146자다. 이는 upstream config가 경고한 260자보다 짧다. pnpm 내부 dependency path는 install
+후 다시 검사하며 260자를 넘는다는 사실만으로 실패로 간주하지 않되, 실제 path-resolution
+오류가 발생하면 재배치나 재시도 없이 중단한다.
+
+확인된 executable과 launcher는 다음과 같다.
+
+- Node: `C:\Program Files\nodejs\node.exe`;
+- Corepack: `C:\Program Files\nodejs\corepack.cmd`;
+- workspace Turbo launcher: `node_modules\turbo\bin\turbo`를 위 Node로 실행;
+- Turbo native package: install 후 workspace-local
+  `node_modules\.pnpm\@turbo+windows-64@2.9.18\node_modules\@turbo\windows-64\bin\turbo.exe`.
+
+Corepack `.cmd`는 현재 package-manager resolver의 Windows 계약과 동일하게
+`%ComSpec% /d /c call`을 사용한다. command line 문자열을 조립하지 않고 command와 argv
+배열을 분리해 공백이 있는 `Program Files` 경로를 보존한다.
+
 ## 정확한 제안 실행 순서
 
-아래 명령은 **설계안이며 실행하지 않았다**. `<...>` 값과 실행 파일의 absolute path는
-승인된 실행 단계의 preflight에서 확정하고 command record에 그대로 남긴다.
+아래 명령은 **설계안이며 실행하지 않았다**. Source checkout path만 개인정보 방지를 위해
+`<PINNED_SOURCE>`로 표시한다. 실행 controller 내부 고정값은 다음과 같다.
+
+```powershell
+$Root = 'C:\ct-e1c\run-001'
+$A = 'C:\ct-e1c\run-001\work\baseline-a'
+$B = 'C:\ct-e1c\run-001\work\baseline-b'
+$CacheA = 'C:\ct-e1c\run-001\cache\baseline-a'
+$CacheB = 'C:\ct-e1c\run-001\cache\baseline-b'
+$Node = 'C:\Program Files\nodejs\node.exe'
+$Corepack = 'C:\Program Files\nodejs\corepack.cmd'
+```
 
 ### 1. 동일 source snapshot 준비
 
 ```powershell
 git -C <PINNED_SOURCE> rev-parse HEAD
 git -C <PINNED_SOURCE> status --short
-git -C <PINNED_SOURCE> archive --format=tar --output=<ROOT>\source.tar 8ab27715521cbd4f87ae6886cd989cbb678f6de7
-tar -xf <ROOT>\source.tar -C <ROOT>\work\baseline-a
-tar -xf <ROOT>\source.tar -C <ROOT>\work\baseline-b
+git -C <PINNED_SOURCE> archive --format=tar --output=C:\ct-e1c\run-001\source.tar 8ab27715521cbd4f87ae6886cd989cbb678f6de7
+tar -xf C:\ct-e1c\run-001\source.tar -C C:\ct-e1c\run-001\work\baseline-a
+tar -xf C:\ct-e1c\run-001\source.tar -C C:\ct-e1c\run-001\work\baseline-b
 ```
 
 `source.tar` 자체 SHA-256과 두 추출 tree의 sorted raw manifest를 생성해 비교한다.
@@ -166,7 +258,10 @@ tar -xf <ROOT>\source.tar -C <ROOT>\work\baseline-b
 각 workspace에서 순차 실행한다.
 
 ```powershell
-<COREPACK_CMD> pnpm@10.33.4 install --frozen-lockfile
+command: %ComSpec%
+argv: /d /c call "C:\Program Files\nodejs\corepack.cmd" pnpm@10.33.4 install --frozen-lockfile
+cwd: C:\ct-e1c\run-001\work\baseline-a 또는 baseline-b
+timeout: 300000ms
 ```
 
 각 install 직전과 직후에 lockfile SHA-256을 재확인한다. exit code 0만으로 성공을 판단하지
@@ -179,7 +274,7 @@ baseline A에서 build 전에 한 번만 실행한다. 이는 task를 실행하�
 invocation 예산에 포함되지 않는다.
 
 ```powershell
-<NODE_EXE> node_modules/turbo/bin/turbo run build --filter shadcn... --dry=json --no-color
+"C:\Program Files\nodejs\node.exe" node_modules/turbo/bin/turbo run build --filter shadcn... --dry=json --no-color
 ```
 
 정확히 `@shadcn/registry#build` 후 `shadcn#build`의 dependency closure, Turbo 2.9.18,
@@ -191,8 +286,8 @@ hash가 A와 같음을 확인한다. dry-run 실패나 graph 불일치는 build 
 cache가 empty이고 `dist`가 없음을 확인한 뒤 정확히 다음 의미의 command를 한 번 실행한다.
 
 ```powershell
-<NODE_EXE> node_modules/turbo/bin/turbo run build --filter shadcn... `
-  --cache=local:rw --cache-dir <ROOT>\cache\baseline-a `
+"C:\Program Files\nodejs\node.exe" node_modules/turbo/bin/turbo run build --filter shadcn... `
+  --cache=local:rw --cache-dir C:\ct-e1c\run-001\cache\baseline-a `
   --summarize --ui=stream --no-color --concurrency 1
 ```
 
@@ -208,8 +303,8 @@ metadata만 기록한 뒤 중단한다. 일반 파일만 있으면 원래 상대
 에 byte-for-byte copy하고 source와 copy의 per-file SHA-256을 다시 비교한다. 이후 file
 count, bytes, manifest hash, chunk graph를 생성한다.
 
-A raw output이 16MiB를 넘거나, logs/graphs/config를 포함한 두 baseline의 projected retained
-size가 64MiB를 넘으면 B를 실행하지 않는다. 16MiB는 기존 873,323바이트의 약 19배인
+A raw output이 8MiB를 넘거나, logs/graphs/config를 포함한 두 baseline의 projected retained
+size가 32MiB를 넘으면 B를 실행하지 않는다. 8MiB는 기존 873,323바이트의 약 9.6배인
 보수적 per-baseline gate이지 실제 필요량의 정밀 추정이 아니다.
 
 ### 7. Baseline B build
@@ -218,8 +313,8 @@ A의 모든 post-build gate가 통과한 경우에만 B의 별도 empty cache로
 실행한다.
 
 ```powershell
-<NODE_EXE> node_modules/turbo/bin/turbo run build --filter shadcn... `
-  --cache=local:rw --cache-dir <ROOT>\cache\baseline-b `
+"C:\Program Files\nodejs\node.exe" node_modules/turbo/bin/turbo run build --filter shadcn... `
+  --cache=local:rw --cache-dir C:\ct-e1c\run-001\cache\baseline-b `
   --summarize --ui=stream --no-color --concurrency 1
 ```
 
@@ -280,11 +375,28 @@ evidence/phase3-step-e1c/<run-id>/
   hashes.sha256
 ```
 
-실제 artifact가 64MiB ceiling 안인지 확인한 후에만 repository evidence로 옮긴다. log에
+실제 artifact가 32MiB ceiling 안인지 확인한 후에만 repository evidence로 옮긴다. log에
 secret, credential, 개인 경로가 없는지 검사한다. 민감 정보가 발견되면 raw log를
 repository에 넣지 않고 접근 제한된 experiment root에 격리하며, 원본 hash와 redaction
 정책을 기록한다. 원본 `dist` 파일에는 redaction을 적용하지 않는다. 출력 자체에 secret이
 발견되면 publish/commit하지 않고 보안 blocker로 중단한다.
+
+32MiB retained budget의 배분은 다음과 같다.
+
+| Artifact | 상한 |
+| --- | ---: |
+| Raw `dist` A/B | 16MiB, baseline별 8MiB |
+| Install/build logs와 Turbo summaries | 4MiB, baseline별 2MiB |
+| Manifests, chunk graphs, A/B comparisons | 10MiB |
+| Config, provenance, resource samples, hashes와 여유 | 2MiB |
+| **합계** | **32MiB** |
+
+근거 실측은 raw 0.833MiB/build, install+build stream 약 34KB/baseline, output inventory 약
+55KB, 관련 config 약 10KB다. 따라서 각 항목은 관찰값보다 충분히 크지만 무제한은 아니다.
+어느 항목이 상한을 넘으면 후속 command를 실행하지 않는다. 이미 생성된 파일은
+`C:\ct-e1c\run-001`에서 삭제하지 않고, repository에는 작은 failure metadata와 현재 파일의
+size/hash만 32MiB 안에서 보존한다. 전체 owned root가 6GiB를 넘으면 추가 copy/분석을
+중단하고 사용자 결정을 기다린다. Cap을 높이거나 기존 evidence를 삭제해 우회하지 않는다.
 
 ## Raw output와 reparse point 보존 정책
 
@@ -316,10 +428,34 @@ Turbo summary는 bundler graph로 사용하지 않는다. 두 baseline의 보존
 - unresolved/bare specifier는 외부 dependency로 별도 기록;
 - chunk 여부는 `chunk-*.js` 이름만으로 표시하되 대응 근거로 사용하지 않는다.
 
-Parser는 설치된 TypeScript 5.9.2 compiler API를 사용하는 read-only helper를 제안한다.
-helper의 정확한 파일, parser version, 자체 SHA-256과 fixture 검증은 실행 승인 전에
-**TO VERIFY**다. regex만으로 graph를 확정하지 않는다. parse error 또는 target escape가
-하나라도 있으면 graph 분석은 불완전으로 판정하고 정규화를 제안하지 않는다.
+기존 artifact만으로는 graph를 확정할 수 없다. E-1 baseline raw output은 삭제됐고 E-1A는
+한 build뿐이며 source map도 생성되지 않았다. 따라서 새 A/B raw output을 입력으로 하는
+최소 read-only helper가 필요하다. helper는 target source나 output을 수정하지 않고
+TypeScript 5.9.2 compiler API만 사용하며 새 dependency를 추가하지 않는다.
+
+최소 interface는 다음과 같다.
+
+```text
+node chunk-graph.mjs --root <absolute-dist-root> --output <absolute-json-path>
+```
+
+구현 요구사항은 다음으로 제한한다.
+
+- `root` 아래 일반 `.js` 파일만 읽고 reparse point는 거부;
+- `createSourceFile(..., ScriptKind.JS)`로 static import, export-from과 literal dynamic
+  import를 AST에서 추출;
+- node에 portable relative path, bytes, SHA-256, exports를 기록;
+- edge에 importer, raw specifier, edge kind, imported/exported binding과 root 내부 resolved
+  target을 기록하고 bare/unresolved specifier는 그대로 분리;
+- root escape, parse diagnostic, duplicate path를 hard failure로 처리;
+- 모든 array를 portable path와 source offset 기준으로 정렬해 deterministic JSON 생성;
+- 원본 rename/rewrite, chunk 대응, normalization, 기능 동등성 판정을 하지 않음;
+- 실행 전에 helper file SHA-256과 작은 in-memory fixture의 expected graph를 검토·고정.
+
+Helper 구현은 이번 readiness review 범위가 아니며 explicit execution approval 이후 별도
+execution tooling으로 준비한다. 위 interface와 acceptance 조건이 확정됐으므로 더 이상
+설계상 미확정 항목은 아니다. regex만으로 graph를 확정하지 않으며 parse failure 시
+진단 결과를 불완전으로 판정한다.
 
 A/B node 대응은 다음 순서로만 시도한다.
 
@@ -402,13 +538,11 @@ application/process를 종료하지 않으며 system 설정을 변경하지 않�
 - 독립 build 2회만으로 저빈도 nondeterminism의 분포나 인과를 통계적으로 확정할 수 없다.
 - build config를 바꾸지 않으므로 esbuild metafile이 생성되지 않는다. chunk graph는 emitted
   ESM에서 복원하며 bundler 내부 input ordering 전체를 직접 보여주지 못할 수 있다.
-- source glob이 bundler에 전달되는 실제 순서를 외부 관찰만으로 완전히 얻을 수 있는지는
-  **TO VERIFY**다.
+- source glob이 bundler에 전달되는 실제 순서를 외부 관찰만으로 완전히 얻지 못할 수 있다.
+  이 경우 해당 가설은 `UNKNOWN`으로 남긴다.
 - reliable process-tree peak memory는 측정하지 못할 수 있다.
-- TypeScript parser helper와 log capture wrapper는 실행 전에 별도 검토·hash 고정이
-  필요하다.
-- 정확한 timeout, short root, Corepack executable, Node executable, 임시/retained size
-  상한의 최종 승인은 아직 없다.
+- TypeScript parser helper는 정해진 최소 interface대로 실행 전에 별도 검토·hash 고정이
+  필요하다. 이는 실행 승인 checklist이지 미해결 설계 결정이 아니다.
 - 이 설계는 normalization 안전성 negative-control 실험을 실행하지 않는다.
 
 ## 후속 실행 승인 체크리스트
@@ -420,12 +554,12 @@ application/process를 종료하지 않으며 system 설정을 변경하지 않�
 - [ ] Node/Corepack executable absolute path 및 version
 - [ ] pnpm 10.33.4, Turbo 2.9.18 고정
 - [ ] 두 frozen install과 build 2회에 대한 실행 승인
-- [ ] install/build별 timeout
+- [ ] install/build별 300,000ms timeout 재확인
 - [ ] 두 번의 4GiB RAM gate와 8GiB disk gate
-- [ ] 6GiB temporary footprint 및 64MiB retained evidence ceiling
+- [ ] 6GiB temporary footprint 및 32MiB retained evidence ceiling
 - [ ] 정제 env name/value 정책과 secret 비수집 정책
 - [ ] source archive/extract 및 independent cache 전략
-- [ ] TypeScript graph helper와 log capture wrapper의 내용 및 SHA-256
+- [ ] 최소 interface를 따르는 TypeScript graph helper의 내용 및 SHA-256
 - [ ] raw `dist`를 repository evidence에 보존하는 것에 대한 승인
 - [ ] 실패 시 재시도하지 않고 중단하는 정책
 - [ ] E1/E2/E3 및 normalization은 범위 밖이라는 재확인
