@@ -91,6 +91,15 @@ function baseEvidence(
       searchSha256: createHash("sha256").update(rule.search).digest("hex"),
       replacement: rule.replacement,
     })),
+    deriveLiterals: (config.normalization.deriveLiterals ?? []).map((rule) => ({
+      sourcePath: rule.sourcePath,
+      ...(rule.jsonPointer === undefined ? {} : { jsonPointer: rule.jsonPointer }),
+      target: rule.target,
+      replacement: rule.replacement,
+      replaceInPath: rule.replaceInPath ?? false,
+      jsonStringEncoded: rule.jsonStringEncoded ?? false,
+      reason: rule.reason,
+    })),
   };
   const probeProcess = packageManagerProbe?.process ?? packageManagerProbe?.processResult;
   return {

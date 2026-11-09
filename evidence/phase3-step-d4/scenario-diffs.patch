@@ -1,0 +1,20 @@
+--- C2 apps/web/app/page.tsx
++++ C2 apps/web/app/page.tsx
+@@
+-          <li>Save and see your changes instantly.</li>
++          <li>CACHE_TRUST_C2_V2 source change detected.</li>
+--- C3 packages/ui/src/button.tsx
++++ C3 packages/ui/src/button.tsx
+@@
+-      onClick={() => alert(`Hello from your ${appName} app!`)}
++      onClick={() => alert(`CACHE_TRUST_C3_V2 shared UI for ${appName}`)}
+--- C4 turbo.json
++++ C4 turbo.json
+@@
+-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
++      "inputs": ["$TURBO_DEFAULT$", ".env*", "!app/page.tsx"],
+--- C4 apps/web/app/page.tsx
++++ C4 apps/web/app/page.tsx
+@@
+-          <li>Save and see your changes instantly.</li>
++          <li>CACHE_TRUST_C4_V2 must appear in a correct build.</li>

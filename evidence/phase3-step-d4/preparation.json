@@ -1,0 +1,8 @@
+{
+  "upstream": "vercel/turborepo",
+  "commit": "17691acd9bc80171e5ef4b3532ff0748ba231813",
+  "node": "24.19.0",
+  "pnpm": "11.25.0",
+  "turbo": "2.10.12",
+  "source": "C:\\Users\\SOPHIA\\.codex\\visualizations\\2026\\11\\08\\01a1baec-27d6-7f21-b5a0-32fe8c0bf62f\\phase3-step-b\\source"
+}

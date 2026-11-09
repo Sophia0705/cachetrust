@@ -55,6 +55,15 @@ export interface VerificationConfig {
       replacement: string;
       reason: string;
     }>;
+    deriveLiterals?: Array<{
+      sourcePath: string;
+      jsonPointer?: string;
+      target: string;
+      replacement: string;
+      replaceInPath?: boolean;
+      jsonStringEncoded?: boolean;
+      reason: string;
+    }>;
   };
   preparedFault?: {
     kind: "intentional-input-exclusion";
@@ -283,7 +292,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   let normalization: VerificationConfig["normalization"];
   if (root.normalization !== undefined) {
     const policy = object(root.normalization, "normalization");
-    assertKeys(policy, ["id", "description", "omit", "replaceLiterals"], "normalization");
+    assertKeys(policy, ["id", "description", "omit", "replaceLiterals", "deriveLiterals"], "normalization");
     const omit = policy.omit === undefined ? undefined : array(policy.omit, "normalization.omit").map((entry, index) => {
       const rule = object(entry, `normalization.omit[${index}]`);
       assertKeys(rule, ["path", "reason"], `normalization.omit[${index}]`);
@@ -304,11 +313,47 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
           reason: nonEmptyString(rule.reason, "reason"),
         };
       });
+    const deriveLiterals = policy.deriveLiterals === undefined
+      ? undefined
+      : array(policy.deriveLiterals, "normalization.deriveLiterals").map((entry, index) => {
+        const rule = object(entry, `normalization.deriveLiterals[${index}]`);
+        assertKeys(
+          rule,
+          ["sourcePath", "jsonPointer", "target", "replacement", "replaceInPath", "jsonStringEncoded", "reason"],
+          `normalization.deriveLiterals[${index}]`,
+        );
+        const jsonPointer = rule.jsonPointer === undefined
+          ? undefined
+          : nonEmptyString(rule.jsonPointer, "jsonPointer");
+        if (jsonPointer !== undefined && !jsonPointer.startsWith("/")) {
+          throw new ConfigError("normalization jsonPointer must start with /");
+        }
+        if (rule.replaceInPath !== undefined && typeof rule.replaceInPath !== "boolean") {
+          throw new ConfigError("normalization replaceInPath must be boolean");
+        }
+        if (rule.jsonStringEncoded !== undefined && typeof rule.jsonStringEncoded !== "boolean") {
+          throw new ConfigError("normalization jsonStringEncoded must be boolean");
+        }
+        return {
+          sourcePath: assertSafeRelativePath(
+            nonEmptyString(rule.sourcePath, "sourcePath"), "normalization sourcePath",
+          ),
+          ...(jsonPointer === undefined ? {} : { jsonPointer }),
+          target: validateOutputPattern(
+            nonEmptyString(rule.target, "target"), "normalization target",
+          ),
+          replacement: nonEmptyString(rule.replacement, "replacement"),
+          ...(rule.replaceInPath === undefined ? {} : { replaceInPath: rule.replaceInPath }),
+          ...(rule.jsonStringEncoded === undefined ? {} : { jsonStringEncoded: rule.jsonStringEncoded }),
+          reason: nonEmptyString(rule.reason, "reason"),
+        };
+      });
     normalization = {
       id: nonEmptyString(policy.id, "normalization.id"),
       description: nonEmptyString(policy.description, "normalization.description"),
       ...(omit === undefined ? {} : { omit }),
       ...(replaceLiterals === undefined ? {} : { replaceLiterals }),
+      ...(deriveLiterals === undefined ? {} : { deriveLiterals }),
     };
   }
 

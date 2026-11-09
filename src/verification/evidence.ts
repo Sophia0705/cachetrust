@@ -49,6 +49,15 @@ export interface VerificationEvidence {
         searchSha256: string;
         replacement: string;
       }>;
+      deriveLiterals: Array<{
+        sourcePath: string;
+        jsonPointer?: string;
+        target: string;
+        replacement: string;
+        replaceInPath: boolean;
+        jsonStringEncoded: boolean;
+        reason: string;
+      }>;
     };
   };
   installs: Array<{

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1",
+  "id": "phase3-basic-c1-same-input",
+  "projectRoot": "../targets/c1/examples/basic",
+  "evidenceFile": "../evidence/c1.json",
+  "install": { "command": "corepack", "commandArgs": ["pnpm"], "versionArgs": ["--version"], "args": ["install", "--offline", "--frozen-lockfile"], "packageManager": "pnpm", "packageManagerVersion": "11.25.0", "lockfiles": ["pnpm-lock.yaml"], "timeoutMs": 300000 },
+  "turbo": { "command": "node", "args": ["node_modules/turbo/bin/turbo"], "task": "build", "version": "2.10.12", "timeoutMs": 300000, "concurrency": 2, "environment": { "CI": "1", "NEXT_TELEMETRY_DISABLED": "1", "PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN": "false" } },
+  "tasks": [
+    { "id": "docs#build", "expectedAfterMutation": "HIT" },
+    { "id": "web#build", "expectedAfterMutation": "HIT" }
+  ],
+  "outputs": [
+    { "taskId": "docs#build", "include": ["apps/docs/.next/**"], "exclude": ["apps/docs/.next/cache/**", "apps/docs/.next/dev/**"] },
+    { "taskId": "web#build", "include": ["apps/web/.next/**"], "exclude": ["apps/web/.next/cache/**", "apps/web/.next/dev/**"] }
+  ],
+  "mutation": { "kind": "none" },
+  "normalization": {
+    "id": "nextjs-16-basic-generated-values-v1",
+    "description": "Exact Step B policy for generated BUILD_ID, encryption/preview keys, and trace files.",
+    "omit": [
+      { "path": "apps/docs/.next/trace", "reason": "Next.js execution trace is observational" },
+      { "path": "apps/docs/.next/trace-build", "reason": "Next.js build trace is observational" },
+      { "path": "apps/web/.next/trace", "reason": "Next.js execution trace is observational" },
+      { "path": "apps/web/.next/trace-build", "reason": "Next.js build trace is observational" }
+    ],
+    "deriveLiterals": [
+      { "sourcePath": "apps/docs/.next/BUILD_ID", "target": "apps/docs/.next/**", "replacement": "<BUILD_ID>", "replaceInPath": true, "reason": "generated Next.js build ID" },
+      { "sourcePath": "apps/docs/.next/server/server-reference-manifest.json", "jsonPointer": "/encryptionKey", "target": "apps/docs/.next/**", "replacement": "<ENCRYPTION_KEY>", "reason": "generated server-action encryption key" },
+      { "sourcePath": "apps/docs/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeId", "target": "apps/docs/.next/**", "replacement": "<previewModeId>", "reason": "generated preview mode ID" },
+      { "sourcePath": "apps/docs/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeSigningKey", "target": "apps/docs/.next/**", "replacement": "<previewModeSigningKey>", "reason": "generated preview signing key" },
+      { "sourcePath": "apps/docs/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeEncryptionKey", "target": "apps/docs/.next/**", "replacement": "<previewModeEncryptionKey>", "reason": "generated preview encryption key" },
+      { "sourcePath": "apps/docs/.next/required-server-files.json", "jsonPointer": "/config/outputFileTracingRoot", "target": "apps/docs/.next/**", "replacement": "<PROJECT_ROOT>", "jsonStringEncoded": true, "reason": "isolated workspace absolute project root" },
+      { "sourcePath": "apps/web/.next/BUILD_ID", "target": "apps/web/.next/**", "replacement": "<BUILD_ID>", "replaceInPath": true, "reason": "generated Next.js build ID" },
+      { "sourcePath": "apps/web/.next/server/server-reference-manifest.json", "jsonPointer": "/encryptionKey", "target": "apps/web/.next/**", "replacement": "<ENCRYPTION_KEY>", "reason": "generated server-action encryption key" },
+      { "sourcePath": "apps/web/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeId", "target": "apps/web/.next/**", "replacement": "<previewModeId>", "reason": "generated preview mode ID" },
+      { "sourcePath": "apps/web/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeSigningKey", "target": "apps/web/.next/**", "replacement": "<previewModeSigningKey>", "reason": "generated preview signing key" },
+      { "sourcePath": "apps/web/.next/prerender-manifest.json", "jsonPointer": "/preview/previewModeEncryptionKey", "target": "apps/web/.next/**", "replacement": "<previewModeEncryptionKey>", "reason": "generated preview encryption key" },
+      { "sourcePath": "apps/web/.next/required-server-files.json", "jsonPointer": "/config/outputFileTracingRoot", "target": "apps/web/.next/**", "replacement": "<PROJECT_ROOT>", "jsonStringEncoded": true, "reason": "isolated workspace absolute project root" }
+    ]
+  }
+}

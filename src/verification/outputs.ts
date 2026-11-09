@@ -14,7 +14,11 @@ export interface OutputManifest {
   entries: ManifestEntry[];
   sha256: string;
   normalizedBy?: string;
-  transformations?: Array<{ path: string; kind: "omit" | "replace-literal"; reason: string }>;
+  transformations?: Array<{
+    path: string;
+    kind: "omit" | "replace-literal" | "derive-literal";
+    reason: string;
+  }>;
 }
 
 function portable(root: string, path: string): string {
@@ -85,6 +89,23 @@ export async function normalizeManifest(
 ): Promise<OutputManifest> {
   const omissions = new Map((policy.omit ?? []).map((rule) => [rule.path, rule.reason]));
   const replacements = new Map((policy.replaceLiterals ?? []).map((rule) => [rule.path, rule]));
+  const derived = await Promise.all((policy.deriveLiterals ?? []).map(async (rule) => {
+    const source = await readFile(resolveInside(workspace, rule.sourcePath), "utf8");
+    let literal: unknown = source.trim();
+    if (rule.jsonPointer !== undefined) {
+      literal = rule.jsonPointer.slice(1).split("/").reduce<unknown>((value, token) => {
+        const key = token.replaceAll("~1", "/").replaceAll("~0", "~");
+        if (typeof value !== "object" || value === null || !(key in value)) {
+          throw new Error(`Normalization JSON pointer not found in ${rule.sourcePath}`);
+        }
+        return (value as Record<string, unknown>)[key];
+      }, JSON.parse(source));
+    }
+    if (typeof literal !== "string" || literal.length === 0) {
+      throw new Error(`Normalization source is not a non-empty string: ${rule.sourcePath}`);
+    }
+    return { ...rule, literal };
+  }));
   const entries: ManifestEntry[] = [];
   const transformations: NonNullable<OutputManifest["transformations"]> = [];
   for (const entry of raw.entries) {
@@ -94,22 +115,57 @@ export async function normalizeManifest(
       continue;
     }
     const replacement = replacements.get(entry.path);
-    if (replacement === undefined) {
+    const applicable = derived.filter((rule) => matches(entry.path, rule.target));
+    if (replacement === undefined && applicable.length === 0) {
       entries.push(entry);
       continue;
     }
     const bytes = await readFile(resolveInside(workspace, entry.path));
-    const text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
-    if (!text.includes(replacement.search)) {
+    let text: string | undefined;
+    try {
+      text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    } catch {
+      if (replacement !== undefined) throw new Error(`Normalization target is not UTF-8: ${entry.path}`);
+    }
+    if (replacement !== undefined && !text!.includes(replacement.search)) {
       throw new Error(`Normalization literal not found in ${entry.path}`);
     }
-    const normalized = text.replaceAll(replacement.search, replacement.replacement);
+    let normalized = replacement === undefined ? text : text!.replaceAll(replacement.search, replacement.replacement);
+    let normalizedPath = entry.path;
+    if (replacement !== undefined) {
+      transformations.push({ path: entry.path, kind: "replace-literal", reason: replacement.reason });
+    }
+    for (const rule of applicable) {
+      let changed = false;
+      const literals = [
+        rule.literal,
+        ...(rule.jsonStringEncoded === true ? [JSON.stringify(rule.literal).slice(1, -1)] : []),
+      ];
+      for (const literal of [...new Set(literals)]) {
+        if (normalized?.includes(literal)) {
+          normalized = normalized.replaceAll(literal, rule.replacement);
+          changed = true;
+        }
+      }
+      if (rule.replaceInPath === true && normalizedPath.includes(rule.literal)) {
+        normalizedPath = normalizedPath.replaceAll(rule.literal, rule.replacement);
+        changed = true;
+      }
+      if (changed) {
+        transformations.push({ path: entry.path, kind: "derive-literal", reason: rule.reason });
+      }
+    }
     entries.push({
-      path: entry.path,
-      bytes: Buffer.byteLength(normalized),
-      sha256: createHash("sha256").update(normalized).digest("hex"),
+      path: normalizedPath,
+      bytes: normalized === undefined ? entry.bytes : Buffer.byteLength(normalized),
+      sha256: normalized === undefined
+        ? entry.sha256
+        : createHash("sha256").update(normalized).digest("hex"),
     });
-    transformations.push({ path: entry.path, kind: "replace-literal", reason: replacement.reason });
+  }
+  entries.sort((left, right) => left.path.localeCompare(right.path));
+  if (new Set(entries.map((entry) => entry.path)).size !== entries.length) {
+    throw new Error("Normalization produced duplicate output paths");
   }
   return { entries, sha256: manifestHash(entries), normalizedBy: policy.id, transformations };
 }

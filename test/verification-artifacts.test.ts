@@ -75,6 +75,40 @@ describe("verification mutation and outputs", () => {
     ]);
   });
 
+  it("derives exact text and JSON literals for content and path normalization", async () => {
+    const root = await fixture();
+    await mkdir(join(root, "dist", "build-one"));
+    await writeFile(join(root, "dist", "BUILD_ID"), "build-one\n");
+    await writeFile(join(root, "dist", "manifest.json"), JSON.stringify({ preview: { key: "secret-one" } }));
+    await writeFile(join(root, "dist", "build-one", "output.txt"), "id=build-one key=secret-one\n");
+    await writeFile(join(root, "dist", "escaped.txt"), 'root=C:\\\\work\\\\project\n');
+    await writeFile(join(root, "dist", "root.json"), JSON.stringify({ root: "C:\\work\\project" }));
+    const raw = await fingerprintOutputs(root, [{ taskId: "app#build", include: ["dist/**"] }]);
+    const normalized = await normalizeManifest(root, raw, {
+      id: "derived", description: "exact derived values",
+      deriveLiterals: [
+        {
+          sourcePath: "dist/BUILD_ID", target: "dist/**", replacement: "<BUILD_ID>",
+          replaceInPath: true, reason: "generated build id",
+        },
+        {
+          sourcePath: "dist/manifest.json", jsonPointer: "/preview/key", target: "dist/**",
+          replacement: "<PREVIEW_KEY>", reason: "generated preview key",
+        },
+        {
+          sourcePath: "dist/root.json", jsonPointer: "/root", target: "dist/escaped.txt",
+          replacement: "<ROOT>", jsonStringEncoded: true, reason: "isolated root",
+        },
+      ],
+    });
+    expect(normalized.entries.some((entry) => entry.path === "dist/<BUILD_ID>/output.txt")).toBe(true);
+    const output = normalized.entries.find((entry) => entry.path === "dist/<BUILD_ID>/output.txt");
+    expect(output?.sha256).toBe(sha("id=<BUILD_ID> key=<PREVIEW_KEY>\n"));
+    const escaped = normalized.entries.find((entry) => entry.path === "dist/escaped.txt");
+    expect(escaped?.sha256).toBe(sha("root=<ROOT>\n"));
+    expect(normalized.transformations?.some((entry) => entry.kind === "derive-literal")).toBe(true);
+  });
+
   it("checks required presence and global absence", async () => {
     const root = await fixture();
     const checks = await runFunctionalChecks(root, [
