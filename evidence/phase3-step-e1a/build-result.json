@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1",
+  "date": "2026-11-10",
+  "repository": "https://github.com/shadcn-ui/ui.git",
+  "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "workspace": "<system-temp>/ct-e2-w",
+  "toolchain": {
+    "node": "v24.19.0",
+    "pnpm": "10.33.4",
+    "turbo": "2.9.18",
+    "lockfileSha256": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862"
+  },
+  "resourceGate": {
+    "status": "PASS",
+    "totalRamGiB": 15.7,
+    "availableRamGiB": 5.61,
+    "cDriveFreeGiB": 162.18,
+    "nodeProcessCount": 7,
+    "workspaceBytes": 1347443338,
+    "minimumRequiredAvailableRamGiB": 4,
+    "minimumRequiredDiskFreeGiB": 8
+  },
+  "invocation": {
+    "count": 1,
+    "command": [
+      "<workspace>/node_modules/.pnpm/@turbo+windows-64@2.9.18/.../turbo.exe",
+      "run",
+      "build",
+      "--filter=shadcn...",
+      "--concurrency=1",
+      "--force",
+      "--cache=local:rw",
+      "--cache-dir",
+      "<workspace>/.cachetrust-e1a-turbo-cache",
+      "--summarize",
+      "--ui=stream",
+      "--no-color"
+    ],
+    "exitCode": 1,
+    "durationSeconds": 0.71,
+    "taskExecutions": 0,
+    "summaryCreated": false,
+    "failureStage": "Turbo CLI argument validation",
+    "error": "The argument --force cannot be used with --cache.",
+    "retried": false
+  },
+  "observedResourcesDuringInvocation": {
+    "maximumProcessWorkingSet": "NOT MEASURED: process exited before the first process sample",
+    "minimumAvailableRamGiB": 5.44,
+    "diskFreeBeforeGiB": 162.17,
+    "diskFreeAfterGiB": 162.17,
+    "diskFreeDeltaMiB": 0
+  },
+  "postconditions": {
+    "workspaceGitClean": true,
+    "lockfileUnchanged": true,
+    "dedicatedCacheCreated": false,
+    "registryDistCreated": false,
+    "shadcnDistCreated": false,
+    "sourceModified": false
+  },
+  "result": "NO-GO",
+  "buildSucceeded": false,
+  "e1Executed": false,
+  "e2Executed": false,
+  "e3Executed": false
+}

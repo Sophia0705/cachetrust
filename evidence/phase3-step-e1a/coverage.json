@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1",
+  "status": "NOT VERIFIED",
+  "reason": "No task executed and no output was generated.",
+  "turboOutputContract": {
+    "outputs": [".next/**", "dist/**", "public/r/styles/**", "styles/**"],
+    "excludedOutputs": [".next/cache/**"]
+  },
+  "checks": {
+    "generatedFilesWithinTurboOutputs": "NOT VERIFIED",
+    "excludedFilesPresent": "NOT VERIFIED",
+    "cacheTrustFingerprintComplete": "NOT VERIFIED",
+    "missingOrDuplicatePaths": "NOT VERIFIED",
+    "taskOutputsSeparated": "NOT VERIFIED",
+    "windowsPathAndCaseBehavior": "NOT VERIFIED"
+  }
+}
