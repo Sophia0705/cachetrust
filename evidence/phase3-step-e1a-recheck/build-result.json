@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1",
+  "date": "2026-11-10",
+  "runId": "phase3-step-e1a-recheck-build-1",
+  "result": "SUCCESS",
+  "repository": "https://github.com/shadcn-ui/ui.git",
+  "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "workspace": "<system-temp>/ct-e2-w",
+  "toolchain": {
+    "node": "v24.19.0",
+    "pnpm": "10.33.4",
+    "turbo": "2.9.18",
+    "lockfileSha256": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862"
+  },
+  "resourceGate": {
+    "minimumAvailableRamGiB": 4,
+    "firstAvailableRamGiB": 4.465,
+    "secondAvailableRamGiB": 4.458,
+    "measurementIntervalSeconds": 10,
+    "minimumDiskFreeGiB": 8,
+    "diskFreeGiB": 164.2,
+    "nodeProcessCount": 4,
+    "status": "PASS"
+  },
+  "invocation": {
+    "count": 1,
+    "command": [
+      "<workspace>/node_modules/.pnpm/@turbo+windows-64@2.9.18/.../turbo.exe",
+      "run",
+      "build",
+      "--filter=shadcn...",
+      "--concurrency=1",
+      "--cache=local:rw",
+      "--cache-dir",
+      "<workspace>/.cachetrust-e1a-turbo-cache",
+      "--summarize",
+      "--ui=stream",
+      "--no-color"
+    ],
+    "differenceFromOriginalFailedCommand": {
+      "removed": ["--force"],
+      "otherChanges": []
+    },
+    "exitCode": 0,
+    "turboReportedDurationSeconds": 62.829,
+    "summaryId": "3Lt0T0YsWKAMqWM25chvbwTBIRA",
+    "automaticRetries": 0
+  },
+  "tasks": [
+    {
+      "taskId": "@shadcn/registry#build",
+      "hash": "b6cb49eea13ef30a",
+      "status": "MISS",
+      "local": false,
+      "remote": false,
+      "successful": true
+    },
+    {
+      "taskId": "shadcn#build",
+      "hash": "131819de6bf1f994",
+      "status": "MISS",
+      "local": false,
+      "remote": false,
+      "successful": true
+    }
+  ],
+  "resourcesDuringBuild": {
+    "maximumProcessWorkingSet": "NOT MEASURED: the monitoring wrapper returned before its buffered measurements were retained",
+    "minimumAvailableRam": "NOT MEASURED: the monitoring wrapper returned before its buffered measurements were retained",
+    "diskFreeGiBBefore": 164.2,
+    "diskFreeGiBAfterObservation": 161.66,
+    "diskDeltaLimitation": "The delta includes the dedicated Turbo cache and other host activity, not only task outputs."
+  },
+  "outputs": {
+    "registry": {
+      "root": "packages/registry/dist",
+      "fileCount": 252,
+      "totalBytes": 665485,
+      "manifestSha256": "f9d096163214847fbe0899917d6d1f2e95bb6bdfbc8a3e602303ad4dcdb84c9a"
+    },
+    "shadcn": {
+      "root": "packages/shadcn/dist",
+      "fileCount": 18,
+      "totalBytes": 207838,
+      "manifestSha256": "b3841c44d8a4f082272c65119dcef82b8cdd8af15785c1e43a0a7f12ba59f97a"
+    }
+  },
+  "buildInvocations": 1,
+  "taskExecutions": 2,
+  "e1FullExecuted": false,
+  "e2Executed": false,
+  "e3Executed": false
+}

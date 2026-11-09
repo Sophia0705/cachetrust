@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1",
+  "date": "2026-11-10",
+  "runId": "phase3-step-e1a-retry-1",
+  "result": "RESOURCE_BLOCKED",
+  "repository": "https://github.com/shadcn-ui/ui.git",
+  "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "workspace": "<system-temp>/ct-e2-w",
+  "preconditions": {
+    "workspaceGitClean": true,
+    "lockfileSha256": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862",
+    "node": "v24.19.0",
+    "pnpm": "10.33.4",
+    "workspaceTurbo": "2.9.18",
+    "cachePath": "<workspace>/.cachetrust-e1a-turbo-cache",
+    "cacheExists": false,
+    "registryDistExists": false,
+    "shadcnDistExists": false
+  },
+  "plannedCommand": [
+    "<workspace>/node_modules/.pnpm/@turbo+windows-64@2.9.18/.../turbo.exe",
+    "run",
+    "build",
+    "--filter=shadcn...",
+    "--concurrency=1",
+    "--cache=local:rw",
+    "--cache-dir",
+    "<workspace>/.cachetrust-e1a-turbo-cache",
+    "--summarize",
+    "--ui=stream",
+    "--no-color"
+  ],
+  "commandDifferenceFromFailedE1A": {
+    "removed": ["--force"],
+    "otherChanges": []
+  },
+  "resourceGate": {
+    "minimumAvailableRamGiB": 4,
+    "minimumDiskFreeGiB": 8,
+    "firstAvailableRamGiB": 3.19,
+    "confirmedAvailableRamGiB": 3.11,
+    "confirmedAvailableRamBytes": 3340443648,
+    "diskFreeGiB": 164.42,
+    "nodeProcessCount": 13,
+    "ram": "BLOCKED",
+    "disk": "PASS"
+  },
+  "execution": {
+    "buildInvocations": 0,
+    "taskExecutions": 0,
+    "cacheObservations": [],
+    "automaticRetries": 0
+  },
+  "outputs": {
+    "inventoryCaptured": false,
+    "coverageVerified": false,
+    "reason": "Build was not authorized because available RAM was below 4 GiB."
+  },
+  "versionProbeNote": "A probe from the CacheTrust root delegated to that repository's Turbo 2.11.9. Repeating the same native executable from the isolated workspace returned the pinned 2.9.18 with exit code 0; the planned build working directory was the isolated workspace.",
+  "nextStep": "A new explicitly authorized E-1A retry may re-check the resource gate without terminating other processes and execute the same planned command only if available RAM is at least 4 GiB."
+}

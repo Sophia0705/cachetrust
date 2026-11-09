@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1",
+  "runId": "phase3-step-e1a-recheck-build-1",
+  "status": "PASS",
+  "turboOutputContract": {
+    "outputs": [".next/**", "dist/**", "public/r/styles/**", "styles/**"],
+    "excludedOutputs": [".next/cache/**"]
+  },
+  "cacheTrustConfiguredRoots": [
+    "packages/registry/dist/**",
+    "packages/registry/.next/**",
+    "packages/registry/public/r/styles/**",
+    "packages/registry/styles/**",
+    "packages/shadcn/dist/**",
+    "packages/shadcn/.next/**",
+    "packages/shadcn/public/r/styles/**",
+    "packages/shadcn/styles/**"
+  ],
+  "cacheTrustConfiguredExclusions": [
+    "packages/registry/.next/cache/**",
+    "packages/shadcn/.next/cache/**"
+  ],
+  "observations": {
+    "functionalFilesGenerated": 270,
+    "functionalBytesGenerated": 873323,
+    "functionalFilesWithinTurboOutputs": 270,
+    "functionalFilesWithinCacheTrustFingerprint": 270,
+    "functionalFilesOutsideBothScopes": 0,
+    "excludedOutputFilesPresent": 0,
+    "duplicateFunctionalPaths": 0,
+    "reparsePointsOrSymlinks": 0,
+    "taskOutputRootsOverlap": false,
+    "windowsSeparatorsNormalizedForComparison": true
+  },
+  "nonFunctionalInfrastructureOutsideFingerprint": [
+    ".cachetrust-e1a-turbo-cache/**",
+    ".turbo/runs/**",
+    "packages/registry/.turbo/turbo-build.log",
+    "packages/shadcn/.turbo/turbo-build.log"
+  ],
+  "nonFunctionalInfrastructureRationale": "Turbo cache, summary, and task logs are execution evidence rather than published task output. They are intentionally outside CacheTrust output fingerprints.",
+  "limitations": [
+    "This is a single first-build inventory, not a baseline determinism comparison.",
+    "Only generated files present in this run can be covered by the runtime inventory."
+  ]
+}
