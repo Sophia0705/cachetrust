@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "cachetrust.e1c.execution/1",
+  "runId": "run-001",
+  "status": "EXECUTION_ABORTED",
+  "reasonCodes": [
+    "BASELINE_A_CONTROLLER_RESULT_MISSING",
+    "BASELINE_A_OUTPUT_INCOMPLETE",
+    "TASK_CACHE_STATUS_NOT_VERIFIED",
+    "TEMP_STORAGE_CAP_NOT_DEMONSTRATED"
+  ],
+  "target": {
+    "repository": "shadcn-ui/ui",
+    "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+    "lockfileSha256": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862"
+  },
+  "toolchain": {
+    "node": "24.19.0",
+    "pnpm": "10.33.4",
+    "turbo": "2.9.18",
+    "typescript": "5.9.2"
+  },
+  "counts": {
+    "frozenInstallsCompleted": 2,
+    "dryRunsCompleted": 1,
+    "buildInvocationsStarted": 1,
+    "buildInvocationsCompletedWithResult": 0,
+    "baselineBBuildInvocations": 0,
+    "automaticRetries": 0
+  },
+  "baselineA": {
+    "buildResultAvailable": false,
+    "turboSummaryAvailable": false,
+    "stdoutAvailable": false,
+    "stderrAvailable": false,
+    "taskMissEvidenceAvailable": false,
+    "registryDist": {
+      "complete": false,
+      "fileCount": 163,
+      "totalBytes": 338845,
+      "manifestSha256": "ebb04f24e70035d985a70a865cf2021bea0b1425aae7c808fdcde47921d343e7"
+    },
+    "shadcnDistAvailable": false,
+    "turboCacheFileCount": 0
+  },
+  "baselineB": {
+    "buildStarted": false
+  },
+  "verdictImpact": {
+    "existingE1VerdictChanged": false,
+    "existingE1Verdict": "INCONCLUSIVE / NONDETERMINISTIC_BASELINE",
+    "e2e3": "NO-GO"
+  }
+}

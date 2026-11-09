@@ -1,0 +1,133 @@
+Scope: all 7 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1675
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1675, reused 184, downloaded 0, added 0
+Progress: resolved 1675, reused 359, downloaded 0, added 0
+Progress: resolved 1675, reused 408, downloaded 0, added 0
+Progress: resolved 1675, reused 507, downloaded 0, added 0
+Progress: resolved 1675, reused 632, downloaded 0, added 0
+Progress: resolved 1675, reused 710, downloaded 0, added 0
+Progress: resolved 1675, reused 712, downloaded 0, added 0
+Progress: resolved 1675, reused 732, downloaded 0, added 0
+Progress: resolved 1675, reused 733, downloaded 0, added 0
+Progress: resolved 1675, reused 840, downloaded 0, added 0
+Progress: resolved 1675, reused 979, downloaded 0, added 0
+Progress: resolved 1675, reused 1375, downloaded 0, added 0
+Progress: resolved 1675, reused 1656, downloaded 0, added 6
+Progress: resolved 1675, reused 1659, downloaded 0, added 13
+Progress: resolved 1675, reused 1659, downloaded 0, added 14
+Progress: resolved 1675, reused 1659, downloaded 0, added 117
+Progress: resolved 1675, reused 1659, downloaded 0, added 195
+Progress: resolved 1675, reused 1659, downloaded 0, added 240
+Progress: resolved 1675, reused 1659, downloaded 0, added 289
+Progress: resolved 1675, reused 1659, downloaded 0, added 309
+Progress: resolved 1675, reused 1659, downloaded 0, added 368
+Progress: resolved 1675, reused 1659, downloaded 0, added 441
+Progress: resolved 1675, reused 1659, downloaded 0, added 490
+Progress: resolved 1675, reused 1659, downloaded 0, added 584
+Progress: resolved 1675, reused 1659, downloaded 0, added 585
+Progress: resolved 1675, reused 1659, downloaded 0, added 631
+Progress: resolved 1675, reused 1659, downloaded 0, added 654
+Progress: resolved 1675, reused 1659, downloaded 0, added 695
+Progress: resolved 1675, reused 1659, downloaded 0, added 718
+Progress: resolved 1675, reused 1659, downloaded 0, added 722
+Progress: resolved 1675, reused 1659, downloaded 0, added 727
+Progress: resolved 1675, reused 1659, downloaded 0, added 728
+Progress: resolved 1675, reused 1659, downloaded 0, added 731
+Progress: resolved 1675, reused 1659, downloaded 0, added 746
+Progress: resolved 1675, reused 1659, downloaded 0, added 765
+Progress: resolved 1675, reused 1659, downloaded 0, added 769
+Progress: resolved 1675, reused 1659, downloaded 0, added 770
+Progress: resolved 1675, reused 1659, downloaded 0, added 825
+Progress: resolved 1675, reused 1659, downloaded 0, added 853
+Progress: resolved 1675, reused 1659, downloaded 0, added 854
+Progress: resolved 1675, reused 1659, downloaded 0, added 855
+Progress: resolved 1675, reused 1659, downloaded 0, added 882
+Progress: resolved 1675, reused 1659, downloaded 0, added 917
+Progress: resolved 1675, reused 1659, downloaded 0, added 924
+Progress: resolved 1675, reused 1659, downloaded 0, added 969
+Progress: resolved 1675, reused 1659, downloaded 0, added 973
+Progress: resolved 1675, reused 1659, downloaded 0, added 982
+Progress: resolved 1675, reused 1659, downloaded 0, added 997
+Progress: resolved 1675, reused 1659, downloaded 0, added 1038
+Progress: resolved 1675, reused 1659, downloaded 0, added 1080
+Progress: resolved 1675, reused 1659, downloaded 0, added 1121
+Progress: resolved 1675, reused 1659, downloaded 0, added 1178
+Progress: resolved 1675, reused 1659, downloaded 0, added 1216
+Progress: resolved 1675, reused 1659, downloaded 0, added 1225
+Progress: resolved 1675, reused 1659, downloaded 0, added 1227
+Progress: resolved 1675, reused 1659, downloaded 0, added 1271
+Progress: resolved 1675, reused 1659, downloaded 0, added 1282
+Progress: resolved 1675, reused 1659, downloaded 0, added 1338
+Progress: resolved 1675, reused 1659, downloaded 0, added 1339
+Progress: resolved 1675, reused 1659, downloaded 0, added 1399
+Progress: resolved 1675, reused 1659, downloaded 0, added 1508
+Progress: resolved 1675, reused 1659, downloaded 0, added 1604
+Progress: resolved 1675, reused 1659, downloaded 0, added 1649
+Progress: resolved 1675, reused 1659, downloaded 0, added 1668
+Progress: resolved 1675, reused 1659, downloaded 0, added 1669
+Progress: resolved 1675, reused 1659, downloaded 0, added 1671
+Progress: resolved 1675, reused 1659, downloaded 0, added 1672
+Progress: resolved 1675, reused 1659, downloaded 0, added 1673
+Progress: resolved 1675, reused 1659, downloaded 0, added 1674
+Progress: resolved 1675, reused 1659, downloaded 0, added 1675
+Progress: resolved 1675, reused 1659, downloaded 0, added 1675, done
+ WARN  Failed to create bin at C:\ct-e1c\run-001\work\baseline-a\apps\v4\node_modules\.bin\shadcn. ENOENT: no such file or directory, stat 'C:\ct-e1c\run-001\work\baseline-a\packages\shadcn\dist\index.js.EXE'
+ WARN  Failed to create bin at C:\ct-e1c\run-001\work\baseline-a\packages\tests\node_modules\.bin\shadcn. ENOENT: no such file or directory, stat 'C:\ct-e1c\run-001\work\baseline-a\packages\shadcn\dist\index.js.EXE'
+
+dependencies:
++ @babel/core 7.28.0
++ @changesets/changelog-github 1.0.1
++ @changesets/cli 2.31.1
++ @commitlint/cli 20.1.0
++ @commitlint/config-conventional 17.8.1
++ @ianvs/prettier-plugin-sort-imports 4.6.1
++ @manypkg/cli 0.20.0
++ @typescript-eslint/eslint-plugin 8.49.0
++ @typescript-eslint/parser 8.54.0
++ autoprefixer 10.4.21
++ chokidar 4.0.3
++ concurrently 8.2.2
++ cross-env 7.0.3
++ eslint 9.26.0
++ eslint-config-next 15.5.11
++ eslint-config-prettier 8.10.2
++ eslint-config-turbo 2.9.16
++ eslint-plugin-react 7.37.5
++ eslint-plugin-tailwindcss 3.13.1
++ motion 12.23.12
++ prettier 3.6.2
++ pretty-quick 4.2.2
++ puppeteer 23.11.1
++ tailwindcss 3.4.19
++ tsx 4.20.3
++ turbo 2.9.18
++ vite 7.3.7
++ vite-tsconfig-paths 4.3.2
++ vitest 3.2.7
+
+devDependencies:
++ @types/hast 3.0.4
++ @types/node 20.19.10
++ @types/react 19.2.2
++ @types/react-dom 19.2.2
++ prettier-plugin-tailwindcss 0.7.2
++ start-server-and-test 2.0.13
++ typescript 5.9.2
+
+ WARN  Failed to create bin at C:\ct-e1c\run-001\work\baseline-a\packages\tests\node_modules\.bin\shadcn. ENOENT: no such file or directory, stat 'C:\ct-e1c\run-001\work\baseline-a\packages\tests\node_modules\shadcn\dist\index.js.EXE'
+ WARN  Failed to create bin at C:\ct-e1c\run-001\work\baseline-a\apps\v4\node_modules\.bin\shadcn. ENOENT: no such file or directory, stat 'C:\ct-e1c\run-001\work\baseline-a\apps\v4\node_modules\shadcn\dist\index.js.EXE'
+apps/v4 postinstall$ fumadocs-mdx
+apps/v4 postinstall: [MDX] generated files in 34.75850000000014ms
+apps/v4 postinstall: Done
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: esbuild@0.25.11, esbuild@0.27.7, esbuild@0.28.1,    │
+│   msw@2.10.4, puppeteer@23.11.1, unrs-resolver@1.11.1.                       │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done in 1m 39.1s using pnpm v10.33.4

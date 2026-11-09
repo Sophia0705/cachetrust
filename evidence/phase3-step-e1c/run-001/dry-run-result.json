@@ -1,0 +1,19 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "node_modules/turbo/bin/turbo",
+    "run",
+    "build",
+    "--filter",
+    "shadcn...",
+    "--dry=json",
+    "--no-color"
+  ],
+  "cwd": "C:\\ct-e1c\\run-001\\work\\baseline-a",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 4232.4632,
+  "stdoutBytes": 85363,
+  "stderrBytes": 0
+}

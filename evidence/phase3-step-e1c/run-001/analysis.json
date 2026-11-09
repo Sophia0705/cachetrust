@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1",
+  "rawComparison": "NOT AVAILABLE",
+  "confirmedFindings": [
+    "The two extracted source trees had identical raw manifests before installation.",
+    "Both frozen installs completed with the pinned lockfile unchanged.",
+    "The dry-run reported exactly the registry and shadcn build tasks with the expected dependency.",
+    "Baseline A build execution started and emitted an incomplete registry dist tree.",
+    "No shadcn dist, Turbo run summary, controller result, or build streams were retained.",
+    "Baseline B build was not started.",
+    "The preserved partial output copy matches its source manifest byte-for-byte."
+  ],
+  "unresolved": [
+    "The reason the baseline A controller did not return a result is not established.",
+    "No task-level HIT or MISS state can be established without a Turbo summary.",
+    "No A/B output or graph comparison is possible.",
+    "The approved 6 GiB temporary storage cap cannot be demonstrated with the available measurements."
+  ],
+  "normalizationApplied": false,
+  "functionalEquivalenceClaimed": false
+}

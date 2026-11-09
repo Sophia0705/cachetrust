@@ -1,0 +1,19 @@
+{
+  "command": "C:\\WINDOWS\\system32\\cmd.exe",
+  "args": [
+    "/d",
+    "/c",
+    "call",
+    "C:\\Program Files\\nodejs\\corepack.cmd",
+    "pnpm@10.33.4",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "cwd": "C:\\ct-e1c\\run-001\\work\\baseline-b",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 95957.43280000001,
+  "stdoutBytes": 7475,
+  "stderrBytes": 0
+}

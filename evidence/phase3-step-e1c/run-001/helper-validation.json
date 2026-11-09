@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1",
+  "runtime": {
+    "node": "24.19.0",
+    "typescript": "5.9.2"
+  },
+  "tests": {
+    "renamedChunk": "PASS",
+    "changedImport": "PASS",
+    "missingReference": "PASS",
+    "inputNotModified": "PASS"
+  },
+  "tools": {
+    "chunk-graph.mjs": "47822f163aebb086f8c484de7526852d3940d96db250b8c8eb586c3cb59b9a77",
+    "chunk-graph.test.mjs": "449e9e301441d95b0dc076fc635b54e1b5531f44cb3ba704dff66d0db9bef66e",
+    "command-runner.mjs": "cbfc621e9c72419d0e742f8c79494eca3a3e2b33d09c62850af841901e9741e1",
+    "tree-manifest.mjs": "9aa73e9e31488681716c437c0167ab2d826cb643b25c6470172e55671899ef3a"
+  }
+}
