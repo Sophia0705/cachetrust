@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1",
+  "command": ["node_modules/.bin/turbo", "run", "build", "--filter=shadcn...", "--dry=json"],
+  "turboVersion": "2.9.18",
+  "scmSha": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "packages": ["@shadcn/registry", "shadcn"],
+  "globalEnvironment": ["NODE_ENV"],
+  "tasks": [
+    {
+      "taskId": "@shadcn/registry#build",
+      "directory": "packages/registry",
+      "command": "tsup",
+      "dependencies": [],
+      "dependents": ["shadcn#build"],
+      "outputs": [".next/**", "dist/**", "public/r/styles/**", "styles/**"],
+      "excludedOutputs": [".next/cache/**"],
+      "resolvedDependsOn": ["^build"]
+    },
+    {
+      "taskId": "shadcn#build",
+      "directory": "packages/shadcn",
+      "command": "tsup",
+      "dependencies": ["@shadcn/registry#build"],
+      "dependents": [],
+      "outputs": [".next/**", "dist/**", "public/r/styles/**", "styles/**"],
+      "excludedOutputs": [".next/cache/**"],
+      "resolvedDependsOn": ["^build"]
+    }
+  ],
+  "configuredTaskEnvironment": {
+    "recordedValues": false,
+    "emptyOverridesConfirmed": [
+      "COMPONENTS_REGISTRY_URL",
+      "DEPLOYMENT_PROTECTION_BYPASS",
+      "NEXT_PUBLIC_APP_URL",
+      "REGISTRY_URL",
+      "UPSTASH_REDIS_REST_TOKEN",
+      "UPSTASH_REDIS_REST_URL",
+      "V0_EDIT_SECRET",
+      "V0_URL",
+      "https_proxy",
+      "npm_config_user_agent"
+    ]
+  },
+  "comparisonToE0": {
+    "taskGraphMatches": true,
+    "taskIdsMatch": true,
+    "outputArraysMatch": true,
+    "differences": []
+  },
+  "buildExecuted": false
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1",
+  "date": "2026-11-10",
+  "repository": "https://github.com/shadcn-ui/ui.git",
+  "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "checkout": {
+    "location": "<system-temp>/cachetrust-e-prep-2/source",
+    "installWorkspace": "<system-temp>/ct-e2-w",
+    "absolutePathsRedacted": true,
+    "sourceCleanAfterInstall": true,
+    "installWorkspaceCleanAfterDryRun": true,
+    "gitSymlinks": 0,
+    "gitSubmodules": 0,
+    "filesBeforeInstall": 6444,
+    "bytesBeforeInstall": 78850885
+  },
+  "toolchain": {
+    "node": "v24.19.0",
+    "nodeExecutable": "<program-files>/nodejs/node.exe",
+    "corepack": "0.35.0",
+    "provisioning": "isolated COREPACK_HOME with corepack pnpm@10.33.4",
+    "globalPnpmObservedButNotUsed": "11.20.0",
+    "pnpm": "10.33.4",
+    "packageManagerDeclaration": "pnpm@10.33.4",
+    "turbo": "2.9.18"
+  },
+  "source": {
+    "lockfileSha256": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862",
+    "lockfileBytes": 727757,
+    "packageJsonFiles": 80,
+    "workspaceCount": 6
+  },
+  "resources": {
+    "totalRamGiB": 15.7,
+    "freeRamGiBBeforeInstall": 2.88,
+    "minimumObservedFreeRamGiB": 1.03,
+    "freeRamGiBAfterInstall": 1.75,
+    "pnpmMainProcessPeakWorkingSetMiB": 1213.7,
+    "cDriveFreeGiBBeforeInstall": 164.56,
+    "cDriveFreeGiBAfterInstall": 162.83,
+    "installWorkspaceBytesAfter": 1347443338,
+    "installWorkspaceDeltaBytes": 1268592453,
+    "measurementLimitations": [
+      "Peak working set covers the observed pnpm Node process, not a complete process-tree peak.",
+      "The C: free-space delta also includes the isolated Corepack store and temporary source clone."
+    ]
+  },
+  "install": {
+    "command": ["corepack", "pnpm@10.33.4", "install", "--frozen-lockfile"],
+    "durationSeconds": 256.7,
+    "result": "SUCCESS",
+    "successEvidence": [
+      "pnpm reported Done in 4m 16.7s using pnpm v10.33.4",
+      "lockfile hash remained unchanged",
+      "workspace remained Git-clean",
+      "installed Turbo 2.9.18 executed successfully"
+    ],
+    "environment": {
+      "public": {
+        "CI": "true",
+        "FORCE_COLOR": "0",
+        "NODE_ENV": "production",
+        "NO_COLOR": "1",
+        "PUPPETEER_SKIP_DOWNLOAD": "true"
+      },
+      "privateOrAmbientValuesRecorded": false,
+      "clearedNames": [
+        "ALL_PROXY",
+        "COMPONENTS_REGISTRY_URL",
+        "DEPLOYMENT_PROTECTION_BYPASS",
+        "HTTP_PROXY",
+        "HTTPS_PROXY",
+        "NEXT_PUBLIC_APP_URL",
+        "REGISTRY_URL",
+        "TURBO_REMOTE_ONLY",
+        "TURBO_TEAM",
+        "TURBO_TOKEN",
+        "UPSTASH_REDIS_REST_TOKEN",
+        "UPSTASH_REDIS_REST_URL",
+        "V0_EDIT_SECRET",
+        "V0_URL",
+        "all_proxy",
+        "http_proxy",
+        "https_proxy",
+        "npm_config_user_agent"
+      ]
+    },
+    "lifecycle": {
+      "workspacePostinstall": "apps/v4: fumadocs-mdx completed",
+      "ignoredDependencyBuildScripts": [
+        "esbuild@0.25.11",
+        "esbuild@0.27.7",
+        "esbuild@0.28.1",
+        "msw@2.10.4",
+        "puppeteer@23.11.1",
+        "unrs-resolver@1.11.1"
+      ],
+      "warnings": [
+        "pnpm could not create shadcn bin links in apps/v4 and packages/tests because dist/index.js was not built"
+      ]
+    },
+    "measurementNote": "The Windows Corepack wrapper exited before its child pnpm process, so the wrapper exit code was not retained; completion and postconditions establish success."
+  },
+  "e3": {
+    "loggerSha256": "6d8cc3391257b828d25fda1ff2cfa3b7ceb8ab69d0ee3a0e5baafa9f3260d285",
+    "productionLoggerImportFiles": 32,
+    "representativeImport": "packages/shadcn/src/utils/registry-api.ts:2"
+  },
+  "buildExecuted": false,
+  "e1Executed": false,
+  "e2Executed": false,
+  "e3Executed": false
+}
