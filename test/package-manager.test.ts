@@ -42,6 +42,7 @@ describe("package-manager probe", () => {
     expect(probe).toMatchObject({ expectedVersion: "1.2.3", observedVersion: "1.2.3" });
     expect(probe.install.command).toBe(probe.process.command);
     expect(probe.install.args).toEqual(["pm.mjs", "install", "--frozen-lockfile"]);
+    expect(probe.install.env).toBeDefined();
   });
 
   it("rejects a version mismatch before installation", async () => {

@@ -9,6 +9,7 @@ import {
   assertOwnedPath,
   createVerificationIsolation,
 } from "../src/verification/isolation.js";
+import { installEnvironment, probePackageManager } from "../src/verification/package-manager.js";
 
 const roots: string[] = [];
 afterEach(async () => {
@@ -16,6 +17,13 @@ afterEach(async () => {
     recursive: true, force: true, maxRetries: 5, retryDelay: 100,
   })));
 });
+
+async function gitCommit(root: string): Promise<void> {
+  for (const args of [["add", "."], ["commit", "-qm", "fixture update"]]) {
+    const result = await runProcess("git", args, { cwd: root, timeoutMs: 10_000 });
+    if (result.exitCode !== 0) throw new Error(result.stderr);
+  }
+}
 
 async function project(): Promise<string> {
   const root = await mkdtemp(join(process.cwd(), ".cachetrust-isolation-"));
@@ -88,6 +96,47 @@ describe("verification isolation", () => {
     await isolation.cleanup();
     await expect(access(isolation.root)).rejects.toThrow();
     expect(await readFile(join(root, "src", "input.txt"), "utf8")).toBe("original\n");
+  });
+
+  it("uses one inherited and overridden environment for the probe and all workspaces", async () => {
+    const root = await project();
+    await writeFile(join(root, "install.mjs"), [
+      'import { mkdir, writeFile } from "node:fs/promises";',
+      'if (process.env.CACHETRUST_OVERRIDE !== "configured") process.exit(41);',
+      'if (process.env.CACHETRUST_INHERITED !== "inherited") process.exit(42);',
+      'if (process.argv.includes("--version")) console.log("1");',
+      'else {',
+      '  await mkdir("node_modules", { recursive: true });',
+      '  await writeFile("node_modules/environment.json", JSON.stringify({',
+      '    override: process.env.CACHETRUST_OVERRIDE, inherited: process.env.CACHETRUST_INHERITED',
+      '  }));',
+      '}',
+    ].join("\n"));
+    await gitCommit(root);
+    const value = config(root);
+    value.install.environment = { CACHETRUST_OVERRIDE: "configured" };
+    const previous = process.env.CACHETRUST_INHERITED;
+    process.env.CACHETRUST_INHERITED = "inherited";
+    try {
+      const probe = await probePackageManager(value);
+      process.env.CACHETRUST_INHERITED = "changed-after-probe";
+      const isolation = await createVerificationIsolation(value, probe.install);
+      roots.push(isolation.root);
+      for (const workspace of isolation.workspaces) {
+        await expect(readFile(join(workspace.project, "node_modules", "environment.json"), "utf8"))
+          .resolves.toBe('{"override":"configured","inherited":"inherited"}');
+      }
+    } finally {
+      if (previous === undefined) delete process.env.CACHETRUST_INHERITED;
+      else process.env.CACHETRUST_INHERITED = previous;
+    }
+  });
+
+  it("merges Windows environment names case-insensitively", () => {
+    const value = config("C:\\project");
+    value.install.environment = { PATH: "configured" };
+    expect(installEnvironment(value, { Path: "inherited", KEEP: "yes" }, "win32"))
+      .toEqual({ PATH: "configured", KEEP: "yes" });
   });
 
   it("rejects traversal and cleanup targets outside the owned root", () => {

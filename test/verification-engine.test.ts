@@ -81,6 +81,7 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
         packageManagerVersion: "1",
         lockfiles: ["lock.yaml"],
         timeoutMs: 10_000,
+        environment: { NODE_ENV: "production", PRIVATE_TOKEN: "must-not-leak" },
       },
       turbo: {
         command: process.execPath,
@@ -118,8 +119,19 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       probe: { exitCode: 0, timedOut: false },
     });
     expect(await readFile(join(project, "input.txt"), "utf8")).toBe("v1\n");
-    expect(JSON.parse(await readFile(evidenceFile, "utf8"))).toMatchObject({
+    const storedEvidence = await readFile(evidenceFile, "utf8");
+    expect(storedEvidence).not.toContain("must-not-leak");
+    expect(JSON.parse(storedEvidence)).toMatchObject({
       schemaVersion: "cachetrust.verification/1",
+      environment: { install: {
+        inherited: true,
+        override: true,
+        identicalAcrossInstallProcesses: true,
+        variables: [
+          { name: "NODE_ENV", valuePolicy: "public", value: "production" },
+          { name: "PRIVATE_TOKEN", valuePolicy: "private" },
+        ],
+      } },
       verdict: { status: "MISMATCH" },
     });
   });

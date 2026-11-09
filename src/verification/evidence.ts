@@ -31,6 +31,17 @@ export interface VerificationEvidence {
       };
     };
     turbo: string;
+    install?: {
+      inherited: true;
+      override: boolean;
+      scope: ["package-manager-probe", "cache", "baseline-a", "baseline-b"];
+      identicalAcrossInstallProcesses: true;
+      variables: Array<{
+        name: string;
+        valuePolicy: "public" | "private";
+        value?: string;
+      }>;
+    };
   };
   target: { projectLabel: string; commit: string; dirty: false };
   config: {

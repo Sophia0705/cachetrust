@@ -24,6 +24,23 @@ describe("verification config", () => {
     expect(validateVerificationConfig(config())).toMatchObject({ id: "test", mutation: { kind: "none" } });
   });
 
+  it("accepts string install environment overrides and preserves omission", () => {
+    expect(validateVerificationConfig(config()).install.environment).toBeUndefined();
+    const value = config();
+    (value.install as Record<string, unknown>).environment = { NODE_ENV: "production", EMPTY: "" };
+    expect(validateVerificationConfig(value).install.environment).toEqual({ NODE_ENV: "production", EMPTY: "" });
+  });
+
+  it("rejects invalid install environment names and values", () => {
+    const invalidName = config();
+    (invalidName.install as Record<string, unknown>).environment = { "BAD=NAME": "value" };
+    expect(() => validateVerificationConfig(invalidName)).toThrow("invalid environment variable name");
+
+    const invalidValue = config() as Record<string, any>;
+    invalidValue.install.environment = { TOKEN: 123 };
+    expect(() => validateVerificationConfig(invalidValue)).toThrow("values must be strings");
+  });
+
   it("rejects installs without frozen lockfile semantics", () => {
     const value = config();
     value.install.args = ["install"];

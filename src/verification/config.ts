@@ -17,6 +17,7 @@ export interface VerificationConfig {
     packageManagerVersion: string;
     lockfiles: string[];
     timeoutMs: number;
+    environment?: Record<string, string>;
   };
   turbo: {
     command: string;
@@ -113,6 +114,25 @@ function array(value: unknown, name: string): unknown[] {
   return value;
 }
 
+function validateEnvironment(value: unknown, name: string): Record<string, string> {
+  const parsed = object(value, name);
+  for (const [key, entry] of Object.entries(parsed)) {
+    if (key.length === 0 || key.includes("=") || key.includes("\0")) {
+      throw new ConfigError(`${name} has an invalid environment variable name`);
+    }
+    if (typeof entry !== "string" || entry.includes("\0")) {
+      throw new ConfigError(`${name} values must be strings without null bytes`);
+    }
+  }
+  if (process.platform === "win32") {
+    const names = Object.keys(parsed).map((key) => key.toUpperCase());
+    if (new Set(names).size !== names.length) {
+      throw new ConfigError(`${name} names must be unique ignoring case on Windows`);
+    }
+  }
+  return parsed as Record<string, string>;
+}
+
 export function assertSafeRelativePath(path: string, name = "path"): string {
   if (path.length === 0 || isAbsolute(path)) throw new ConfigError(`${name} must be relative`);
   const normalized = normalize(path);
@@ -162,7 +182,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   const installValue = object(root.install, "install");
   assertKeys(installValue, [
     "command", "commandArgs", "versionArgs", "args", "packageManager", "packageManagerVersion",
-    "lockfiles", "timeoutMs",
+    "lockfiles", "timeoutMs", "environment",
   ], "install");
   const install = {
     command: nonEmptyString(installValue.command, "install.command"),
@@ -176,6 +196,9 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
     lockfiles: strings(installValue.lockfiles, "install.lockfiles").map((path, index) =>
       assertSafeRelativePath(path, `install.lockfiles[${index}]`)),
     timeoutMs: positiveInteger(installValue.timeoutMs, "install.timeoutMs"),
+    ...(installValue.environment === undefined ? {} : {
+      environment: validateEnvironment(installValue.environment, "install.environment"),
+    }),
   };
   if (![...(install.commandArgs ?? []), ...install.args]
     .some((arg) => arg === "--frozen-lockfile" || arg === "--immutable")) {
@@ -192,11 +215,9 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   const environmentValue = turboValue.environment;
   let environment: Record<string, string> | undefined;
   if (environmentValue !== undefined) {
-    const parsed = object(environmentValue, "turbo.environment");
-    if (Object.values(parsed).some((entry) => typeof entry !== "string")) {
-      throw new ConfigError("turbo.environment values must be strings");
-    }
-    environment = parsed as Record<string, string>;
+    environment = environmentValue === undefined
+      ? undefined
+      : validateEnvironment(environmentValue, "turbo.environment");
   }
   const turbo: VerificationConfig["turbo"] = {
     command: nonEmptyString(turboValue.command, "turbo.command"),

@@ -6,6 +6,7 @@ import type { VerificationConfig } from "./config.js";
 export interface ResolvedInvocation {
   command: string;
   args: string[];
+  env?: NodeJS.ProcessEnv;
 }
 
 export interface PackageManagerProbe {
@@ -15,6 +16,23 @@ export interface PackageManagerProbe {
   executable: string;
   process: ProcessResult;
   install: ResolvedInvocation;
+}
+
+export function installEnvironment(
+  config: VerificationConfig,
+  inherited: NodeJS.ProcessEnv = process.env,
+  platform = process.platform,
+): NodeJS.ProcessEnv {
+  const result = { ...inherited };
+  for (const [name, value] of Object.entries(config.install.environment ?? {})) {
+    if (platform === "win32") {
+      for (const inheritedName of Object.keys(result)) {
+        if (inheritedName.toUpperCase() === name.toUpperCase()) delete result[inheritedName];
+      }
+    }
+    result[name] = value;
+  }
+  return result;
 }
 
 export class PackageManagerError extends Error {
@@ -33,7 +51,12 @@ function isPath(value: string): boolean {
   return isAbsolute(value) || value.includes("/") || value.includes("\\");
 }
 
-async function resolveExecutable(command: string, cwd: string, signal?: AbortSignal): Promise<string> {
+async function resolveExecutable(
+  command: string,
+  cwd: string,
+  env: NodeJS.ProcessEnv,
+  signal?: AbortSignal,
+): Promise<string> {
   if (isPath(command)) {
     const path = isAbsolute(command) ? command : resolve(cwd, command);
     await access(path).catch(() => {
@@ -42,8 +65,8 @@ async function resolveExecutable(command: string, cwd: string, signal?: AbortSig
     return realpath(path);
   }
   const locator = process.platform === "win32"
-    ? await runProcess("where.exe", [command], { cwd, timeoutMs: 10_000, ...(signal === undefined ? {} : { signal }) })
-    : await runProcess("which", [command], { cwd, timeoutMs: 10_000, ...(signal === undefined ? {} : { signal }) });
+    ? await runProcess("where.exe", [command], { cwd, env, timeoutMs: 10_000, ...(signal === undefined ? {} : { signal }) })
+    : await runProcess("which", [command], { cwd, env, timeoutMs: 10_000, ...(signal === undefined ? {} : { signal }) });
   if (locator.exitCode !== 0 || locator.timedOut) {
     throw new PackageManagerError("PACKAGE_MANAGER_NOT_FOUND", "Package-manager executable was not found");
   }
@@ -110,13 +133,15 @@ export async function probePackageManager(
       `Target declares ${declared}, but configuration expects ${expectedDeclaration}`,
     );
   }
-  const executable = await resolveExecutable(config.install.command, config.projectRoot, signal);
+  const env = installEnvironment(config);
+  const executable = await resolveExecutable(config.install.command, config.projectRoot, env, signal);
   const prefix = config.install.commandArgs ?? [];
   const versionInvocation = invocationFor(executable, [...prefix, ...config.install.versionArgs]);
   let processResult: ProcessResult;
   try {
     processResult = await runProcess(versionInvocation.command, versionInvocation.args, {
       cwd: config.projectRoot,
+      env,
       timeoutMs: Math.min(config.install.timeoutMs, 30_000),
       ...(signal === undefined ? {} : { signal }),
     });
@@ -152,6 +177,6 @@ export async function probePackageManager(
     observedVersion,
     executable: basename(executable),
     process: processResult,
-    install: invocationFor(executable, [...prefix, ...config.install.args]),
+    install: { ...invocationFor(executable, [...prefix, ...config.install.args]), env },
   };
 }

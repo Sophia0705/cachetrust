@@ -3,7 +3,7 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fingerprintFile } from "../fingerprint.js";
 import { runProcess, type ProcessResult } from "../process.js";
 import { resolveInside, type VerificationConfig } from "./config.js";
-import type { ResolvedInvocation } from "./package-manager.js";
+import { installEnvironment, type ResolvedInvocation } from "./package-manager.js";
 
 export interface VerificationWorkspace {
   id: "cache" | "baseline-a" | "baseline-b";
@@ -152,6 +152,7 @@ export async function createVerificationIsolation(
       await mkdir(cache);
       const install = await runProcess(installInvocation.command, installInvocation.args, {
         cwd: project,
+        env: installInvocation.env ?? installEnvironment(config),
         timeoutMs: config.install.timeoutMs,
         ...(signal === undefined ? {} : { signal }),
       });

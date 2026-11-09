@@ -81,6 +81,21 @@ function baseEvidence(
     processResult?: ProcessResult;
   },
 ): VerificationEvidence {
+  const publicInstallValue = (name: string, value: string): boolean => {
+    const values: Record<string, readonly string[]> = {
+      CI: ["", "0", "1", "false", "true"],
+      FORCE_COLOR: ["", "0", "1", "2", "3", "false", "true"],
+      NODE_ENV: ["development", "production", "test"],
+      NO_COLOR: ["", "0", "1", "false", "true"],
+      PUPPETEER_SKIP_DOWNLOAD: ["", "0", "1", "false", "true"],
+    };
+    return values[name.toUpperCase()]?.includes(value.toLowerCase()) ?? false;
+  };
+  const installVariables = Object.entries(config.install.environment ?? {})
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([name, value]) => publicInstallValue(name, value)
+      ? { name, valuePolicy: "public" as const, value }
+      : { name, valuePolicy: "private" as const });
   const normalization = config.normalization === undefined ? undefined : {
     id: config.normalization.id,
     description: config.normalization.description,
@@ -128,6 +143,13 @@ function baseEvidence(
         } }),
       },
       turbo: config.turbo.version,
+      install: {
+        inherited: true,
+        override: installVariables.length > 0,
+        scope: ["package-manager-probe", "cache", "baseline-a", "baseline-b"],
+        identicalAcrossInstallProcesses: true,
+        variables: installVariables,
+      },
     },
     target: { projectLabel: "target", commit, dirty: false },
     config: {
@@ -152,6 +174,7 @@ function baseEvidence(
     limitations: [
       "Dependency lifecycle scripts are trusted and are not sandboxed by CacheTrust.",
       "Raw stdout/stderr content is not retained by default; byte counts and SHA-256 digests are recorded.",
+      "Inherited install environment values are not recorded; configured private values are recorded by name only.",
     ],
   };
 }
