@@ -1,0 +1,4643 @@
+{
+  "schemaVersion": "cachetrust.verification/1",
+  "cachetrustVersion": "0.1.0",
+  "caseId": "phase3-e1-shadcn-identical-input",
+  "startedAt": "2026-11-09T21:10:06.760Z",
+  "finishedAt": "2026-11-09T21:20:15.784Z",
+  "environment": {
+    "os": "win32 10.0.26300",
+    "arch": "x64",
+    "node": "v24.19.0",
+    "packageManager": {
+      "name": "pnpm",
+      "expectedVersion": "10.33.4",
+      "observedVersion": "10.33.4",
+      "executable": "corepack.cmd",
+      "probe": {
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 536.9896,
+        "stdoutSha256": "5d8cc9429d433fb91c8cf55de7266335713ccd9a1beb47eefadf81e283b81c71",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "turbo": "2.9.18",
+    "install": {
+      "inherited": true,
+      "override": true,
+      "scope": [
+        "package-manager-probe",
+        "cache",
+        "baseline-a",
+        "baseline-b"
+      ],
+      "identicalAcrossInstallProcesses": true,
+      "variables": [
+        {
+          "name": "all_proxy",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "CI",
+          "valuePolicy": "public",
+          "value": "true"
+        },
+        {
+          "name": "COMPONENTS_REGISTRY_URL",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "COREPACK_HOME",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "DEPLOYMENT_PROTECTION_BYPASS",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "FORCE_COLOR",
+          "valuePolicy": "public",
+          "value": "0"
+        },
+        {
+          "name": "http_proxy",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "https_proxy",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "NEXT_PUBLIC_APP_URL",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "NO_COLOR",
+          "valuePolicy": "public",
+          "value": "1"
+        },
+        {
+          "name": "NODE_ENV",
+          "valuePolicy": "public",
+          "value": "production"
+        },
+        {
+          "name": "npm_config_user_agent",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "PUPPETEER_SKIP_DOWNLOAD",
+          "valuePolicy": "public",
+          "value": "true"
+        },
+        {
+          "name": "REGISTRY_URL",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "TURBO_REMOTE_ONLY",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "TURBO_TEAM",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "TURBO_TOKEN",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "UPSTASH_REDIS_REST_TOKEN",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "UPSTASH_REDIS_REST_URL",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "V0_EDIT_SECRET",
+          "valuePolicy": "private"
+        },
+        {
+          "name": "V0_URL",
+          "valuePolicy": "private"
+        }
+      ]
+    }
+  },
+  "target": {
+    "projectLabel": "target",
+    "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+    "dirty": false
+  },
+  "config": {
+    "task": "build",
+    "packages": [
+      "shadcn..."
+    ],
+    "tasks": [
+      {
+        "id": "@shadcn/registry#build",
+        "expectedAfterMutation": "HIT"
+      },
+      {
+        "id": "shadcn#build",
+        "expectedAfterMutation": "HIT"
+      }
+    ],
+    "outputs": [
+      {
+        "taskId": "@shadcn/registry#build",
+        "include": [
+          "packages/registry/dist/**",
+          "packages/registry/.next/**",
+          "packages/registry/public/r/styles/**",
+          "packages/registry/styles/**"
+        ],
+        "exclude": [
+          "packages/registry/.next/cache/**"
+        ]
+      },
+      {
+        "taskId": "shadcn#build",
+        "include": [
+          "packages/shadcn/dist/**",
+          "packages/shadcn/.next/**",
+          "packages/shadcn/public/r/styles/**",
+          "packages/shadcn/styles/**"
+        ],
+        "exclude": [
+          "packages/shadcn/.next/cache/**"
+        ]
+      }
+    ],
+    "mutationKind": "none"
+  },
+  "installs": [
+    {
+      "workspace": "cache",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "call",
+        "C:\\Program Files\\nodejs\\corepack.cmd",
+        "pnpm@10.33.4",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 112921.23030000001,
+      "stdout": {
+        "bytes": 8087,
+        "sha256": "b3036956e094f592a6034163e7650d3a7a6352bc8d64a18eccfca4fe1cc74f79",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      }
+    },
+    {
+      "workspace": "baseline-a",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "call",
+        "C:\\Program Files\\nodejs\\corepack.cmd",
+        "pnpm@10.33.4",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 103270.3032,
+      "stdout": {
+        "bytes": 8128,
+        "sha256": "f11ff31a230f88a01451d2e58a7388ab523be9d87cab8f8614f0cefed7e6cda6",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      }
+    },
+    {
+      "workspace": "baseline-b",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "call",
+        "C:\\Program Files\\nodejs\\corepack.cmd",
+        "pnpm@10.33.4",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 101454.0638,
+      "stdout": {
+        "bytes": 8315,
+        "sha256": "fb82440aea8d7d5af9380519db707fc890ef80211d4e34d052ffe9b5173cddaf",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      }
+    }
+  ],
+  "isolation": {
+    "strategy": "independent-frozen-install",
+    "workspaces": [
+      "cache",
+      "baseline-a",
+      "baseline-b"
+    ],
+    "caches": [
+      "cache/shared",
+      "baseline-a/empty",
+      "baseline-b/empty"
+    ],
+    "remoteCacheDisabled": true,
+    "lockfileSha256": {
+      "pnpm-lock.yaml": "095aa7494a673e4b15b963a3263bcbc1d025176b00f97406aa61c9893827b862"
+    }
+  },
+  "runs": [
+    {
+      "id": "v1",
+      "command": [
+        "node",
+        "node_modules/turbo/bin/turbo",
+        "run",
+        "build",
+        "--filter",
+        "shadcn...",
+        "--cache=local:rw",
+        "--cache-dir",
+        "C:\\Users\\SOPHIA\\AppData\\Local\\Temp\\cachetrust-e-prep-2\\.cachetrust-verify-pS99oM\\cache\\turbo-cache",
+        "--summarize",
+        "--ui=stream",
+        "--no-color",
+        "--concurrency",
+        "1"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 75786.38330000004,
+      "stdout": {
+        "bytes": 25819,
+        "sha256": "7ac8f256c71dd9459d57f2eed8aa6b425adfc70d4f39569641693698a40afa88",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      },
+      "tasks": [
+        {
+          "id": "@shadcn/registry#build",
+          "hash": "969934d40a44d7c3",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/registry/.next/**",
+            "packages/registry/dist/**",
+            "packages/registry/public/r/styles/**",
+            "packages/registry/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/registry/.next/cache/**"
+          ]
+        },
+        {
+          "id": "shadcn#build",
+          "hash": "e2137f265edb64b9",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/shadcn/.next/**",
+            "packages/shadcn/dist/**",
+            "packages/shadcn/public/r/styles/**",
+            "packages/shadcn/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/shadcn/.next/cache/**"
+          ]
+        }
+      ],
+      "summaryAvailable": true
+    },
+    {
+      "id": "cache-v2",
+      "command": [
+        "node",
+        "node_modules/turbo/bin/turbo",
+        "run",
+        "build",
+        "--filter",
+        "shadcn...",
+        "--cache=local:rw",
+        "--cache-dir",
+        "C:\\Users\\SOPHIA\\AppData\\Local\\Temp\\cachetrust-e-prep-2\\.cachetrust-verify-pS99oM\\cache\\turbo-cache",
+        "--summarize",
+        "--ui=stream",
+        "--no-color",
+        "--concurrency",
+        "1"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 1195.28820000001,
+      "stdout": {
+        "bytes": 25838,
+        "sha256": "73de01f91b65da229b80ad79eb4bd7229063bc42e32bc7ef1bde1dfda53ace19",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      },
+      "tasks": [
+        {
+          "id": "@shadcn/registry#build",
+          "hash": "969934d40a44d7c3",
+          "cache": {
+            "status": "HIT",
+            "local": true,
+            "remote": false
+          },
+          "outputs": [
+            "packages/registry/.next/**",
+            "packages/registry/dist/**",
+            "packages/registry/public/r/styles/**",
+            "packages/registry/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/registry/.next/cache/**"
+          ]
+        },
+        {
+          "id": "shadcn#build",
+          "hash": "e2137f265edb64b9",
+          "cache": {
+            "status": "HIT",
+            "local": true,
+            "remote": false
+          },
+          "outputs": [
+            "packages/shadcn/.next/**",
+            "packages/shadcn/dist/**",
+            "packages/shadcn/public/r/styles/**",
+            "packages/shadcn/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/shadcn/.next/cache/**"
+          ]
+        }
+      ],
+      "summaryAvailable": true
+    },
+    {
+      "id": "baseline-a-v2",
+      "command": [
+        "node",
+        "node_modules/turbo/bin/turbo",
+        "run",
+        "build",
+        "--filter",
+        "shadcn...",
+        "--cache=local:rw",
+        "--cache-dir",
+        "C:\\Users\\SOPHIA\\AppData\\Local\\Temp\\cachetrust-e-prep-2\\.cachetrust-verify-pS99oM\\baseline-a\\turbo-cache",
+        "--summarize",
+        "--ui=stream",
+        "--no-color",
+        "--concurrency",
+        "1"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 52399.87220000004,
+      "stdout": {
+        "bytes": 25843,
+        "sha256": "568a812bc72a4978c350b15199b6548c1d1b7f3e73e8b4c73f2c72557beed6a0",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      },
+      "tasks": [
+        {
+          "id": "@shadcn/registry#build",
+          "hash": "969934d40a44d7c3",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/registry/.next/**",
+            "packages/registry/dist/**",
+            "packages/registry/public/r/styles/**",
+            "packages/registry/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/registry/.next/cache/**"
+          ]
+        },
+        {
+          "id": "shadcn#build",
+          "hash": "e2137f265edb64b9",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/shadcn/.next/**",
+            "packages/shadcn/dist/**",
+            "packages/shadcn/public/r/styles/**",
+            "packages/shadcn/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/shadcn/.next/cache/**"
+          ]
+        }
+      ],
+      "summaryAvailable": true
+    },
+    {
+      "id": "baseline-b-v2",
+      "command": [
+        "node",
+        "node_modules/turbo/bin/turbo",
+        "run",
+        "build",
+        "--filter",
+        "shadcn...",
+        "--cache=local:rw",
+        "--cache-dir",
+        "C:\\Users\\SOPHIA\\AppData\\Local\\Temp\\cachetrust-e-prep-2\\.cachetrust-verify-pS99oM\\baseline-b\\turbo-cache",
+        "--summarize",
+        "--ui=stream",
+        "--no-color",
+        "--concurrency",
+        "1"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 56100.424,
+      "stdout": {
+        "bytes": 25843,
+        "sha256": "88baa7bdc8bd55253f27de982d173cda04f2b952dfcc936e0e44d16e4256c78f",
+        "retained": false
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "retained": false
+      },
+      "tasks": [
+        {
+          "id": "@shadcn/registry#build",
+          "hash": "969934d40a44d7c3",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/registry/.next/**",
+            "packages/registry/dist/**",
+            "packages/registry/public/r/styles/**",
+            "packages/registry/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/registry/.next/cache/**"
+          ]
+        },
+        {
+          "id": "shadcn#build",
+          "hash": "e2137f265edb64b9",
+          "cache": {
+            "status": "MISS",
+            "local": false,
+            "remote": false
+          },
+          "outputs": [
+            "packages/shadcn/.next/**",
+            "packages/shadcn/dist/**",
+            "packages/shadcn/public/r/styles/**",
+            "packages/shadcn/styles/**"
+          ],
+          "excludedOutputs": [
+            "packages/shadcn/.next/cache/**"
+          ]
+        }
+      ],
+      "summaryAvailable": true
+    }
+  ],
+  "verdict": {
+    "status": "INCONCLUSIVE",
+    "reasonCodes": [
+      "NONDETERMINISTIC_BASELINE"
+    ],
+    "implicatedTasks": [],
+    "explanation": "Two independent clean baselines disagree."
+  },
+  "injectedFault": false,
+  "limitations": [
+    "Dependency lifecycle scripts are trusted and are not sandboxed by CacheTrust.",
+    "Raw stdout/stderr content is not retained by default; byte counts and SHA-256 digests are recorded.",
+    "Inherited install environment values are not recorded; configured private values are recorded by name only."
+  ],
+  "comparisons": {
+    "cacheRaw": {
+      "entries": [
+        {
+          "path": "packages/registry/dist/add-components.d.ts",
+          "bytes": 902,
+          "sha256": "447375562554de4844ee5be1ecca9c3977c5eb8649f43cffeb46f7e0e88051fc"
+        },
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "bytes": 2009,
+          "sha256": "c04748ac9b4f2c95a89caaf193375bcba3ac62688b0d6ff677a0c0707343f83b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-34X3C4PK.js",
+          "bytes": 64376,
+          "sha256": "7d61bd323af48b2d253fc199b24b53502c34e69f434e60fa992a0fcf43b2c53c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-37TZNUWF.js",
+          "bytes": 8406,
+          "sha256": "3c8014dc4d85b30e1fe0a856ef1edf40f7cd38773d4f57360e54094756ff23fb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OKCQO2T.js",
+          "bytes": 1274,
+          "sha256": "bb334c8b302e2bde513808e274b6a2b88d39a4f4d64d57edfceb6f9831599ec1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4RGI4SXE.js",
+          "bytes": 1808,
+          "sha256": "ad064679a202f510cfa6544af3b443a32c04b1bfddc2e0afb9e98b309bee1116"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4SFT74AY.js",
+          "bytes": 217,
+          "sha256": "d2cd3d23295477711efec9e5d499195b0e86b75561c5d57f2e09e9e40f9bdc04"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4XJHS6CV.js",
+          "bytes": 2303,
+          "sha256": "4fbe4691e52f0874d2dda15502f9f42e0f58210a2f4650d053920437c6a1e741"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5AKVIUQ5.js",
+          "bytes": 1869,
+          "sha256": "a2fe0cc9ca0896a27002b9d2423732fd48d487a1ab1963535fd66c4d444fe4c4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6DACHLHO.js",
+          "bytes": 848,
+          "sha256": "67353dc9246c34f4bb0aa36470634f1047320e88225ea660f0c7e70962c679c7"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6MJC67AJ.js",
+          "bytes": 365,
+          "sha256": "b2e3d4230a40795510d5107e0e80f25fe0fa0791c4010743bfac1b77d14d1084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-72U3XV6C.js",
+          "bytes": 2235,
+          "sha256": "d335e41cef66feff4e7883472676a2764093d4c31047c1b3c38a4e8af6f026f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BJVMVDG.js",
+          "bytes": 1954,
+          "sha256": "34f213a4272d071ddcda65736ebc8aa6d60e6d846e9941ed34585dee51f99f76"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BNNXKC6.js",
+          "bytes": 536,
+          "sha256": "edeeb793cb58df84cc66b9ad8e7f20c61b100fa608bbc333ad004fdf60d66bbd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7PG7PSM2.js",
+          "bytes": 3026,
+          "sha256": "73541d3eaccf9856acf2e27523d839e894cb02b4168139371ca6215fcd759aea"
+        },
+        {
+          "path": "packages/registry/dist/chunk-A55HZE32.js",
+          "bytes": 1287,
+          "sha256": "c7ec5c261a701f400ae73cb1880b88e0f9c27970abf11386d86a642f23959893"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BJD3QN5N.js",
+          "bytes": 1261,
+          "sha256": "3c4d488c4b94a9af39068ea44197e8a496fd92c8bf2c94e298826e76c897e786"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BQ3HTKQJ.js",
+          "bytes": 208,
+          "sha256": "f290ec59fe5aa4071d2ced7454d329c3ba8e95987a5ed8046c9c6e882d37a721"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CK2FZNSZ.js",
+          "bytes": 307,
+          "sha256": "8bbea7918b158f1a2e761f3844bc5b84d61cf0a35ebb9168fda4c362359efa5c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CWUFLU4G.js",
+          "bytes": 8229,
+          "sha256": "b12897ed876bded49d6127e8825cbed7511ffb6817858ad98e8d883a6838a252"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DFLMJYWW.js",
+          "bytes": 862,
+          "sha256": "f39769e695abc49469d5a9a263231cebef73173bb7b8a92bd08d01fac5c94e07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DJXK7GGZ.js",
+          "bytes": 359,
+          "sha256": "9dc61ed9c25d68b17c58a918a73f542f76d8fdbe812fc3a5b0fd3491bc32e710"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DMPLUZHK.js",
+          "bytes": 1803,
+          "sha256": "91b5f3c6848eedec9b11d650ee81732b2394964c69cbc1e963e2f93166495abe"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ECVSMHVI.js",
+          "bytes": 4539,
+          "sha256": "c303fd29260c5e3eaee3af7d4c46d52a98788e0fa093641d75a38c9881ae9283"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EMFC532V.js",
+          "bytes": 1213,
+          "sha256": "ead3c09fe79cc9e1839e82b56345e61b4f3201b4a564afbdd4dc5901a996a0d2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EOBWHQPW.js",
+          "bytes": 6543,
+          "sha256": "a0640105381703ce6d2940fc226fc86150c7f4c1c0f700119f3f3cc21b36ebf1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EPVH3ST2.js",
+          "bytes": 1349,
+          "sha256": "704bf9d70825b1a86e1d93409461a8026c6c310ab79b50bcb16d0e90204b1323"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFFAOODY.js",
+          "bytes": 788,
+          "sha256": "d4624d9be1fc192793907dc052aa2c4e8cede0944096b61cdde92d783a7bfca2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFHRIMZV.js",
+          "bytes": 1379,
+          "sha256": "a9951d979429fbb52b1451c1d75b8bb4cab1c8197b6be9deccaf0a71b41ac7cc"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FXKKZWUD.js",
+          "bytes": 4680,
+          "sha256": "15d72893e7b32a5c3d0185df913006ab0e11d48030bd39faeffaa175373b3955"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FY7HT2AG.js",
+          "bytes": 764,
+          "sha256": "99bdd9460355fb474ad02d5e1e594d1a6dd70f0f9bd4cd45790cd213cf65ff70"
+        },
+        {
+          "path": "packages/registry/dist/chunk-G4XCG644.js",
+          "bytes": 6343,
+          "sha256": "987e6a1ae7dfd863c0a12f95b80e64533ec51c6e4ad67468b485267784d2531d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GKE6AP6I.js",
+          "bytes": 1611,
+          "sha256": "7c2561aae62523656f0e127d0c4caedb3d8b4ad4a89eacf209b86b47e53a8528"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GP5XIDBG.js",
+          "bytes": 407,
+          "sha256": "d3b20fd8483480ca2c9d92a19fb54ac53bb34779ab813384f69985ecc45bb722"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GR4734HF.js",
+          "bytes": 7472,
+          "sha256": "273968a9adb5834a35f915e109fa66974a5dc8b34760d8839c035985a4b2e347"
+        },
+        {
+          "path": "packages/registry/dist/chunk-H3QGI6CM.js",
+          "bytes": 6191,
+          "sha256": "2dc329528099ea91c0ba5cad956f767ea82ad341677379fb91856f8a5a385d07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HLMZ34OQ.js",
+          "bytes": 1024,
+          "sha256": "aa5e84df1eb2dbe00ae11bd2bcd0d0720ceced9eaf0e333459bfaa8b84f8e6ed"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HSL5JFW6.js",
+          "bytes": 445,
+          "sha256": "60b7baf9da873a33d4b2c11a5ecc928211bec5302f05bcce136ad737738b1e01"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HUX6MG2A.js",
+          "bytes": 1101,
+          "sha256": "910a2b4e6e3f41f51c0df09da99542c41041552f0cd7becb9da7f379e4535b15"
+        },
+        {
+          "path": "packages/registry/dist/chunk-INLAVGVY.js",
+          "bytes": 1749,
+          "sha256": "ae8c02be68cca9d6d4b0c2cda0a99420629ad748410de07c1d74306fe1523598"
+        },
+        {
+          "path": "packages/registry/dist/chunk-IP7LRVEH.js",
+          "bytes": 2797,
+          "sha256": "01a899dda8fbf7540cdf302bafd4da7f5e8cb2ad80968943ad7314432533a9e4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JGH4L3MV.js",
+          "bytes": 314,
+          "sha256": "3a59f26ad8e5761a74b1ab9c5b32c906b118c5fa89a62a0baf3abceeabd4223b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JSGATXUP.js",
+          "bytes": 2791,
+          "sha256": "049f52bbe92ce51efa882955a034481555bf01dd0f703fadc50fcffd27380f78"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KCYSLHET.js",
+          "bytes": 2246,
+          "sha256": "41eb05346a036c3de026912fdee6c5cbb657ea43e371ca9fba9c194ab9a9f2e6"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KPHNE4X3.js",
+          "bytes": 1246,
+          "sha256": "65445e1829669520c25d38b3817d326c1a79965a5368e039b921a49427b69e6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KTIPZNE2.js",
+          "bytes": 2019,
+          "sha256": "486ef97e8a1883b5c7aa3cbf5eba883586d7d32bd2c23a58190322798b8b29dd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LA2WH2E5.js",
+          "bytes": 412,
+          "sha256": "1e18259ca75691633b8ac05fcb8116646ff6c62379324a22d23801d884df51d0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LI3P22R4.js",
+          "bytes": 2398,
+          "sha256": "f9b84945496e58365bd98c130dda96f86fa9478014e47d340520dfe7fb0795c5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LUREFXYS.js",
+          "bytes": 1729,
+          "sha256": "357bf46ff8ba1e4f620b88710f26b28a2f1c9f5fb755bb98bb46f8bebdf48218"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MF3S7M2E.js",
+          "bytes": 2293,
+          "sha256": "58e1fe303a7c3d57f8d75957911f111ebaf0935cf6b82adbfa403ee037dff089"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MIBMNG4E.js",
+          "bytes": 9514,
+          "sha256": "605909ecdfb2e8b50aeff5290329a74efd2d944cd97b65d4badc5c44aaf31b8f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ODVA5IOJ.js",
+          "bytes": 177,
+          "sha256": "1a677cfbc873cc3d9a6bc3e70ee745355c9480c4f69730a24550d86de323ae6a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-OS7OOSWT.js",
+          "bytes": 8235,
+          "sha256": "7b242533ebf89e3a829a5655076632d4d9c0cf7890b6ae67d6a2fa32f299f860"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P2PPVRX4.js",
+          "bytes": 2066,
+          "sha256": "645300289378f2b3e175d99fffc7c6be8e2e20a0822c489ae15ec7ea4cf79dec"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P7AMHUOT.js",
+          "bytes": 1759,
+          "sha256": "e8b141d8ed7a64e3ac29f1636294ff08967e26682464d33e956ea13804826b6c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PBI5MCZH.js",
+          "bytes": 416,
+          "sha256": "ccaa4eaf60f8660db5e55662dfe44ab43ca0956f5967fd80a85f659d7e5307ce"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QXGOI5SP.js",
+          "bytes": 3354,
+          "sha256": "ac115d30e1830c31e790d3501595ded792af80bfc349384d650cd88fcb7fac3d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-RV2V35SY.js",
+          "bytes": 4756,
+          "sha256": "f9c54343d0596dad76a4d0c3f3e510f00495f09ff163ebae319bb03650263585"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCN73OHW.js",
+          "bytes": 1980,
+          "sha256": "356d7a3acb7b915dc9adb47db87a4e67b7a2223a6f7341ce1163438aa5555a36"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCY2QYAU.js",
+          "bytes": 3877,
+          "sha256": "30e10db5ac5b92eda3f3150ae23f137ffb7d1d0e48ea906b15bd3641427d7084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SYDUW4LN.js",
+          "bytes": 984,
+          "sha256": "83c7d14d13374186f7b22a0304dcf392b116b2afda19ea1c15f08d20e0ad8c27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T5GV6K3G.js",
+          "bytes": 1251,
+          "sha256": "2b7acbef591b2ad4049a4c63b95cadf226599339ea5942e69501a2805035dd6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T724YMDJ.js",
+          "bytes": 581,
+          "sha256": "9364754d8ef3844f46abc6029ae146abdbd102277f84b6d4b2c6ea7d61fa700f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-THH3TBJI.js",
+          "bytes": 6330,
+          "sha256": "378cf5b78d9acadf762b537d71e4890e8c4e439ed388c942cc34cd4317145f49"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TJHEOZ2C.js",
+          "bytes": 1236,
+          "sha256": "1532428c4890ee5ae2404d87efdfbf74ecca6f44a4e58f1a20d1bd5e5b057274"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UL3BFSP3.js",
+          "bytes": 3271,
+          "sha256": "b5e9be16491bd3c99fcf850704d158d10da7702647a1017375791f9c3d509064"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UXRYVFQX.js",
+          "bytes": 4471,
+          "sha256": "5c1049780331a26c91056813329d88f06636460f8189f8abf36b98fd7186358d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V47DXQF3.js",
+          "bytes": 846,
+          "sha256": "1a7267d36fae171c7be406df878bef9bf6b244b14c1e8d680c7a201e88252d27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WEOWLCYM.js",
+          "bytes": 1776,
+          "sha256": "b5f7da3eefac745c519a744537132a1c587666cdaf0aa048bc989e055c978b43"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WFW2POHH.js",
+          "bytes": 744,
+          "sha256": "92af815bb0fbcf47ce6ad09c5c7df9ad963b0c5a3ded572be658beb440e5e9e5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WN656L3S.js",
+          "bytes": 118,
+          "sha256": "a18e6feb88880afd9b314c084c06e9e42f328d628dc89b64ebe167b93110672e"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XADSAWBY.js",
+          "bytes": 574,
+          "sha256": "bf3fe83babcce75994be087f8bc4f5e7ff325d579972ac36b1e06cc84a192195"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XBITR7ZN.js",
+          "bytes": 12859,
+          "sha256": "b1bd615c65eb97f22b628f36a8eb8cdb95f31da08440b90cd7f09d98feb090de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XEIRIT2K.js",
+          "bytes": 150,
+          "sha256": "74b38ba1d9093a976c80fbba66b99dfc7904509f92a30142f278f3335bb2837f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XLOEDEIY.js",
+          "bytes": 40978,
+          "sha256": "390b8294fb1c9fec71b1f3ea34753ff599540711e46043913de2be134696c6a7"
+        },
+        {
+          "path": "packages/registry/dist/chunk-Y6IONZQ3.js",
+          "bytes": 465,
+          "sha256": "fc200d5df48452ab3cca3cb6e98486a8ba96824452698d8c5780bed795e5cdfc"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.d.ts",
+          "bytes": 535,
+          "sha256": "2ccc636db63008fa6a7ec756974b0c1fda7812b2fe5f943c9aa0818bbfecd13d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.js",
+          "bytes": 233,
+          "sha256": "29944d932332c43d083b92ec700ed29fb4e0123adb73a5cfcf76a95adbbacf1e"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.d.ts",
+          "bytes": 1481,
+          "sha256": "628c982b25298996e5bcf6751dff19cd849119d308355a6a6eb112ae1c69821d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.js",
+          "bytes": 308,
+          "sha256": "62030e04363be88e0c8b24a306e634777dfc94c46d89067d907f2ec0f3cc5136"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.d.ts",
+          "bytes": 346,
+          "sha256": "c27d19402475ee329c2a1268125471ae7b45f2dac345370296f5ca484744b195"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.js",
+          "bytes": 89,
+          "sha256": "c2976a60dda1f1dc17465f7eafbc9fcc24d73bdfcbcb4369f49b4192309debd8"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.d.ts",
+          "bytes": 889,
+          "sha256": "5356235872f798e26d00440f0469617820cdd83ba65ac16a0fdbc1827ddfb6f0"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.js",
+          "bytes": 252,
+          "sha256": "dacf96dbd0356b2ac6118411065138837ac664c8a3e8a69dd255f9ff46ba9f45"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.d.ts",
+          "bytes": 343,
+          "sha256": "0baf5dbd9984568b757243b99fd2c6fc32100d0dddfb9b4df0090f137f01b402"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.js",
+          "bytes": 249,
+          "sha256": "e178d5d4dadd01925ed235fa58c08dfff2f2841ed048f8b99aa660991cbefe67"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.d.ts",
+          "bytes": 497,
+          "sha256": "745a20f073be4a71ff5d7061dba1c5ab7187abd4dbdb5c3496fd7e0e3b394697"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.js",
+          "bytes": 165,
+          "sha256": "4859df0cd5efdb188f0e00d07dc906753d1cec66c0a8435591ddad78352dbfaf"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.d.ts",
+          "bytes": 613,
+          "sha256": "d7ca8372f646c7dcde53a62faff1d36cdfba409ef08d8059981ab81df8ff14d4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.js",
+          "bytes": 253,
+          "sha256": "0083c951e6aca42c589d2990a59a673ba56d6bf2e9a5d127880fb879b5196688"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.d.ts",
+          "bytes": 424,
+          "sha256": "152ff367d8702514cd657b70352ff3a4449f79a7ca93a7bbfbb62f8db65d6d46"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.js",
+          "bytes": 247,
+          "sha256": "847bcea8b3d93b3a88357da32b31dec9d3882fca5fda3f997932faed05419aad"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.d.ts",
+          "bytes": 1287,
+          "sha256": "497a290622b6b744c9b0a4bed30ea9f6878035184d1b766f91237814aff7b62b"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.js",
+          "bytes": 377,
+          "sha256": "ef7fc7cd3b3d2ae2ce44ef6e86d0590d537eae3a2fac5aeb2068931c47436aec"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.d.ts",
+          "bytes": 1538,
+          "sha256": "2c9169ac4cf4705600660d69a9eea4de7c177cb1ec9a9bd32cb7a0e2afc4a7dc"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.js",
+          "bytes": 305,
+          "sha256": "12db89d9389bc0425c2315a8e55629322594eeea1f63241e71dd4d68a32e31c9"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.d.ts",
+          "bytes": 240,
+          "sha256": "f72538ac1818e3677dea03bd0858695515637b1b3ae26975448857a5390785fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.js",
+          "bytes": 190,
+          "sha256": "a3d296e7847b54b2cf267abd4b7404cd68bc7d28c5d7d61e730b7617065d1910"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.d.ts",
+          "bytes": 1048,
+          "sha256": "6259e20b85b6caa044ebb8958eedfc6671f78f31eda01174989e225cff16eec2"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.js",
+          "bytes": 338,
+          "sha256": "c07c01c71691c58315b03177916ea3a9850421d8515316be6957e53dd7534d87"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.d.ts",
+          "bytes": 927,
+          "sha256": "5d4329589850667202392a219f7895d5b497ae22106dd293be67529bdf25227c"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.js",
+          "bytes": 198,
+          "sha256": "715f03fa181e915e89e28fb20aba94b746f04b155cd3a91b46e24f12a6f579e4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.d.ts",
+          "bytes": 1993,
+          "sha256": "2dcdc914557655ee8f61912fc1455b4cfa85aee237d3a454c9377c40fb07e379"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.js",
+          "bytes": 475,
+          "sha256": "89c55a75728022188d30e71dedade8bee76aefff8120633cf19c5ea903c2088f"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.d.ts",
+          "bytes": 181,
+          "sha256": "4639cd1bec8a4b7ec6b84537cb67646c8e6c701915f597b2a0d691f5964753fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.js",
+          "bytes": 170,
+          "sha256": "f1559fab6dbf8549c142fd93a368e339145df5782b70f75f9ae3cfcfd2f1a01a"
+        },
+        {
+          "path": "packages/registry/dist/compare.d.ts",
+          "bytes": 157,
+          "sha256": "004cf14aec3d758072e1f2e48f5d20546a64ad6e87b3a52534d386b3cc30beab"
+        },
+        {
+          "path": "packages/registry/dist/compare.js",
+          "bytes": 52,
+          "sha256": "68efed2ab60bca8e7aa20a8419e4d4692f19b80d5c2d11b3806b41280d36d79f"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.d.ts",
+          "bytes": 626,
+          "sha256": "1a8f28d41b990ced566ec12e29d88808423438590582bba1cb31d2ae7db6e1b0"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.js",
+          "bytes": 134,
+          "sha256": "02e565a16ad1ce8000be3f000632488243d84970ff22813048b63030b58cd0cf"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.d.ts",
+          "bytes": 150,
+          "sha256": "7407f1061a49114139082e2c5259e84af4f103cdad2ac739e1410bc429907fd7"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.js",
+          "bytes": 107,
+          "sha256": "7ccfbb8effe0a8d0445b88cb21e86de60c44e8443e25ba7051b379cf9b59f573"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.d.ts",
+          "bytes": 301,
+          "sha256": "1366ec0e2e69ca84249af003030ffcc04b352ae9543ed50f4c6b962b28232af0"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.js",
+          "bytes": 62,
+          "sha256": "1a704caf931d4b28f08420577d7bc858167f12ff992e8577008f4063a0b5a6a9"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.d.ts",
+          "bytes": 3362,
+          "sha256": "8ce4c68687221861060a6b91cdbcc710f7dd661e5fa302a1bae97998df5319e8"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.js",
+          "bytes": 77,
+          "sha256": "966274a59f02ac4b6a0c58749fb8a4d9b399d0590d708a3e2604420864aa39cb"
+        },
+        {
+          "path": "packages/registry/dist/get-config.d.ts",
+          "bytes": 5103,
+          "sha256": "4f2aa86f00af4b31ca08456f46f6dd850869581a4de3bb61d4e834480d4b0df8"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "bytes": 1292,
+          "sha256": "fa9873c0edbd460f16effa49fdf1480a9cc86d1b244dde4ce3a11143a5140cc4"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.d.ts",
+          "bytes": 594,
+          "sha256": "ba1a6a1bec4f98f944a39dc7b422c529af3c18075348bc9c3780299ba75cdc05"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.js",
+          "bytes": 218,
+          "sha256": "a801ed61a23960221e8c4a6d031a1eee4cbf0b41f4ca9475062f245a492f850b"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.d.ts",
+          "bytes": 160,
+          "sha256": "63a4a4e0cea7e24673fbec5ebaea5a34699620b45c6346d93da6b1cc9fc73709"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.js",
+          "bytes": 53,
+          "sha256": "e6a15a6d2b3ce06f216827f28a91924f70fd024dd526cd36e73020090c038240"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.d.ts",
+          "bytes": 611,
+          "sha256": "bc351c62e4ac0fd1b10e959a1ea2df5f47be3af2e2d6333d31d3d319dca53a91"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.js",
+          "bytes": 143,
+          "sha256": "09ae0a10d5f530db0b85e3fcc77ca6e1fde80dc9cad5c45c5eeba2af64110ae4"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.d.ts",
+          "bytes": 2263,
+          "sha256": "ff67e3abe54904e09c0b75f629441ac36b0a13915faf37eb9f269ea103429bea"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "bytes": 1233,
+          "sha256": "17d32191c5ef9d04711a0ab3ff937fbee77ba953d5e12d5ec16920f018902dee"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.d.ts",
+          "bytes": 256,
+          "sha256": "08893b1e474f983adbc422455d459ef3f659f8eefabb1060f0f74fac67bbdf46"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.js",
+          "bytes": 50,
+          "sha256": "2057d1830f1f8249bef16adef91b54cc7925dfd226d4a135fdece85f4eeb586b"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.d.ts",
+          "bytes": 1986,
+          "sha256": "a737fc959398b802307b43da8665e79b1fc5cc58b446a18d266bbfeadc04feee"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.js",
+          "bytes": 53,
+          "sha256": "7c5a086d8cac4c1764c0dde5d42a5c77b0b9182faed5c2f5ecd197b87886a501"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.d.ts",
+          "bytes": 1189,
+          "sha256": "4ac025cfc4e9fa4ca81dc601e120cf1f418da61ba70778a922d8cae2b1d46673"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.js",
+          "bytes": 173,
+          "sha256": "a171fbfcb3b02923710b62f5319406c2720d350d8d49ae0eb3d28c7d6a7cc48a"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.d.ts",
+          "bytes": 99,
+          "sha256": "91cf2efb7a64e8a5a2d03389064d16bcbd98751dad7d27e7c4449c1505f80241"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.js",
+          "bytes": 51,
+          "sha256": "09972da72526ea07023202cf983f9c0d02f56524d46e14a7d895ad81ad70ef93"
+        },
+        {
+          "path": "packages/registry/dist/json-config.d.ts",
+          "bytes": 379,
+          "sha256": "852280fdbce5100e2b3893290b4b603523055406d52692f125412e06df0a3a45"
+        },
+        {
+          "path": "packages/registry/dist/json-config.js",
+          "bytes": 63,
+          "sha256": "e70c8cb8ffddb77c4313b57135fe5636720a54a33d1693fdd6469c9bb3b40833"
+        },
+        {
+          "path": "packages/registry/dist/logger.d.ts",
+          "bytes": 249,
+          "sha256": "68cd9272a201906a2b27e965a9867bd549a7dd7b578dbf11c223661101aaa9fd"
+        },
+        {
+          "path": "packages/registry/dist/logger.js",
+          "bytes": 73,
+          "sha256": "b39c2caf322c932a7becac0d5e6e4bec2b8394aeda29a0aad8114871ab04d647"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.d.ts",
+          "bytes": 862,
+          "sha256": "1fd66ba2359c243c11ae69b3dd69b96b8bd35d189105b98e353bcfab21737d92"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.js",
+          "bytes": 201,
+          "sha256": "312e68109fb8fed985cea6bc7c1f14f44b556537e8f2258b6fa007b8b116c001"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.d.ts",
+          "bytes": 3791,
+          "sha256": "114986bb2bde5b3dc9229acb64b4b47133f060d3753313af0e0e6810d1763d13"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.js",
+          "bytes": 523,
+          "sha256": "856ae19f7a0d0b95abcba848492aea75956c406f4184bfbb0c0e8c3d2f8ca6bd"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.d.ts",
+          "bytes": 421,
+          "sha256": "836fd9e4694247b9f136a294ed178ccc60599e70cd6fbf24c645dd9730c1d9b8"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "bytes": 2115,
+          "sha256": "adceeedec7f427c036b5b12a37cca00f108880ed80995436381443539ee3e098"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.d.ts",
+          "bytes": 1487,
+          "sha256": "6f4d5343c9379c793cd81a2bbfa5884b7503c090428b01cca2390162a9e43a37"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "bytes": 1072,
+          "sha256": "6808ca497746273c45cac1dbdbb2517fd405048802993f9ad78ae2fec163f229"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.d.ts",
+          "bytes": 39377,
+          "sha256": "30d68c0937cbc143dd320d6caacc8122d9e262aa6b0096f78db9e2f2bcd23477"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "bytes": 1277,
+          "sha256": "730752a0fd77b819278cc66868303b16ddadc34f225fb084b61f200733d23c17"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.d.ts",
+          "bytes": 921,
+          "sha256": "aabf93ffde91c5262248144da5a9490bc989515f9b1e35c424c03f497b63c9f4"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "bytes": 1093,
+          "sha256": "85660bc5f16cc8acebb010adc650e3bc587329d84d0bbc41fb0ba101f89f60eb"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.d.ts",
+          "bytes": 1330,
+          "sha256": "f223d5057f58440381b0576a959dbf0f5dd1ccb06eb471319c1efaf82c8a222c"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "bytes": 986,
+          "sha256": "1d1a6b09716e8289fc010ca7befe7aad8c8a1e4954d69976fb817374f0a1d9a8"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.d.ts",
+          "bytes": 1285,
+          "sha256": "1b665fffefbe0a54059401d1723c57b4a8427c73806d80974ae7325a430d3276"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.js",
+          "bytes": 215,
+          "sha256": "42feb7e932eabc3bbb2d99b204b3d6f63ef83afc93e1952f19663a5359fabe2a"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.d.ts",
+          "bytes": 749,
+          "sha256": "c63ce540c0a2d7525f947796ec2eb7f5a037dad1c26a0b8cd096530adcd56bfe"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.js",
+          "bytes": 211,
+          "sha256": "11128f726a49fda90881a1ab4420a399a67ecb5c71e4d42b1b9bd53e64afebe8"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.d.ts",
+          "bytes": 156,
+          "sha256": "0a4fdaa6af531c242a56499f8a22a1b11f0e40575a483f8139417c906df11c23"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.js",
+          "bytes": 102,
+          "sha256": "e0f2819c664f54d5930e57389aa576a16e4e417c9330f9eac2d797bd821b907e"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.d.ts",
+          "bytes": 5122,
+          "sha256": "4602cab8547be1832ce003dd242ebce3977a93598a0e094a4ff5ecf9d0fb54f3"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.js",
+          "bytes": 604,
+          "sha256": "f05cb7f4dd655e66b7d441e4a7bb7d008c76b764e60e4749a08dd393e1e14d3d"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.d.ts",
+          "bytes": 6361,
+          "sha256": "de001f44904da9de5da8abd107895ffeb1e8c3e0b03f284deaedc0ef0b503a64"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "bytes": 1029,
+          "sha256": "5cd98be778ae3fae3bd244256d7e9964c28c68da18acd5ac69e8ac036da28ff9"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.d.ts",
+          "bytes": 646,
+          "sha256": "35a8ed0159f76dfd293c08ccd44b1add30c586bdab2c3302f88443e0ef258f30"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.js",
+          "bytes": 286,
+          "sha256": "bc6a047ec8b11023d1e979475d9297a8b3b3735dd10d2550ef91e8f55e49a952"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.d.ts",
+          "bytes": 1609,
+          "sha256": "a1d3b6c41fa93a47903628d2fceed27fa7092d16f01b69e132e68c3eca92f3a7"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.js",
+          "bytes": 377,
+          "sha256": "409e3df5ecc062609874b622ef330d0d81f54a21ebae7f661972dd29fd122b90"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.d.ts",
+          "bytes": 804,
+          "sha256": "56382a9c9b049f2464400ef16c5335bc70d99b2746dc19c427ed917f79d6756e"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.js",
+          "bytes": 399,
+          "sha256": "5451f1383f565c9492d1d75090880c178e0e2d2f9cb9ae1b5f3ae75d9035457b"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.d.ts",
+          "bytes": 13934,
+          "sha256": "014d1a57e9e7c5b6ea9998f91bf4912ec0b096348e578d8a4dd1660ef76a0784"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "bytes": 1057,
+          "sha256": "328b4212160bf1603c95617831af6e740d8c2cb0a91d3f881590eb7f642a6ae7"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.d.ts",
+          "bytes": 815,
+          "sha256": "ffd89150e65639beb0e3c68b5581bbac62066e5ee5aca6e332215a76181ad36d"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "bytes": 2796,
+          "sha256": "6632afba2b07c9182d6f557677abaab2afeeb47d5fced21e9a35a32520736ac3"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.d.ts",
+          "bytes": 56039,
+          "sha256": "b280dc10216a9a922a7ceb1a1db307cf085a0e4810f107e0b1818e860106c62e"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "bytes": 1176,
+          "sha256": "35e98003e5253014dd450254530e7626c946544620a59bf4af20a2f87243bb84"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.d.ts",
+          "bytes": 278,
+          "sha256": "cf53c1156c70e1486d557bd396b514486e99cf9b07d88b53b792248165e00d65"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "bytes": 1477,
+          "sha256": "7e507d23352ba12aef7b9b790e0c32220e348ebe499818b3dfa6da27ce5c8e66"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.d.ts",
+          "bytes": 196,
+          "sha256": "5c6c9d5d1679cd23cfcf407656fa1832db5d93cc8e7c70e89d3d8b9d2122da60"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.js",
+          "bytes": 70,
+          "sha256": "07ecd97395c181a0cc14e16e6c959c77a904c0f0328a75cc6c34545ff7d8167c"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.d.ts",
+          "bytes": 269,
+          "sha256": "aa8cbef5b4065a50662d6b23b5f3f5fb9a1333d20ab33e4859a2a705281fc9d8"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.js",
+          "bytes": 81,
+          "sha256": "7123e6bd52297994b4ab5f8ffee8cdbce7c5108b53436fc31bec621b85cf4d3a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.d.ts",
+          "bytes": 714,
+          "sha256": "1bbf984cf726e059f21ff570ed18307bc4e920aac905ac03896928bc0e448e9a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.js",
+          "bytes": 513,
+          "sha256": "902a880328d09a6fd57dcaefd8770ad88ec7a90f79dbcfae810054250d37eaaa"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.d.ts",
+          "bytes": 9982,
+          "sha256": "3590a82c29787b9a7413ffeaa00d8edda5aa82482e40c0f1b0c61df208cb392b"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "bytes": 1051,
+          "sha256": "5431605da6257523c27fd8922285005f89314be6416537b648ad6b06894ce2aa"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.d.ts",
+          "bytes": 109400,
+          "sha256": "ce8059abfc663342e85395da8e1c6f2ddf9cd44feb5027b2fb852fba69a19916"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.d.ts",
+          "bytes": 1988,
+          "sha256": "4cba920eaa95608b57994ef7f3893241c873ee2c4ab1db0c92e15bc9b4cb1448"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "bytes": 1308,
+          "sha256": "982c4911874f7d1126d7ba1d0862dbf1f59f19d62fceee651b6a4e726644a209"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.d.ts",
+          "bytes": 13290,
+          "sha256": "b3c3a1f78cb34aa60a0bc2303d60a221b89b9a6b3222623690cb73f86cb1dade"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "bytes": 1029,
+          "sha256": "9519b2207323f8f7d0432eb354fa0ebf2c65abc4d4aa39d2df5d0b4f15ca51aa"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.d.ts",
+          "bytes": 1771,
+          "sha256": "be23832a5b1d2b9c3438c8315435d5ea14d49cd64bbe03357351a60b218591e6"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "bytes": 1152,
+          "sha256": "5cbc95eb25c2b78ffeab8aba29aca92d8d211e1fc89e6082f1a65e295e3b5690"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.d.ts",
+          "bytes": 510,
+          "sha256": "a33d8682faa55ef171ec050c99817efcff02e155fdcdf96c8b37661f5c52fcf2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "bytes": 10171,
+          "sha256": "db2f574c6b3c7440b519c448b9bcbca3bb236ee78812d9e2bcd0d49c4c95a5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.d.ts",
+          "bytes": 604,
+          "sha256": "227949b0b0963f637ea7a625621867dc676eb223e0dc44ea4aaad8b26b645579"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "bytes": 1064,
+          "sha256": "5547691484b0bc0ac16808c94ad06b5fd8557793f172a2f00bf5ca0e53f07948"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.d.ts",
+          "bytes": 930,
+          "sha256": "24363e8e20a29ed75e0473dfd3c1968c8cf97dd9caf11145db934f9d19cd4027"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.js",
+          "bytes": 152,
+          "sha256": "008576190e0e4dcbee5047e162fbf044c9ec144427c72f5b477e56cca9c1c4b4"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.d.ts",
+          "bytes": 962,
+          "sha256": "6e03ab61d1938e8fb4ab2ceba65ca166c12d36d1256b0a9af082566997e3da8b"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.js",
+          "bytes": 303,
+          "sha256": "f8daff4958bd68657c2caa3973b162c06104ff556199c64c06a02e519ca91ac6"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.d.ts",
+          "bytes": 823,
+          "sha256": "7dd730c1407fafea259387450c3252abf238a9878d913f2c8de96f5f17965ce8"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/spinner.d.ts",
+          "bytes": 223,
+          "sha256": "78cfe8e6958718ce582ea207f93b635577195edd97330155f2a3c18375efddec"
+        },
+        {
+          "path": "packages/registry/dist/spinner.js",
+          "bytes": 123,
+          "sha256": "687c1afb44f193d0b6b0bd7953269fbf43174a52c010e468cba6087463fd581f"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.d.ts",
+          "bytes": 268,
+          "sha256": "d0047828dc6561fcede41e8a6e9b0ff06796ef0efb1107a56c8b4c4ea9cbc4d5"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.js",
+          "bytes": 74,
+          "sha256": "00e1f9b488e1068e8080159fc1373b7cded8568a6d9883fa40bc3bfa3cd19b66"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.d.ts",
+          "bytes": 374,
+          "sha256": "7f28fb0ac1571d6c643e66c8c9de60babf434e331eddf79b97990180a22ddc4f"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.js",
+          "bytes": 101,
+          "sha256": "6e8bb6945dd4261c0c6c90398bcef6e2ed21eb9d064f7ed9caf66b447eafa838"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.d.ts",
+          "bytes": 664,
+          "sha256": "a1436c25e68b82705f066726ce7bd31e8830554111696a258b36fd85175f6e7b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "bytes": 1470,
+          "sha256": "38bee896972ca1e735a8aecdbf9c8671c3a346828461aa97f1863271aa08aae2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.d.ts",
+          "bytes": 298,
+          "sha256": "646ec6ac25e9e8a3e1d5cf8dff6193b42ff1ea6ace1f7ce623d571731f97b0dc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.js",
+          "bytes": 139,
+          "sha256": "ea006b78d16578373b8473df9e5f6058066f3f200f52ddbfa8c652e713d351bc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.d.ts",
+          "bytes": 249,
+          "sha256": "4747bcd00d550a22b5f250a1e97ecd494d1d926a5a74b84cdb82a6a96d409021"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.js",
+          "bytes": 201,
+          "sha256": "1877d5c07b33f91430fbd5bcb5f7f302c971810351a6d6a3e94e7f7d76c05759"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.d.ts",
+          "bytes": 407,
+          "sha256": "0059c96a95fd759e2eb6a889f0972f643b1c6bed48f747b5a700155dfa534123"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.js",
+          "bytes": 299,
+          "sha256": "19944d381c2ec40f9e0dd38668bfe4167e6bd455382e9e80e86e6ea5dee24a45"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.d.ts",
+          "bytes": 524,
+          "sha256": "fbb695cb848df05f2b241c7c5a024de822954dcbba8432fb1ce74dd9f0516d59"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.js",
+          "bytes": 244,
+          "sha256": "4a8a434e4a1405ab91b4b55298b36999a5f297a88550c619215b90ae0aa8ba06"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.d.ts",
+          "bytes": 243,
+          "sha256": "1427c92eae4d746567d367dcf2590c21e6d49323acb6a59519c9d9586de336e7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.js",
+          "bytes": 227,
+          "sha256": "145d98f2555d0d07f152e778451399975b0882dbb74cf63365bb9930f678867b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.d.ts",
+          "bytes": 245,
+          "sha256": "5ce840b8240fc424ec1696c8ede191ccc503e310c1a4c5e38f3462b03a722a31"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.js",
+          "bytes": 344,
+          "sha256": "94a144dfa0d9cad92882c697ba8629e464f46ad57dabdd2d0c3dbda3322292aa"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.d.ts",
+          "bytes": 247,
+          "sha256": "7621984b0c83fced187ead91102063b251fe125306f536f188a340611a815541"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.js",
+          "bytes": 200,
+          "sha256": "9779a4dd3564583d409d0575d5047302a702f193d66b2a93231eaf453b5f1998"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.d.ts",
+          "bytes": 241,
+          "sha256": "85a16b1043bb4f79dbc380420c7d5449e3550614ad79aae1d5bcc4bfb540d454"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.js",
+          "bytes": 52,
+          "sha256": "1db241f82a28b88322477b0c9dcadb1977f567858fa01de31eeb57d75faa847a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.d.ts",
+          "bytes": 243,
+          "sha256": "e07c0c293a66e731d35b16fd78a84bb93f95b35417163aff085d1d7d033925d2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.js",
+          "bytes": 198,
+          "sha256": "29cf5530dec67c27865e0915497f1bfd32d51ced7e292efe11ae4a475038d5f8"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.d.ts",
+          "bytes": 243,
+          "sha256": "c9c68cafb9cb511a1d5afb11fcf62846ceea31231fef00857ebc5d9f4137677e"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.js",
+          "bytes": 198,
+          "sha256": "f57e672fd883161bfd90b6b49c2735b25c8004aac313a4bf4c546f5f16d90a37"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.d.ts",
+          "bytes": 241,
+          "sha256": "838f375575bffbe376264acacff2de438ecfb3ac73ab4951712260e40aebcdb7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.js",
+          "bytes": 226,
+          "sha256": "c9a97febfd3c23635b0808008e39a319c4246f4657f878af2f231637b722c255"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.d.ts",
+          "bytes": 419,
+          "sha256": "9a5d71a0db11bedcaeb4ab3557317d54373c449d026c018c2e349217d88d054c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "bytes": 1257,
+          "sha256": "2ef6bf3f93a1fd268641baf3e525d03f3ac745f7f7b7b88404824782f5389eb3"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.d.ts",
+          "bytes": 1099,
+          "sha256": "e1ee15b0d4d3d8cd298330999daf6250dc1d77f7adfc74b3ccfe22d66680369a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "bytes": 1277,
+          "sha256": "72641eaadf95f3f34eeb4696ac97f7926f2d9ec594b082a0b7a4baec7deebbf3"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.d.ts",
+          "bytes": 1234,
+          "sha256": "25db3723eb446d13424a3330af90bb6d1a105d297a7631b1ddc27fd1a9a3bf3f"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.js",
+          "bytes": 201,
+          "sha256": "dc1f82e18ca0f656c15df77f8d4c0afdb66030f7dc8768c49bca82fefacd5ab9"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.d.ts",
+          "bytes": 921,
+          "sha256": "bd07db4387a2187859500d056c43d8fc365aeb3906e402380f0093546ab3595d"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.js",
+          "bytes": 183,
+          "sha256": "8b2703739a1b9c090d794b03c49ea5b8750b5341a49f9ae284c410843c9f9490"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.d.ts",
+          "bytes": 1195,
+          "sha256": "f5eca05654db9985e68a8baf345bcba8d22bc0e258d6ce42f0c4c48e3e6e4911"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.js",
+          "bytes": 309,
+          "sha256": "551a46a3178ccaf8830103e2b8a02e14822e73c1cceff6e08cf0957189940c9b"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.d.ts",
+          "bytes": 481,
+          "sha256": "371acf31a9172c708a6e1e06d79ddaff2317a64a5c1dfc65a3d991eeaced39a8"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.js",
+          "bytes": 169,
+          "sha256": "20d544d173a0df2f34bcac0d58ffa4514608c30b1b1b63a71fd9ed4e39cd347c"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.d.ts",
+          "bytes": 2236,
+          "sha256": "64f3a8e010639b536d0962af93d2056db35ed5702162735cc1b96223e2f74b53"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "bytes": 1916,
+          "sha256": "6eb9593a9c6ae1c88b1d9faaba0a2ffd346257a8d4bca64816f1fd4569d94871"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.d.ts",
+          "bytes": 4045,
+          "sha256": "212713fbbad49fad4f6a6d7e3cbd57e4325724cd0078cc07c5f4f1a4af5839d0"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "bytes": 1282,
+          "sha256": "a82286c0fea35ed2df8bb60b2a901ed7ec948217c0c4fd61294ab0e3b7431333"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.d.ts",
+          "bytes": 1729,
+          "sha256": "4d8c7fd12d6c0cf940e3bf90371c5d481e94908f2fe802683387a7c8e130d3ce"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.js",
+          "bytes": 587,
+          "sha256": "63f1a6019260a76fc845b55b4f546aafaeb7e10f0d329befc350e2a4cb6b95bc"
+        },
+        {
+          "path": "packages/registry/dist/workspace.d.ts",
+          "bytes": 416,
+          "sha256": "3ba6c78139f2676b435e10bfef14e080513b2fe881f855f8ab7a9a6d96414a40"
+        },
+        {
+          "path": "packages/registry/dist/workspace.js",
+          "bytes": 208,
+          "sha256": "95c2b4d9d2c25bf129a013c25775213e13bd182c554a2d43e804957ce62be8ab"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-3W6BGJGE.js",
+          "bytes": 1040,
+          "sha256": "b64691fc01ff0dbcba92c6f1ff50db9c82de832c77bd35b02975a2b7dd5ef452"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-I2VXPUS4.js",
+          "bytes": 10032,
+          "sha256": "60b086241d49d570eb33621ac40ba2b3af0aa4991a79dc06271792b89011b45d"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.d.ts",
+          "bytes": 595,
+          "sha256": "ae41ef3f6343bfeb4ba46720cc010e53274d6ffe31397e69e905f0c72a01d6c7"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.js",
+          "bytes": 166,
+          "sha256": "bd8f528b9627035571dde501db966cdce4256bea3c3221431a5b90583f267a38"
+        },
+        {
+          "path": "packages/shadcn/dist/index.d.ts",
+          "bytes": 6674,
+          "sha256": "b873684e69b54305b37d00c60667f12a3bc3518e692e96bf27a4b83d560d3228"
+        },
+        {
+          "path": "packages/shadcn/dist/index.js",
+          "bytes": 160308,
+          "sha256": "f001a3bfc86960f91beb877f8c37177a819eef91828a50a325d4405cccdd748c"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.d.ts",
+          "bytes": 288,
+          "sha256": "e073003796739209177a8812d4862772f5e8188fff22f2990ac2784252e0fa5e"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.js",
+          "bytes": 64,
+          "sha256": "0ae9eff6c508e71a9f913b9d57586ccdb066d10a42dbd2767914a15e59410874"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.d.ts",
+          "bytes": 463,
+          "sha256": "9e963bc914e000ee5e0fd763a20e5d5138c9cef4bae0452cf38f0484083863a7"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.js",
+          "bytes": 410,
+          "sha256": "a2bb1a694f3e071734bfcb5280f12049379ece25b2cc9176e745a6b89a49b79f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.d.ts",
+          "bytes": 34,
+          "sha256": "5ba277e4e404cf03a06530df5191fe8ca261c075c4a8d2b0e0f48d1bdfe9924f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.js",
+          "bytes": 30,
+          "sha256": "8730e5ea7f49b841c130a3933285955052f09525b91c86c5e0e6c5160d3a4ebb"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.d.ts",
+          "bytes": 41,
+          "sha256": "69ee83334374dce7de1c5909c5c9543cf6beaf221be30724661a1d9f9461ee61"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.js",
+          "bytes": 37,
+          "sha256": "7902ad7dd12a37ab1a4fc4803e17fd12f420b5bd920dc31596853416c568c917"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.css",
+          "bytes": 16977,
+          "sha256": "0c12b135dcade0848bd5b9bc0b4a797955230632ae3f08f33597b8ed989b16c0"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "bytes": 111,
+          "sha256": "f67144bb0b282bcc433088632e22d914255edf276de6f4b16db29285f0627ba7"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.d.ts",
+          "bytes": 1197,
+          "sha256": "3e2cfaff9a1e015d8b276aa2e2c8a011d3262bafbae856ce3101a0db96738af0"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.js",
+          "bytes": 9371,
+          "sha256": "bafc2ae52c8787ba5a72b242815f11b3aeffbece36db8db7201f5ecc080e2540"
+        }
+      ],
+      "sha256": "42effee7b8adb8790d5bed2a341e7372e02642916ec76029d0f78e696ae2fc20"
+    },
+    "baselineARaw": {
+      "entries": [
+        {
+          "path": "packages/registry/dist/add-components.d.ts",
+          "bytes": 902,
+          "sha256": "447375562554de4844ee5be1ecca9c3977c5eb8649f43cffeb46f7e0e88051fc"
+        },
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "bytes": 2009,
+          "sha256": "35208060626ccd5d003df3130197bf17d8c41f0187faa6146be2bbc82f33c306"
+        },
+        {
+          "path": "packages/registry/dist/chunk-34X3C4PK.js",
+          "bytes": 64376,
+          "sha256": "7d61bd323af48b2d253fc199b24b53502c34e69f434e60fa992a0fcf43b2c53c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-37TZNUWF.js",
+          "bytes": 8406,
+          "sha256": "3c8014dc4d85b30e1fe0a856ef1edf40f7cd38773d4f57360e54094756ff23fb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OKCQO2T.js",
+          "bytes": 1274,
+          "sha256": "bb334c8b302e2bde513808e274b6a2b88d39a4f4d64d57edfceb6f9831599ec1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OLGOFMN.js",
+          "bytes": 7472,
+          "sha256": "59c9752fcce39fbae04c2c4a103d8fbbc7f36eb537679579821222807d8748de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4RGI4SXE.js",
+          "bytes": 1808,
+          "sha256": "ad064679a202f510cfa6544af3b443a32c04b1bfddc2e0afb9e98b309bee1116"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4SFT74AY.js",
+          "bytes": 217,
+          "sha256": "d2cd3d23295477711efec9e5d499195b0e86b75561c5d57f2e09e9e40f9bdc04"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4XJHS6CV.js",
+          "bytes": 2303,
+          "sha256": "4fbe4691e52f0874d2dda15502f9f42e0f58210a2f4650d053920437c6a1e741"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5AKVIUQ5.js",
+          "bytes": 1869,
+          "sha256": "a2fe0cc9ca0896a27002b9d2423732fd48d487a1ab1963535fd66c4d444fe4c4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6DACHLHO.js",
+          "bytes": 848,
+          "sha256": "67353dc9246c34f4bb0aa36470634f1047320e88225ea660f0c7e70962c679c7"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6MJC67AJ.js",
+          "bytes": 365,
+          "sha256": "b2e3d4230a40795510d5107e0e80f25fe0fa0791c4010743bfac1b77d14d1084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-72U3XV6C.js",
+          "bytes": 2235,
+          "sha256": "d335e41cef66feff4e7883472676a2764093d4c31047c1b3c38a4e8af6f026f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BJVMVDG.js",
+          "bytes": 1954,
+          "sha256": "34f213a4272d071ddcda65736ebc8aa6d60e6d846e9941ed34585dee51f99f76"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7PG7PSM2.js",
+          "bytes": 3026,
+          "sha256": "73541d3eaccf9856acf2e27523d839e894cb02b4168139371ca6215fcd759aea"
+        },
+        {
+          "path": "packages/registry/dist/chunk-A55HZE32.js",
+          "bytes": 1287,
+          "sha256": "c7ec5c261a701f400ae73cb1880b88e0f9c27970abf11386d86a642f23959893"
+        },
+        {
+          "path": "packages/registry/dist/chunk-AW3NYH2T.js",
+          "bytes": 2797,
+          "sha256": "3ca9a630863ea92645f6b0fade2bf03d91e8a092fc227af84dceb49559662483"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BHU27KHS.js",
+          "bytes": 536,
+          "sha256": "3c4976a1c81fca84e14cde679998d6af75bc2796c37f2c35a227a29185553941"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BJD3QN5N.js",
+          "bytes": 1261,
+          "sha256": "3c4d488c4b94a9af39068ea44197e8a496fd92c8bf2c94e298826e76c897e786"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BQ3HTKQJ.js",
+          "bytes": 208,
+          "sha256": "f290ec59fe5aa4071d2ced7454d329c3ba8e95987a5ed8046c9c6e882d37a721"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CK2FZNSZ.js",
+          "bytes": 307,
+          "sha256": "8bbea7918b158f1a2e761f3844bc5b84d61cf0a35ebb9168fda4c362359efa5c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CWUFLU4G.js",
+          "bytes": 8229,
+          "sha256": "b12897ed876bded49d6127e8825cbed7511ffb6817858ad98e8d883a6838a252"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DFLMJYWW.js",
+          "bytes": 862,
+          "sha256": "f39769e695abc49469d5a9a263231cebef73173bb7b8a92bd08d01fac5c94e07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DJXK7GGZ.js",
+          "bytes": 359,
+          "sha256": "9dc61ed9c25d68b17c58a918a73f542f76d8fdbe812fc3a5b0fd3491bc32e710"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DMPLUZHK.js",
+          "bytes": 1803,
+          "sha256": "91b5f3c6848eedec9b11d650ee81732b2394964c69cbc1e963e2f93166495abe"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ECVSMHVI.js",
+          "bytes": 4539,
+          "sha256": "c303fd29260c5e3eaee3af7d4c46d52a98788e0fa093641d75a38c9881ae9283"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EMFC532V.js",
+          "bytes": 1213,
+          "sha256": "ead3c09fe79cc9e1839e82b56345e61b4f3201b4a564afbdd4dc5901a996a0d2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EOBWHQPW.js",
+          "bytes": 6543,
+          "sha256": "a0640105381703ce6d2940fc226fc86150c7f4c1c0f700119f3f3cc21b36ebf1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EPVH3ST2.js",
+          "bytes": 1349,
+          "sha256": "704bf9d70825b1a86e1d93409461a8026c6c310ab79b50bcb16d0e90204b1323"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFFAOODY.js",
+          "bytes": 788,
+          "sha256": "d4624d9be1fc192793907dc052aa2c4e8cede0944096b61cdde92d783a7bfca2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FH2VLXDR.js",
+          "bytes": 40978,
+          "sha256": "2f4eff2892998739c24ee6f7c0cd2fc818c3bbe33f48f3078d5eb7b807104091"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FY7HT2AG.js",
+          "bytes": 764,
+          "sha256": "99bdd9460355fb474ad02d5e1e594d1a6dd70f0f9bd4cd45790cd213cf65ff70"
+        },
+        {
+          "path": "packages/registry/dist/chunk-G4XCG644.js",
+          "bytes": 6343,
+          "sha256": "987e6a1ae7dfd863c0a12f95b80e64533ec51c6e4ad67468b485267784d2531d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GKE6AP6I.js",
+          "bytes": 1611,
+          "sha256": "7c2561aae62523656f0e127d0c4caedb3d8b4ad4a89eacf209b86b47e53a8528"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GP5XIDBG.js",
+          "bytes": 407,
+          "sha256": "d3b20fd8483480ca2c9d92a19fb54ac53bb34779ab813384f69985ecc45bb722"
+        },
+        {
+          "path": "packages/registry/dist/chunk-H3QGI6CM.js",
+          "bytes": 6191,
+          "sha256": "2dc329528099ea91c0ba5cad956f767ea82ad341677379fb91856f8a5a385d07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HLMZ34OQ.js",
+          "bytes": 1024,
+          "sha256": "aa5e84df1eb2dbe00ae11bd2bcd0d0720ceced9eaf0e333459bfaa8b84f8e6ed"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HSL5JFW6.js",
+          "bytes": 445,
+          "sha256": "60b7baf9da873a33d4b2c11a5ecc928211bec5302f05bcce136ad737738b1e01"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HUX6MG2A.js",
+          "bytes": 1101,
+          "sha256": "910a2b4e6e3f41f51c0df09da99542c41041552f0cd7becb9da7f379e4535b15"
+        },
+        {
+          "path": "packages/registry/dist/chunk-INLAVGVY.js",
+          "bytes": 1749,
+          "sha256": "ae8c02be68cca9d6d4b0c2cda0a99420629ad748410de07c1d74306fe1523598"
+        },
+        {
+          "path": "packages/registry/dist/chunk-J7DMLUED.js",
+          "bytes": 1379,
+          "sha256": "9dd4a45dd72666de922de4f3eebd0d80427f017e57ca48323ca9b6fd7e60fc42"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JGH4L3MV.js",
+          "bytes": 314,
+          "sha256": "3a59f26ad8e5761a74b1ab9c5b32c906b118c5fa89a62a0baf3abceeabd4223b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JSGATXUP.js",
+          "bytes": 2791,
+          "sha256": "049f52bbe92ce51efa882955a034481555bf01dd0f703fadc50fcffd27380f78"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KCYSLHET.js",
+          "bytes": 2246,
+          "sha256": "41eb05346a036c3de026912fdee6c5cbb657ea43e371ca9fba9c194ab9a9f2e6"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KHFSTWMF.js",
+          "bytes": 9514,
+          "sha256": "993a6f621c4c014e3f74ed0e9abc117e0b9bb2615d40fd1edd32790761439521"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KPHNE4X3.js",
+          "bytes": 1246,
+          "sha256": "65445e1829669520c25d38b3817d326c1a79965a5368e039b921a49427b69e6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KTIPZNE2.js",
+          "bytes": 2019,
+          "sha256": "486ef97e8a1883b5c7aa3cbf5eba883586d7d32bd2c23a58190322798b8b29dd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LA2WH2E5.js",
+          "bytes": 412,
+          "sha256": "1e18259ca75691633b8ac05fcb8116646ff6c62379324a22d23801d884df51d0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LI3P22R4.js",
+          "bytes": 2398,
+          "sha256": "f9b84945496e58365bd98c130dda96f86fa9478014e47d340520dfe7fb0795c5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LUREFXYS.js",
+          "bytes": 1729,
+          "sha256": "357bf46ff8ba1e4f620b88710f26b28a2f1c9f5fb755bb98bb46f8bebdf48218"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ODVA5IOJ.js",
+          "bytes": 177,
+          "sha256": "1a677cfbc873cc3d9a6bc3e70ee745355c9480c4f69730a24550d86de323ae6a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P2PPVRX4.js",
+          "bytes": 2066,
+          "sha256": "645300289378f2b3e175d99fffc7c6be8e2e20a0822c489ae15ec7ea4cf79dec"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P7AMHUOT.js",
+          "bytes": 1759,
+          "sha256": "e8b141d8ed7a64e3ac29f1636294ff08967e26682464d33e956ea13804826b6c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PBI5MCZH.js",
+          "bytes": 416,
+          "sha256": "ccaa4eaf60f8660db5e55662dfe44ab43ca0956f5967fd80a85f659d7e5307ce"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PVW25JWN.js",
+          "bytes": 4680,
+          "sha256": "7a7aa2fad6fc6b96cf3bda1efae7f1e9fbab42bb37565651c66387ef0e2b516a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QCRUN24Y.js",
+          "bytes": 4756,
+          "sha256": "9005896a2c7f884e04a3f95e8a149c5606bc8a3ac12a6a9d32538d39984bba93"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QXGOI5SP.js",
+          "bytes": 3354,
+          "sha256": "ac115d30e1830c31e790d3501595ded792af80bfc349384d650cd88fcb7fac3d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCN73OHW.js",
+          "bytes": 1980,
+          "sha256": "356d7a3acb7b915dc9adb47db87a4e67b7a2223a6f7341ce1163438aa5555a36"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCY2QYAU.js",
+          "bytes": 3877,
+          "sha256": "30e10db5ac5b92eda3f3150ae23f137ffb7d1d0e48ea906b15bd3641427d7084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SYDUW4LN.js",
+          "bytes": 984,
+          "sha256": "83c7d14d13374186f7b22a0304dcf392b116b2afda19ea1c15f08d20e0ad8c27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T5GV6K3G.js",
+          "bytes": 1251,
+          "sha256": "2b7acbef591b2ad4049a4c63b95cadf226599339ea5942e69501a2805035dd6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T724YMDJ.js",
+          "bytes": 581,
+          "sha256": "9364754d8ef3844f46abc6029ae146abdbd102277f84b6d4b2c6ea7d61fa700f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-THH3TBJI.js",
+          "bytes": 6330,
+          "sha256": "378cf5b78d9acadf762b537d71e4890e8c4e439ed388c942cc34cd4317145f49"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TJHEOZ2C.js",
+          "bytes": 1236,
+          "sha256": "1532428c4890ee5ae2404d87efdfbf74ecca6f44a4e58f1a20d1bd5e5b057274"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TOLRNYZN.js",
+          "bytes": 8235,
+          "sha256": "5c6863d5738b34da6552f9365131dc868160d4262200d6f51efede39070f316c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UDHDDDRZ.js",
+          "bytes": 4471,
+          "sha256": "e02cc19c1f9393b5e8ad83ceda0202f9e7f4f4ef98b62ca147fe380c4e6657f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UL3BFSP3.js",
+          "bytes": 3271,
+          "sha256": "b5e9be16491bd3c99fcf850704d158d10da7702647a1017375791f9c3d509064"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V47DXQF3.js",
+          "bytes": 846,
+          "sha256": "1a7267d36fae171c7be406df878bef9bf6b244b14c1e8d680c7a201e88252d27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WEOWLCYM.js",
+          "bytes": 1776,
+          "sha256": "b5f7da3eefac745c519a744537132a1c587666cdaf0aa048bc989e055c978b43"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WFW2POHH.js",
+          "bytes": 744,
+          "sha256": "92af815bb0fbcf47ce6ad09c5c7df9ad963b0c5a3ded572be658beb440e5e9e5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WN656L3S.js",
+          "bytes": 118,
+          "sha256": "a18e6feb88880afd9b314c084c06e9e42f328d628dc89b64ebe167b93110672e"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XADSAWBY.js",
+          "bytes": 574,
+          "sha256": "bf3fe83babcce75994be087f8bc4f5e7ff325d579972ac36b1e06cc84a192195"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XBITR7ZN.js",
+          "bytes": 12859,
+          "sha256": "b1bd615c65eb97f22b628f36a8eb8cdb95f31da08440b90cd7f09d98feb090de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XEIRIT2K.js",
+          "bytes": 150,
+          "sha256": "74b38ba1d9093a976c80fbba66b99dfc7904509f92a30142f278f3335bb2837f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-Y6IONZQ3.js",
+          "bytes": 465,
+          "sha256": "fc200d5df48452ab3cca3cb6e98486a8ba96824452698d8c5780bed795e5cdfc"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ZVEJ2BMI.js",
+          "bytes": 2293,
+          "sha256": "ad5a5c1ce5d5827f9a9c53a83a936517a4cfbb2181d42b884a20b0e217bcdd15"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.d.ts",
+          "bytes": 535,
+          "sha256": "2ccc636db63008fa6a7ec756974b0c1fda7812b2fe5f943c9aa0818bbfecd13d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.js",
+          "bytes": 233,
+          "sha256": "29944d932332c43d083b92ec700ed29fb4e0123adb73a5cfcf76a95adbbacf1e"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.d.ts",
+          "bytes": 1481,
+          "sha256": "628c982b25298996e5bcf6751dff19cd849119d308355a6a6eb112ae1c69821d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.js",
+          "bytes": 308,
+          "sha256": "62030e04363be88e0c8b24a306e634777dfc94c46d89067d907f2ec0f3cc5136"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.d.ts",
+          "bytes": 346,
+          "sha256": "c27d19402475ee329c2a1268125471ae7b45f2dac345370296f5ca484744b195"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.js",
+          "bytes": 89,
+          "sha256": "c2976a60dda1f1dc17465f7eafbc9fcc24d73bdfcbcb4369f49b4192309debd8"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.d.ts",
+          "bytes": 889,
+          "sha256": "5356235872f798e26d00440f0469617820cdd83ba65ac16a0fdbc1827ddfb6f0"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.js",
+          "bytes": 252,
+          "sha256": "dacf96dbd0356b2ac6118411065138837ac664c8a3e8a69dd255f9ff46ba9f45"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.d.ts",
+          "bytes": 343,
+          "sha256": "0baf5dbd9984568b757243b99fd2c6fc32100d0dddfb9b4df0090f137f01b402"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.js",
+          "bytes": 249,
+          "sha256": "e178d5d4dadd01925ed235fa58c08dfff2f2841ed048f8b99aa660991cbefe67"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.d.ts",
+          "bytes": 497,
+          "sha256": "745a20f073be4a71ff5d7061dba1c5ab7187abd4dbdb5c3496fd7e0e3b394697"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.js",
+          "bytes": 165,
+          "sha256": "4859df0cd5efdb188f0e00d07dc906753d1cec66c0a8435591ddad78352dbfaf"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.d.ts",
+          "bytes": 613,
+          "sha256": "d7ca8372f646c7dcde53a62faff1d36cdfba409ef08d8059981ab81df8ff14d4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.js",
+          "bytes": 253,
+          "sha256": "0083c951e6aca42c589d2990a59a673ba56d6bf2e9a5d127880fb879b5196688"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.d.ts",
+          "bytes": 424,
+          "sha256": "152ff367d8702514cd657b70352ff3a4449f79a7ca93a7bbfbb62f8db65d6d46"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.js",
+          "bytes": 247,
+          "sha256": "847bcea8b3d93b3a88357da32b31dec9d3882fca5fda3f997932faed05419aad"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.d.ts",
+          "bytes": 1287,
+          "sha256": "497a290622b6b744c9b0a4bed30ea9f6878035184d1b766f91237814aff7b62b"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.js",
+          "bytes": 377,
+          "sha256": "ef7fc7cd3b3d2ae2ce44ef6e86d0590d537eae3a2fac5aeb2068931c47436aec"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.d.ts",
+          "bytes": 1538,
+          "sha256": "2c9169ac4cf4705600660d69a9eea4de7c177cb1ec9a9bd32cb7a0e2afc4a7dc"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.js",
+          "bytes": 305,
+          "sha256": "12db89d9389bc0425c2315a8e55629322594eeea1f63241e71dd4d68a32e31c9"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.d.ts",
+          "bytes": 240,
+          "sha256": "f72538ac1818e3677dea03bd0858695515637b1b3ae26975448857a5390785fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.js",
+          "bytes": 190,
+          "sha256": "a3d296e7847b54b2cf267abd4b7404cd68bc7d28c5d7d61e730b7617065d1910"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.d.ts",
+          "bytes": 1048,
+          "sha256": "6259e20b85b6caa044ebb8958eedfc6671f78f31eda01174989e225cff16eec2"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.js",
+          "bytes": 338,
+          "sha256": "c07c01c71691c58315b03177916ea3a9850421d8515316be6957e53dd7534d87"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.d.ts",
+          "bytes": 927,
+          "sha256": "5d4329589850667202392a219f7895d5b497ae22106dd293be67529bdf25227c"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.js",
+          "bytes": 198,
+          "sha256": "715f03fa181e915e89e28fb20aba94b746f04b155cd3a91b46e24f12a6f579e4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.d.ts",
+          "bytes": 1993,
+          "sha256": "2dcdc914557655ee8f61912fc1455b4cfa85aee237d3a454c9377c40fb07e379"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.js",
+          "bytes": 475,
+          "sha256": "89c55a75728022188d30e71dedade8bee76aefff8120633cf19c5ea903c2088f"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.d.ts",
+          "bytes": 181,
+          "sha256": "4639cd1bec8a4b7ec6b84537cb67646c8e6c701915f597b2a0d691f5964753fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.js",
+          "bytes": 170,
+          "sha256": "f1559fab6dbf8549c142fd93a368e339145df5782b70f75f9ae3cfcfd2f1a01a"
+        },
+        {
+          "path": "packages/registry/dist/compare.d.ts",
+          "bytes": 157,
+          "sha256": "004cf14aec3d758072e1f2e48f5d20546a64ad6e87b3a52534d386b3cc30beab"
+        },
+        {
+          "path": "packages/registry/dist/compare.js",
+          "bytes": 52,
+          "sha256": "68efed2ab60bca8e7aa20a8419e4d4692f19b80d5c2d11b3806b41280d36d79f"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.d.ts",
+          "bytes": 626,
+          "sha256": "1a8f28d41b990ced566ec12e29d88808423438590582bba1cb31d2ae7db6e1b0"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.js",
+          "bytes": 134,
+          "sha256": "02e565a16ad1ce8000be3f000632488243d84970ff22813048b63030b58cd0cf"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.d.ts",
+          "bytes": 150,
+          "sha256": "7407f1061a49114139082e2c5259e84af4f103cdad2ac739e1410bc429907fd7"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.js",
+          "bytes": 107,
+          "sha256": "7ccfbb8effe0a8d0445b88cb21e86de60c44e8443e25ba7051b379cf9b59f573"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.d.ts",
+          "bytes": 301,
+          "sha256": "1366ec0e2e69ca84249af003030ffcc04b352ae9543ed50f4c6b962b28232af0"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.js",
+          "bytes": 62,
+          "sha256": "1a704caf931d4b28f08420577d7bc858167f12ff992e8577008f4063a0b5a6a9"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.d.ts",
+          "bytes": 3362,
+          "sha256": "8ce4c68687221861060a6b91cdbcc710f7dd661e5fa302a1bae97998df5319e8"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.js",
+          "bytes": 77,
+          "sha256": "966274a59f02ac4b6a0c58749fb8a4d9b399d0590d708a3e2604420864aa39cb"
+        },
+        {
+          "path": "packages/registry/dist/get-config.d.ts",
+          "bytes": 5103,
+          "sha256": "4f2aa86f00af4b31ca08456f46f6dd850869581a4de3bb61d4e834480d4b0df8"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "bytes": 1292,
+          "sha256": "f41ff923910a569ce6b3a993e195673a7ee754a9b0c080a5eccf30423c75db5c"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.d.ts",
+          "bytes": 594,
+          "sha256": "ba1a6a1bec4f98f944a39dc7b422c529af3c18075348bc9c3780299ba75cdc05"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.js",
+          "bytes": 218,
+          "sha256": "a801ed61a23960221e8c4a6d031a1eee4cbf0b41f4ca9475062f245a492f850b"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.d.ts",
+          "bytes": 160,
+          "sha256": "63a4a4e0cea7e24673fbec5ebaea5a34699620b45c6346d93da6b1cc9fc73709"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.js",
+          "bytes": 53,
+          "sha256": "e6a15a6d2b3ce06f216827f28a91924f70fd024dd526cd36e73020090c038240"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.d.ts",
+          "bytes": 611,
+          "sha256": "bc351c62e4ac0fd1b10e959a1ea2df5f47be3af2e2d6333d31d3d319dca53a91"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.js",
+          "bytes": 143,
+          "sha256": "09ae0a10d5f530db0b85e3fcc77ca6e1fde80dc9cad5c45c5eeba2af64110ae4"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.d.ts",
+          "bytes": 2263,
+          "sha256": "ff67e3abe54904e09c0b75f629441ac36b0a13915faf37eb9f269ea103429bea"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "bytes": 1233,
+          "sha256": "3ad23bacb62e7ef6b49ac473c90ff2487ff65f58affda94bba4f9ffa2102c30c"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.d.ts",
+          "bytes": 256,
+          "sha256": "08893b1e474f983adbc422455d459ef3f659f8eefabb1060f0f74fac67bbdf46"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.js",
+          "bytes": 50,
+          "sha256": "2057d1830f1f8249bef16adef91b54cc7925dfd226d4a135fdece85f4eeb586b"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.d.ts",
+          "bytes": 1986,
+          "sha256": "a737fc959398b802307b43da8665e79b1fc5cc58b446a18d266bbfeadc04feee"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.js",
+          "bytes": 53,
+          "sha256": "7c5a086d8cac4c1764c0dde5d42a5c77b0b9182faed5c2f5ecd197b87886a501"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.d.ts",
+          "bytes": 1189,
+          "sha256": "4ac025cfc4e9fa4ca81dc601e120cf1f418da61ba70778a922d8cae2b1d46673"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.js",
+          "bytes": 173,
+          "sha256": "a171fbfcb3b02923710b62f5319406c2720d350d8d49ae0eb3d28c7d6a7cc48a"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.d.ts",
+          "bytes": 99,
+          "sha256": "91cf2efb7a64e8a5a2d03389064d16bcbd98751dad7d27e7c4449c1505f80241"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.js",
+          "bytes": 51,
+          "sha256": "09972da72526ea07023202cf983f9c0d02f56524d46e14a7d895ad81ad70ef93"
+        },
+        {
+          "path": "packages/registry/dist/json-config.d.ts",
+          "bytes": 379,
+          "sha256": "852280fdbce5100e2b3893290b4b603523055406d52692f125412e06df0a3a45"
+        },
+        {
+          "path": "packages/registry/dist/json-config.js",
+          "bytes": 63,
+          "sha256": "e70c8cb8ffddb77c4313b57135fe5636720a54a33d1693fdd6469c9bb3b40833"
+        },
+        {
+          "path": "packages/registry/dist/logger.d.ts",
+          "bytes": 249,
+          "sha256": "68cd9272a201906a2b27e965a9867bd549a7dd7b578dbf11c223661101aaa9fd"
+        },
+        {
+          "path": "packages/registry/dist/logger.js",
+          "bytes": 73,
+          "sha256": "b39c2caf322c932a7becac0d5e6e4bec2b8394aeda29a0aad8114871ab04d647"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.d.ts",
+          "bytes": 862,
+          "sha256": "1fd66ba2359c243c11ae69b3dd69b96b8bd35d189105b98e353bcfab21737d92"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.js",
+          "bytes": 201,
+          "sha256": "312e68109fb8fed985cea6bc7c1f14f44b556537e8f2258b6fa007b8b116c001"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.d.ts",
+          "bytes": 3791,
+          "sha256": "114986bb2bde5b3dc9229acb64b4b47133f060d3753313af0e0e6810d1763d13"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.js",
+          "bytes": 523,
+          "sha256": "856ae19f7a0d0b95abcba848492aea75956c406f4184bfbb0c0e8c3d2f8ca6bd"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.d.ts",
+          "bytes": 421,
+          "sha256": "836fd9e4694247b9f136a294ed178ccc60599e70cd6fbf24c645dd9730c1d9b8"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "bytes": 2115,
+          "sha256": "a62f40c96d4a5bb5eda824a2287a336a07500ce459f117e0002b666e2aac92ad"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.d.ts",
+          "bytes": 1487,
+          "sha256": "6f4d5343c9379c793cd81a2bbfa5884b7503c090428b01cca2390162a9e43a37"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "bytes": 1072,
+          "sha256": "16bdb50d84a4f2afe08fcde2e71e4626f04c18499b40cdd0551db5f7e3d779c0"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.d.ts",
+          "bytes": 39377,
+          "sha256": "775033d3e608eed058239af41ec8b79949565fbd49490edfb2826a338584f0c7"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "bytes": 1277,
+          "sha256": "98dbea7428a6e0891bcd778abaf88e347bc04b251258b9564c09fef1a4575181"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.d.ts",
+          "bytes": 921,
+          "sha256": "aabf93ffde91c5262248144da5a9490bc989515f9b1e35c424c03f497b63c9f4"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "bytes": 1093,
+          "sha256": "8b89d64858f2d86c88481a15666cef47ff9d387be3342757a30e51d587dc63b3"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.d.ts",
+          "bytes": 1330,
+          "sha256": "f223d5057f58440381b0576a959dbf0f5dd1ccb06eb471319c1efaf82c8a222c"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "bytes": 986,
+          "sha256": "15aaeda8f7b2fb898ecebd7581be28c4eee1be7312f0de66ce42a68b71436783"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.d.ts",
+          "bytes": 1285,
+          "sha256": "1b665fffefbe0a54059401d1723c57b4a8427c73806d80974ae7325a430d3276"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.js",
+          "bytes": 215,
+          "sha256": "42feb7e932eabc3bbb2d99b204b3d6f63ef83afc93e1952f19663a5359fabe2a"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.d.ts",
+          "bytes": 749,
+          "sha256": "c63ce540c0a2d7525f947796ec2eb7f5a037dad1c26a0b8cd096530adcd56bfe"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.js",
+          "bytes": 211,
+          "sha256": "11128f726a49fda90881a1ab4420a399a67ecb5c71e4d42b1b9bd53e64afebe8"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.d.ts",
+          "bytes": 156,
+          "sha256": "0a4fdaa6af531c242a56499f8a22a1b11f0e40575a483f8139417c906df11c23"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.js",
+          "bytes": 102,
+          "sha256": "e0f2819c664f54d5930e57389aa576a16e4e417c9330f9eac2d797bd821b907e"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.d.ts",
+          "bytes": 5122,
+          "sha256": "4602cab8547be1832ce003dd242ebce3977a93598a0e094a4ff5ecf9d0fb54f3"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.js",
+          "bytes": 604,
+          "sha256": "f05cb7f4dd655e66b7d441e4a7bb7d008c76b764e60e4749a08dd393e1e14d3d"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.d.ts",
+          "bytes": 6361,
+          "sha256": "19ed6cc3c8d9d8acfe0699134c2d93a6ee6db8361769dad6148e1760b56a2303"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "bytes": 1029,
+          "sha256": "d18748a29be05a28fe07fcc2f6c9fe157fde3838c0bf88d4e2358245d55a8ea4"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.d.ts",
+          "bytes": 646,
+          "sha256": "35a8ed0159f76dfd293c08ccd44b1add30c586bdab2c3302f88443e0ef258f30"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.js",
+          "bytes": 286,
+          "sha256": "bc6a047ec8b11023d1e979475d9297a8b3b3735dd10d2550ef91e8f55e49a952"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.d.ts",
+          "bytes": 1609,
+          "sha256": "a1d3b6c41fa93a47903628d2fceed27fa7092d16f01b69e132e68c3eca92f3a7"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.js",
+          "bytes": 377,
+          "sha256": "409e3df5ecc062609874b622ef330d0d81f54a21ebae7f661972dd29fd122b90"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.d.ts",
+          "bytes": 804,
+          "sha256": "56382a9c9b049f2464400ef16c5335bc70d99b2746dc19c427ed917f79d6756e"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.js",
+          "bytes": 399,
+          "sha256": "4eac1a35d0978d67ef645d26dd347af26145e97584eaf6f419ea26d7f0419c74"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.d.ts",
+          "bytes": 13934,
+          "sha256": "74956ad4c3777b7e0d340bd4482e715649588b0a5ff3e4f9bec68a29d8fe8663"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "bytes": 1057,
+          "sha256": "3378ddd0d7387602649bc4fdf1a808d3c1dbb1f8f5fe4c5522bef27820923594"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.d.ts",
+          "bytes": 815,
+          "sha256": "ffd89150e65639beb0e3c68b5581bbac62066e5ee5aca6e332215a76181ad36d"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "bytes": 2796,
+          "sha256": "3435b01eb864753e48577883a5f4c389a4635bb1f9c77b203bdfcd931912e5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.d.ts",
+          "bytes": 56039,
+          "sha256": "b280dc10216a9a922a7ceb1a1db307cf085a0e4810f107e0b1818e860106c62e"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "bytes": 1176,
+          "sha256": "ff5c7bfff5a754e017fd14b622f025057a36ca0191ac1bd33ad03c9305400d7a"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.d.ts",
+          "bytes": 278,
+          "sha256": "cf53c1156c70e1486d557bd396b514486e99cf9b07d88b53b792248165e00d65"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "bytes": 1477,
+          "sha256": "31474d294d0226d489f071af05c6f005986922e91c12114e250517e3e73397a1"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.d.ts",
+          "bytes": 196,
+          "sha256": "5c6c9d5d1679cd23cfcf407656fa1832db5d93cc8e7c70e89d3d8b9d2122da60"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.js",
+          "bytes": 70,
+          "sha256": "07ecd97395c181a0cc14e16e6c959c77a904c0f0328a75cc6c34545ff7d8167c"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.d.ts",
+          "bytes": 269,
+          "sha256": "aa8cbef5b4065a50662d6b23b5f3f5fb9a1333d20ab33e4859a2a705281fc9d8"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.js",
+          "bytes": 81,
+          "sha256": "7123e6bd52297994b4ab5f8ffee8cdbce7c5108b53436fc31bec621b85cf4d3a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.d.ts",
+          "bytes": 714,
+          "sha256": "1bbf984cf726e059f21ff570ed18307bc4e920aac905ac03896928bc0e448e9a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.js",
+          "bytes": 513,
+          "sha256": "902a880328d09a6fd57dcaefd8770ad88ec7a90f79dbcfae810054250d37eaaa"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.d.ts",
+          "bytes": 9982,
+          "sha256": "d576e4ad7dd3767bed8e3ca0fc6757c5a4b3c3d339019e9f45a3aee00a412fe0"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "bytes": 1051,
+          "sha256": "a85eac39489db9078e159e2ed8ea5e0690838f07e4f6cd81dc395796a431b3e1"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.d.ts",
+          "bytes": 109400,
+          "sha256": "f3c963a8b7ed28217ca827501c1066e7242868a2207f2afd17c9de3642800d6f"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.d.ts",
+          "bytes": 1988,
+          "sha256": "4cba920eaa95608b57994ef7f3893241c873ee2c4ab1db0c92e15bc9b4cb1448"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "bytes": 1308,
+          "sha256": "fd978760deb706bc568537d5dab7f8c5119260d33279798ffdb48661f7f432c2"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.d.ts",
+          "bytes": 13290,
+          "sha256": "291c7c4b41f8472dc664741140bf76fad30435a7d1fd985e0939e43e55e0a466"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "bytes": 1029,
+          "sha256": "d677dbacc441db98724cca2902cf306cc6748b7ab0df3879840438b11f1549ee"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.d.ts",
+          "bytes": 1771,
+          "sha256": "193bce4cd56c98665fb3c47c3878e3e5a48ffb0179b6073711427e97a7460fc5"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "bytes": 1152,
+          "sha256": "6c27086cc0b153b533a8b8d5f368aea49b1ab53d592406371544af59291085d1"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.d.ts",
+          "bytes": 510,
+          "sha256": "a33d8682faa55ef171ec050c99817efcff02e155fdcdf96c8b37661f5c52fcf2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "bytes": 10171,
+          "sha256": "4567ff90fee4b9ef820e544f44cff5e79dbc2c6fc1f5b1ae0309e38663851430"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.d.ts",
+          "bytes": 604,
+          "sha256": "227949b0b0963f637ea7a625621867dc676eb223e0dc44ea4aaad8b26b645579"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "bytes": 1064,
+          "sha256": "31097ec68aa928813993deb962aeec6e2132345cea395b38e8898af382048d08"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.d.ts",
+          "bytes": 930,
+          "sha256": "24363e8e20a29ed75e0473dfd3c1968c8cf97dd9caf11145db934f9d19cd4027"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.js",
+          "bytes": 152,
+          "sha256": "008576190e0e4dcbee5047e162fbf044c9ec144427c72f5b477e56cca9c1c4b4"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.d.ts",
+          "bytes": 962,
+          "sha256": "6e03ab61d1938e8fb4ab2ceba65ca166c12d36d1256b0a9af082566997e3da8b"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.js",
+          "bytes": 303,
+          "sha256": "f8daff4958bd68657c2caa3973b162c06104ff556199c64c06a02e519ca91ac6"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.d.ts",
+          "bytes": 823,
+          "sha256": "7dd730c1407fafea259387450c3252abf238a9878d913f2c8de96f5f17965ce8"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/spinner.d.ts",
+          "bytes": 223,
+          "sha256": "78cfe8e6958718ce582ea207f93b635577195edd97330155f2a3c18375efddec"
+        },
+        {
+          "path": "packages/registry/dist/spinner.js",
+          "bytes": 123,
+          "sha256": "687c1afb44f193d0b6b0bd7953269fbf43174a52c010e468cba6087463fd581f"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.d.ts",
+          "bytes": 268,
+          "sha256": "d0047828dc6561fcede41e8a6e9b0ff06796ef0efb1107a56c8b4c4ea9cbc4d5"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.js",
+          "bytes": 74,
+          "sha256": "00e1f9b488e1068e8080159fc1373b7cded8568a6d9883fa40bc3bfa3cd19b66"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.d.ts",
+          "bytes": 374,
+          "sha256": "7f28fb0ac1571d6c643e66c8c9de60babf434e331eddf79b97990180a22ddc4f"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.js",
+          "bytes": 101,
+          "sha256": "6e8bb6945dd4261c0c6c90398bcef6e2ed21eb9d064f7ed9caf66b447eafa838"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.d.ts",
+          "bytes": 664,
+          "sha256": "a1436c25e68b82705f066726ce7bd31e8830554111696a258b36fd85175f6e7b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "bytes": 1470,
+          "sha256": "6467da5e303a9de1e84d192c2a4a3c85b5d33dee557687d0292868bc0fffaf2f"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.d.ts",
+          "bytes": 298,
+          "sha256": "646ec6ac25e9e8a3e1d5cf8dff6193b42ff1ea6ace1f7ce623d571731f97b0dc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.js",
+          "bytes": 139,
+          "sha256": "ea006b78d16578373b8473df9e5f6058066f3f200f52ddbfa8c652e713d351bc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.d.ts",
+          "bytes": 249,
+          "sha256": "4747bcd00d550a22b5f250a1e97ecd494d1d926a5a74b84cdb82a6a96d409021"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.js",
+          "bytes": 201,
+          "sha256": "1877d5c07b33f91430fbd5bcb5f7f302c971810351a6d6a3e94e7f7d76c05759"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.d.ts",
+          "bytes": 407,
+          "sha256": "0059c96a95fd759e2eb6a889f0972f643b1c6bed48f747b5a700155dfa534123"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.js",
+          "bytes": 299,
+          "sha256": "19944d381c2ec40f9e0dd38668bfe4167e6bd455382e9e80e86e6ea5dee24a45"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.d.ts",
+          "bytes": 524,
+          "sha256": "fbb695cb848df05f2b241c7c5a024de822954dcbba8432fb1ce74dd9f0516d59"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.js",
+          "bytes": 244,
+          "sha256": "4a8a434e4a1405ab91b4b55298b36999a5f297a88550c619215b90ae0aa8ba06"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.d.ts",
+          "bytes": 243,
+          "sha256": "1427c92eae4d746567d367dcf2590c21e6d49323acb6a59519c9d9586de336e7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.js",
+          "bytes": 227,
+          "sha256": "145d98f2555d0d07f152e778451399975b0882dbb74cf63365bb9930f678867b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.d.ts",
+          "bytes": 245,
+          "sha256": "5ce840b8240fc424ec1696c8ede191ccc503e310c1a4c5e38f3462b03a722a31"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.js",
+          "bytes": 344,
+          "sha256": "94a144dfa0d9cad92882c697ba8629e464f46ad57dabdd2d0c3dbda3322292aa"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.d.ts",
+          "bytes": 247,
+          "sha256": "7621984b0c83fced187ead91102063b251fe125306f536f188a340611a815541"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.js",
+          "bytes": 200,
+          "sha256": "9779a4dd3564583d409d0575d5047302a702f193d66b2a93231eaf453b5f1998"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.d.ts",
+          "bytes": 241,
+          "sha256": "85a16b1043bb4f79dbc380420c7d5449e3550614ad79aae1d5bcc4bfb540d454"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.js",
+          "bytes": 52,
+          "sha256": "1db241f82a28b88322477b0c9dcadb1977f567858fa01de31eeb57d75faa847a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.d.ts",
+          "bytes": 243,
+          "sha256": "e07c0c293a66e731d35b16fd78a84bb93f95b35417163aff085d1d7d033925d2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.js",
+          "bytes": 198,
+          "sha256": "29cf5530dec67c27865e0915497f1bfd32d51ced7e292efe11ae4a475038d5f8"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.d.ts",
+          "bytes": 243,
+          "sha256": "c9c68cafb9cb511a1d5afb11fcf62846ceea31231fef00857ebc5d9f4137677e"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.js",
+          "bytes": 198,
+          "sha256": "f57e672fd883161bfd90b6b49c2735b25c8004aac313a4bf4c546f5f16d90a37"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.d.ts",
+          "bytes": 241,
+          "sha256": "838f375575bffbe376264acacff2de438ecfb3ac73ab4951712260e40aebcdb7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.js",
+          "bytes": 226,
+          "sha256": "c9a97febfd3c23635b0808008e39a319c4246f4657f878af2f231637b722c255"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.d.ts",
+          "bytes": 419,
+          "sha256": "9a5d71a0db11bedcaeb4ab3557317d54373c449d026c018c2e349217d88d054c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "bytes": 1257,
+          "sha256": "2f979bb97dedd7d6949e174325dbcd8dc1f9d3685ee8b24eee3603a9beb94c77"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.d.ts",
+          "bytes": 1099,
+          "sha256": "e1ee15b0d4d3d8cd298330999daf6250dc1d77f7adfc74b3ccfe22d66680369a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "bytes": 1277,
+          "sha256": "cfafe36f1b63b79c6f4ca9bcf2a11f2de0bcd3796e17c67178be1f11fb7b4264"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.d.ts",
+          "bytes": 1234,
+          "sha256": "25db3723eb446d13424a3330af90bb6d1a105d297a7631b1ddc27fd1a9a3bf3f"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.js",
+          "bytes": 201,
+          "sha256": "dc1f82e18ca0f656c15df77f8d4c0afdb66030f7dc8768c49bca82fefacd5ab9"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.d.ts",
+          "bytes": 921,
+          "sha256": "bd07db4387a2187859500d056c43d8fc365aeb3906e402380f0093546ab3595d"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.js",
+          "bytes": 183,
+          "sha256": "8b2703739a1b9c090d794b03c49ea5b8750b5341a49f9ae284c410843c9f9490"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.d.ts",
+          "bytes": 1195,
+          "sha256": "f5eca05654db9985e68a8baf345bcba8d22bc0e258d6ce42f0c4c48e3e6e4911"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.js",
+          "bytes": 309,
+          "sha256": "551a46a3178ccaf8830103e2b8a02e14822e73c1cceff6e08cf0957189940c9b"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.d.ts",
+          "bytes": 481,
+          "sha256": "371acf31a9172c708a6e1e06d79ddaff2317a64a5c1dfc65a3d991eeaced39a8"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.js",
+          "bytes": 169,
+          "sha256": "20d544d173a0df2f34bcac0d58ffa4514608c30b1b1b63a71fd9ed4e39cd347c"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.d.ts",
+          "bytes": 2236,
+          "sha256": "64f3a8e010639b536d0962af93d2056db35ed5702162735cc1b96223e2f74b53"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "bytes": 1916,
+          "sha256": "947f55f9be15438119ed6823b0a7bfe82d54afa743221b7f527aa34633fd8062"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.d.ts",
+          "bytes": 4045,
+          "sha256": "ba395cc1fe8545dcbfbc9e8bf1968ff63a217bf13b9eb7c31878319ad0be09e3"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "bytes": 1282,
+          "sha256": "8f6142ce3c432e1b1edcfe4717b98d22036357e77f99629f2ee65cf475e6ee96"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.d.ts",
+          "bytes": 1729,
+          "sha256": "4d8c7fd12d6c0cf940e3bf90371c5d481e94908f2fe802683387a7c8e130d3ce"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.js",
+          "bytes": 587,
+          "sha256": "63f1a6019260a76fc845b55b4f546aafaeb7e10f0d329befc350e2a4cb6b95bc"
+        },
+        {
+          "path": "packages/registry/dist/workspace.d.ts",
+          "bytes": 416,
+          "sha256": "3ba6c78139f2676b435e10bfef14e080513b2fe881f855f8ab7a9a6d96414a40"
+        },
+        {
+          "path": "packages/registry/dist/workspace.js",
+          "bytes": 208,
+          "sha256": "95c2b4d9d2c25bf129a013c25775213e13bd182c554a2d43e804957ce62be8ab"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-3W6BGJGE.js",
+          "bytes": 1040,
+          "sha256": "b64691fc01ff0dbcba92c6f1ff50db9c82de832c77bd35b02975a2b7dd5ef452"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-I2VXPUS4.js",
+          "bytes": 10032,
+          "sha256": "60b086241d49d570eb33621ac40ba2b3af0aa4991a79dc06271792b89011b45d"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.d.ts",
+          "bytes": 595,
+          "sha256": "ae41ef3f6343bfeb4ba46720cc010e53274d6ffe31397e69e905f0c72a01d6c7"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.js",
+          "bytes": 166,
+          "sha256": "bd8f528b9627035571dde501db966cdce4256bea3c3221431a5b90583f267a38"
+        },
+        {
+          "path": "packages/shadcn/dist/index.d.ts",
+          "bytes": 6674,
+          "sha256": "ffac0db716151322f4884974aa92b5577c20d7a8b98e551a13c3e211272a4bee"
+        },
+        {
+          "path": "packages/shadcn/dist/index.js",
+          "bytes": 160308,
+          "sha256": "f001a3bfc86960f91beb877f8c37177a819eef91828a50a325d4405cccdd748c"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.d.ts",
+          "bytes": 288,
+          "sha256": "e073003796739209177a8812d4862772f5e8188fff22f2990ac2784252e0fa5e"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.js",
+          "bytes": 64,
+          "sha256": "0ae9eff6c508e71a9f913b9d57586ccdb066d10a42dbd2767914a15e59410874"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.d.ts",
+          "bytes": 463,
+          "sha256": "9e963bc914e000ee5e0fd763a20e5d5138c9cef4bae0452cf38f0484083863a7"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.js",
+          "bytes": 410,
+          "sha256": "a2bb1a694f3e071734bfcb5280f12049379ece25b2cc9176e745a6b89a49b79f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.d.ts",
+          "bytes": 34,
+          "sha256": "5ba277e4e404cf03a06530df5191fe8ca261c075c4a8d2b0e0f48d1bdfe9924f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.js",
+          "bytes": 30,
+          "sha256": "8730e5ea7f49b841c130a3933285955052f09525b91c86c5e0e6c5160d3a4ebb"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.d.ts",
+          "bytes": 41,
+          "sha256": "69ee83334374dce7de1c5909c5c9543cf6beaf221be30724661a1d9f9461ee61"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.js",
+          "bytes": 37,
+          "sha256": "7902ad7dd12a37ab1a4fc4803e17fd12f420b5bd920dc31596853416c568c917"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.css",
+          "bytes": 16977,
+          "sha256": "0c12b135dcade0848bd5b9bc0b4a797955230632ae3f08f33597b8ed989b16c0"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "bytes": 111,
+          "sha256": "2d3bb5acfdb9b90d1a3266a43906c8a555c9e604a78e776444912e788946175f"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.d.ts",
+          "bytes": 1197,
+          "sha256": "3e2cfaff9a1e015d8b276aa2e2c8a011d3262bafbae856ce3101a0db96738af0"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.js",
+          "bytes": 9371,
+          "sha256": "bafc2ae52c8787ba5a72b242815f11b3aeffbece36db8db7201f5ecc080e2540"
+        }
+      ],
+      "sha256": "dea45e8c483946d9ea299c4fa56e665150a140c7c80f21e942415493a7d2df30"
+    },
+    "baselineBRaw": {
+      "entries": [
+        {
+          "path": "packages/registry/dist/add-components.d.ts",
+          "bytes": 902,
+          "sha256": "447375562554de4844ee5be1ecca9c3977c5eb8649f43cffeb46f7e0e88051fc"
+        },
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "bytes": 2009,
+          "sha256": "5b9207bd34c11430c748c5654d591cc69bb72c174ab593b19194d5cea0a7d547"
+        },
+        {
+          "path": "packages/registry/dist/chunk-2ZD6RDHW.js",
+          "bytes": 8235,
+          "sha256": "1fb8fadecac67d41e811fafe97619d983c9cb7669e4b4be8aa10f5a1d991d97f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-34X3C4PK.js",
+          "bytes": 64376,
+          "sha256": "7d61bd323af48b2d253fc199b24b53502c34e69f434e60fa992a0fcf43b2c53c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-37TZNUWF.js",
+          "bytes": 8406,
+          "sha256": "3c8014dc4d85b30e1fe0a856ef1edf40f7cd38773d4f57360e54094756ff23fb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OKCQO2T.js",
+          "bytes": 1274,
+          "sha256": "bb334c8b302e2bde513808e274b6a2b88d39a4f4d64d57edfceb6f9831599ec1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4RGI4SXE.js",
+          "bytes": 1808,
+          "sha256": "ad064679a202f510cfa6544af3b443a32c04b1bfddc2e0afb9e98b309bee1116"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4SFT74AY.js",
+          "bytes": 217,
+          "sha256": "d2cd3d23295477711efec9e5d499195b0e86b75561c5d57f2e09e9e40f9bdc04"
+        },
+        {
+          "path": "packages/registry/dist/chunk-4XJHS6CV.js",
+          "bytes": 2303,
+          "sha256": "4fbe4691e52f0874d2dda15502f9f42e0f58210a2f4650d053920437c6a1e741"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5AKVIUQ5.js",
+          "bytes": 1869,
+          "sha256": "a2fe0cc9ca0896a27002b9d2423732fd48d487a1ab1963535fd66c4d444fe4c4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5QRP7DWO.js",
+          "bytes": 7472,
+          "sha256": "893910c1792f2880b1d0875e5ca27b47132e57029e3c30ee7d3877b20dffc511"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6DACHLHO.js",
+          "bytes": 848,
+          "sha256": "67353dc9246c34f4bb0aa36470634f1047320e88225ea660f0c7e70962c679c7"
+        },
+        {
+          "path": "packages/registry/dist/chunk-6MJC67AJ.js",
+          "bytes": 365,
+          "sha256": "b2e3d4230a40795510d5107e0e80f25fe0fa0791c4010743bfac1b77d14d1084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-72U3XV6C.js",
+          "bytes": 2235,
+          "sha256": "d335e41cef66feff4e7883472676a2764093d4c31047c1b3c38a4e8af6f026f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BJVMVDG.js",
+          "bytes": 1954,
+          "sha256": "34f213a4272d071ddcda65736ebc8aa6d60e6d846e9941ed34585dee51f99f76"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7PG7PSM2.js",
+          "bytes": 3026,
+          "sha256": "73541d3eaccf9856acf2e27523d839e894cb02b4168139371ca6215fcd759aea"
+        },
+        {
+          "path": "packages/registry/dist/chunk-A55HZE32.js",
+          "bytes": 1287,
+          "sha256": "c7ec5c261a701f400ae73cb1880b88e0f9c27970abf11386d86a642f23959893"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BJD3QN5N.js",
+          "bytes": 1261,
+          "sha256": "3c4d488c4b94a9af39068ea44197e8a496fd92c8bf2c94e298826e76c897e786"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BOKNXK35.js",
+          "bytes": 4680,
+          "sha256": "9a2ab58a695b6c7aaf5b4f23a7dfc0bd257496c01eeadb13153a8538645ecdfb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BQ3HTKQJ.js",
+          "bytes": 208,
+          "sha256": "f290ec59fe5aa4071d2ced7454d329c3ba8e95987a5ed8046c9c6e882d37a721"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CG6RHFNT.js",
+          "bytes": 536,
+          "sha256": "fe63928d3551b8a481b4c1e7e36fa260ad1c88f8288bf36c2df512049206de9b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CK2FZNSZ.js",
+          "bytes": 307,
+          "sha256": "8bbea7918b158f1a2e761f3844bc5b84d61cf0a35ebb9168fda4c362359efa5c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CWUFLU4G.js",
+          "bytes": 8229,
+          "sha256": "b12897ed876bded49d6127e8825cbed7511ffb6817858ad98e8d883a6838a252"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DFLMJYWW.js",
+          "bytes": 862,
+          "sha256": "f39769e695abc49469d5a9a263231cebef73173bb7b8a92bd08d01fac5c94e07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DJXK7GGZ.js",
+          "bytes": 359,
+          "sha256": "9dc61ed9c25d68b17c58a918a73f542f76d8fdbe812fc3a5b0fd3491bc32e710"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DMPLUZHK.js",
+          "bytes": 1803,
+          "sha256": "91b5f3c6848eedec9b11d650ee81732b2394964c69cbc1e963e2f93166495abe"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DYB6YQ2S.js",
+          "bytes": 2293,
+          "sha256": "c8711c2d0ba084185cc1e2456a8b9e16544b547234aa930717aac3a545453af3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ECVSMHVI.js",
+          "bytes": 4539,
+          "sha256": "c303fd29260c5e3eaee3af7d4c46d52a98788e0fa093641d75a38c9881ae9283"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EMFC532V.js",
+          "bytes": 1213,
+          "sha256": "ead3c09fe79cc9e1839e82b56345e61b4f3201b4a564afbdd4dc5901a996a0d2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EOBWHQPW.js",
+          "bytes": 6543,
+          "sha256": "a0640105381703ce6d2940fc226fc86150c7f4c1c0f700119f3f3cc21b36ebf1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-EPVH3ST2.js",
+          "bytes": 1349,
+          "sha256": "704bf9d70825b1a86e1d93409461a8026c6c310ab79b50bcb16d0e90204b1323"
+        },
+        {
+          "path": "packages/registry/dist/chunk-F26MPF6V.js",
+          "bytes": 4471,
+          "sha256": "65d914c80e37bcde77a33fc8654b431a593688ed8341d61e999895d85ea28769"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFFAOODY.js",
+          "bytes": 788,
+          "sha256": "d4624d9be1fc192793907dc052aa2c4e8cede0944096b61cdde92d783a7bfca2"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FY7HT2AG.js",
+          "bytes": 764,
+          "sha256": "99bdd9460355fb474ad02d5e1e594d1a6dd70f0f9bd4cd45790cd213cf65ff70"
+        },
+        {
+          "path": "packages/registry/dist/chunk-G4XCG644.js",
+          "bytes": 6343,
+          "sha256": "987e6a1ae7dfd863c0a12f95b80e64533ec51c6e4ad67468b485267784d2531d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GKE6AP6I.js",
+          "bytes": 1611,
+          "sha256": "7c2561aae62523656f0e127d0c4caedb3d8b4ad4a89eacf209b86b47e53a8528"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GP5XIDBG.js",
+          "bytes": 407,
+          "sha256": "d3b20fd8483480ca2c9d92a19fb54ac53bb34779ab813384f69985ecc45bb722"
+        },
+        {
+          "path": "packages/registry/dist/chunk-H3QGI6CM.js",
+          "bytes": 6191,
+          "sha256": "2dc329528099ea91c0ba5cad956f767ea82ad341677379fb91856f8a5a385d07"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HLMZ34OQ.js",
+          "bytes": 1024,
+          "sha256": "aa5e84df1eb2dbe00ae11bd2bcd0d0720ceced9eaf0e333459bfaa8b84f8e6ed"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HSL5JFW6.js",
+          "bytes": 445,
+          "sha256": "60b7baf9da873a33d4b2c11a5ecc928211bec5302f05bcce136ad737738b1e01"
+        },
+        {
+          "path": "packages/registry/dist/chunk-HUX6MG2A.js",
+          "bytes": 1101,
+          "sha256": "910a2b4e6e3f41f51c0df09da99542c41041552f0cd7becb9da7f379e4535b15"
+        },
+        {
+          "path": "packages/registry/dist/chunk-INLAVGVY.js",
+          "bytes": 1749,
+          "sha256": "ae8c02be68cca9d6d4b0c2cda0a99420629ad748410de07c1d74306fe1523598"
+        },
+        {
+          "path": "packages/registry/dist/chunk-IP7LRVEH.js",
+          "bytes": 2797,
+          "sha256": "01a899dda8fbf7540cdf302bafd4da7f5e8cb2ad80968943ad7314432533a9e4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JGH4L3MV.js",
+          "bytes": 314,
+          "sha256": "3a59f26ad8e5761a74b1ab9c5b32c906b118c5fa89a62a0baf3abceeabd4223b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-JSGATXUP.js",
+          "bytes": 2791,
+          "sha256": "049f52bbe92ce51efa882955a034481555bf01dd0f703fadc50fcffd27380f78"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KCYSLHET.js",
+          "bytes": 2246,
+          "sha256": "41eb05346a036c3de026912fdee6c5cbb657ea43e371ca9fba9c194ab9a9f2e6"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KPHNE4X3.js",
+          "bytes": 1246,
+          "sha256": "65445e1829669520c25d38b3817d326c1a79965a5368e039b921a49427b69e6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KTIPZNE2.js",
+          "bytes": 2019,
+          "sha256": "486ef97e8a1883b5c7aa3cbf5eba883586d7d32bd2c23a58190322798b8b29dd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LA2WH2E5.js",
+          "bytes": 412,
+          "sha256": "1e18259ca75691633b8ac05fcb8116646ff6c62379324a22d23801d884df51d0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LI3P22R4.js",
+          "bytes": 2398,
+          "sha256": "f9b84945496e58365bd98c130dda96f86fa9478014e47d340520dfe7fb0795c5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-LUREFXYS.js",
+          "bytes": 1729,
+          "sha256": "357bf46ff8ba1e4f620b88710f26b28a2f1c9f5fb755bb98bb46f8bebdf48218"
+        },
+        {
+          "path": "packages/registry/dist/chunk-NLGKPK5X.js",
+          "bytes": 40978,
+          "sha256": "232332b19629a79c64884b9f81a2cdf3488a889552cc6eaa4d79cc0a6ddb10e0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ODVA5IOJ.js",
+          "bytes": 177,
+          "sha256": "1a677cfbc873cc3d9a6bc3e70ee745355c9480c4f69730a24550d86de323ae6a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P2PPVRX4.js",
+          "bytes": 2066,
+          "sha256": "645300289378f2b3e175d99fffc7c6be8e2e20a0822c489ae15ec7ea4cf79dec"
+        },
+        {
+          "path": "packages/registry/dist/chunk-P7AMHUOT.js",
+          "bytes": 1759,
+          "sha256": "e8b141d8ed7a64e3ac29f1636294ff08967e26682464d33e956ea13804826b6c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PBI5MCZH.js",
+          "bytes": 416,
+          "sha256": "ccaa4eaf60f8660db5e55662dfe44ab43ca0956f5967fd80a85f659d7e5307ce"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QXGOI5SP.js",
+          "bytes": 3354,
+          "sha256": "ac115d30e1830c31e790d3501595ded792af80bfc349384d650cd88fcb7fac3d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-R4GIHKEE.js",
+          "bytes": 3271,
+          "sha256": "fcc1e3c7ba6f551e7ebf5180156623e902e0899133fcb7b2464f27cd47ad6f26"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCN73OHW.js",
+          "bytes": 1980,
+          "sha256": "356d7a3acb7b915dc9adb47db87a4e67b7a2223a6f7341ce1163438aa5555a36"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SCY2QYAU.js",
+          "bytes": 3877,
+          "sha256": "30e10db5ac5b92eda3f3150ae23f137ffb7d1d0e48ea906b15bd3641427d7084"
+        },
+        {
+          "path": "packages/registry/dist/chunk-SYDUW4LN.js",
+          "bytes": 984,
+          "sha256": "83c7d14d13374186f7b22a0304dcf392b116b2afda19ea1c15f08d20e0ad8c27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T5GV6K3G.js",
+          "bytes": 1251,
+          "sha256": "2b7acbef591b2ad4049a4c63b95cadf226599339ea5942e69501a2805035dd6d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-T724YMDJ.js",
+          "bytes": 581,
+          "sha256": "9364754d8ef3844f46abc6029ae146abdbd102277f84b6d4b2c6ea7d61fa700f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-THH3TBJI.js",
+          "bytes": 6330,
+          "sha256": "378cf5b78d9acadf762b537d71e4890e8c4e439ed388c942cc34cd4317145f49"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TJHEOZ2C.js",
+          "bytes": 1236,
+          "sha256": "1532428c4890ee5ae2404d87efdfbf74ecca6f44a4e58f1a20d1bd5e5b057274"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V47DXQF3.js",
+          "bytes": 846,
+          "sha256": "1a7267d36fae171c7be406df878bef9bf6b244b14c1e8d680c7a201e88252d27"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V4SQINGL.js",
+          "bytes": 9514,
+          "sha256": "387847d6ab73ac9f32b7ac0a32fdd729fd0bc2f71fa0a121c809dfcf96d23c83"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WEOWLCYM.js",
+          "bytes": 1776,
+          "sha256": "b5f7da3eefac745c519a744537132a1c587666cdaf0aa048bc989e055c978b43"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WFW2POHH.js",
+          "bytes": 744,
+          "sha256": "92af815bb0fbcf47ce6ad09c5c7df9ad963b0c5a3ded572be658beb440e5e9e5"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WJGGK4JS.js",
+          "bytes": 4756,
+          "sha256": "7a766500460055ee2b83f46c6ad2a1c61b13fb83e93c49ffe3af805f5c14897f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WN656L3S.js",
+          "bytes": 118,
+          "sha256": "a18e6feb88880afd9b314c084c06e9e42f328d628dc89b64ebe167b93110672e"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WXP6SNZN.js",
+          "bytes": 1379,
+          "sha256": "8e02f4d232cf842be63467b8ef4074b0e66ae2b360504523ae7e82c86d9ae4e1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XADSAWBY.js",
+          "bytes": 574,
+          "sha256": "bf3fe83babcce75994be087f8bc4f5e7ff325d579972ac36b1e06cc84a192195"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XBITR7ZN.js",
+          "bytes": 12859,
+          "sha256": "b1bd615c65eb97f22b628f36a8eb8cdb95f31da08440b90cd7f09d98feb090de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XEIRIT2K.js",
+          "bytes": 150,
+          "sha256": "74b38ba1d9093a976c80fbba66b99dfc7904509f92a30142f278f3335bb2837f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-Y6IONZQ3.js",
+          "bytes": 465,
+          "sha256": "fc200d5df48452ab3cca3cb6e98486a8ba96824452698d8c5780bed795e5cdfc"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.d.ts",
+          "bytes": 535,
+          "sha256": "2ccc636db63008fa6a7ec756974b0c1fda7812b2fe5f943c9aa0818bbfecd13d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/array-literals.js",
+          "bytes": 233,
+          "sha256": "29944d932332c43d083b92ec700ed29fb4e0123adb73a5cfcf76a95adbbacf1e"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.d.ts",
+          "bytes": 1481,
+          "sha256": "628c982b25298996e5bcf6751dff19cd849119d308355a6a6eb112ae1c69821d"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comma-lists.js",
+          "bytes": 308,
+          "sha256": "62030e04363be88e0c8b24a306e634777dfc94c46d89067d907f2ec0f3cc5136"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.d.ts",
+          "bytes": 346,
+          "sha256": "c27d19402475ee329c2a1268125471ae7b45f2dac345370296f5ca484744b195"
+        },
+        {
+          "path": "packages/registry/dist/codemod/comment-nodes.js",
+          "bytes": 89,
+          "sha256": "c2976a60dda1f1dc17465f7eafbc9fcc24d73bdfcbcb4369f49b4192309debd8"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.d.ts",
+          "bytes": 889,
+          "sha256": "5356235872f798e26d00440f0469617820cdd83ba65ac16a0fdbc1827ddfb6f0"
+        },
+        {
+          "path": "packages/registry/dist/codemod/edits.js",
+          "bytes": 252,
+          "sha256": "dacf96dbd0356b2ac6118411065138837ac664c8a3e8a69dd255f9ff46ba9f45"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.d.ts",
+          "bytes": 343,
+          "sha256": "0baf5dbd9984568b757243b99fd2c6fc32100d0dddfb9b4df0090f137f01b402"
+        },
+        {
+          "path": "packages/registry/dist/codemod/import-declarations.js",
+          "bytes": 249,
+          "sha256": "e178d5d4dadd01925ed235fa58c08dfff2f2841ed048f8b99aa660991cbefe67"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.d.ts",
+          "bytes": 497,
+          "sha256": "745a20f073be4a71ff5d7061dba1c5ab7187abd4dbdb5c3496fd7e0e3b394697"
+        },
+        {
+          "path": "packages/registry/dist/codemod/indentation.js",
+          "bytes": 165,
+          "sha256": "4859df0cd5efdb188f0e00d07dc906753d1cec66c0a8435591ddad78352dbfaf"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.d.ts",
+          "bytes": 613,
+          "sha256": "d7ca8372f646c7dcde53a62faff1d36cdfba409ef08d8059981ab81df8ff14d4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/jsx-attributes.js",
+          "bytes": 253,
+          "sha256": "0083c951e6aca42c589d2990a59a673ba56d6bf2e9a5d127880fb879b5196688"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.d.ts",
+          "bytes": 424,
+          "sha256": "152ff367d8702514cd657b70352ff3a4449f79a7ca93a7bbfbb62f8db65d6d46"
+        },
+        {
+          "path": "packages/registry/dist/codemod/named-imports.js",
+          "bytes": 247,
+          "sha256": "847bcea8b3d93b3a88357da32b31dec9d3882fca5fda3f997932faed05419aad"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.d.ts",
+          "bytes": 1287,
+          "sha256": "497a290622b6b744c9b0a4bed30ea9f6878035184d1b766f91237814aff7b62b"
+        },
+        {
+          "path": "packages/registry/dist/codemod/object-literals.js",
+          "bytes": 377,
+          "sha256": "ef7fc7cd3b3d2ae2ce44ef6e86d0590d537eae3a2fac5aeb2068931c47436aec"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.d.ts",
+          "bytes": 1538,
+          "sha256": "2c9169ac4cf4705600660d69a9eea4de7c177cb1ec9a9bd32cb7a0e2afc4a7dc"
+        },
+        {
+          "path": "packages/registry/dist/codemod/parse.js",
+          "bytes": 305,
+          "sha256": "12db89d9389bc0425c2315a8e55629322594eeea1f63241e71dd4d68a32e31c9"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.d.ts",
+          "bytes": 240,
+          "sha256": "f72538ac1818e3677dea03bd0858695515637b1b3ae26975448857a5390785fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/rename.js",
+          "bytes": 190,
+          "sha256": "a3d296e7847b54b2cf267abd4b7404cd68bc7d28c5d7d61e730b7617065d1910"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.d.ts",
+          "bytes": 1048,
+          "sha256": "6259e20b85b6caa044ebb8958eedfc6671f78f31eda01174989e225cff16eec2"
+        },
+        {
+          "path": "packages/registry/dist/codemod/statements.js",
+          "bytes": 338,
+          "sha256": "c07c01c71691c58315b03177916ea3a9850421d8515316be6957e53dd7534d87"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.d.ts",
+          "bytes": 927,
+          "sha256": "5d4329589850667202392a219f7895d5b497ae22106dd293be67529bdf25227c"
+        },
+        {
+          "path": "packages/registry/dist/codemod/string-literals.js",
+          "bytes": 198,
+          "sha256": "715f03fa181e915e89e28fb20aba94b746f04b155cd3a91b46e24f12a6f579e4"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.d.ts",
+          "bytes": 1993,
+          "sha256": "2dcdc914557655ee8f61912fc1455b4cfa85aee237d3a454c9377c40fb07e379"
+        },
+        {
+          "path": "packages/registry/dist/codemod/trivia.js",
+          "bytes": 475,
+          "sha256": "89c55a75728022188d30e71dedade8bee76aefff8120633cf19c5ea903c2088f"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.d.ts",
+          "bytes": 181,
+          "sha256": "4639cd1bec8a4b7ec6b84537cb67646c8e6c701915f597b2a0d691f5964753fe"
+        },
+        {
+          "path": "packages/registry/dist/codemod/variables.js",
+          "bytes": 170,
+          "sha256": "f1559fab6dbf8549c142fd93a368e339145df5782b70f75f9ae3cfcfd2f1a01a"
+        },
+        {
+          "path": "packages/registry/dist/compare.d.ts",
+          "bytes": 157,
+          "sha256": "004cf14aec3d758072e1f2e48f5d20546a64ad6e87b3a52534d386b3cc30beab"
+        },
+        {
+          "path": "packages/registry/dist/compare.js",
+          "bytes": 52,
+          "sha256": "68efed2ab60bca8e7aa20a8419e4d4692f19b80d5c2d11b3806b41280d36d79f"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.d.ts",
+          "bytes": 626,
+          "sha256": "1a8f28d41b990ced566ec12e29d88808423438590582bba1cb31d2ae7db6e1b0"
+        },
+        {
+          "path": "packages/registry/dist/env-helpers.js",
+          "bytes": 134,
+          "sha256": "02e565a16ad1ce8000be3f000632488243d84970ff22813048b63030b58cd0cf"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.d.ts",
+          "bytes": 150,
+          "sha256": "7407f1061a49114139082e2c5259e84af4f103cdad2ac739e1410bc429907fd7"
+        },
+        {
+          "path": "packages/registry/dist/env-loader.js",
+          "bytes": 107,
+          "sha256": "7ccfbb8effe0a8d0445b88cb21e86de60c44e8443e25ba7051b379cf9b59f573"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.d.ts",
+          "bytes": 301,
+          "sha256": "1366ec0e2e69ca84249af003030ffcc04b352ae9543ed50f4c6b962b28232af0"
+        },
+        {
+          "path": "packages/registry/dist/font-markers.js",
+          "bytes": 62,
+          "sha256": "1a704caf931d4b28f08420577d7bc858167f12ff992e8577008f4063a0b5a6a9"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.d.ts",
+          "bytes": 3362,
+          "sha256": "8ce4c68687221861060a6b91cdbcc710f7dd661e5fa302a1bae97998df5319e8"
+        },
+        {
+          "path": "packages/registry/dist/frameworks.js",
+          "bytes": 77,
+          "sha256": "966274a59f02ac4b6a0c58749fb8a4d9b399d0590d708a3e2604420864aa39cb"
+        },
+        {
+          "path": "packages/registry/dist/get-config.d.ts",
+          "bytes": 5103,
+          "sha256": "4f2aa86f00af4b31ca08456f46f6dd850869581a4de3bb61d4e834480d4b0df8"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "bytes": 1292,
+          "sha256": "457c4c126981742685a2fb96a33780e971f09d07f1a62a6ac37fdfa04c09e0c0"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.d.ts",
+          "bytes": 594,
+          "sha256": "ba1a6a1bec4f98f944a39dc7b422c529af3c18075348bc9c3780299ba75cdc05"
+        },
+        {
+          "path": "packages/registry/dist/get-monorepo-info.js",
+          "bytes": 218,
+          "sha256": "a801ed61a23960221e8c4a6d031a1eee4cbf0b41f4ca9475062f245a492f850b"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.d.ts",
+          "bytes": 160,
+          "sha256": "63a4a4e0cea7e24673fbec5ebaea5a34699620b45c6346d93da6b1cc9fc73709"
+        },
+        {
+          "path": "packages/registry/dist/get-package-info.js",
+          "bytes": 53,
+          "sha256": "e6a15a6d2b3ce06f216827f28a91924f70fd024dd526cd36e73020090c038240"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.d.ts",
+          "bytes": 611,
+          "sha256": "bc351c62e4ac0fd1b10e959a1ea2df5f47be3af2e2d6333d31d3d319dca53a91"
+        },
+        {
+          "path": "packages/registry/dist/get-package-manager.js",
+          "bytes": 143,
+          "sha256": "09ae0a10d5f530db0b85e3fcc77ca6e1fde80dc9cad5c45c5eeba2af64110ae4"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.d.ts",
+          "bytes": 2263,
+          "sha256": "ff67e3abe54904e09c0b75f629441ac36b0a13915faf37eb9f269ea103429bea"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "bytes": 1233,
+          "sha256": "849b7a0bd158675ed7228a3c2f4f5ad77836692f3e8446a892604fb5850c723d"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.d.ts",
+          "bytes": 256,
+          "sha256": "08893b1e474f983adbc422455d459ef3f659f8eefabb1060f0f74fac67bbdf46"
+        },
+        {
+          "path": "packages/registry/dist/highlighter.js",
+          "bytes": 50,
+          "sha256": "2057d1830f1f8249bef16adef91b54cc7925dfd226d4a135fdece85f4eeb586b"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.d.ts",
+          "bytes": 1986,
+          "sha256": "a737fc959398b802307b43da8665e79b1fc5cc58b446a18d266bbfeadc04feee"
+        },
+        {
+          "path": "packages/registry/dist/icons/libraries.js",
+          "bytes": 53,
+          "sha256": "7c5a086d8cac4c1764c0dde5d42a5c77b0b9182faed5c2f5ecd197b87886a501"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.d.ts",
+          "bytes": 1189,
+          "sha256": "4ac025cfc4e9fa4ca81dc601e120cf1f418da61ba70778a922d8cae2b1d46673"
+        },
+        {
+          "path": "packages/registry/dist/import-matcher.js",
+          "bytes": 173,
+          "sha256": "a171fbfcb3b02923710b62f5319406c2720d350d8d49ae0eb3d28c7d6a7cc48a"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.d.ts",
+          "bytes": 99,
+          "sha256": "91cf2efb7a64e8a5a2d03389064d16bcbd98751dad7d27e7c4449c1505f80241"
+        },
+        {
+          "path": "packages/registry/dist/is-safe-target.js",
+          "bytes": 51,
+          "sha256": "09972da72526ea07023202cf983f9c0d02f56524d46e14a7d895ad81ad70ef93"
+        },
+        {
+          "path": "packages/registry/dist/json-config.d.ts",
+          "bytes": 379,
+          "sha256": "852280fdbce5100e2b3893290b4b603523055406d52692f125412e06df0a3a45"
+        },
+        {
+          "path": "packages/registry/dist/json-config.js",
+          "bytes": 63,
+          "sha256": "e70c8cb8ffddb77c4313b57135fe5636720a54a33d1693fdd6469c9bb3b40833"
+        },
+        {
+          "path": "packages/registry/dist/logger.d.ts",
+          "bytes": 249,
+          "sha256": "68cd9272a201906a2b27e965a9867bd549a7dd7b578dbf11c223661101aaa9fd"
+        },
+        {
+          "path": "packages/registry/dist/logger.js",
+          "bytes": 73,
+          "sha256": "b39c2caf322c932a7becac0d5e6e4bec2b8394aeda29a0aad8114871ab04d647"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.d.ts",
+          "bytes": 862,
+          "sha256": "1fd66ba2359c243c11ae69b3dd69b96b8bd35d189105b98e353bcfab21737d92"
+        },
+        {
+          "path": "packages/registry/dist/package-imports.js",
+          "bytes": 201,
+          "sha256": "312e68109fb8fed985cea6bc7c1f14f44b556537e8f2258b6fa007b8b116c001"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.d.ts",
+          "bytes": 3791,
+          "sha256": "114986bb2bde5b3dc9229acb64b4b47133f060d3753313af0e0e6810d1763d13"
+        },
+        {
+          "path": "packages/registry/dist/preset/preset.js",
+          "bytes": 523,
+          "sha256": "856ae19f7a0d0b95abcba848492aea75956c406f4184bfbb0c0e8c3d2f8ca6bd"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.d.ts",
+          "bytes": 421,
+          "sha256": "836fd9e4694247b9f136a294ed178ccc60599e70cd6fbf24c645dd9730c1d9b8"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "bytes": 2115,
+          "sha256": "9d220cebdf9715ed2ab225d386fd385e3fce9c4b8444a346b9470b75162dc5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.d.ts",
+          "bytes": 1487,
+          "sha256": "6f4d5343c9379c793cd81a2bbfa5884b7503c090428b01cca2390162a9e43a37"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "bytes": 1072,
+          "sha256": "12b2c2113df3532d3c0c751b435bcf033d08ae65d5d9bf85a2642461c2a838d7"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.d.ts",
+          "bytes": 39377,
+          "sha256": "30d68c0937cbc143dd320d6caacc8122d9e262aa6b0096f78db9e2f2bcd23477"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "bytes": 1277,
+          "sha256": "63e0ca94a72c21c724cdc2ffe8df4fda981337dd8c9dc5b88d3a80b33b2e3db2"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.d.ts",
+          "bytes": 921,
+          "sha256": "aabf93ffde91c5262248144da5a9490bc989515f9b1e35c424c03f497b63c9f4"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "bytes": 1093,
+          "sha256": "b8f5a6b7457c8c47a1754bf600b915588f25b4b34da1dea8b99811a0eb3d7752"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.d.ts",
+          "bytes": 1330,
+          "sha256": "f223d5057f58440381b0576a959dbf0f5dd1ccb06eb471319c1efaf82c8a222c"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "bytes": 986,
+          "sha256": "4ae5a324de442f7e4e65ccd1b81c4a930e7bd54fb5f7758c6035e6462f7ec88a"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.d.ts",
+          "bytes": 1285,
+          "sha256": "1b665fffefbe0a54059401d1723c57b4a8427c73806d80974ae7325a430d3276"
+        },
+        {
+          "path": "packages/registry/dist/registry/constants.js",
+          "bytes": 215,
+          "sha256": "42feb7e932eabc3bbb2d99b204b3d6f63ef83afc93e1952f19663a5359fabe2a"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.d.ts",
+          "bytes": 749,
+          "sha256": "c63ce540c0a2d7525f947796ec2eb7f5a037dad1c26a0b8cd096530adcd56bfe"
+        },
+        {
+          "path": "packages/registry/dist/registry/context.js",
+          "bytes": 211,
+          "sha256": "11128f726a49fda90881a1ab4420a399a67ecb5c71e4d42b1b9bd53e64afebe8"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.d.ts",
+          "bytes": 156,
+          "sha256": "0a4fdaa6af531c242a56499f8a22a1b11f0e40575a483f8139417c906df11c23"
+        },
+        {
+          "path": "packages/registry/dist/registry/env.js",
+          "bytes": 102,
+          "sha256": "e0f2819c664f54d5930e57389aa576a16e4e417c9330f9eac2d797bd821b907e"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.d.ts",
+          "bytes": 5122,
+          "sha256": "4602cab8547be1832ce003dd242ebce3977a93598a0e094a4ff5ecf9d0fb54f3"
+        },
+        {
+          "path": "packages/registry/dist/registry/errors.js",
+          "bytes": 604,
+          "sha256": "f05cb7f4dd655e66b7d441e4a7bb7d008c76b764e60e4749a08dd393e1e14d3d"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.d.ts",
+          "bytes": 6361,
+          "sha256": "de001f44904da9de5da8abd107895ffeb1e8c3e0b03f284deaedc0ef0b503a64"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "bytes": 1029,
+          "sha256": "68f517d55da34b13a2a2d29b9fbc3fb642bcb223401e99d26ae1ae4b1364fe32"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.d.ts",
+          "bytes": 646,
+          "sha256": "35a8ed0159f76dfd293c08ccd44b1add30c586bdab2c3302f88443e0ef258f30"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-auth.js",
+          "bytes": 286,
+          "sha256": "bc6a047ec8b11023d1e979475d9297a8b3b3735dd10d2550ef91e8f55e49a952"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.d.ts",
+          "bytes": 1609,
+          "sha256": "a1d3b6c41fa93a47903628d2fceed27fa7092d16f01b69e132e68c3eca92f3a7"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-cli.js",
+          "bytes": 377,
+          "sha256": "409e3df5ecc062609874b622ef330d0d81f54a21ebae7f661972dd29fd122b90"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.d.ts",
+          "bytes": 804,
+          "sha256": "56382a9c9b049f2464400ef16c5335bc70d99b2746dc19c427ed917f79d6756e"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.js",
+          "bytes": 399,
+          "sha256": "5451f1383f565c9492d1d75090880c178e0e2d2f9cb9ae1b5f3ae75d9035457b"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.d.ts",
+          "bytes": 13934,
+          "sha256": "014d1a57e9e7c5b6ea9998f91bf4912ec0b096348e578d8a4dd1660ef76a0784"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "bytes": 1057,
+          "sha256": "b77e0628ed016507af0532e0aa75deb2b084e8cca1a3a7a00c51d07efe13b2d3"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.d.ts",
+          "bytes": 815,
+          "sha256": "ffd89150e65639beb0e3c68b5581bbac62066e5ee5aca6e332215a76181ad36d"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "bytes": 2796,
+          "sha256": "746db8e39e1d09b3890d41ab73f757a64f370e46536c3e053af5ee68e26f0ff9"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.d.ts",
+          "bytes": 56039,
+          "sha256": "b280dc10216a9a922a7ceb1a1db307cf085a0e4810f107e0b1818e860106c62e"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "bytes": 1176,
+          "sha256": "6b414522211603757ca169ce30ae3880afc703b17595f120041844b1d36affd8"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.d.ts",
+          "bytes": 278,
+          "sha256": "cf53c1156c70e1486d557bd396b514486e99cf9b07d88b53b792248165e00d65"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "bytes": 1477,
+          "sha256": "e1c86f0e7890832e716186d1687c02d16c02ad2a44bb2d0d14953b9fc6ab867c"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.d.ts",
+          "bytes": 196,
+          "sha256": "5c6c9d5d1679cd23cfcf407656fa1832db5d93cc8e7c70e89d3d8b9d2122da60"
+        },
+        {
+          "path": "packages/registry/dist/registry/parser.js",
+          "bytes": 70,
+          "sha256": "07ecd97395c181a0cc14e16e6c959c77a904c0f0328a75cc6c34545ff7d8167c"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.d.ts",
+          "bytes": 269,
+          "sha256": "aa8cbef5b4065a50662d6b23b5f3f5fb9a1333d20ab33e4859a2a705281fc9d8"
+        },
+        {
+          "path": "packages/registry/dist/registry/proxy.js",
+          "bytes": 81,
+          "sha256": "7123e6bd52297994b4ab5f8ffee8cdbce7c5108b53436fc31bec621b85cf4d3a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.d.ts",
+          "bytes": 714,
+          "sha256": "1bbf984cf726e059f21ff570ed18307bc4e920aac905ac03896928bc0e448e9a"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolve-file-imports.js",
+          "bytes": 513,
+          "sha256": "902a880328d09a6fd57dcaefd8770ad88ec7a90f79dbcfae810054250d37eaaa"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.d.ts",
+          "bytes": 9982,
+          "sha256": "3590a82c29787b9a7413ffeaa00d8edda5aa82482e40c0f1b0c61df208cb392b"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "bytes": 1051,
+          "sha256": "27fcb550430d357a8fe7608c0e3ed2cc1f2a1b3e85133d68d87daa93517db96d"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.d.ts",
+          "bytes": 109400,
+          "sha256": "ce8059abfc663342e85395da8e1c6f2ddf9cd44feb5027b2fb852fba69a19916"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.d.ts",
+          "bytes": 1988,
+          "sha256": "4cba920eaa95608b57994ef7f3893241c873ee2c4ab1db0c92e15bc9b4cb1448"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "bytes": 1308,
+          "sha256": "32c03e480062900de3b95201958013fa39ab30c23267c35dad786ecaf5889712"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.d.ts",
+          "bytes": 13290,
+          "sha256": "b3c3a1f78cb34aa60a0bc2303d60a221b89b9a6b3222623690cb73f86cb1dade"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "bytes": 1029,
+          "sha256": "2d62068980f2d8e9f84ccd664364698087fb8cb0b0f5edfec899afefb04e1eed"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.d.ts",
+          "bytes": 1771,
+          "sha256": "be23832a5b1d2b9c3438c8315435d5ea14d49cd64bbe03357351a60b218591e6"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "bytes": 1152,
+          "sha256": "df7307213f46d4ec69e1a059d97a69f65683cca213fbfddc2b48d8258bfd2194"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.d.ts",
+          "bytes": 510,
+          "sha256": "a33d8682faa55ef171ec050c99817efcff02e155fdcdf96c8b37661f5c52fcf2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "bytes": 10171,
+          "sha256": "b3af84918a7fe016c93a8a7428a0a9c48fef1090913f35d849ee37aecbb085c2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.d.ts",
+          "bytes": 604,
+          "sha256": "227949b0b0963f637ea7a625621867dc676eb223e0dc44ea4aaad8b26b645579"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "bytes": 1064,
+          "sha256": "fc32e253caf774ae51f65ce7c5d63df4259a456018fd5d292563d0671a5253f2"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.d.ts",
+          "bytes": 930,
+          "sha256": "24363e8e20a29ed75e0473dfd3c1968c8cf97dd9caf11145db934f9d19cd4027"
+        },
+        {
+          "path": "packages/registry/dist/resolve-file-path.js",
+          "bytes": 152,
+          "sha256": "008576190e0e4dcbee5047e162fbf044c9ec144427c72f5b477e56cca9c1c4b4"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.d.ts",
+          "bytes": 962,
+          "sha256": "6e03ab61d1938e8fb4ab2ceba65ca166c12d36d1256b0a9af082566997e3da8b"
+        },
+        {
+          "path": "packages/registry/dist/resolve-import.js",
+          "bytes": 303,
+          "sha256": "f8daff4958bd68657c2caa3973b162c06104ff556199c64c06a02e519ca91ac6"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.d.ts",
+          "bytes": 823,
+          "sha256": "7dd730c1407fafea259387450c3252abf238a9878d913f2c8de96f5f17965ce8"
+        },
+        {
+          "path": "packages/registry/dist/schema/index.js",
+          "bytes": 817,
+          "sha256": "8a67f3c8d89181817a177857868a23ff612eb94e829ad376f70ae6acab49565f"
+        },
+        {
+          "path": "packages/registry/dist/spinner.d.ts",
+          "bytes": 223,
+          "sha256": "78cfe8e6958718ce582ea207f93b635577195edd97330155f2a3c18375efddec"
+        },
+        {
+          "path": "packages/registry/dist/spinner.js",
+          "bytes": 123,
+          "sha256": "687c1afb44f193d0b6b0bd7953269fbf43174a52c010e468cba6087463fd581f"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.d.ts",
+          "bytes": 268,
+          "sha256": "d0047828dc6561fcede41e8a6e9b0ff06796ef0efb1107a56c8b4c4ea9cbc4d5"
+        },
+        {
+          "path": "packages/registry/dist/tailwind-theme-colors.js",
+          "bytes": 74,
+          "sha256": "00e1f9b488e1068e8080159fc1373b7cded8568a6d9883fa40bc3bfa3cd19b66"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.d.ts",
+          "bytes": 374,
+          "sha256": "7f28fb0ac1571d6c643e66c8c9de60babf434e331eddf79b97990180a22ddc4f"
+        },
+        {
+          "path": "packages/registry/dist/target-aliases.js",
+          "bytes": 101,
+          "sha256": "6e8bb6945dd4261c0c6c90398bcef6e2ed21eb9d064f7ed9caf66b447eafa838"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.d.ts",
+          "bytes": 664,
+          "sha256": "a1436c25e68b82705f066726ce7bd31e8830554111696a258b36fd85175f6e7b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "bytes": 1470,
+          "sha256": "03997abb83405f7e32efb87b031db028610b9d563f915585c351ba8b90f8e08c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.d.ts",
+          "bytes": 298,
+          "sha256": "646ec6ac25e9e8a3e1d5cf8dff6193b42ff1ea6ace1f7ce623d571731f97b0dc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/source-text.js",
+          "bytes": 139,
+          "sha256": "ea006b78d16578373b8473df9e5f6058066f3f200f52ddbfa8c652e713d351bc"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.d.ts",
+          "bytes": 249,
+          "sha256": "4747bcd00d550a22b5f250a1e97ecd494d1d926a5a74b84cdb82a6a96d409021"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-aschild.js",
+          "bytes": 201,
+          "sha256": "1877d5c07b33f91430fbd5bcb5f7f302c971810351a6d6a3e94e7f7d76c05759"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.d.ts",
+          "bytes": 407,
+          "sha256": "0059c96a95fd759e2eb6a889f0972f643b1c6bed48f747b5a700155dfa534123"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-cleanup.js",
+          "bytes": 299,
+          "sha256": "19944d381c2ec40f9e0dd38668bfe4167e6bd455382e9e80e86e6ea5dee24a45"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.d.ts",
+          "bytes": 524,
+          "sha256": "fbb695cb848df05f2b241c7c5a024de822954dcbba8432fb1ce74dd9f0516d59"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-css-vars.js",
+          "bytes": 244,
+          "sha256": "4a8a434e4a1405ab91b4b55298b36999a5f297a88550c619215b90ae0aa8ba06"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.d.ts",
+          "bytes": 243,
+          "sha256": "1427c92eae4d746567d367dcf2590c21e6d49323acb6a59519c9d9586de336e7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-font.js",
+          "bytes": 227,
+          "sha256": "145d98f2555d0d07f152e778451399975b0882dbb74cf63365bb9930f678867b"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.d.ts",
+          "bytes": 245,
+          "sha256": "5ce840b8240fc424ec1696c8ede191ccc503e310c1a4c5e38f3462b03a722a31"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.js",
+          "bytes": 344,
+          "sha256": "29970b4fe3d5e541cbc042b09f2ce99d71fa8fbe872d13b40732d461df2b0b0a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.d.ts",
+          "bytes": 247,
+          "sha256": "7621984b0c83fced187ead91102063b251fe125306f536f188a340611a815541"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-import.js",
+          "bytes": 200,
+          "sha256": "9779a4dd3564583d409d0575d5047302a702f193d66b2a93231eaf453b5f1998"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.d.ts",
+          "bytes": 241,
+          "sha256": "85a16b1043bb4f79dbc380420c7d5449e3550614ad79aae1d5bcc4bfb540d454"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-jsx.js",
+          "bytes": 52,
+          "sha256": "1db241f82a28b88322477b0c9dcadb1977f567858fa01de31eeb57d75faa847a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.d.ts",
+          "bytes": 243,
+          "sha256": "e07c0c293a66e731d35b16fd78a84bb93f95b35417163aff085d1d7d033925d2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-menu.js",
+          "bytes": 198,
+          "sha256": "29cf5530dec67c27865e0915497f1bfd32d51ced7e292efe11ae4a475038d5f8"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.d.ts",
+          "bytes": 243,
+          "sha256": "c9c68cafb9cb511a1d5afb11fcf62846ceea31231fef00857ebc5d9f4137677e"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-next.js",
+          "bytes": 198,
+          "sha256": "f57e672fd883161bfd90b6b49c2735b25c8004aac313a4bf4c546f5f16d90a37"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.d.ts",
+          "bytes": 241,
+          "sha256": "838f375575bffbe376264acacff2de438ecfb3ac73ab4951712260e40aebcdb7"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rsc.js",
+          "bytes": 226,
+          "sha256": "c9a97febfd3c23635b0808008e39a319c4246f4657f878af2f231637b722c255"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.d.ts",
+          "bytes": 419,
+          "sha256": "9a5d71a0db11bedcaeb4ab3557317d54373c449d026c018c2e349217d88d054c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "bytes": 1257,
+          "sha256": "ea0e4f54e5a13abd8e0e7e9b1449d2a74f3fae2a2c61d2cf307b6a6fa398bd97"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.d.ts",
+          "bytes": 1099,
+          "sha256": "e1ee15b0d4d3d8cd298330999daf6250dc1d77f7adfc74b3ccfe22d66680369a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "bytes": 1277,
+          "sha256": "0843e11f11f214fd471e80da747108596c1be517f6b994edbb812ea73cd7a74e"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.d.ts",
+          "bytes": 1234,
+          "sha256": "25db3723eb446d13424a3330af90bb6d1a105d297a7631b1ddc27fd1a9a3bf3f"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css-vars.js",
+          "bytes": 201,
+          "sha256": "dc1f82e18ca0f656c15df77f8d4c0afdb66030f7dc8768c49bca82fefacd5ab9"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.d.ts",
+          "bytes": 921,
+          "sha256": "bd07db4387a2187859500d056c43d8fc365aeb3906e402380f0093546ab3595d"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-css.js",
+          "bytes": 183,
+          "sha256": "8b2703739a1b9c090d794b03c49ea5b8750b5341a49f9ae284c410843c9f9490"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.d.ts",
+          "bytes": 1195,
+          "sha256": "f5eca05654db9985e68a8baf345bcba8d22bc0e258d6ce42f0c4c48e3e6e4911"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-dependencies.js",
+          "bytes": 309,
+          "sha256": "551a46a3178ccaf8830103e2b8a02e14822e73c1cceff6e08cf0957189940c9b"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.d.ts",
+          "bytes": 481,
+          "sha256": "371acf31a9172c708a6e1e06d79ddaff2317a64a5c1dfc65a3d991eeaced39a8"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-env-vars.js",
+          "bytes": 169,
+          "sha256": "20d544d173a0df2f34bcac0d58ffa4514608c30b1b1b63a71fd9ed4e39cd347c"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.d.ts",
+          "bytes": 2236,
+          "sha256": "64f3a8e010639b536d0962af93d2056db35ed5702162735cc1b96223e2f74b53"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "bytes": 1916,
+          "sha256": "32b7a6076f3549873cf91fa944c76277577c0ac4e911c3812018db5661734cbd"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.d.ts",
+          "bytes": 4045,
+          "sha256": "212713fbbad49fad4f6a6d7e3cbd57e4325724cd0078cc07c5f4f1a4af5839d0"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "bytes": 1282,
+          "sha256": "5efdc990c7cf47e0019411290a61627420a46c9764c8452d5b438b9c7cc60b12"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.d.ts",
+          "bytes": 1729,
+          "sha256": "4d8c7fd12d6c0cf940e3bf90371c5d481e94908f2fe802683387a7c8e130d3ce"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-tailwind-config.js",
+          "bytes": 587,
+          "sha256": "63f1a6019260a76fc845b55b4f546aafaeb7e10f0d329befc350e2a4cb6b95bc"
+        },
+        {
+          "path": "packages/registry/dist/workspace.d.ts",
+          "bytes": 416,
+          "sha256": "3ba6c78139f2676b435e10bfef14e080513b2fe881f855f8ab7a9a6d96414a40"
+        },
+        {
+          "path": "packages/registry/dist/workspace.js",
+          "bytes": 208,
+          "sha256": "95c2b4d9d2c25bf129a013c25775213e13bd182c554a2d43e804957ce62be8ab"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-3W6BGJGE.js",
+          "bytes": 1040,
+          "sha256": "b64691fc01ff0dbcba92c6f1ff50db9c82de832c77bd35b02975a2b7dd5ef452"
+        },
+        {
+          "path": "packages/shadcn/dist/chunk-I2VXPUS4.js",
+          "bytes": 10032,
+          "sha256": "60b086241d49d570eb33621ac40ba2b3af0aa4991a79dc06271792b89011b45d"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.d.ts",
+          "bytes": 595,
+          "sha256": "ae41ef3f6343bfeb4ba46720cc010e53274d6ffe31397e69e905f0c72a01d6c7"
+        },
+        {
+          "path": "packages/shadcn/dist/icons/index.js",
+          "bytes": 166,
+          "sha256": "bd8f528b9627035571dde501db966cdce4256bea3c3221431a5b90583f267a38"
+        },
+        {
+          "path": "packages/shadcn/dist/index.d.ts",
+          "bytes": 6674,
+          "sha256": "b873684e69b54305b37d00c60667f12a3bc3518e692e96bf27a4b83d560d3228"
+        },
+        {
+          "path": "packages/shadcn/dist/index.js",
+          "bytes": 160308,
+          "sha256": "53d4a8d57cbda9358166d459ccfc88e1ac167dde7e93a7d9f07c83c454c4c2f8"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.d.ts",
+          "bytes": 288,
+          "sha256": "e073003796739209177a8812d4862772f5e8188fff22f2990ac2784252e0fa5e"
+        },
+        {
+          "path": "packages/shadcn/dist/mcp/index.js",
+          "bytes": 64,
+          "sha256": "0ae9eff6c508e71a9f913b9d57586ccdb066d10a42dbd2767914a15e59410874"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.d.ts",
+          "bytes": 463,
+          "sha256": "9e963bc914e000ee5e0fd763a20e5d5138c9cef4bae0452cf38f0484083863a7"
+        },
+        {
+          "path": "packages/shadcn/dist/preset/index.js",
+          "bytes": 410,
+          "sha256": "a2bb1a694f3e071734bfcb5280f12049379ece25b2cc9176e745a6b89a49b79f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.d.ts",
+          "bytes": 34,
+          "sha256": "5ba277e4e404cf03a06530df5191fe8ca261c075c4a8d2b0e0f48d1bdfe9924f"
+        },
+        {
+          "path": "packages/shadcn/dist/registry/index.js",
+          "bytes": 30,
+          "sha256": "8730e5ea7f49b841c130a3933285955052f09525b91c86c5e0e6c5160d3a4ebb"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.d.ts",
+          "bytes": 41,
+          "sha256": "69ee83334374dce7de1c5909c5c9543cf6beaf221be30724661a1d9f9461ee61"
+        },
+        {
+          "path": "packages/shadcn/dist/schema/index.js",
+          "bytes": 37,
+          "sha256": "7902ad7dd12a37ab1a4fc4803e17fd12f420b5bd920dc31596853416c568c917"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.css",
+          "bytes": 16977,
+          "sha256": "0c12b135dcade0848bd5b9bc0b4a797955230632ae3f08f33597b8ed989b16c0"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "bytes": 111,
+          "sha256": "bf23c5559095e6d21867d360ac9e9f015b5d57e9f8f40f5c4cbdea41506791e1"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.d.ts",
+          "bytes": 1197,
+          "sha256": "3e2cfaff9a1e015d8b276aa2e2c8a011d3262bafbae856ce3101a0db96738af0"
+        },
+        {
+          "path": "packages/shadcn/dist/utils/index.js",
+          "bytes": 9371,
+          "sha256": "bafc2ae52c8787ba5a72b242815f11b3aeffbece36db8db7201f5ecc080e2540"
+        }
+      ],
+      "sha256": "0e47b872872ffb6482d2ae85f4e3d21801c9ab7b7599dee084bcf7d8f523c0c2"
+    },
+    "baselineStable": false,
+    "cacheMatchesBaseline": false,
+    "functionalChecks": []
+  }
+}

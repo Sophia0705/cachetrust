@@ -1,0 +1,1245 @@
+{
+  "schemaVersion": "1",
+  "caseId": "phase3-e1-shadcn-identical-input",
+  "verdict": {
+    "status": "INCONCLUSIVE",
+    "reasonCodes": [
+      "NONDETERMINISTIC_BASELINE"
+    ],
+    "implicatedTasks": [],
+    "explanation": "Two independent clean baselines disagree."
+  },
+  "comparisons": [
+    {
+      "name": "baseline-a-vs-baseline-b",
+      "leftSha256": "dea45e8c483946d9ea299c4fa56e665150a140c7c80f21e942415493a7d2df30",
+      "rightSha256": "0e47b872872ffb6482d2ae85f4e3d21801c9ab7b7599dee084bcf7d8f523c0c2",
+      "leftFileCount": 270,
+      "rightFileCount": 270,
+      "differenceCount": 61,
+      "differences": [
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "kind": "content",
+          "leftBytes": 2009,
+          "rightBytes": 2009,
+          "leftSha256": "35208060626ccd5d003df3130197bf17d8c41f0187faa6146be2bbc82f33c306",
+          "rightSha256": "5b9207bd34c11430c748c5654d591cc69bb72c174ab593b19194d5cea0a7d547"
+        },
+        {
+          "path": "packages/registry/dist/chunk-2ZD6RDHW.js",
+          "kind": "right-only",
+          "rightBytes": 8235,
+          "rightSha256": "1fb8fadecac67d41e811fafe97619d983c9cb7669e4b4be8aa10f5a1d991d97f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OLGOFMN.js",
+          "kind": "left-only",
+          "leftBytes": 7472,
+          "leftSha256": "59c9752fcce39fbae04c2c4a103d8fbbc7f36eb537679579821222807d8748de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5QRP7DWO.js",
+          "kind": "right-only",
+          "rightBytes": 7472,
+          "rightSha256": "893910c1792f2880b1d0875e5ca27b47132e57029e3c30ee7d3877b20dffc511"
+        },
+        {
+          "path": "packages/registry/dist/chunk-AW3NYH2T.js",
+          "kind": "left-only",
+          "leftBytes": 2797,
+          "leftSha256": "3ca9a630863ea92645f6b0fade2bf03d91e8a092fc227af84dceb49559662483"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BHU27KHS.js",
+          "kind": "left-only",
+          "leftBytes": 536,
+          "leftSha256": "3c4976a1c81fca84e14cde679998d6af75bc2796c37f2c35a227a29185553941"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BOKNXK35.js",
+          "kind": "right-only",
+          "rightBytes": 4680,
+          "rightSha256": "9a2ab58a695b6c7aaf5b4f23a7dfc0bd257496c01eeadb13153a8538645ecdfb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CG6RHFNT.js",
+          "kind": "right-only",
+          "rightBytes": 536,
+          "rightSha256": "fe63928d3551b8a481b4c1e7e36fa260ad1c88f8288bf36c2df512049206de9b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DYB6YQ2S.js",
+          "kind": "right-only",
+          "rightBytes": 2293,
+          "rightSha256": "c8711c2d0ba084185cc1e2456a8b9e16544b547234aa930717aac3a545453af3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-F26MPF6V.js",
+          "kind": "right-only",
+          "rightBytes": 4471,
+          "rightSha256": "65d914c80e37bcde77a33fc8654b431a593688ed8341d61e999895d85ea28769"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FH2VLXDR.js",
+          "kind": "left-only",
+          "leftBytes": 40978,
+          "leftSha256": "2f4eff2892998739c24ee6f7c0cd2fc818c3bbe33f48f3078d5eb7b807104091"
+        },
+        {
+          "path": "packages/registry/dist/chunk-IP7LRVEH.js",
+          "kind": "right-only",
+          "rightBytes": 2797,
+          "rightSha256": "01a899dda8fbf7540cdf302bafd4da7f5e8cb2ad80968943ad7314432533a9e4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-J7DMLUED.js",
+          "kind": "left-only",
+          "leftBytes": 1379,
+          "leftSha256": "9dd4a45dd72666de922de4f3eebd0d80427f017e57ca48323ca9b6fd7e60fc42"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KHFSTWMF.js",
+          "kind": "left-only",
+          "leftBytes": 9514,
+          "leftSha256": "993a6f621c4c014e3f74ed0e9abc117e0b9bb2615d40fd1edd32790761439521"
+        },
+        {
+          "path": "packages/registry/dist/chunk-NLGKPK5X.js",
+          "kind": "right-only",
+          "rightBytes": 40978,
+          "rightSha256": "232332b19629a79c64884b9f81a2cdf3488a889552cc6eaa4d79cc0a6ddb10e0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PVW25JWN.js",
+          "kind": "left-only",
+          "leftBytes": 4680,
+          "leftSha256": "7a7aa2fad6fc6b96cf3bda1efae7f1e9fbab42bb37565651c66387ef0e2b516a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QCRUN24Y.js",
+          "kind": "left-only",
+          "leftBytes": 4756,
+          "leftSha256": "9005896a2c7f884e04a3f95e8a149c5606bc8a3ac12a6a9d32538d39984bba93"
+        },
+        {
+          "path": "packages/registry/dist/chunk-R4GIHKEE.js",
+          "kind": "right-only",
+          "rightBytes": 3271,
+          "rightSha256": "fcc1e3c7ba6f551e7ebf5180156623e902e0899133fcb7b2464f27cd47ad6f26"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TOLRNYZN.js",
+          "kind": "left-only",
+          "leftBytes": 8235,
+          "leftSha256": "5c6863d5738b34da6552f9365131dc868160d4262200d6f51efede39070f316c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UDHDDDRZ.js",
+          "kind": "left-only",
+          "leftBytes": 4471,
+          "leftSha256": "e02cc19c1f9393b5e8ad83ceda0202f9e7f4f4ef98b62ca147fe380c4e6657f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UL3BFSP3.js",
+          "kind": "left-only",
+          "leftBytes": 3271,
+          "leftSha256": "b5e9be16491bd3c99fcf850704d158d10da7702647a1017375791f9c3d509064"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V4SQINGL.js",
+          "kind": "right-only",
+          "rightBytes": 9514,
+          "rightSha256": "387847d6ab73ac9f32b7ac0a32fdd729fd0bc2f71fa0a121c809dfcf96d23c83"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WJGGK4JS.js",
+          "kind": "right-only",
+          "rightBytes": 4756,
+          "rightSha256": "7a766500460055ee2b83f46c6ad2a1c61b13fb83e93c49ffe3af805f5c14897f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WXP6SNZN.js",
+          "kind": "right-only",
+          "rightBytes": 1379,
+          "rightSha256": "8e02f4d232cf842be63467b8ef4074b0e66ae2b360504523ae7e82c86d9ae4e1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ZVEJ2BMI.js",
+          "kind": "left-only",
+          "leftBytes": 2293,
+          "leftSha256": "ad5a5c1ce5d5827f9a9c53a83a936517a4cfbb2181d42b884a20b0e217bcdd15"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "kind": "content",
+          "leftBytes": 1292,
+          "rightBytes": 1292,
+          "leftSha256": "f41ff923910a569ce6b3a993e195673a7ee754a9b0c080a5eccf30423c75db5c",
+          "rightSha256": "457c4c126981742685a2fb96a33780e971f09d07f1a62a6ac37fdfa04c09e0c0"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "kind": "content",
+          "leftBytes": 1233,
+          "rightBytes": 1233,
+          "leftSha256": "3ad23bacb62e7ef6b49ac473c90ff2487ff65f58affda94bba4f9ffa2102c30c",
+          "rightSha256": "849b7a0bd158675ed7228a3c2f4f5ad77836692f3e8446a892604fb5850c723d"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "kind": "content",
+          "leftBytes": 2115,
+          "rightBytes": 2115,
+          "leftSha256": "a62f40c96d4a5bb5eda824a2287a336a07500ce459f117e0002b666e2aac92ad",
+          "rightSha256": "9d220cebdf9715ed2ab225d386fd385e3fce9c4b8444a346b9470b75162dc5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "kind": "content",
+          "leftBytes": 1072,
+          "rightBytes": 1072,
+          "leftSha256": "16bdb50d84a4f2afe08fcde2e71e4626f04c18499b40cdd0551db5f7e3d779c0",
+          "rightSha256": "12b2c2113df3532d3c0c751b435bcf033d08ae65d5d9bf85a2642461c2a838d7"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.d.ts",
+          "kind": "content",
+          "leftBytes": 39377,
+          "rightBytes": 39377,
+          "leftSha256": "775033d3e608eed058239af41ec8b79949565fbd49490edfb2826a338584f0c7",
+          "rightSha256": "30d68c0937cbc143dd320d6caacc8122d9e262aa6b0096f78db9e2f2bcd23477"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "98dbea7428a6e0891bcd778abaf88e347bc04b251258b9564c09fef1a4575181",
+          "rightSha256": "63e0ca94a72c21c724cdc2ffe8df4fda981337dd8c9dc5b88d3a80b33b2e3db2"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "kind": "content",
+          "leftBytes": 1093,
+          "rightBytes": 1093,
+          "leftSha256": "8b89d64858f2d86c88481a15666cef47ff9d387be3342757a30e51d587dc63b3",
+          "rightSha256": "b8f5a6b7457c8c47a1754bf600b915588f25b4b34da1dea8b99811a0eb3d7752"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "kind": "content",
+          "leftBytes": 986,
+          "rightBytes": 986,
+          "leftSha256": "15aaeda8f7b2fb898ecebd7581be28c4eee1be7312f0de66ce42a68b71436783",
+          "rightSha256": "4ae5a324de442f7e4e65ccd1b81c4a930e7bd54fb5f7758c6035e6462f7ec88a"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.d.ts",
+          "kind": "content",
+          "leftBytes": 6361,
+          "rightBytes": 6361,
+          "leftSha256": "19ed6cc3c8d9d8acfe0699134c2d93a6ee6db8361769dad6148e1760b56a2303",
+          "rightSha256": "de001f44904da9de5da8abd107895ffeb1e8c3e0b03f284deaedc0ef0b503a64"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "d18748a29be05a28fe07fcc2f6c9fe157fde3838c0bf88d4e2358245d55a8ea4",
+          "rightSha256": "68f517d55da34b13a2a2d29b9fbc3fb642bcb223401e99d26ae1ae4b1364fe32"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.js",
+          "kind": "content",
+          "leftBytes": 399,
+          "rightBytes": 399,
+          "leftSha256": "4eac1a35d0978d67ef645d26dd347af26145e97584eaf6f419ea26d7f0419c74",
+          "rightSha256": "5451f1383f565c9492d1d75090880c178e0e2d2f9cb9ae1b5f3ae75d9035457b"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.d.ts",
+          "kind": "content",
+          "leftBytes": 13934,
+          "rightBytes": 13934,
+          "leftSha256": "74956ad4c3777b7e0d340bd4482e715649588b0a5ff3e4f9bec68a29d8fe8663",
+          "rightSha256": "014d1a57e9e7c5b6ea9998f91bf4912ec0b096348e578d8a4dd1660ef76a0784"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "kind": "content",
+          "leftBytes": 1057,
+          "rightBytes": 1057,
+          "leftSha256": "3378ddd0d7387602649bc4fdf1a808d3c1dbb1f8f5fe4c5522bef27820923594",
+          "rightSha256": "b77e0628ed016507af0532e0aa75deb2b084e8cca1a3a7a00c51d07efe13b2d3"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "kind": "content",
+          "leftBytes": 2796,
+          "rightBytes": 2796,
+          "leftSha256": "3435b01eb864753e48577883a5f4c389a4635bb1f9c77b203bdfcd931912e5ce",
+          "rightSha256": "746db8e39e1d09b3890d41ab73f757a64f370e46536c3e053af5ee68e26f0ff9"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "kind": "content",
+          "leftBytes": 1176,
+          "rightBytes": 1176,
+          "leftSha256": "ff5c7bfff5a754e017fd14b622f025057a36ca0191ac1bd33ad03c9305400d7a",
+          "rightSha256": "6b414522211603757ca169ce30ae3880afc703b17595f120041844b1d36affd8"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "kind": "content",
+          "leftBytes": 1477,
+          "rightBytes": 1477,
+          "leftSha256": "31474d294d0226d489f071af05c6f005986922e91c12114e250517e3e73397a1",
+          "rightSha256": "e1c86f0e7890832e716186d1687c02d16c02ad2a44bb2d0d14953b9fc6ab867c"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.d.ts",
+          "kind": "content",
+          "leftBytes": 9982,
+          "rightBytes": 9982,
+          "leftSha256": "d576e4ad7dd3767bed8e3ca0fc6757c5a4b3c3d339019e9f45a3aee00a412fe0",
+          "rightSha256": "3590a82c29787b9a7413ffeaa00d8edda5aa82482e40c0f1b0c61df208cb392b"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "kind": "content",
+          "leftBytes": 1051,
+          "rightBytes": 1051,
+          "leftSha256": "a85eac39489db9078e159e2ed8ea5e0690838f07e4f6cd81dc395796a431b3e1",
+          "rightSha256": "27fcb550430d357a8fe7608c0e3ed2cc1f2a1b3e85133d68d87daa93517db96d"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.d.ts",
+          "kind": "content",
+          "leftBytes": 109400,
+          "rightBytes": 109400,
+          "leftSha256": "f3c963a8b7ed28217ca827501c1066e7242868a2207f2afd17c9de3642800d6f",
+          "rightSha256": "ce8059abfc663342e85395da8e1c6f2ddf9cd44feb5027b2fb852fba69a19916"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "kind": "content",
+          "leftBytes": 1308,
+          "rightBytes": 1308,
+          "leftSha256": "fd978760deb706bc568537d5dab7f8c5119260d33279798ffdb48661f7f432c2",
+          "rightSha256": "32c03e480062900de3b95201958013fa39ab30c23267c35dad786ecaf5889712"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.d.ts",
+          "kind": "content",
+          "leftBytes": 13290,
+          "rightBytes": 13290,
+          "leftSha256": "291c7c4b41f8472dc664741140bf76fad30435a7d1fd985e0939e43e55e0a466",
+          "rightSha256": "b3c3a1f78cb34aa60a0bc2303d60a221b89b9a6b3222623690cb73f86cb1dade"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "d677dbacc441db98724cca2902cf306cc6748b7ab0df3879840438b11f1549ee",
+          "rightSha256": "2d62068980f2d8e9f84ccd664364698087fb8cb0b0f5edfec899afefb04e1eed"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.d.ts",
+          "kind": "content",
+          "leftBytes": 1771,
+          "rightBytes": 1771,
+          "leftSha256": "193bce4cd56c98665fb3c47c3878e3e5a48ffb0179b6073711427e97a7460fc5",
+          "rightSha256": "be23832a5b1d2b9c3438c8315435d5ea14d49cd64bbe03357351a60b218591e6"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "kind": "content",
+          "leftBytes": 1152,
+          "rightBytes": 1152,
+          "leftSha256": "6c27086cc0b153b533a8b8d5f368aea49b1ab53d592406371544af59291085d1",
+          "rightSha256": "df7307213f46d4ec69e1a059d97a69f65683cca213fbfddc2b48d8258bfd2194"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "kind": "content",
+          "leftBytes": 10171,
+          "rightBytes": 10171,
+          "leftSha256": "4567ff90fee4b9ef820e544f44cff5e79dbc2c6fc1f5b1ae0309e38663851430",
+          "rightSha256": "b3af84918a7fe016c93a8a7428a0a9c48fef1090913f35d849ee37aecbb085c2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "kind": "content",
+          "leftBytes": 1064,
+          "rightBytes": 1064,
+          "leftSha256": "31097ec68aa928813993deb962aeec6e2132345cea395b38e8898af382048d08",
+          "rightSha256": "fc32e253caf774ae51f65ce7c5d63df4259a456018fd5d292563d0671a5253f2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "kind": "content",
+          "leftBytes": 1470,
+          "rightBytes": 1470,
+          "leftSha256": "6467da5e303a9de1e84d192c2a4a3c85b5d33dee557687d0292868bc0fffaf2f",
+          "rightSha256": "03997abb83405f7e32efb87b031db028610b9d563f915585c351ba8b90f8e08c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.js",
+          "kind": "content",
+          "leftBytes": 344,
+          "rightBytes": 344,
+          "leftSha256": "94a144dfa0d9cad92882c697ba8629e464f46ad57dabdd2d0c3dbda3322292aa",
+          "rightSha256": "29970b4fe3d5e541cbc042b09f2ce99d71fa8fbe872d13b40732d461df2b0b0a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "kind": "content",
+          "leftBytes": 1257,
+          "rightBytes": 1257,
+          "leftSha256": "2f979bb97dedd7d6949e174325dbcd8dc1f9d3685ee8b24eee3603a9beb94c77",
+          "rightSha256": "ea0e4f54e5a13abd8e0e7e9b1449d2a74f3fae2a2c61d2cf307b6a6fa398bd97"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "cfafe36f1b63b79c6f4ca9bcf2a11f2de0bcd3796e17c67178be1f11fb7b4264",
+          "rightSha256": "0843e11f11f214fd471e80da747108596c1be517f6b994edbb812ea73cd7a74e"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "kind": "content",
+          "leftBytes": 1916,
+          "rightBytes": 1916,
+          "leftSha256": "947f55f9be15438119ed6823b0a7bfe82d54afa743221b7f527aa34633fd8062",
+          "rightSha256": "32b7a6076f3549873cf91fa944c76277577c0ac4e911c3812018db5661734cbd"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.d.ts",
+          "kind": "content",
+          "leftBytes": 4045,
+          "rightBytes": 4045,
+          "leftSha256": "ba395cc1fe8545dcbfbc9e8bf1968ff63a217bf13b9eb7c31878319ad0be09e3",
+          "rightSha256": "212713fbbad49fad4f6a6d7e3cbd57e4325724cd0078cc07c5f4f1a4af5839d0"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "kind": "content",
+          "leftBytes": 1282,
+          "rightBytes": 1282,
+          "leftSha256": "8f6142ce3c432e1b1edcfe4717b98d22036357e77f99629f2ee65cf475e6ee96",
+          "rightSha256": "5efdc990c7cf47e0019411290a61627420a46c9764c8452d5b438b9c7cc60b12"
+        },
+        {
+          "path": "packages/shadcn/dist/index.d.ts",
+          "kind": "content",
+          "leftBytes": 6674,
+          "rightBytes": 6674,
+          "leftSha256": "ffac0db716151322f4884974aa92b5577c20d7a8b98e551a13c3e211272a4bee",
+          "rightSha256": "b873684e69b54305b37d00c60667f12a3bc3518e692e96bf27a4b83d560d3228"
+        },
+        {
+          "path": "packages/shadcn/dist/index.js",
+          "kind": "content",
+          "leftBytes": 160308,
+          "rightBytes": 160308,
+          "leftSha256": "f001a3bfc86960f91beb877f8c37177a819eef91828a50a325d4405cccdd748c",
+          "rightSha256": "53d4a8d57cbda9358166d459ccfc88e1ac167dde7e93a7d9f07c83c454c4c2f8"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "kind": "content",
+          "leftBytes": 111,
+          "rightBytes": 111,
+          "leftSha256": "2d3bb5acfdb9b90d1a3266a43906c8a555c9e604a78e776444912e788946175f",
+          "rightSha256": "bf23c5559095e6d21867d360ac9e9f015b5d57e9f8f40f5c4cbdea41506791e1"
+        }
+      ]
+    },
+    {
+      "name": "cache-vs-baseline-a",
+      "leftSha256": "42effee7b8adb8790d5bed2a341e7372e02642916ec76029d0f78e696ae2fc20",
+      "rightSha256": "dea45e8c483946d9ea299c4fa56e665150a140c7c80f21e942415493a7d2df30",
+      "leftFileCount": 270,
+      "rightFileCount": 270,
+      "differenceCount": 57,
+      "differences": [
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "kind": "content",
+          "leftBytes": 2009,
+          "rightBytes": 2009,
+          "leftSha256": "c04748ac9b4f2c95a89caaf193375bcba3ac62688b0d6ff677a0c0707343f83b",
+          "rightSha256": "35208060626ccd5d003df3130197bf17d8c41f0187faa6146be2bbc82f33c306"
+        },
+        {
+          "path": "packages/registry/dist/chunk-3OLGOFMN.js",
+          "kind": "right-only",
+          "rightBytes": 7472,
+          "rightSha256": "59c9752fcce39fbae04c2c4a103d8fbbc7f36eb537679579821222807d8748de"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BNNXKC6.js",
+          "kind": "left-only",
+          "leftBytes": 536,
+          "leftSha256": "edeeb793cb58df84cc66b9ad8e7f20c61b100fa608bbc333ad004fdf60d66bbd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-AW3NYH2T.js",
+          "kind": "right-only",
+          "rightBytes": 2797,
+          "rightSha256": "3ca9a630863ea92645f6b0fade2bf03d91e8a092fc227af84dceb49559662483"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BHU27KHS.js",
+          "kind": "right-only",
+          "rightBytes": 536,
+          "rightSha256": "3c4976a1c81fca84e14cde679998d6af75bc2796c37f2c35a227a29185553941"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFHRIMZV.js",
+          "kind": "left-only",
+          "leftBytes": 1379,
+          "leftSha256": "a9951d979429fbb52b1451c1d75b8bb4cab1c8197b6be9deccaf0a71b41ac7cc"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FH2VLXDR.js",
+          "kind": "right-only",
+          "rightBytes": 40978,
+          "rightSha256": "2f4eff2892998739c24ee6f7c0cd2fc818c3bbe33f48f3078d5eb7b807104091"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FXKKZWUD.js",
+          "kind": "left-only",
+          "leftBytes": 4680,
+          "leftSha256": "15d72893e7b32a5c3d0185df913006ab0e11d48030bd39faeffaa175373b3955"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GR4734HF.js",
+          "kind": "left-only",
+          "leftBytes": 7472,
+          "leftSha256": "273968a9adb5834a35f915e109fa66974a5dc8b34760d8839c035985a4b2e347"
+        },
+        {
+          "path": "packages/registry/dist/chunk-IP7LRVEH.js",
+          "kind": "left-only",
+          "leftBytes": 2797,
+          "leftSha256": "01a899dda8fbf7540cdf302bafd4da7f5e8cb2ad80968943ad7314432533a9e4"
+        },
+        {
+          "path": "packages/registry/dist/chunk-J7DMLUED.js",
+          "kind": "right-only",
+          "rightBytes": 1379,
+          "rightSha256": "9dd4a45dd72666de922de4f3eebd0d80427f017e57ca48323ca9b6fd7e60fc42"
+        },
+        {
+          "path": "packages/registry/dist/chunk-KHFSTWMF.js",
+          "kind": "right-only",
+          "rightBytes": 9514,
+          "rightSha256": "993a6f621c4c014e3f74ed0e9abc117e0b9bb2615d40fd1edd32790761439521"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MF3S7M2E.js",
+          "kind": "left-only",
+          "leftBytes": 2293,
+          "leftSha256": "58e1fe303a7c3d57f8d75957911f111ebaf0935cf6b82adbfa403ee037dff089"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MIBMNG4E.js",
+          "kind": "left-only",
+          "leftBytes": 9514,
+          "leftSha256": "605909ecdfb2e8b50aeff5290329a74efd2d944cd97b65d4badc5c44aaf31b8f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-OS7OOSWT.js",
+          "kind": "left-only",
+          "leftBytes": 8235,
+          "leftSha256": "7b242533ebf89e3a829a5655076632d4d9c0cf7890b6ae67d6a2fa32f299f860"
+        },
+        {
+          "path": "packages/registry/dist/chunk-PVW25JWN.js",
+          "kind": "right-only",
+          "rightBytes": 4680,
+          "rightSha256": "7a7aa2fad6fc6b96cf3bda1efae7f1e9fbab42bb37565651c66387ef0e2b516a"
+        },
+        {
+          "path": "packages/registry/dist/chunk-QCRUN24Y.js",
+          "kind": "right-only",
+          "rightBytes": 4756,
+          "rightSha256": "9005896a2c7f884e04a3f95e8a149c5606bc8a3ac12a6a9d32538d39984bba93"
+        },
+        {
+          "path": "packages/registry/dist/chunk-RV2V35SY.js",
+          "kind": "left-only",
+          "leftBytes": 4756,
+          "leftSha256": "f9c54343d0596dad76a4d0c3f3e510f00495f09ff163ebae319bb03650263585"
+        },
+        {
+          "path": "packages/registry/dist/chunk-TOLRNYZN.js",
+          "kind": "right-only",
+          "rightBytes": 8235,
+          "rightSha256": "5c6863d5738b34da6552f9365131dc868160d4262200d6f51efede39070f316c"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UDHDDDRZ.js",
+          "kind": "right-only",
+          "rightBytes": 4471,
+          "rightSha256": "e02cc19c1f9393b5e8ad83ceda0202f9e7f4f4ef98b62ca147fe380c4e6657f3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UXRYVFQX.js",
+          "kind": "left-only",
+          "leftBytes": 4471,
+          "leftSha256": "5c1049780331a26c91056813329d88f06636460f8189f8abf36b98fd7186358d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XLOEDEIY.js",
+          "kind": "left-only",
+          "leftBytes": 40978,
+          "leftSha256": "390b8294fb1c9fec71b1f3ea34753ff599540711e46043913de2be134696c6a7"
+        },
+        {
+          "path": "packages/registry/dist/chunk-ZVEJ2BMI.js",
+          "kind": "right-only",
+          "rightBytes": 2293,
+          "rightSha256": "ad5a5c1ce5d5827f9a9c53a83a936517a4cfbb2181d42b884a20b0e217bcdd15"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "kind": "content",
+          "leftBytes": 1292,
+          "rightBytes": 1292,
+          "leftSha256": "fa9873c0edbd460f16effa49fdf1480a9cc86d1b244dde4ce3a11143a5140cc4",
+          "rightSha256": "f41ff923910a569ce6b3a993e195673a7ee754a9b0c080a5eccf30423c75db5c"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "kind": "content",
+          "leftBytes": 1233,
+          "rightBytes": 1233,
+          "leftSha256": "17d32191c5ef9d04711a0ab3ff937fbee77ba953d5e12d5ec16920f018902dee",
+          "rightSha256": "3ad23bacb62e7ef6b49ac473c90ff2487ff65f58affda94bba4f9ffa2102c30c"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "kind": "content",
+          "leftBytes": 2115,
+          "rightBytes": 2115,
+          "leftSha256": "adceeedec7f427c036b5b12a37cca00f108880ed80995436381443539ee3e098",
+          "rightSha256": "a62f40c96d4a5bb5eda824a2287a336a07500ce459f117e0002b666e2aac92ad"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "kind": "content",
+          "leftBytes": 1072,
+          "rightBytes": 1072,
+          "leftSha256": "6808ca497746273c45cac1dbdbb2517fd405048802993f9ad78ae2fec163f229",
+          "rightSha256": "16bdb50d84a4f2afe08fcde2e71e4626f04c18499b40cdd0551db5f7e3d779c0"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.d.ts",
+          "kind": "content",
+          "leftBytes": 39377,
+          "rightBytes": 39377,
+          "leftSha256": "30d68c0937cbc143dd320d6caacc8122d9e262aa6b0096f78db9e2f2bcd23477",
+          "rightSha256": "775033d3e608eed058239af41ec8b79949565fbd49490edfb2826a338584f0c7"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "730752a0fd77b819278cc66868303b16ddadc34f225fb084b61f200733d23c17",
+          "rightSha256": "98dbea7428a6e0891bcd778abaf88e347bc04b251258b9564c09fef1a4575181"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "kind": "content",
+          "leftBytes": 1093,
+          "rightBytes": 1093,
+          "leftSha256": "85660bc5f16cc8acebb010adc650e3bc587329d84d0bbc41fb0ba101f89f60eb",
+          "rightSha256": "8b89d64858f2d86c88481a15666cef47ff9d387be3342757a30e51d587dc63b3"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "kind": "content",
+          "leftBytes": 986,
+          "rightBytes": 986,
+          "leftSha256": "1d1a6b09716e8289fc010ca7befe7aad8c8a1e4954d69976fb817374f0a1d9a8",
+          "rightSha256": "15aaeda8f7b2fb898ecebd7581be28c4eee1be7312f0de66ce42a68b71436783"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.d.ts",
+          "kind": "content",
+          "leftBytes": 6361,
+          "rightBytes": 6361,
+          "leftSha256": "de001f44904da9de5da8abd107895ffeb1e8c3e0b03f284deaedc0ef0b503a64",
+          "rightSha256": "19ed6cc3c8d9d8acfe0699134c2d93a6ee6db8361769dad6148e1760b56a2303"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "5cd98be778ae3fae3bd244256d7e9964c28c68da18acd5ac69e8ac036da28ff9",
+          "rightSha256": "d18748a29be05a28fe07fcc2f6c9fe157fde3838c0bf88d4e2358245d55a8ea4"
+        },
+        {
+          "path": "packages/registry/dist/registry/github-ref.js",
+          "kind": "content",
+          "leftBytes": 399,
+          "rightBytes": 399,
+          "leftSha256": "5451f1383f565c9492d1d75090880c178e0e2d2f9cb9ae1b5f3ae75d9035457b",
+          "rightSha256": "4eac1a35d0978d67ef645d26dd347af26145e97584eaf6f419ea26d7f0419c74"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.d.ts",
+          "kind": "content",
+          "leftBytes": 13934,
+          "rightBytes": 13934,
+          "leftSha256": "014d1a57e9e7c5b6ea9998f91bf4912ec0b096348e578d8a4dd1660ef76a0784",
+          "rightSha256": "74956ad4c3777b7e0d340bd4482e715649588b0a5ff3e4f9bec68a29d8fe8663"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "kind": "content",
+          "leftBytes": 1057,
+          "rightBytes": 1057,
+          "leftSha256": "328b4212160bf1603c95617831af6e740d8c2cb0a91d3f881590eb7f642a6ae7",
+          "rightSha256": "3378ddd0d7387602649bc4fdf1a808d3c1dbb1f8f5fe4c5522bef27820923594"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "kind": "content",
+          "leftBytes": 2796,
+          "rightBytes": 2796,
+          "leftSha256": "6632afba2b07c9182d6f557677abaab2afeeb47d5fced21e9a35a32520736ac3",
+          "rightSha256": "3435b01eb864753e48577883a5f4c389a4635bb1f9c77b203bdfcd931912e5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "kind": "content",
+          "leftBytes": 1176,
+          "rightBytes": 1176,
+          "leftSha256": "35e98003e5253014dd450254530e7626c946544620a59bf4af20a2f87243bb84",
+          "rightSha256": "ff5c7bfff5a754e017fd14b622f025057a36ca0191ac1bd33ad03c9305400d7a"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "kind": "content",
+          "leftBytes": 1477,
+          "rightBytes": 1477,
+          "leftSha256": "7e507d23352ba12aef7b9b790e0c32220e348ebe499818b3dfa6da27ce5c8e66",
+          "rightSha256": "31474d294d0226d489f071af05c6f005986922e91c12114e250517e3e73397a1"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.d.ts",
+          "kind": "content",
+          "leftBytes": 9982,
+          "rightBytes": 9982,
+          "leftSha256": "3590a82c29787b9a7413ffeaa00d8edda5aa82482e40c0f1b0c61df208cb392b",
+          "rightSha256": "d576e4ad7dd3767bed8e3ca0fc6757c5a4b3c3d339019e9f45a3aee00a412fe0"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "kind": "content",
+          "leftBytes": 1051,
+          "rightBytes": 1051,
+          "leftSha256": "5431605da6257523c27fd8922285005f89314be6416537b648ad6b06894ce2aa",
+          "rightSha256": "a85eac39489db9078e159e2ed8ea5e0690838f07e4f6cd81dc395796a431b3e1"
+        },
+        {
+          "path": "packages/registry/dist/registry/schema.d.ts",
+          "kind": "content",
+          "leftBytes": 109400,
+          "rightBytes": 109400,
+          "leftSha256": "ce8059abfc663342e85395da8e1c6f2ddf9cd44feb5027b2fb852fba69a19916",
+          "rightSha256": "f3c963a8b7ed28217ca827501c1066e7242868a2207f2afd17c9de3642800d6f"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "kind": "content",
+          "leftBytes": 1308,
+          "rightBytes": 1308,
+          "leftSha256": "982c4911874f7d1126d7ba1d0862dbf1f59f19d62fceee651b6a4e726644a209",
+          "rightSha256": "fd978760deb706bc568537d5dab7f8c5119260d33279798ffdb48661f7f432c2"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.d.ts",
+          "kind": "content",
+          "leftBytes": 13290,
+          "rightBytes": 13290,
+          "leftSha256": "b3c3a1f78cb34aa60a0bc2303d60a221b89b9a6b3222623690cb73f86cb1dade",
+          "rightSha256": "291c7c4b41f8472dc664741140bf76fad30435a7d1fd985e0939e43e55e0a466"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "9519b2207323f8f7d0432eb354fa0ebf2c65abc4d4aa39d2df5d0b4f15ca51aa",
+          "rightSha256": "d677dbacc441db98724cca2902cf306cc6748b7ab0df3879840438b11f1549ee"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.d.ts",
+          "kind": "content",
+          "leftBytes": 1771,
+          "rightBytes": 1771,
+          "leftSha256": "be23832a5b1d2b9c3438c8315435d5ea14d49cd64bbe03357351a60b218591e6",
+          "rightSha256": "193bce4cd56c98665fb3c47c3878e3e5a48ffb0179b6073711427e97a7460fc5"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "kind": "content",
+          "leftBytes": 1152,
+          "rightBytes": 1152,
+          "leftSha256": "5cbc95eb25c2b78ffeab8aba29aca92d8d211e1fc89e6082f1a65e295e3b5690",
+          "rightSha256": "6c27086cc0b153b533a8b8d5f368aea49b1ab53d592406371544af59291085d1"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "kind": "content",
+          "leftBytes": 10171,
+          "rightBytes": 10171,
+          "leftSha256": "db2f574c6b3c7440b519c448b9bcbca3bb236ee78812d9e2bcd0d49c4c95a5ce",
+          "rightSha256": "4567ff90fee4b9ef820e544f44cff5e79dbc2c6fc1f5b1ae0309e38663851430"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "kind": "content",
+          "leftBytes": 1064,
+          "rightBytes": 1064,
+          "leftSha256": "5547691484b0bc0ac16808c94ad06b5fd8557793f172a2f00bf5ca0e53f07948",
+          "rightSha256": "31097ec68aa928813993deb962aeec6e2132345cea395b38e8898af382048d08"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "kind": "content",
+          "leftBytes": 1470,
+          "rightBytes": 1470,
+          "leftSha256": "38bee896972ca1e735a8aecdbf9c8671c3a346828461aa97f1863271aa08aae2",
+          "rightSha256": "6467da5e303a9de1e84d192c2a4a3c85b5d33dee557687d0292868bc0fffaf2f"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "kind": "content",
+          "leftBytes": 1257,
+          "rightBytes": 1257,
+          "leftSha256": "2ef6bf3f93a1fd268641baf3e525d03f3ac745f7f7b7b88404824782f5389eb3",
+          "rightSha256": "2f979bb97dedd7d6949e174325dbcd8dc1f9d3685ee8b24eee3603a9beb94c77"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "72641eaadf95f3f34eeb4696ac97f7926f2d9ec594b082a0b7a4baec7deebbf3",
+          "rightSha256": "cfafe36f1b63b79c6f4ca9bcf2a11f2de0bcd3796e17c67178be1f11fb7b4264"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "kind": "content",
+          "leftBytes": 1916,
+          "rightBytes": 1916,
+          "leftSha256": "6eb9593a9c6ae1c88b1d9faaba0a2ffd346257a8d4bca64816f1fd4569d94871",
+          "rightSha256": "947f55f9be15438119ed6823b0a7bfe82d54afa743221b7f527aa34633fd8062"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.d.ts",
+          "kind": "content",
+          "leftBytes": 4045,
+          "rightBytes": 4045,
+          "leftSha256": "212713fbbad49fad4f6a6d7e3cbd57e4325724cd0078cc07c5f4f1a4af5839d0",
+          "rightSha256": "ba395cc1fe8545dcbfbc9e8bf1968ff63a217bf13b9eb7c31878319ad0be09e3"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "kind": "content",
+          "leftBytes": 1282,
+          "rightBytes": 1282,
+          "leftSha256": "a82286c0fea35ed2df8bb60b2a901ed7ec948217c0c4fd61294ab0e3b7431333",
+          "rightSha256": "8f6142ce3c432e1b1edcfe4717b98d22036357e77f99629f2ee65cf475e6ee96"
+        },
+        {
+          "path": "packages/shadcn/dist/index.d.ts",
+          "kind": "content",
+          "leftBytes": 6674,
+          "rightBytes": 6674,
+          "leftSha256": "b873684e69b54305b37d00c60667f12a3bc3518e692e96bf27a4b83d560d3228",
+          "rightSha256": "ffac0db716151322f4884974aa92b5577c20d7a8b98e551a13c3e211272a4bee"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "kind": "content",
+          "leftBytes": 111,
+          "rightBytes": 111,
+          "leftSha256": "f67144bb0b282bcc433088632e22d914255edf276de6f4b16db29285f0627ba7",
+          "rightSha256": "2d3bb5acfdb9b90d1a3266a43906c8a555c9e604a78e776444912e788946175f"
+        }
+      ]
+    },
+    {
+      "name": "cache-vs-baseline-b",
+      "leftSha256": "42effee7b8adb8790d5bed2a341e7372e02642916ec76029d0f78e696ae2fc20",
+      "rightSha256": "0e47b872872ffb6482d2ae85f4e3d21801c9ab7b7599dee084bcf7d8f523c0c2",
+      "leftFileCount": 270,
+      "rightFileCount": 270,
+      "differenceCount": 49,
+      "differences": [
+        {
+          "path": "packages/registry/dist/add-components.js",
+          "kind": "content",
+          "leftBytes": 2009,
+          "rightBytes": 2009,
+          "leftSha256": "c04748ac9b4f2c95a89caaf193375bcba3ac62688b0d6ff677a0c0707343f83b",
+          "rightSha256": "5b9207bd34c11430c748c5654d591cc69bb72c174ab593b19194d5cea0a7d547"
+        },
+        {
+          "path": "packages/registry/dist/chunk-2ZD6RDHW.js",
+          "kind": "right-only",
+          "rightBytes": 8235,
+          "rightSha256": "1fb8fadecac67d41e811fafe97619d983c9cb7669e4b4be8aa10f5a1d991d97f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-5QRP7DWO.js",
+          "kind": "right-only",
+          "rightBytes": 7472,
+          "rightSha256": "893910c1792f2880b1d0875e5ca27b47132e57029e3c30ee7d3877b20dffc511"
+        },
+        {
+          "path": "packages/registry/dist/chunk-7BNNXKC6.js",
+          "kind": "left-only",
+          "leftBytes": 536,
+          "leftSha256": "edeeb793cb58df84cc66b9ad8e7f20c61b100fa608bbc333ad004fdf60d66bbd"
+        },
+        {
+          "path": "packages/registry/dist/chunk-BOKNXK35.js",
+          "kind": "right-only",
+          "rightBytes": 4680,
+          "rightSha256": "9a2ab58a695b6c7aaf5b4f23a7dfc0bd257496c01eeadb13153a8538645ecdfb"
+        },
+        {
+          "path": "packages/registry/dist/chunk-CG6RHFNT.js",
+          "kind": "right-only",
+          "rightBytes": 536,
+          "rightSha256": "fe63928d3551b8a481b4c1e7e36fa260ad1c88f8288bf36c2df512049206de9b"
+        },
+        {
+          "path": "packages/registry/dist/chunk-DYB6YQ2S.js",
+          "kind": "right-only",
+          "rightBytes": 2293,
+          "rightSha256": "c8711c2d0ba084185cc1e2456a8b9e16544b547234aa930717aac3a545453af3"
+        },
+        {
+          "path": "packages/registry/dist/chunk-F26MPF6V.js",
+          "kind": "right-only",
+          "rightBytes": 4471,
+          "rightSha256": "65d914c80e37bcde77a33fc8654b431a593688ed8341d61e999895d85ea28769"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FFHRIMZV.js",
+          "kind": "left-only",
+          "leftBytes": 1379,
+          "leftSha256": "a9951d979429fbb52b1451c1d75b8bb4cab1c8197b6be9deccaf0a71b41ac7cc"
+        },
+        {
+          "path": "packages/registry/dist/chunk-FXKKZWUD.js",
+          "kind": "left-only",
+          "leftBytes": 4680,
+          "leftSha256": "15d72893e7b32a5c3d0185df913006ab0e11d48030bd39faeffaa175373b3955"
+        },
+        {
+          "path": "packages/registry/dist/chunk-GR4734HF.js",
+          "kind": "left-only",
+          "leftBytes": 7472,
+          "leftSha256": "273968a9adb5834a35f915e109fa66974a5dc8b34760d8839c035985a4b2e347"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MF3S7M2E.js",
+          "kind": "left-only",
+          "leftBytes": 2293,
+          "leftSha256": "58e1fe303a7c3d57f8d75957911f111ebaf0935cf6b82adbfa403ee037dff089"
+        },
+        {
+          "path": "packages/registry/dist/chunk-MIBMNG4E.js",
+          "kind": "left-only",
+          "leftBytes": 9514,
+          "leftSha256": "605909ecdfb2e8b50aeff5290329a74efd2d944cd97b65d4badc5c44aaf31b8f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-NLGKPK5X.js",
+          "kind": "right-only",
+          "rightBytes": 40978,
+          "rightSha256": "232332b19629a79c64884b9f81a2cdf3488a889552cc6eaa4d79cc0a6ddb10e0"
+        },
+        {
+          "path": "packages/registry/dist/chunk-OS7OOSWT.js",
+          "kind": "left-only",
+          "leftBytes": 8235,
+          "leftSha256": "7b242533ebf89e3a829a5655076632d4d9c0cf7890b6ae67d6a2fa32f299f860"
+        },
+        {
+          "path": "packages/registry/dist/chunk-R4GIHKEE.js",
+          "kind": "right-only",
+          "rightBytes": 3271,
+          "rightSha256": "fcc1e3c7ba6f551e7ebf5180156623e902e0899133fcb7b2464f27cd47ad6f26"
+        },
+        {
+          "path": "packages/registry/dist/chunk-RV2V35SY.js",
+          "kind": "left-only",
+          "leftBytes": 4756,
+          "leftSha256": "f9c54343d0596dad76a4d0c3f3e510f00495f09ff163ebae319bb03650263585"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UL3BFSP3.js",
+          "kind": "left-only",
+          "leftBytes": 3271,
+          "leftSha256": "b5e9be16491bd3c99fcf850704d158d10da7702647a1017375791f9c3d509064"
+        },
+        {
+          "path": "packages/registry/dist/chunk-UXRYVFQX.js",
+          "kind": "left-only",
+          "leftBytes": 4471,
+          "leftSha256": "5c1049780331a26c91056813329d88f06636460f8189f8abf36b98fd7186358d"
+        },
+        {
+          "path": "packages/registry/dist/chunk-V4SQINGL.js",
+          "kind": "right-only",
+          "rightBytes": 9514,
+          "rightSha256": "387847d6ab73ac9f32b7ac0a32fdd729fd0bc2f71fa0a121c809dfcf96d23c83"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WJGGK4JS.js",
+          "kind": "right-only",
+          "rightBytes": 4756,
+          "rightSha256": "7a766500460055ee2b83f46c6ad2a1c61b13fb83e93c49ffe3af805f5c14897f"
+        },
+        {
+          "path": "packages/registry/dist/chunk-WXP6SNZN.js",
+          "kind": "right-only",
+          "rightBytes": 1379,
+          "rightSha256": "8e02f4d232cf842be63467b8ef4074b0e66ae2b360504523ae7e82c86d9ae4e1"
+        },
+        {
+          "path": "packages/registry/dist/chunk-XLOEDEIY.js",
+          "kind": "left-only",
+          "leftBytes": 40978,
+          "leftSha256": "390b8294fb1c9fec71b1f3ea34753ff599540711e46043913de2be134696c6a7"
+        },
+        {
+          "path": "packages/registry/dist/get-config.js",
+          "kind": "content",
+          "leftBytes": 1292,
+          "rightBytes": 1292,
+          "leftSha256": "fa9873c0edbd460f16effa49fdf1480a9cc86d1b244dde4ce3a11143a5140cc4",
+          "rightSha256": "457c4c126981742685a2fb96a33780e971f09d07f1a62a6ac37fdfa04c09e0c0"
+        },
+        {
+          "path": "packages/registry/dist/get-project-info.js",
+          "kind": "content",
+          "leftBytes": 1233,
+          "rightBytes": 1233,
+          "leftSha256": "17d32191c5ef9d04711a0ab3ff937fbee77ba953d5e12d5ec16920f018902dee",
+          "rightSha256": "849b7a0bd158675ed7228a3c2f4f5ad77836692f3e8446a892604fb5850c723d"
+        },
+        {
+          "path": "packages/registry/dist/registry/add.js",
+          "kind": "content",
+          "leftBytes": 2115,
+          "rightBytes": 2115,
+          "leftSha256": "adceeedec7f427c036b5b12a37cca00f108880ed80995436381443539ee3e098",
+          "rightSha256": "9d220cebdf9715ed2ab225d386fd385e3fce9c4b8444a346b9470b75162dc5ce"
+        },
+        {
+          "path": "packages/registry/dist/registry/address.js",
+          "kind": "content",
+          "leftBytes": 1072,
+          "rightBytes": 1072,
+          "leftSha256": "6808ca497746273c45cac1dbdbb2517fd405048802993f9ad78ae2fec163f229",
+          "rightSha256": "12b2c2113df3532d3c0c751b435bcf033d08ae65d5d9bf85a2642461c2a838d7"
+        },
+        {
+          "path": "packages/registry/dist/registry/api.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "730752a0fd77b819278cc66868303b16ddadc34f225fb084b61f200733d23c17",
+          "rightSha256": "63e0ca94a72c21c724cdc2ffe8df4fda981337dd8c9dc5b88d3a80b33b2e3db2"
+        },
+        {
+          "path": "packages/registry/dist/registry/builder.js",
+          "kind": "content",
+          "leftBytes": 1093,
+          "rightBytes": 1093,
+          "leftSha256": "85660bc5f16cc8acebb010adc650e3bc587329d84d0bbc41fb0ba101f89f60eb",
+          "rightSha256": "b8f5a6b7457c8c47a1754bf600b915588f25b4b34da1dea8b99811a0eb3d7752"
+        },
+        {
+          "path": "packages/registry/dist/registry/config.js",
+          "kind": "content",
+          "leftBytes": 986,
+          "rightBytes": 986,
+          "leftSha256": "1d1a6b09716e8289fc010ca7befe7aad8c8a1e4954d69976fb817374f0a1d9a8",
+          "rightSha256": "4ae5a324de442f7e4e65ccd1b81c4a930e7bd54fb5f7758c6035e6462f7ec88a"
+        },
+        {
+          "path": "packages/registry/dist/registry/fetcher.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "5cd98be778ae3fae3bd244256d7e9964c28c68da18acd5ac69e8ac036da28ff9",
+          "rightSha256": "68f517d55da34b13a2a2d29b9fbc3fb642bcb223401e99d26ae1ae4b1364fe32"
+        },
+        {
+          "path": "packages/registry/dist/registry/github.js",
+          "kind": "content",
+          "leftBytes": 1057,
+          "rightBytes": 1057,
+          "leftSha256": "328b4212160bf1603c95617831af6e740d8c2cb0a91d3f881590eb7f642a6ae7",
+          "rightSha256": "b77e0628ed016507af0532e0aa75deb2b084e8cca1a3a7a00c51d07efe13b2d3"
+        },
+        {
+          "path": "packages/registry/dist/registry/index.js",
+          "kind": "content",
+          "leftBytes": 2796,
+          "rightBytes": 2796,
+          "leftSha256": "6632afba2b07c9182d6f557677abaab2afeeb47d5fced21e9a35a32520736ac3",
+          "rightSha256": "746db8e39e1d09b3890d41ab73f757a64f370e46536c3e053af5ee68e26f0ff9"
+        },
+        {
+          "path": "packages/registry/dist/registry/loader.js",
+          "kind": "content",
+          "leftBytes": 1176,
+          "rightBytes": 1176,
+          "leftSha256": "35e98003e5253014dd450254530e7626c946544620a59bf4af20a2f87243bb84",
+          "rightSha256": "6b414522211603757ca169ce30ae3880afc703b17595f120041844b1d36affd8"
+        },
+        {
+          "path": "packages/registry/dist/registry/namespaces.js",
+          "kind": "content",
+          "leftBytes": 1477,
+          "rightBytes": 1477,
+          "leftSha256": "7e507d23352ba12aef7b9b790e0c32220e348ebe499818b3dfa6da27ce5c8e66",
+          "rightSha256": "e1c86f0e7890832e716186d1687c02d16c02ad2a44bb2d0d14953b9fc6ab867c"
+        },
+        {
+          "path": "packages/registry/dist/registry/resolver.js",
+          "kind": "content",
+          "leftBytes": 1051,
+          "rightBytes": 1051,
+          "leftSha256": "5431605da6257523c27fd8922285005f89314be6416537b648ad6b06894ce2aa",
+          "rightSha256": "27fcb550430d357a8fe7608c0e3ed2cc1f2a1b3e85133d68d87daa93517db96d"
+        },
+        {
+          "path": "packages/registry/dist/registry/search.js",
+          "kind": "content",
+          "leftBytes": 1308,
+          "rightBytes": 1308,
+          "leftSha256": "982c4911874f7d1126d7ba1d0862dbf1f59f19d62fceee651b6a4e726644a209",
+          "rightSha256": "32c03e480062900de3b95201958013fa39ab30c23267c35dad786ecaf5889712"
+        },
+        {
+          "path": "packages/registry/dist/registry/source.js",
+          "kind": "content",
+          "leftBytes": 1029,
+          "rightBytes": 1029,
+          "leftSha256": "9519b2207323f8f7d0432eb354fa0ebf2c65abc4d4aa39d2df5d0b4f15ca51aa",
+          "rightSha256": "2d62068980f2d8e9f84ccd664364698087fb8cb0b0f5edfec899afefb04e1eed"
+        },
+        {
+          "path": "packages/registry/dist/registry/utils.js",
+          "kind": "content",
+          "leftBytes": 1152,
+          "rightBytes": 1152,
+          "leftSha256": "5cbc95eb25c2b78ffeab8aba29aca92d8d211e1fc89e6082f1a65e295e3b5690",
+          "rightSha256": "df7307213f46d4ec69e1a059d97a69f65683cca213fbfddc2b48d8258bfd2194"
+        },
+        {
+          "path": "packages/registry/dist/registry/validate.js",
+          "kind": "content",
+          "leftBytes": 10171,
+          "rightBytes": 10171,
+          "leftSha256": "db2f574c6b3c7440b519c448b9bcbca3bb236ee78812d9e2bcd0d49c4c95a5ce",
+          "rightSha256": "b3af84918a7fe016c93a8a7428a0a9c48fef1090913f35d849ee37aecbb085c2"
+        },
+        {
+          "path": "packages/registry/dist/registry/validator.js",
+          "kind": "content",
+          "leftBytes": 1064,
+          "rightBytes": 1064,
+          "leftSha256": "5547691484b0bc0ac16808c94ad06b5fd8557793f172a2f00bf5ca0e53f07948",
+          "rightSha256": "fc32e253caf774ae51f65ce7c5d63df4259a456018fd5d292563d0671a5253f2"
+        },
+        {
+          "path": "packages/registry/dist/transformers/index.js",
+          "kind": "content",
+          "leftBytes": 1470,
+          "rightBytes": 1470,
+          "leftSha256": "38bee896972ca1e735a8aecdbf9c8671c3a346828461aa97f1863271aa08aae2",
+          "rightSha256": "03997abb83405f7e32efb87b031db028610b9d563f915585c351ba8b90f8e08c"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-icons.js",
+          "kind": "content",
+          "leftBytes": 344,
+          "rightBytes": 344,
+          "leftSha256": "94a144dfa0d9cad92882c697ba8629e464f46ad57dabdd2d0c3dbda3322292aa",
+          "rightSha256": "29970b4fe3d5e541cbc042b09f2ce99d71fa8fbe872d13b40732d461df2b0b0a"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-rtl.js",
+          "kind": "content",
+          "leftBytes": 1257,
+          "rightBytes": 1257,
+          "leftSha256": "2ef6bf3f93a1fd268641baf3e525d03f3ac745f7f7b7b88404824782f5389eb3",
+          "rightSha256": "ea0e4f54e5a13abd8e0e7e9b1449d2a74f3fae2a2c61d2cf307b6a6fa398bd97"
+        },
+        {
+          "path": "packages/registry/dist/transformers/transform-tw-prefix.js",
+          "kind": "content",
+          "leftBytes": 1277,
+          "rightBytes": 1277,
+          "leftSha256": "72641eaadf95f3f34eeb4696ac97f7926f2d9ec594b082a0b7a4baec7deebbf3",
+          "rightSha256": "0843e11f11f214fd471e80da747108596c1be517f6b994edbb812ea73cd7a74e"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-files.js",
+          "kind": "content",
+          "leftBytes": 1916,
+          "rightBytes": 1916,
+          "leftSha256": "6eb9593a9c6ae1c88b1d9faaba0a2ffd346257a8d4bca64816f1fd4569d94871",
+          "rightSha256": "32b7a6076f3549873cf91fa944c76277577c0ac4e911c3812018db5661734cbd"
+        },
+        {
+          "path": "packages/registry/dist/updaters/update-fonts.js",
+          "kind": "content",
+          "leftBytes": 1282,
+          "rightBytes": 1282,
+          "leftSha256": "a82286c0fea35ed2df8bb60b2a901ed7ec948217c0c4fd61294ab0e3b7431333",
+          "rightSha256": "5efdc990c7cf47e0019411290a61627420a46c9764c8452d5b438b9c7cc60b12"
+        },
+        {
+          "path": "packages/shadcn/dist/index.js",
+          "kind": "content",
+          "leftBytes": 160308,
+          "rightBytes": 160308,
+          "leftSha256": "f001a3bfc86960f91beb877f8c37177a819eef91828a50a325d4405cccdd748c",
+          "rightSha256": "53d4a8d57cbda9358166d459ccfc88e1ac167dde7e93a7d9f07c83c454c4c2f8"
+        },
+        {
+          "path": "packages/shadcn/dist/tailwind.d.ts",
+          "kind": "content",
+          "leftBytes": 111,
+          "rightBytes": 111,
+          "leftSha256": "f67144bb0b282bcc433088632e22d914255edf276de6f4b16db29285f0627ba7",
+          "rightSha256": "bf23c5559095e6d21867d360ac9e9f015b5d57e9f8f40f5c4cbdea41506791e1"
+        }
+      ]
+    }
+  ]
+}
+
