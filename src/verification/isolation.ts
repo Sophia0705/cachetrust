@@ -3,6 +3,7 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fingerprintFile } from "../fingerprint.js";
 import { runProcess, type ProcessResult } from "../process.js";
 import { resolveInside, type VerificationConfig } from "./config.js";
+import type { ResolvedInvocation } from "./package-manager.js";
 
 export interface VerificationWorkspace {
   id: "cache" | "baseline-a" | "baseline-b";
@@ -120,6 +121,10 @@ function equalHashes(left: Record<string, string>, right: Record<string, string>
 
 export async function createVerificationIsolation(
   config: VerificationConfig,
+  installInvocation: ResolvedInvocation = {
+    command: config.install.command,
+    args: [...(config.install.commandArgs ?? []), ...config.install.args],
+  },
   signal?: AbortSignal,
 ): Promise<VerificationIsolation> {
   const outputRoots = [...new Set(config.outputs.flatMap((output) => output.include)
@@ -145,7 +150,7 @@ export async function createVerificationIsolation(
         },
       });
       await mkdir(cache);
-      const install = await runProcess(config.install.command, config.install.args, {
+      const install = await runProcess(installInvocation.command, installInvocation.args, {
         cwd: project,
         timeoutMs: config.install.timeoutMs,
         ...(signal === undefined ? {} : { signal }),

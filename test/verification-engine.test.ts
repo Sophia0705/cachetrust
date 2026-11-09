@@ -1,13 +1,15 @@
 import { createHash } from "node:crypto";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { runProcess } from "../src/process.js";
 import { verifyProject } from "../src/verification/engine.js";
 
 const roots: string[] = [];
 afterEach(async () => {
-  await Promise.all(roots.splice(0).map((root) => rm(root, { recursive: true, force: true })));
+  await Promise.all(roots.splice(0).map((root) => rm(root, {
+    recursive: true, force: true, maxRetries: 5, retryDelay: 100,
+  })));
 });
 
 function sha(value: string): string {
@@ -30,7 +32,9 @@ describe("verification engine", () => {
     await writeFile(join(project, "input.txt"), "v1\n");
     await writeFile(replacement, "v2\n");
     await writeFile(join(project, "lock.yaml"), "lockfileVersion: 1\n");
-    await writeFile(join(project, "install.mjs"), "// independent fixture install\n");
+    await writeFile(join(project, "install.mjs"), `
+if (process.argv.includes("--version")) console.log("1");
+`);
     await writeFile(join(project, "fake-turbo.mjs"), `
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -70,7 +74,9 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       evidenceFile,
       install: {
         command: process.execPath,
-        args: ["install.mjs", "--frozen-lockfile"],
+        commandArgs: ["install.mjs"],
+        versionArgs: ["--version"],
+        args: ["--frozen-lockfile"],
         packageManager: "fixture",
         packageManagerVersion: "1",
         lockfiles: ["lock.yaml"],
@@ -107,6 +113,10 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
     expect(evidence.runs.map((run) => run.id)).toEqual([
       "v1", "cache-v2", "baseline-a-v2", "baseline-b-v2",
     ]);
+    expect(evidence.environment.packageManager).toMatchObject({
+      expectedVersion: "1", observedVersion: "1", executable: basename(process.execPath),
+      probe: { exitCode: 0, timedOut: false },
+    });
     expect(await readFile(join(project, "input.txt"), "utf8")).toBe("v1\n");
     expect(JSON.parse(await readFile(evidenceFile, "utf8"))).toMatchObject({
       schemaVersion: "cachetrust.verification/1",

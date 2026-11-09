@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 import { Command, CommanderError } from "commander";
 import { mkdir, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { basename, dirname, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { scenarios, type Scenario, type ScenarioResult } from "./scenario.js";
+import { ConfigError, type VerificationStatus } from "./verification/config.js";
+import { ConfigFileError, loadVerificationConfig } from "./verification/config-file.js";
+import { verifyProject } from "./verification/engine.js";
 
 export interface CliIo {
   out(message: string): void;
@@ -17,6 +20,20 @@ export function exitCodeFor(results: readonly ScenarioResult[]): number {
   return 0;
 }
 
+export function exitCodeForVerification(status: VerificationStatus): number {
+  if (status === "ENVIRONMENT_ERROR") return 3;
+  if (status === "INCONCLUSIVE") return 2;
+  if (status === "MISMATCH") return 1;
+  return 0;
+}
+
+export interface CliServices {
+  loadConfig: typeof loadVerificationConfig;
+  verify: typeof verifyProject;
+}
+
+const defaultServices: CliServices = { loadConfig: loadVerificationConfig, verify: verifyProject };
+
 const defaultIo: CliIo = {
   out: (message) => console.log(message),
   error: (message) => console.error(message),
@@ -25,6 +42,7 @@ const defaultIo: CliIo = {
 export function createCli(
   registeredScenarios: readonly Scenario[] = scenarios,
   io: CliIo = defaultIo,
+  services: CliServices = defaultServices,
 ): Command {
   const program = new Command()
     .name("cachetrust")
@@ -82,6 +100,58 @@ export function createCli(
         await writeFile(options.evidence, `${JSON.stringify({ results }, null, 2)}\n`);
       }
       process.exitCode = exitCodeFor(results);
+    });
+
+  program
+    .command("verify")
+    .description("Verify a local Turborepo project from a JSON configuration")
+    .requiredOption("--config <path>", "verification configuration JSON")
+    .action(async (options: { config: string }) => {
+      const controller = new AbortController();
+      let cancellationReported = false;
+      const cancel = () => {
+        cancellationReported = true;
+        io.error("Cancellation requested; terminating active child processes.");
+        controller.abort();
+      };
+      process.once("SIGINT", cancel);
+      try {
+        const loaded = await services.loadConfig(options.config);
+        const config = loaded.config;
+        io.out(`VERIFY target=${basename(config.projectRoot)} task=${config.turbo.task} mutation=${config.mutation.kind}`);
+        const evidence = await services.verify(config, { signal: controller.signal });
+        const cacheRun = evidence.runs.find((run) => run.id === "cache-v2");
+        for (const task of config.tasks) {
+          const observed = cacheRun?.tasks.find((entry) => entry.id === task.id)?.cache.status ?? "UNAVAILABLE";
+          io.out(`CACHE ${task.id} expected=${task.expectedAfterMutation} observed=${observed}`);
+        }
+        const baseline = evidence.comparisons?.baselineStable;
+        io.out(`BASELINE stable=${baseline === undefined ? "unavailable" : String(baseline)}`);
+        io.out(`VERDICT ${evidence.verdict.status}: ${evidence.verdict.reasonCodes.join(", ")}`);
+        const evidenceRelative = relative(process.cwd(), config.evidenceFile);
+        io.out(`EVIDENCE ${evidenceRelative.startsWith("..") ? basename(config.evidenceFile) : evidenceRelative}`);
+        process.exitCode = exitCodeForVerification(evidence.verdict.status);
+      } catch (error) {
+        const malformed = error instanceof ConfigError
+          || (error instanceof ConfigFileError && error.reasonCode === "MALFORMED_JSON");
+        const status: VerificationStatus = malformed ? "INCONCLUSIVE" : "ENVIRONMENT_ERROR";
+        const errorCode = typeof error === "object" && error !== null && "code" in error
+          ? (error as { code?: unknown }).code
+          : undefined;
+        const reason = error instanceof ConfigError || error instanceof ConfigFileError
+          ? error.reasonCode
+          : cancellationReported ? "CANCELLED"
+            : errorCode === "EEXIST" ? "EVIDENCE_DESTINATION_EXISTS" : "CLI_FAILURE";
+        const message = error instanceof ConfigError || error instanceof ConfigFileError
+          ? error.message
+          : cancellationReported ? "Verification was cancelled."
+            : errorCode === "EEXIST" ? "Evidence destination already exists."
+              : "Verification failed before evidence could be saved.";
+        io.error(`${status} ${reason}: ${message}`);
+        process.exitCode = exitCodeForVerification(status);
+      } finally {
+        process.removeListener("SIGINT", cancel);
+      }
     });
 
   return program;

@@ -1,0 +1,5 @@
+{
+  "name": "cachetrust-verify-example",
+  "private": true,
+  "packageManager": "fixture@1.0.0"
+}

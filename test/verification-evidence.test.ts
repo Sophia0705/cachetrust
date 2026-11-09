@@ -34,7 +34,10 @@ describe("verification evidence", () => {
       caseId: "test",
       startedAt: "2026-01-01T00:00:00.000Z",
       finishedAt: "2026-01-01T00:00:01.000Z",
-      environment: { os: "win32", arch: "x64", node: "v24", packageManager: "pnpm 11", turbo: "2" },
+      environment: {
+        os: "win32", arch: "x64", node: "v24",
+        packageManager: { name: "pnpm", expectedVersion: "11", observedVersion: "11" }, turbo: "2",
+      },
       target: { projectLabel: "target", commit: "abc", dirty: false },
       config: { task: "build", packages: [], tasks: [], outputs: [], mutationKind: "none" },
       isolation: {
@@ -50,6 +53,9 @@ describe("verification evidence", () => {
     } as VerificationEvidence;
     try {
       await writeEvidence(path, evidence);
+      expect(JSON.parse(await readFile(path, "utf8"))).toEqual(evidence);
+      const changed = { ...evidence, caseId: "must-not-overwrite" };
+      await expect(writeEvidence(path, changed)).rejects.toMatchObject({ code: "EEXIST" });
       expect(JSON.parse(await readFile(path, "utf8"))).toEqual(evidence);
     } finally {
       await rm(root, { recursive: true, force: true });

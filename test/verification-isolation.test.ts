@@ -49,7 +49,9 @@ function config(root: string): VerificationConfig {
     evidenceFile: join(root, "..", "evidence.json"),
     install: {
       command: process.execPath,
-      args: ["install.mjs", "--frozen-lockfile"],
+      commandArgs: ["install.mjs"],
+      versionArgs: ["--version"],
+      args: ["--frozen-lockfile"],
       packageManager: "fixture",
       packageManagerVersion: "1",
       lockfiles: ["lock.yaml"],
@@ -99,10 +101,11 @@ describe("verification isolation", () => {
     const root = await project();
     const value = config(root);
     value.install.command = process.execPath;
-    value.install.args = ["-e", "setInterval(() => {}, 1000)", "--", "--frozen-lockfile"];
+    value.install.commandArgs = ["-e", "setInterval(() => {}, 1000)", "--"];
+    value.install.args = ["--frozen-lockfile"];
     const controller = new AbortController();
     setTimeout(() => controller.abort(), 100);
-    await expect(createVerificationIsolation(value, controller.signal))
+    await expect(createVerificationIsolation(value, undefined, controller.signal))
       .rejects.toMatchObject({ reasonCode: "CANCELLED" });
     expect((await readdir(join(root, ".."))).filter((name) => name.startsWith(".cachetrust-verify-")))
       .toEqual([]);

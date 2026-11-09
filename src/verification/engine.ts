@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { fingerprintFile } from "../fingerprint.js";
 import { release } from "node:os";
+import type { ProcessResult } from "../process.js";
 import { ConfigError, validateVerificationConfig, type VerificationConfig } from "./config.js";
 import { evidenceInstall, evidenceRun, writeEvidence, type VerificationEvidence } from "./evidence.js";
 import {
@@ -10,6 +11,11 @@ import {
   type VerificationIsolation,
 } from "./isolation.js";
 import { applyMutation, captureMutationOriginal, restoreMutation } from "./mutation.js";
+import {
+  PackageManagerError,
+  probePackageManager,
+  type PackageManagerProbe,
+} from "./package-manager.js";
 import {
   cleanOutputs,
   fingerprintOutputs,
@@ -68,6 +74,12 @@ function baseEvidence(
   startedAt: string,
   lockfileSha256: Record<string, string>,
   verdict: VerificationEvidence["verdict"],
+  packageManagerProbe?: {
+    observedVersion?: string;
+    executable?: string;
+    process?: ProcessResult;
+    processResult?: ProcessResult;
+  },
 ): VerificationEvidence {
   const normalization = config.normalization === undefined ? undefined : {
     id: config.normalization.id,
@@ -80,6 +92,7 @@ function baseEvidence(
       replacement: rule.replacement,
     })),
   };
+  const probeProcess = packageManagerProbe?.process ?? packageManagerProbe?.processResult;
   return {
     schemaVersion: "cachetrust.verification/1",
     cachetrustVersion: "0.1.0",
@@ -90,7 +103,21 @@ function baseEvidence(
       os: `${process.platform} ${release()}`,
       arch: process.arch,
       node: process.version,
-      packageManager: `${config.install.packageManager} ${config.install.packageManagerVersion}`,
+      packageManager: {
+        name: config.install.packageManager,
+        expectedVersion: config.install.packageManagerVersion,
+        ...(packageManagerProbe?.observedVersion === undefined
+          ? {} : { observedVersion: packageManagerProbe.observedVersion }),
+        ...(packageManagerProbe?.executable === undefined
+          ? {} : { executable: packageManagerProbe.executable }),
+        ...(probeProcess === undefined ? {} : { probe: {
+          exitCode: probeProcess.exitCode,
+          timedOut: probeProcess.timedOut,
+          durationMs: probeProcess.durationMs,
+          stdoutSha256: createHash("sha256").update(probeProcess.stdout).digest("hex"),
+          stderrSha256: createHash("sha256").update(probeProcess.stderr).digest("hex"),
+        } }),
+      },
       turbo: config.turbo.version,
     },
     target: { projectLabel: "target", commit, dirty: false },
@@ -135,6 +162,7 @@ function addRuns(evidence: VerificationEvidence, runs: RunSet): void {
 
 function errorVerdict(error: unknown): VerificationEvidence["verdict"] {
   const reasonCode = error instanceof IsolationError || error instanceof EngineError
+    || error instanceof PackageManagerError
     ? error.reasonCode
     : error instanceof ConfigError ? error.reasonCode : "UNEXPECTED_ERROR";
   const inconclusive = reasonCode === "DIRTY_REPOSITORY" || reasonCode === "PRECONDITION_MISMATCH"
@@ -155,11 +183,13 @@ export async function verifyProject(
   const startedAt = new Date().toISOString();
   let commit = "unknown";
   let isolation: VerificationIsolation | undefined;
+  let packageManagerProbe: PackageManagerProbe | undefined;
   const runs: RunSet = {};
   try {
     commit = await assertCleanGitProject(config.projectRoot, options.signal);
     if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
-    isolation = await createVerificationIsolation(config, options.signal);
+    packageManagerProbe = await probePackageManager(config, options.signal);
+    isolation = await createVerificationIsolation(config, packageManagerProbe.install, options.signal);
     const [cacheWorkspace, baselineAWorkspace, baselineBWorkspace] = isolation.workspaces;
 
     await cleanOutputs(cacheWorkspace.project, config.outputs);
@@ -174,7 +204,9 @@ export async function verifyProject(
         implicatedTasks: [],
         explanation: coverage.discrepancies.join("; "),
       };
-      const evidence = baseEvidence(config, commit, startedAt, isolation.lockfileSha256, verdict);
+      const evidence = baseEvidence(
+        config, commit, startedAt, isolation.lockfileSha256, verdict, packageManagerProbe,
+      );
       addInstalls(evidence, isolation);
       addRuns(evidence, runs);
       await writeEvidence(config.evidenceFile, evidence);
@@ -258,7 +290,9 @@ export async function verifyProject(
         mutationEffectProven,
         functionalDifferenceConfirmed: functionalDifference(config) && checks.every((check) => check.passed),
       });
-      const evidence = baseEvidence(config, commit, startedAt, isolation.lockfileSha256, verdict);
+      const evidence = baseEvidence(
+        config, commit, startedAt, isolation.lockfileSha256, verdict, packageManagerProbe,
+      );
       addInstalls(evidence, isolation);
       addRuns(evidence, runs);
       evidence.comparisons = {
@@ -290,7 +324,14 @@ export async function verifyProject(
       throw error;
     }
   } catch (error) {
-    const evidence = baseEvidence(config, commit, startedAt, isolation?.lockfileSha256 ?? {}, errorVerdict(error));
+    const packageManagerObservation = packageManagerProbe ?? (error instanceof PackageManagerError ? {
+      ...(error.observedVersion === undefined ? {} : { observedVersion: error.observedVersion }),
+      ...(error.executable === undefined ? {} : { executable: error.executable }),
+      ...(error.processResult === undefined ? {} : { processResult: error.processResult }),
+    } : undefined);
+    const evidence = baseEvidence(
+      config, commit, startedAt, isolation?.lockfileSha256 ?? {}, errorVerdict(error), packageManagerObservation,
+    );
     addInstalls(evidence, isolation);
     addRuns(evidence, runs);
     await writeEvidence(config.evidenceFile, evidence);

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { constants, copyFile, mkdir, rm, writeFile } from "node:fs/promises";
 import { basename, dirname } from "node:path";
 import type { ProcessResult } from "../process.js";
 import type { VerificationConfig, VerificationStatus } from "./config.js";
@@ -13,7 +13,25 @@ export interface VerificationEvidence {
   caseId: string;
   startedAt: string;
   finishedAt: string;
-  environment: { os: string; arch: string; node: string; packageManager: string; turbo: string };
+  environment: {
+    os: string;
+    arch: string;
+    node: string;
+    packageManager: {
+      name: string;
+      expectedVersion: string;
+      observedVersion?: string;
+      executable?: string;
+      probe?: {
+        exitCode: number | null;
+        timedOut: boolean;
+        durationMs: number;
+        stdoutSha256: string;
+        stderrSha256: string;
+      };
+    };
+    turbo: string;
+  };
   target: { projectLabel: string; commit: string; dirty: false };
   config: {
     task: string;
@@ -143,6 +161,10 @@ export function evidenceInstall(
 export async function writeEvidence(path: string, evidence: VerificationEvidence): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.${process.pid}.tmp`;
-  await writeFile(temporary, `${JSON.stringify(evidence, null, 2)}\n`, { flag: "wx" });
-  await rename(temporary, path);
+  try {
+    await writeFile(temporary, `${JSON.stringify(evidence, null, 2)}\n`, { flag: "wx" });
+    await copyFile(temporary, path, constants.COPYFILE_EXCL);
+  } finally {
+    await rm(temporary, { force: true });
+  }
 }

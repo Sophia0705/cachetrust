@@ -10,6 +10,8 @@ export interface VerificationConfig {
   evidenceFile: string;
   install: {
     command: string;
+    commandArgs?: string[];
+    versionArgs: string[];
     args: string[];
     packageManager: string;
     packageManagerVersion: string;
@@ -72,6 +74,11 @@ function object(value: unknown, name: string): Record<string, unknown> {
   return value as Record<string, unknown>;
 }
 
+function assertKeys(value: Record<string, unknown>, allowed: readonly string[], name: string): void {
+  const unknown = Object.keys(value).filter((key) => !allowed.includes(key));
+  if (unknown.length > 0) throw new ConfigError(`${name} has unsupported field: ${unknown.join(", ")}`);
+}
+
 function nonEmptyString(value: unknown, name: string): string {
   if (typeof value !== "string" || value.length === 0) throw new ConfigError(`${name} is required`);
   return value;
@@ -127,14 +134,33 @@ function validateOutputPattern(pattern: string, name: string): string {
 
 export function validateVerificationConfig(value: unknown): VerificationConfig {
   const root = object(value, "config");
+  assertKeys(root, [
+    "schemaVersion", "id", "projectRoot", "evidenceFile", "install", "turbo", "tasks",
+    "outputs", "mutation", "functionalChecks", "normalization", "preparedFault",
+  ], "config");
   if (root.schemaVersion !== "1") throw new ConfigError("schemaVersion must be 1");
   const id = nonEmptyString(root.id, "id");
   const projectRoot = resolve(nonEmptyString(root.projectRoot, "projectRoot"));
   const evidenceFile = resolve(nonEmptyString(root.evidenceFile, "evidenceFile"));
+  const evidenceRelative = relative(projectRoot, evidenceFile);
+  if (evidenceRelative === "" || (!evidenceRelative.startsWith(`..${sep}`) && !isAbsolute(evidenceRelative))) {
+    throw new ConfigError("evidenceFile must be outside projectRoot");
+  }
+  if (evidenceFile.split(sep).includes(".git")) {
+    throw new ConfigError("evidenceFile cannot be inside Git metadata");
+  }
 
   const installValue = object(root.install, "install");
+  assertKeys(installValue, [
+    "command", "commandArgs", "versionArgs", "args", "packageManager", "packageManagerVersion",
+    "lockfiles", "timeoutMs",
+  ], "install");
   const install = {
     command: nonEmptyString(installValue.command, "install.command"),
+    ...(installValue.commandArgs === undefined ? {} : {
+      commandArgs: strings(installValue.commandArgs, "install.commandArgs", true),
+    }),
+    versionArgs: strings(installValue.versionArgs, "install.versionArgs"),
     args: strings(installValue.args, "install.args", true),
     packageManager: nonEmptyString(installValue.packageManager, "install.packageManager"),
     packageManagerVersion: nonEmptyString(installValue.packageManagerVersion, "install.packageManagerVersion"),
@@ -142,11 +168,15 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
       assertSafeRelativePath(path, `install.lockfiles[${index}]`)),
     timeoutMs: positiveInteger(installValue.timeoutMs, "install.timeoutMs"),
   };
-  if (!install.args.some((arg) => arg === "--frozen-lockfile" || arg === "--immutable")) {
+  if (![...(install.commandArgs ?? []), ...install.args]
+    .some((arg) => arg === "--frozen-lockfile" || arg === "--immutable")) {
     throw new ConfigError("install.args must enforce a frozen lockfile");
   }
 
   const turboValue = object(root.turbo, "turbo");
+  assertKeys(turboValue, [
+    "command", "args", "task", "packages", "version", "timeoutMs", "concurrency", "environment",
+  ], "turbo");
   const packages = turboValue.packages === undefined
     ? undefined
     : strings(turboValue.packages, "turbo.packages");
@@ -175,6 +205,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   if (!Array.isArray(root.tasks) || root.tasks.length === 0) throw new ConfigError("tasks are required");
   const tasks = root.tasks.map((entry, index) => {
     const task = object(entry, `tasks[${index}]`);
+    assertKeys(task, ["id", "expectedAfterMutation"], `tasks[${index}]`);
     const expected = task.expectedAfterMutation;
     if (expected !== "HIT" && expected !== "MISS") {
       throw new ConfigError(`tasks[${index}].expectedAfterMutation must be HIT or MISS`);
@@ -191,6 +222,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   if (!Array.isArray(root.outputs) || root.outputs.length === 0) throw new ConfigError("outputs are required");
   const outputs = root.outputs.map((entry, index) => {
     const output = object(entry, `outputs[${index}]`);
+    assertKeys(output, ["taskId", "include", "exclude"], `outputs[${index}]`);
     const taskId = nonEmptyString(output.taskId, `outputs[${index}].taskId`);
     const include = strings(output.include, `outputs[${index}].include`).map((pattern, patternIndex) =>
       validateOutputPattern(pattern, `outputs[${index}].include[${patternIndex}]`));
@@ -208,8 +240,12 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   const mutationValue = object(root.mutation, "mutation");
   let mutation: VerificationConfig["mutation"];
   if (mutationValue.kind === "none") {
+    assertKeys(mutationValue, ["kind"], "mutation");
     mutation = { kind: "none" };
   } else if (mutationValue.kind === "replace-file") {
+    assertKeys(mutationValue, [
+      "kind", "path", "replacementFile", "expectedBeforeSha256", "expectedAfterSha256",
+    ], "mutation");
     mutation = {
       kind: "replace-file",
       path: assertSafeRelativePath(nonEmptyString(mutationValue.path, "mutation.path"), "mutation.path"),
@@ -224,6 +260,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   const checks = root.functionalChecks === undefined ? undefined : array(root.functionalChecks, "functionalChecks").map(
     (entry, index) => {
       const check = object(entry, `functionalChecks[${index}]`);
+      assertKeys(check, ["target", "under", "contains", "notContains"], `functionalChecks[${index}]`);
       if (check.target !== "cache" && check.target !== "baseline") {
         throw new ConfigError(`functionalChecks[${index}].target must be cache or baseline`);
       }
@@ -246,8 +283,10 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   let normalization: VerificationConfig["normalization"];
   if (root.normalization !== undefined) {
     const policy = object(root.normalization, "normalization");
+    assertKeys(policy, ["id", "description", "omit", "replaceLiterals"], "normalization");
     const omit = policy.omit === undefined ? undefined : array(policy.omit, "normalization.omit").map((entry, index) => {
       const rule = object(entry, `normalization.omit[${index}]`);
+      assertKeys(rule, ["path", "reason"], `normalization.omit[${index}]`);
       return {
         path: assertSafeRelativePath(nonEmptyString(rule.path, "path"), "normalization path"),
         reason: nonEmptyString(rule.reason, "reason"),
@@ -257,6 +296,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
       ? undefined
       : array(policy.replaceLiterals, "normalization.replaceLiterals").map((entry, index) => {
         const rule = object(entry, `normalization.replaceLiterals[${index}]`);
+        assertKeys(rule, ["path", "search", "replacement", "reason"], `normalization.replaceLiterals[${index}]`);
         return {
           path: assertSafeRelativePath(nonEmptyString(rule.path, "path"), "normalization path"),
           search: nonEmptyString(rule.search, "search"),
@@ -275,6 +315,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   let preparedFault: VerificationConfig["preparedFault"];
   if (root.preparedFault !== undefined) {
     const fault = object(root.preparedFault, "preparedFault");
+    assertKeys(fault, ["kind", "description", "configFiles"], "preparedFault");
     if (fault.kind !== "intentional-input-exclusion") throw new ConfigError("unsupported prepared fault");
     preparedFault = {
       kind: fault.kind,

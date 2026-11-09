@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1",
+  "id": "lightweight-correct-reuse",
+  "projectRoot": "../fixtures/verify-cli",
+  "evidenceFile": "./verify-evidence.json",
+  "install": {
+    "command": "node",
+    "commandArgs": ["pm.mjs"],
+    "versionArgs": ["--version"],
+    "args": ["install", "--frozen-lockfile"],
+    "packageManager": "fixture",
+    "packageManagerVersion": "1.0.0",
+    "lockfiles": ["lock.yaml"],
+    "timeoutMs": 10000
+  },
+  "turbo": {
+    "command": "node",
+    "args": ["fake-turbo.mjs"],
+    "task": "build",
+    "version": "1.0.0",
+    "timeoutMs": 10000,
+    "concurrency": 1
+  },
+  "tasks": [
+    {
+      "id": "app#build",
+      "expectedAfterMutation": "HIT"
+    }
+  ],
+  "outputs": [
+    {
+      "taskId": "app#build",
+      "include": ["dist/**"]
+    }
+  ],
+  "mutation": {
+    "kind": "none"
+  }
+}

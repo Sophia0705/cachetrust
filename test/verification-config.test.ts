@@ -5,10 +5,11 @@ function config() {
   return {
     schemaVersion: "1",
     id: "test",
-    projectRoot: ".",
+    projectRoot: "target",
     evidenceFile: "evidence.json",
     install: {
-      command: "pnpm", args: ["install", "--frozen-lockfile"], packageManager: "pnpm",
+      command: "node", commandArgs: ["pnpm.mjs"], versionArgs: ["--version"],
+      args: ["install", "--frozen-lockfile"], packageManager: "pnpm",
       packageManagerVersion: "11.25.0", lockfiles: ["pnpm-lock.yaml"], timeoutMs: 1_000,
     },
     turbo: { command: "turbo", task: "build", version: "2.10.12", timeoutMs: 1_000 },
@@ -55,7 +56,7 @@ describe("verification config", () => {
         path: "dist/a.js", pattern: ".*", replacement: "", reason: "broad",
       }],
     };
-    expect(() => validateVerificationConfig(value)).toThrow("search");
+    expect(() => validateVerificationConfig(value)).toThrow("unsupported field: pattern");
   });
 
   it("rejects normalization that can erase a functional signal", () => {
@@ -67,5 +68,14 @@ describe("verification config", () => {
       }],
     };
     expect(() => validateVerificationConfig(value)).toThrow("functional-check signal");
+  });
+
+  it("rejects evidence inside the target and unknown fields", () => {
+    const inside = config();
+    inside.evidenceFile = "target/evidence.json";
+    expect(() => validateVerificationConfig(inside)).toThrow("outside projectRoot");
+
+    const unknown = { ...config(), futureOption: true };
+    expect(() => validateVerificationConfig(unknown)).toThrow("unsupported field: futureOption");
   });
 });
