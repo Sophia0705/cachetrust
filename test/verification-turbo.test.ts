@@ -21,6 +21,15 @@ describe("Turbo verification evidence", () => {
     });
   });
 
+  it("parses single-package root task evidence", () => {
+    const task = summary("MISS").tasks[0]!;
+    const { directory: _directory, ...rootTask } = task;
+    const value = { turboVersion: "2.10.12", tasks: [{ ...rootTask, taskId: "build" }] };
+    expect(parseVerificationSummary(value, ["build"]).tasks[0]).toMatchObject({
+      id: "build", outputs: ["dist/**"], excludedOutputs: ["dist/cache/**"],
+    });
+  });
+
   it("rejects missing selected task cache evidence", () => {
     expect(() => parseVerificationSummary(summary("HIT"), ["missing#build"]))
       .toThrow("Selected task missing");

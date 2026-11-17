@@ -2,3 +2,17 @@ node_modules/
 dist/
 coverage/
 *.tgz
+
+# Raw verification outputs may contain generated secrets.
+/evidence/**/artifacts/
+
+# Local real-world verification inputs and evidence can contain personal paths or generated secrets.
+/evidence/ridobot-frontend-cli-e2e/
+/experiments/
+
+# Local handoff archives and one-off diagnostic helpers are not product source.
+/deliverables/
+/scripts/analyze-next-raw.mjs
+/scripts/collect-fixed-path-baselines.mjs
+/scripts/collect-raw-baselines.mjs
+/scripts/validate-fixed-path-contract.mjs

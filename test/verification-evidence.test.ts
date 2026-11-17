@@ -41,7 +41,7 @@ describe("verification evidence", () => {
       target: { projectLabel: "target", commit: "abc", dirty: false },
       config: { task: "build", packages: [], tasks: [], outputs: [], mutationKind: "none" },
       isolation: {
-        strategy: "independent-frozen-install", workspaces: ["cache", "baseline-a", "baseline-b"],
+        strategy: "independent-paths", workspaces: ["cache", "baseline-a", "baseline-b"],
         caches: ["cache/shared", "baseline-a/empty", "baseline-b/empty"],
         remoteCacheDisabled: true, lockfileSha256: {},
       },

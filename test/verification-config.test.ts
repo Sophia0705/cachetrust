@@ -24,6 +24,12 @@ describe("verification config", () => {
     expect(validateVerificationConfig(config())).toMatchObject({ id: "test", mutation: { kind: "none" } });
   });
 
+  it("accepts opt-in diagnostics and rejects non-boolean values", () => {
+    expect(validateVerificationConfig({ ...config(), retainDiagnostics: true }).retainDiagnostics).toBe(true);
+    expect(() => validateVerificationConfig({ ...config(), retainDiagnostics: "yes" }))
+      .toThrow("retainDiagnostics must be boolean");
+  });
+
   it("accepts string install environment overrides and preserves omission", () => {
     expect(validateVerificationConfig(config()).install.environment).toBeUndefined();
     const value = config();

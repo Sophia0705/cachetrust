@@ -5,6 +5,13 @@ import type { ProcessResult } from "../process.js";
 import { ConfigError, validateVerificationConfig, type VerificationConfig } from "./config.js";
 import { evidenceInstall, evidenceRun, writeEvidence, type VerificationEvidence } from "./evidence.js";
 import {
+  initializeDiagnostics,
+  retainProcess,
+  retainRawOutputs,
+  retainRun,
+  type DiagnosticArtifact,
+} from "./diagnostics.js";
+import {
   assertCleanGitProject,
   createVerificationIsolation,
   IsolationError,
@@ -68,6 +75,12 @@ function comparisonManifest(
   return normalized ?? raw;
 }
 
+function changedPaths(left: OutputManifest, right: OutputManifest): string[] {
+  const a = new Map(left.entries.map((entry) => [entry.path, entry.sha256]));
+  const b = new Map(right.entries.map((entry) => [entry.path, entry.sha256]));
+  return [...new Set([...a.keys(), ...b.keys()])].sort().filter((path) => a.get(path) !== b.get(path));
+}
+
 function baseEvidence(
   config: VerificationConfig,
   commit: string,
@@ -115,6 +128,11 @@ function baseEvidence(
       jsonStringEncoded: rule.jsonStringEncoded ?? false,
       reason: rule.reason,
     })),
+    canonicalizeJson: (config.normalization.canonicalizeJson ?? []).map((rule) => ({
+      path: rule.path,
+      assignment: rule.assignment ?? false,
+      reason: rule.reason,
+    })),
   };
   const probeProcess = packageManagerProbe?.process ?? packageManagerProbe?.processResult;
   return {
@@ -158,11 +176,12 @@ function baseEvidence(
       tasks: config.tasks,
       outputs: config.outputs,
       mutationKind: config.mutation.kind,
+      retainDiagnostics: config.retainDiagnostics ?? false,
       ...(normalization === undefined ? {} : { normalization }),
     },
     installs: [],
     isolation: {
-      strategy: "independent-frozen-install",
+      strategy: config.workspaceStrategy ?? "independent-paths",
       workspaces: ["cache", "baseline-a", "baseline-b"],
       caches: ["cache/shared", "baseline-a/empty", "baseline-b/empty"],
       remoteCacheDisabled: true,
@@ -181,8 +200,17 @@ function baseEvidence(
 
 function addInstalls(evidence: VerificationEvidence, isolation: VerificationIsolation | undefined): void {
   if (isolation === undefined) return;
-  evidence.installs = isolation.workspaces.map((workspace) =>
-    evidenceInstall(workspace.id, workspace.install));
+  evidence.installs = isolation.workspaces.flatMap((workspace) => workspace.install === undefined
+    ? []
+    : [evidenceInstall(workspace.id, workspace.install)]);
+  evidence.isolation.lifecycle = isolation.lifecycle;
+}
+
+function addDiagnosticArtifacts(
+  evidence: VerificationEvidence,
+  artifacts: DiagnosticArtifact[],
+): void {
+  if (artifacts.length > 0) evidence.diagnosticArtifacts = artifacts;
 }
 
 function addRuns(evidence: VerificationEvidence, runs: RunSet): void {
@@ -216,16 +244,26 @@ export async function verifyProject(
   let commit = "unknown";
   let isolation: VerificationIsolation | undefined;
   let packageManagerProbe: PackageManagerProbe | undefined;
+  let diagnosticRoot: string | undefined;
+  const diagnosticArtifacts: DiagnosticArtifact[] = [];
   const runs: RunSet = {};
   try {
+    if (config.retainDiagnostics === true) diagnosticRoot = await initializeDiagnostics(config.evidenceFile);
     commit = await assertCleanGitProject(config.projectRoot, options.signal);
     if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
     packageManagerProbe = await probePackageManager(config, options.signal);
+    if (diagnosticRoot !== undefined) {
+      diagnosticArtifacts.push(...await retainProcess(diagnosticRoot, "package-manager-probe", packageManagerProbe.process));
+    }
     isolation = await createVerificationIsolation(config, packageManagerProbe.install, options.signal);
-    const [cacheWorkspace, baselineAWorkspace, baselineBWorkspace] = isolation.workspaces;
+    const cacheWorkspace = await isolation.activate("cache");
+    if (diagnosticRoot !== undefined && cacheWorkspace.install !== undefined) {
+      diagnosticArtifacts.push(...await retainProcess(diagnosticRoot, "install-cache", cacheWorkspace.install));
+    }
 
     await cleanOutputs(cacheWorkspace.project, config.outputs);
     runs.v1 = await runVerificationTurbo(cacheWorkspace.project, cacheWorkspace.cache, config, options.signal);
+    if (diagnosticRoot !== undefined) diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "v1", runs.v1));
     if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
     assertHealthyRun(runs.v1, config.turbo.version);
     const coverage = validateOutputCoverage(config, runs.v1.tasks);
@@ -241,61 +279,103 @@ export async function verifyProject(
       );
       addInstalls(evidence, isolation);
       addRuns(evidence, runs);
+      addDiagnosticArtifacts(evidence, diagnosticArtifacts);
       await writeEvidence(config.evidenceFile, evidence);
       return evidence;
     }
 
     const originalCache = await captureMutationOriginal(cacheWorkspace.project, config.mutation);
-    const originalA = await captureMutationOriginal(baselineAWorkspace.project, config.mutation);
-    const originalB = await captureMutationOriginal(baselineBWorkspace.project, config.mutation);
     try {
       await applyMutation(cacheWorkspace.project, config.mutation);
       await cleanOutputs(cacheWorkspace.project, config.outputs);
       runs.cache = await runVerificationTurbo(
         cacheWorkspace.project, cacheWorkspace.cache, config, options.signal,
       );
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "cache-v2", runs.cache));
+      }
       if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
       assertHealthyRun(runs.cache, config.turbo.version);
       const cacheRaw = await fingerprintOutputs(cacheWorkspace.project, config.outputs);
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(await retainRawOutputs(
+          diagnosticRoot, "cache-v2", cacheWorkspace.project, cacheRaw,
+        ));
+      }
       const cacheChecks = await runFunctionalChecks(
         cacheWorkspace.project, config.functionalChecks ?? [], "cache",
       );
+      const cacheNormalized = config.normalization === undefined
+        ? undefined
+        : await normalizeManifest(cacheWorkspace.project, cacheRaw, config.normalization);
+      if (!await restoreMutation(cacheWorkspace.project, config.mutation, originalCache)) {
+        throw new EngineError("MUTATION_OPERATION_FAILED", "Cache workspace restore failed");
+      }
 
+      const baselineAWorkspace = await isolation.activate("baseline-a");
+      if (diagnosticRoot !== undefined && baselineAWorkspace.install !== undefined) {
+        diagnosticArtifacts.push(...await retainProcess(
+          diagnosticRoot, "install-baseline-a", baselineAWorkspace.install,
+        ));
+      }
+      const originalA = await captureMutationOriginal(baselineAWorkspace.project, config.mutation);
       await applyMutation(baselineAWorkspace.project, config.mutation);
       await cleanOutputs(baselineAWorkspace.project, config.outputs);
       runs.baselineA = await runVerificationTurbo(
         baselineAWorkspace.project, baselineAWorkspace.cache, config, options.signal,
       );
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "baseline-a-v2", runs.baselineA));
+      }
       if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
       assertHealthyRun(runs.baselineA, config.turbo.version);
       const baselineARaw = await fingerprintOutputs(baselineAWorkspace.project, config.outputs);
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(await retainRawOutputs(
+          diagnosticRoot, "baseline-a-v2", baselineAWorkspace.project, baselineARaw,
+        ));
+      }
       const baselineAChecks = await runFunctionalChecks(
         baselineAWorkspace.project, config.functionalChecks ?? [], "baseline",
       );
+      const baselineANormalized = config.normalization === undefined
+        ? undefined
+        : await normalizeManifest(baselineAWorkspace.project, baselineARaw, config.normalization);
+      if (!await restoreMutation(baselineAWorkspace.project, config.mutation, originalA)) {
+        throw new EngineError("MUTATION_OPERATION_FAILED", "Baseline A workspace restore failed");
+      }
 
+      const baselineBWorkspace = await isolation.activate("baseline-b");
+      if (diagnosticRoot !== undefined && baselineBWorkspace.install !== undefined) {
+        diagnosticArtifacts.push(...await retainProcess(
+          diagnosticRoot, "install-baseline-b", baselineBWorkspace.install,
+        ));
+      }
+      const originalB = await captureMutationOriginal(baselineBWorkspace.project, config.mutation);
       await applyMutation(baselineBWorkspace.project, config.mutation);
       await cleanOutputs(baselineBWorkspace.project, config.outputs);
       runs.baselineB = await runVerificationTurbo(
         baselineBWorkspace.project, baselineBWorkspace.cache, config, options.signal,
       );
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "baseline-b-v2", runs.baselineB));
+      }
       if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
       assertHealthyRun(runs.baselineB, config.turbo.version);
       const baselineBRaw = await fingerprintOutputs(baselineBWorkspace.project, config.outputs);
+      if (diagnosticRoot !== undefined) {
+        diagnosticArtifacts.push(await retainRawOutputs(
+          diagnosticRoot, "baseline-b-v2", baselineBWorkspace.project, baselineBRaw,
+        ));
+      }
       const baselineBChecks = await runFunctionalChecks(
         baselineBWorkspace.project, config.functionalChecks ?? [], "baseline",
       );
-
-      let cacheNormalized: OutputManifest | undefined;
-      let baselineANormalized: OutputManifest | undefined;
-      let baselineBNormalized: OutputManifest | undefined;
-      if (config.normalization !== undefined) {
-        cacheNormalized = await normalizeManifest(cacheWorkspace.project, cacheRaw, config.normalization);
-        baselineANormalized = await normalizeManifest(
-          baselineAWorkspace.project, baselineARaw, config.normalization,
-        );
-        baselineBNormalized = await normalizeManifest(
-          baselineBWorkspace.project, baselineBRaw, config.normalization,
-        );
+      const baselineBNormalized = config.normalization === undefined
+        ? undefined
+        : await normalizeManifest(baselineBWorkspace.project, baselineBRaw, config.normalization);
+      if (!await restoreMutation(baselineBWorkspace.project, config.mutation, originalB)) {
+        throw new EngineError("MUTATION_OPERATION_FAILED", "Baseline B workspace restore failed");
       }
 
       const cacheComparison = comparisonManifest(cacheRaw, cacheNormalized);
@@ -335,13 +415,12 @@ export async function verifyProject(
         baselineStable: baselineAComparison.sha256 === baselineBComparison.sha256,
         cacheMatchesBaseline: cacheComparison.sha256 === baselineAComparison.sha256,
         functionalChecks: checks,
+        normalizedChangedPaths: {
+          baselineA__baselineB: changedPaths(baselineAComparison, baselineBComparison),
+          cache__baselineA: changedPaths(cacheComparison, baselineAComparison),
+        },
       };
-      const restored = await Promise.all([
-        restoreMutation(cacheWorkspace.project, config.mutation, originalCache),
-        restoreMutation(baselineAWorkspace.project, config.mutation, originalA),
-        restoreMutation(baselineBWorkspace.project, config.mutation, originalB),
-      ]);
-      if (restored.some((value) => !value)) throw new EngineError("MUTATION_OPERATION_FAILED", "Restore failed");
+      addDiagnosticArtifacts(evidence, diagnosticArtifacts);
       if (config.mutation.kind === "replace-file"
           && await fingerprintFile(`${config.projectRoot}/${config.mutation.path}`)
             !== config.mutation.expectedBeforeSha256) {
@@ -356,6 +435,12 @@ export async function verifyProject(
       throw error;
     }
   } catch (error) {
+    if (diagnosticRoot !== undefined && error instanceof PackageManagerError
+        && error.processResult !== undefined) {
+      diagnosticArtifacts.push(...await retainProcess(
+        diagnosticRoot, "package-manager-probe-failed", error.processResult,
+      ));
+    }
     const packageManagerObservation = packageManagerProbe ?? (error instanceof PackageManagerError ? {
       ...(error.observedVersion === undefined ? {} : { observedVersion: error.observedVersion }),
       ...(error.executable === undefined ? {} : { executable: error.executable }),
@@ -366,6 +451,7 @@ export async function verifyProject(
     );
     addInstalls(evidence, isolation);
     addRuns(evidence, runs);
+    addDiagnosticArtifacts(evidence, diagnosticArtifacts);
     await writeEvidence(config.evidenceFile, evidence);
     return evidence;
   } finally {

@@ -22,7 +22,9 @@ async function git(root: string, args: string[]): Promise<void> {
 }
 
 describe("verification engine", () => {
-  it("detects confirmed stale local reuse against two isolated baselines", async () => {
+  it.each([undefined, "fixed-path-sequential"] as const)(
+    "detects confirmed stale local reuse with strategy %s",
+    async (workspaceStrategy) => {
     const root = await mkdtemp(join(process.cwd(), ".cachetrust-engine-"));
     roots.push(root);
     const project = join(root, "project");
@@ -70,6 +72,8 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
     const evidence = await verifyProject({
       schemaVersion: "1",
       id: "stale-fixture",
+      ...(workspaceStrategy === undefined ? {} : { workspaceStrategy }),
+      ...(workspaceStrategy === "fixed-path-sequential" ? { retainDiagnostics: true } : {}),
       projectRoot: project,
       evidenceFile,
       install: {
@@ -111,6 +115,15 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       implicatedTasks: ["app#build"],
     });
     expect(evidence.comparisons).toMatchObject({ baselineStable: true, cacheMatchesBaseline: false });
+    expect(evidence.isolation.strategy).toBe(workspaceStrategy ?? "independent-paths");
+    if (workspaceStrategy === "fixed-path-sequential") {
+      expect(evidence.isolation.lifecycle).toHaveLength(3);
+      expect(evidence.isolation.lifecycle?.every((event) => event.slotAbsentAfterRemoval)).toBe(true);
+      expect(evidence.diagnosticArtifacts?.filter((artifact) => artifact.kind === "raw-output"))
+        .toHaveLength(3);
+      await expect(readFile(join(root, "artifacts", "outputs", "baseline-a-v2", "dist", "output.txt"), "utf8"))
+        .resolves.toBe("v2\n");
+    }
     expect(evidence.runs.map((run) => run.id)).toEqual([
       "v1", "cache-v2", "baseline-a-v2", "baseline-b-v2",
     ]);
@@ -134,5 +147,6 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       } },
       verdict: { status: "MISMATCH" },
     });
-  });
+    },
+  );
 });

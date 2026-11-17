@@ -16,8 +16,9 @@ export interface OutputManifest {
   normalizedBy?: string;
   transformations?: Array<{
     path: string;
-    kind: "omit" | "replace-literal" | "derive-literal";
+    kind: "omit" | "replace-literal" | "derive-literal" | "canonical-json";
     reason: string;
+    occurrences: number;
   }>;
 }
 
@@ -47,6 +48,27 @@ async function filesUnder(root: string, path: string): Promise<string[]> {
 
 function manifestHash(entries: readonly ManifestEntry[]): string {
   return createHash("sha256").update(JSON.stringify(entries)).digest("hex");
+}
+
+function sortJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortJson);
+  if (value !== null && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().map((key) =>
+      [key, sortJson((value as Record<string, unknown>)[key])],
+    ));
+  }
+  return value;
+}
+
+function canonicalJson(source: string, assignment: boolean, path: string): string {
+  if (!assignment) return JSON.stringify(sortJson(JSON.parse(source)));
+  const match = source.match(/^([\s\S]*?\]\s*=\s*)(\{[\s\S]*\});?\s*$/);
+  if (match === null) throw new Error(`Assigned JSON format is unsupported: ${path}`);
+  return `${match[1]}${JSON.stringify(sortJson(JSON.parse(match[2]!)))};`;
+}
+
+function occurrences(source: string, literal: string): number {
+  return source.split(literal).length - 1;
 }
 
 export async function fingerprintOutputs(
@@ -89,6 +111,7 @@ export async function normalizeManifest(
 ): Promise<OutputManifest> {
   const omissions = new Map((policy.omit ?? []).map((rule) => [rule.path, rule.reason]));
   const replacements = new Map((policy.replaceLiterals ?? []).map((rule) => [rule.path, rule]));
+  const canonicalizations = new Map((policy.canonicalizeJson ?? []).map((rule) => [rule.path, rule]));
   const derived = await Promise.all((policy.deriveLiterals ?? []).map(async (rule) => {
     const source = await readFile(resolveInside(workspace, rule.sourcePath), "utf8");
     let literal: unknown = source.trim();
@@ -111,12 +134,13 @@ export async function normalizeManifest(
   for (const entry of raw.entries) {
     const omission = omissions.get(entry.path);
     if (omission !== undefined) {
-      transformations.push({ path: entry.path, kind: "omit", reason: omission });
+      transformations.push({ path: entry.path, kind: "omit", reason: omission, occurrences: 1 });
       continue;
     }
     const replacement = replacements.get(entry.path);
+    const canonicalization = canonicalizations.get(entry.path);
     const applicable = derived.filter((rule) => matches(entry.path, rule.target));
-    if (replacement === undefined && applicable.length === 0) {
+    if (replacement === undefined && canonicalization === undefined && applicable.length === 0) {
       entries.push(entry);
       continue;
     }
@@ -133,27 +157,40 @@ export async function normalizeManifest(
     let normalized = replacement === undefined ? text : text!.replaceAll(replacement.search, replacement.replacement);
     let normalizedPath = entry.path;
     if (replacement !== undefined) {
-      transformations.push({ path: entry.path, kind: "replace-literal", reason: replacement.reason });
+      transformations.push({
+        path: entry.path,
+        kind: "replace-literal",
+        reason: replacement.reason,
+        occurrences: occurrences(text!, replacement.search),
+      });
     }
     for (const rule of applicable) {
-      let changed = false;
+      let count = 0;
       const literals = [
         rule.literal,
         ...(rule.jsonStringEncoded === true ? [JSON.stringify(rule.literal).slice(1, -1)] : []),
       ];
       for (const literal of [...new Set(literals)]) {
         if (normalized?.includes(literal)) {
+          count += occurrences(normalized, literal);
           normalized = normalized.replaceAll(literal, rule.replacement);
-          changed = true;
         }
       }
       if (rule.replaceInPath === true && normalizedPath.includes(rule.literal)) {
+        count += occurrences(normalizedPath, rule.literal);
         normalizedPath = normalizedPath.replaceAll(rule.literal, rule.replacement);
-        changed = true;
       }
-      if (changed) {
-        transformations.push({ path: entry.path, kind: "derive-literal", reason: rule.reason });
+      if (count > 0) {
+        transformations.push({
+          path: entry.path, kind: "derive-literal", reason: rule.reason, occurrences: count,
+        });
       }
+    }
+    if (canonicalization !== undefined) {
+      normalized = canonicalJson(normalized!, canonicalization.assignment ?? false, entry.path);
+      transformations.push({
+        path: entry.path, kind: "canonical-json", reason: canonicalization.reason, occurrences: 1,
+      });
     }
     entries.push({
       path: normalizedPath,

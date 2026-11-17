@@ -71,7 +71,7 @@ describe("verification mutation and outputs", () => {
     expect(raw.entries[0]!.sha256).toBe(sha("value=v1 random=one\n"));
     expect(normalized.sha256).not.toBe(raw.sha256);
     expect(normalized.transformations).toEqual([
-      { path: "dist/output.txt", kind: "replace-literal", reason: "fixture nonce" },
+      { path: "dist/output.txt", kind: "replace-literal", reason: "fixture nonce", occurrences: 1 },
     ]);
   });
 
@@ -107,6 +107,37 @@ describe("verification mutation and outputs", () => {
     const escaped = normalized.entries.find((entry) => entry.path === "dist/escaped.txt");
     expect(escaped?.sha256).toBe(sha("root=<ROOT>\n"));
     expect(normalized.transformations?.some((entry) => entry.kind === "derive-literal")).toBe(true);
+  });
+
+  it("canonicalizes only object key order in exact JSON targets", async () => {
+    const root = await fixture();
+    await writeFile(join(root, "dist", "plain.json"), '{"z":1,"a":{"y":2,"x":3},"items":[2,1]}');
+    await writeFile(
+      join(root, "dist", "assigned.js"),
+      'globalThis.__RSC_MANIFEST["/route"]={"z":1,"a":2};',
+    );
+    const raw = await fingerprintOutputs(root, [{ taskId: "app#build", include: ["dist/**"] }]);
+    const normalized = await normalizeManifest(root, raw, {
+      id: "json-order", description: "object key order only",
+      canonicalizeJson: [
+        { path: "dist/plain.json", reason: "JSON object serialization order" },
+        { path: "dist/assigned.js", assignment: true, reason: "assigned JSON object serialization order" },
+      ],
+    });
+    expect(normalized.entries.find((entry) => entry.path === "dist/plain.json")?.sha256)
+      .toBe(sha('{"a":{"x":3,"y":2},"items":[2,1],"z":1}'));
+    expect(normalized.entries.find((entry) => entry.path === "dist/assigned.js")?.sha256)
+      .toBe(sha('globalThis.__RSC_MANIFEST["/route"]={"a":2,"z":1};'));
+    expect(normalized.transformations?.filter((entry) => entry.kind === "canonical-json")).toHaveLength(2);
+
+    await writeFile(join(root, "dist", "plain.json"), '{"a":{"x":3,"y":2},"items":[1,2],"z":1}');
+    const changed = await fingerprintOutputs(root, [{ taskId: "app#build", include: ["dist/**"] }]);
+    const changedNormalized = await normalizeManifest(root, changed, {
+      id: "json-order", description: "object key order only",
+      canonicalizeJson: [{ path: "dist/plain.json", reason: "JSON object serialization order" }],
+    });
+    expect(changedNormalized.entries.find((entry) => entry.path === "dist/plain.json")?.sha256)
+      .not.toBe(normalized.entries.find((entry) => entry.path === "dist/plain.json")?.sha256);
   });
 
   it("checks required presence and global absence", async () => {

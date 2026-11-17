@@ -6,6 +6,8 @@ export type ExpectedCacheStatus = "HIT" | "MISS";
 export interface VerificationConfig {
   schemaVersion: "1";
   id: string;
+  workspaceStrategy?: "independent-paths" | "fixed-path-sequential";
+  retainDiagnostics?: boolean;
   projectRoot: string;
   evidenceFile: string;
   install: {
@@ -63,6 +65,11 @@ export interface VerificationConfig {
       replacement: string;
       replaceInPath?: boolean;
       jsonStringEncoded?: boolean;
+      reason: string;
+    }>;
+    canonicalizeJson?: Array<{
+      path: string;
+      assignment?: boolean;
       reason: string;
     }>;
   };
@@ -164,11 +171,21 @@ function validateOutputPattern(pattern: string, name: string): string {
 export function validateVerificationConfig(value: unknown): VerificationConfig {
   const root = object(value, "config");
   assertKeys(root, [
-    "schemaVersion", "id", "projectRoot", "evidenceFile", "install", "turbo", "tasks",
+    "schemaVersion", "id", "workspaceStrategy", "retainDiagnostics", "projectRoot", "evidenceFile", "install", "turbo", "tasks",
     "outputs", "mutation", "functionalChecks", "normalization", "preparedFault",
   ], "config");
   if (root.schemaVersion !== "1") throw new ConfigError("schemaVersion must be 1");
   const id = nonEmptyString(root.id, "id");
+  if (root.workspaceStrategy !== undefined
+      && root.workspaceStrategy !== "independent-paths"
+      && root.workspaceStrategy !== "fixed-path-sequential") {
+    throw new ConfigError("workspaceStrategy must be independent-paths or fixed-path-sequential");
+  }
+  const workspaceStrategy = root.workspaceStrategy as VerificationConfig["workspaceStrategy"];
+  if (root.retainDiagnostics !== undefined && typeof root.retainDiagnostics !== "boolean") {
+    throw new ConfigError("retainDiagnostics must be boolean");
+  }
+  const retainDiagnostics = root.retainDiagnostics as boolean | undefined;
   const projectRoot = resolve(nonEmptyString(root.projectRoot, "projectRoot"));
   const evidenceFile = resolve(nonEmptyString(root.evidenceFile, "evidenceFile"));
   const evidenceRelative = relative(projectRoot, evidenceFile);
@@ -313,7 +330,11 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   let normalization: VerificationConfig["normalization"];
   if (root.normalization !== undefined) {
     const policy = object(root.normalization, "normalization");
-    assertKeys(policy, ["id", "description", "omit", "replaceLiterals", "deriveLiterals"], "normalization");
+    assertKeys(
+      policy,
+      ["id", "description", "omit", "replaceLiterals", "deriveLiterals", "canonicalizeJson"],
+      "normalization",
+    );
     const omit = policy.omit === undefined ? undefined : array(policy.omit, "normalization.omit").map((entry, index) => {
       const rule = object(entry, `normalization.omit[${index}]`);
       assertKeys(rule, ["path", "reason"], `normalization.omit[${index}]`);
@@ -369,12 +390,27 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
           reason: nonEmptyString(rule.reason, "reason"),
         };
       });
+    const canonicalizeJson = policy.canonicalizeJson === undefined
+      ? undefined
+      : array(policy.canonicalizeJson, "normalization.canonicalizeJson").map((entry, index) => {
+        const rule = object(entry, `normalization.canonicalizeJson[${index}]`);
+        assertKeys(rule, ["path", "assignment", "reason"], `normalization.canonicalizeJson[${index}]`);
+        if (rule.assignment !== undefined && typeof rule.assignment !== "boolean") {
+          throw new ConfigError("normalization canonicalizeJson.assignment must be boolean");
+        }
+        return {
+          path: assertSafeRelativePath(nonEmptyString(rule.path, "path"), "normalization path"),
+          ...(rule.assignment === undefined ? {} : { assignment: rule.assignment }),
+          reason: nonEmptyString(rule.reason, "reason"),
+        };
+      });
     normalization = {
       id: nonEmptyString(policy.id, "normalization.id"),
       description: nonEmptyString(policy.description, "normalization.description"),
       ...(omit === undefined ? {} : { omit }),
       ...(replaceLiterals === undefined ? {} : { replaceLiterals }),
       ...(deriveLiterals === undefined ? {} : { deriveLiterals }),
+      ...(canonicalizeJson === undefined ? {} : { canonicalizeJson }),
     };
   }
 
@@ -400,7 +436,10 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
   }
 
   return {
-    schemaVersion: "1", id, projectRoot, evidenceFile, install, turbo, tasks, outputs, mutation,
+    schemaVersion: "1", id,
+    ...(workspaceStrategy === undefined ? {} : { workspaceStrategy }),
+    ...(retainDiagnostics === undefined ? {} : { retainDiagnostics }),
+    projectRoot, evidenceFile, install, turbo, tasks, outputs, mutation,
     ...(checks === undefined ? {} : { functionalChecks: checks }),
     ...(normalization === undefined ? {} : { normalization }),
     ...(preparedFault === undefined ? {} : { preparedFault }),

@@ -98,6 +98,24 @@ describe("verification isolation", () => {
     expect(await readFile(join(root, "src", "input.txt"), "utf8")).toBe("original\n");
   });
 
+  it("recreates one fixed project path between sequential workspaces", async () => {
+    const root = await project();
+    const value = config(root);
+    value.workspaceStrategy = "fixed-path-sequential";
+    const isolation = await createVerificationIsolation(value);
+    roots.push(isolation.root);
+    expect(new Set(isolation.workspaces.map((workspace) => workspace.project)).size).toBe(1);
+    expect(new Set(isolation.workspaces.map((workspace) => workspace.cache)).size).toBe(3);
+
+    const cache = await isolation.activate("cache");
+    await writeFile(join(cache.project, "src", "input.txt"), "changed\n");
+    const baselineA = await isolation.activate("baseline-a");
+    expect(baselineA.project).toBe(cache.project);
+    expect(await readFile(join(baselineA.project, "src", "input.txt"), "utf8")).toBe("original\n");
+    expect(isolation.workspaces.filter((workspace) => workspace.install !== undefined)).toHaveLength(2);
+    expect(await readFile(join(root, "src", "input.txt"), "utf8")).toBe("original\n");
+  });
+
   it("uses one inherited and overridden environment for the probe and all workspaces", async () => {
     const root = await project();
     await writeFile(join(root, "install.mjs"), [

@@ -6,6 +6,7 @@ import type { VerificationConfig, VerificationStatus } from "./config.js";
 import type { FunctionalCheckResult, OutputManifest } from "./outputs.js";
 import type { VerificationRun } from "./turbo-runner.js";
 import type { VerificationVerdict } from "./verdict.js";
+import type { DiagnosticArtifact } from "./diagnostics.js";
 
 export interface VerificationEvidence {
   schemaVersion: "cachetrust.verification/1";
@@ -50,6 +51,7 @@ export interface VerificationEvidence {
     tasks: VerificationConfig["tasks"];
     outputs: VerificationConfig["outputs"];
     mutationKind: VerificationConfig["mutation"]["kind"];
+    retainDiagnostics?: boolean;
     normalization?: {
       id: string;
       description: string;
@@ -69,6 +71,11 @@ export interface VerificationEvidence {
         jsonStringEncoded: boolean;
         reason: string;
       }>;
+      canonicalizeJson: Array<{
+        path: string;
+        assignment: boolean;
+        reason: string;
+      }>;
     };
   };
   installs: Array<{
@@ -81,11 +88,19 @@ export interface VerificationEvidence {
     stderr: { bytes: number; sha256: string; retained: false };
   }>;
   isolation: {
-    strategy: "independent-frozen-install";
+    strategy: "independent-paths" | "fixed-path-sequential";
     workspaces: ["cache", "baseline-a", "baseline-b"];
     caches: ["cache/shared", "baseline-a/empty", "baseline-b/empty"];
     remoteCacheDisabled: true;
     lockfileSha256: Record<string, string>;
+    lifecycle?: Array<{
+      workspace: "cache" | "baseline-a" | "baseline-b";
+      fixedProjectPath: boolean;
+      slotAbsentAfterRemoval: boolean;
+      sourceCopied: boolean;
+      installSucceeded: boolean;
+      lockfileVerified: boolean;
+    }>;
   };
   runs: EvidenceRun[];
   comparisons?: {
@@ -98,7 +113,12 @@ export interface VerificationEvidence {
     baselineStable: boolean;
     cacheMatchesBaseline: boolean;
     functionalChecks: FunctionalCheckResult[];
+    normalizedChangedPaths?: {
+      baselineA__baselineB: string[];
+      cache__baselineA: string[];
+    };
   };
+  diagnosticArtifacts?: DiagnosticArtifact[];
   verdict: VerificationVerdict | {
     status: VerificationStatus;
     reasonCodes: string[];

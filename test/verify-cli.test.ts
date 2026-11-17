@@ -60,7 +60,7 @@ function evidence(
     },
     installs: [],
     isolation: {
-      strategy: "independent-frozen-install", workspaces: ["cache", "baseline-a", "baseline-b"],
+      strategy: "independent-paths", workspaces: ["cache", "baseline-a", "baseline-b"],
       caches: ["cache/shared", "baseline-a/empty", "baseline-b/empty"],
       remoteCacheDisabled: true, lockfileSha256: {},
     },

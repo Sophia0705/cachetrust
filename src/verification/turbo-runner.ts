@@ -23,8 +23,8 @@ function portable(path: string): string {
   return path.replaceAll("\\", "/").replace(/^\.\//, "");
 }
 
-function taskOutput(directory: string, pattern: string): string {
-  const prefix = portable(directory).replace(/\/$/, "");
+function taskOutput(directory: string | undefined, pattern: string): string {
+  const prefix = directory === undefined ? "" : portable(directory).replace(/\/$/, "");
   const value = portable(pattern);
   return prefix.length === 0 ? value : `${prefix}/${value}`;
 }
@@ -34,7 +34,7 @@ function parseTask(value: unknown): ObservedTurboTask | undefined {
   const task = value as Record<string, unknown>;
   const cache = task.cache;
   if (typeof task.taskId !== "string" || typeof task.hash !== "string"
-      || typeof task.directory !== "string" || !Array.isArray(task.outputs)
+      || (task.directory !== undefined && typeof task.directory !== "string") || !Array.isArray(task.outputs)
       || !Array.isArray(task.excludedOutputs) || typeof cache !== "object" || cache === null) return undefined;
   const observed = cache as Record<string, unknown>;
   if ((observed.status !== "HIT" && observed.status !== "MISS")
@@ -45,9 +45,9 @@ function parseTask(value: unknown): ObservedTurboTask | undefined {
     id: task.taskId,
     hash: task.hash,
     cache: { status: observed.status, local: observed.local, remote: observed.remote },
-    outputs: (task.outputs as string[]).map((pattern) => taskOutput(task.directory as string, pattern)),
+    outputs: (task.outputs as string[]).map((pattern) => taskOutput(task.directory as string | undefined, pattern)),
     excludedOutputs: (task.excludedOutputs as string[])
-      .map((pattern) => taskOutput(task.directory as string, pattern)),
+      .map((pattern) => taskOutput(task.directory as string | undefined, pattern)),
   };
 }
 
