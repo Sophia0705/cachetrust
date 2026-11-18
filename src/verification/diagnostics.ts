@@ -1,14 +1,14 @@
 import { constants, copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fingerprintFile } from "../fingerprint.js";
-import type { ProcessResult } from "../process.js";
+import type { DurableProcessFiles, ProcessResult } from "../process.js";
 import { resolveInside } from "./config.js";
 import type { OutputManifest } from "./outputs.js";
 import type { VerificationRun } from "./turbo-runner.js";
 
 export interface DiagnosticArtifact {
   id: string;
-  kind: "process-log" | "turbo-summary" | "raw-output";
+  kind: "process-log" | "process-lifecycle" | "turbo-summary" | "raw-output";
   path: string;
   sha256?: string;
   files?: number;
@@ -21,6 +21,16 @@ export async function initializeDiagnostics(evidenceFile: string): Promise<strin
   await mkdir(dirname(evidenceFile), { recursive: true });
   await mkdir(root);
   return root;
+}
+
+export async function durableProcessFiles(root: string, id: string): Promise<DurableProcessFiles> {
+  const logs = join(root, "logs");
+  await mkdir(logs, { recursive: true });
+  return {
+    stdoutPath: join(logs, `${id}.stdout.log`),
+    stderrPath: join(logs, `${id}.stderr.log`),
+    lifecyclePath: join(logs, `${id}.lifecycle.jsonl`),
+  };
 }
 
 async function retainText(
@@ -41,10 +51,36 @@ export async function retainProcess(
   id: string,
   process: ProcessResult,
 ): Promise<DiagnosticArtifact[]> {
-  return await Promise.all([
-    retainText(root, id, "stdout", process.stdout),
-    retainText(root, id, "stderr", process.stderr),
-  ]);
+  const files = await durableProcessFiles(root, id);
+  const retainedStdout = await readFile(files.stdoutPath, "utf8").catch(() => undefined);
+  const retainedStderr = await readFile(files.stderrPath, "utf8").catch(() => undefined);
+  if (retainedStdout === undefined && retainedStderr === undefined) {
+    return await Promise.all([
+      retainText(root, id, "stdout", process.stdout),
+      retainText(root, id, "stderr", process.stderr),
+    ]);
+  }
+  if (retainedStdout !== process.stdout || retainedStderr !== process.stderr) {
+    throw new Error(`Durable process log mismatch: ${id}`);
+  }
+  const artifacts: DiagnosticArtifact[] = [
+    {
+      id, kind: "process-log", path: `artifacts/logs/${id}.stdout.log`,
+      sha256: await fingerprintFile(files.stdoutPath), verified: true,
+    },
+    {
+      id, kind: "process-log", path: `artifacts/logs/${id}.stderr.log`,
+      sha256: await fingerprintFile(files.stderrPath), verified: true,
+    },
+  ];
+  const lifecycle = await readFile(files.lifecyclePath, "utf8").catch(() => undefined);
+  if (lifecycle === undefined) throw new Error(`Durable process lifecycle missing: ${id}`);
+  for (const line of lifecycle.split(/\r?\n/).filter(Boolean)) JSON.parse(line);
+  artifacts.push({
+    id, kind: "process-lifecycle", path: `artifacts/logs/${id}.lifecycle.jsonl`,
+    sha256: await fingerprintFile(files.lifecyclePath), verified: true,
+  });
+  return artifacts;
 }
 
 export async function retainRun(

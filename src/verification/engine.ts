@@ -6,6 +6,7 @@ import { ConfigError, validateVerificationConfig, type VerificationConfig } from
 import { evidenceInstall, evidenceRun, writeEvidence, type VerificationEvidence } from "./evidence.js";
 import {
   initializeDiagnostics,
+  durableProcessFiles,
   retainProcess,
   retainRawOutputs,
   retainRun,
@@ -177,6 +178,9 @@ function baseEvidence(
       outputs: config.outputs,
       mutationKind: config.mutation.kind,
       retainDiagnostics: config.retainDiagnostics ?? false,
+      ...(config.physicalStorageLimitBytes === undefined ? {} : {
+        physicalStorageLimitBytes: config.physicalStorageLimitBytes,
+      }),
       ...(normalization === undefined ? {} : { normalization }),
     },
     installs: [],
@@ -204,6 +208,7 @@ function addInstalls(evidence: VerificationEvidence, isolation: VerificationIsol
     ? []
     : [evidenceInstall(workspace.id, workspace.install)]);
   evidence.isolation.lifecycle = isolation.lifecycle;
+  evidence.isolation.storageMeasurements = isolation.storageMeasurements;
 }
 
 function addDiagnosticArtifacts(
@@ -251,18 +256,33 @@ export async function verifyProject(
     if (config.retainDiagnostics === true) diagnosticRoot = await initializeDiagnostics(config.evidenceFile);
     commit = await assertCleanGitProject(config.projectRoot, options.signal);
     if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
-    packageManagerProbe = await probePackageManager(config, options.signal);
+    packageManagerProbe = await probePackageManager(
+      config,
+      options.signal,
+      diagnosticRoot === undefined
+        ? undefined
+        : await durableProcessFiles(diagnosticRoot, "package-manager-probe"),
+    );
     if (diagnosticRoot !== undefined) {
       diagnosticArtifacts.push(...await retainProcess(diagnosticRoot, "package-manager-probe", packageManagerProbe.process));
     }
-    isolation = await createVerificationIsolation(config, packageManagerProbe.install, options.signal);
+    isolation = await createVerificationIsolation(
+      config, packageManagerProbe.install, options.signal, diagnosticRoot,
+    );
     const cacheWorkspace = await isolation.activate("cache");
     if (diagnosticRoot !== undefined && cacheWorkspace.install !== undefined) {
       diagnosticArtifacts.push(...await retainProcess(diagnosticRoot, "install-cache", cacheWorkspace.install));
     }
 
     await cleanOutputs(cacheWorkspace.project, config.outputs);
-    runs.v1 = await runVerificationTurbo(cacheWorkspace.project, cacheWorkspace.cache, config, options.signal);
+    runs.v1 = await runVerificationTurbo(
+      cacheWorkspace.project,
+      cacheWorkspace.cache,
+      config,
+      options.signal,
+      diagnosticRoot === undefined ? undefined : await durableProcessFiles(diagnosticRoot, "v1"),
+    );
+    await isolation.assertStorageWithinLimit("v1-after-build");
     if (diagnosticRoot !== undefined) diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "v1", runs.v1));
     if (isAborted(options.signal)) throw new EngineError("CANCELLED", "Verification was cancelled");
     assertHealthyRun(runs.v1, config.turbo.version);
@@ -289,8 +309,15 @@ export async function verifyProject(
       await applyMutation(cacheWorkspace.project, config.mutation);
       await cleanOutputs(cacheWorkspace.project, config.outputs);
       runs.cache = await runVerificationTurbo(
-        cacheWorkspace.project, cacheWorkspace.cache, config, options.signal,
+        cacheWorkspace.project,
+        cacheWorkspace.cache,
+        config,
+        options.signal,
+        diagnosticRoot === undefined
+          ? undefined
+          : await durableProcessFiles(diagnosticRoot, "cache-v2"),
       );
+      await isolation.assertStorageWithinLimit("cache-v2-after-build");
       if (diagnosticRoot !== undefined) {
         diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "cache-v2", runs.cache));
       }
@@ -322,8 +349,15 @@ export async function verifyProject(
       await applyMutation(baselineAWorkspace.project, config.mutation);
       await cleanOutputs(baselineAWorkspace.project, config.outputs);
       runs.baselineA = await runVerificationTurbo(
-        baselineAWorkspace.project, baselineAWorkspace.cache, config, options.signal,
+        baselineAWorkspace.project,
+        baselineAWorkspace.cache,
+        config,
+        options.signal,
+        diagnosticRoot === undefined
+          ? undefined
+          : await durableProcessFiles(diagnosticRoot, "baseline-a-v2"),
       );
+      await isolation.assertStorageWithinLimit("baseline-a-v2-after-build");
       if (diagnosticRoot !== undefined) {
         diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "baseline-a-v2", runs.baselineA));
       }
@@ -355,8 +389,15 @@ export async function verifyProject(
       await applyMutation(baselineBWorkspace.project, config.mutation);
       await cleanOutputs(baselineBWorkspace.project, config.outputs);
       runs.baselineB = await runVerificationTurbo(
-        baselineBWorkspace.project, baselineBWorkspace.cache, config, options.signal,
+        baselineBWorkspace.project,
+        baselineBWorkspace.cache,
+        config,
+        options.signal,
+        diagnosticRoot === undefined
+          ? undefined
+          : await durableProcessFiles(diagnosticRoot, "baseline-b-v2"),
       );
+      await isolation.assertStorageWithinLimit("baseline-b-v2-after-build");
       if (diagnosticRoot !== undefined) {
         diagnosticArtifacts.push(...await retainRun(diagnosticRoot, "baseline-b-v2", runs.baselineB));
       }

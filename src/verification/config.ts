@@ -8,6 +8,7 @@ export interface VerificationConfig {
   id: string;
   workspaceStrategy?: "independent-paths" | "fixed-path-sequential";
   retainDiagnostics?: boolean;
+  physicalStorageLimitBytes?: number;
   projectRoot: string;
   evidenceFile: string;
   install: {
@@ -171,7 +172,8 @@ function validateOutputPattern(pattern: string, name: string): string {
 export function validateVerificationConfig(value: unknown): VerificationConfig {
   const root = object(value, "config");
   assertKeys(root, [
-    "schemaVersion", "id", "workspaceStrategy", "retainDiagnostics", "projectRoot", "evidenceFile", "install", "turbo", "tasks",
+    "schemaVersion", "id", "workspaceStrategy", "retainDiagnostics", "physicalStorageLimitBytes",
+    "projectRoot", "evidenceFile", "install", "turbo", "tasks",
     "outputs", "mutation", "functionalChecks", "normalization", "preparedFault",
   ], "config");
   if (root.schemaVersion !== "1") throw new ConfigError("schemaVersion must be 1");
@@ -186,6 +188,15 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
     throw new ConfigError("retainDiagnostics must be boolean");
   }
   const retainDiagnostics = root.retainDiagnostics as boolean | undefined;
+  const physicalStorageLimitBytes = root.physicalStorageLimitBytes === undefined
+    ? undefined
+    : positiveInteger(root.physicalStorageLimitBytes, "physicalStorageLimitBytes");
+  if (physicalStorageLimitBytes !== undefined && !Number.isSafeInteger(physicalStorageLimitBytes)) {
+    throw new ConfigError("physicalStorageLimitBytes must be a safe integer");
+  }
+  if (physicalStorageLimitBytes !== undefined && workspaceStrategy !== "fixed-path-sequential") {
+    throw new ConfigError("physicalStorageLimitBytes requires fixed-path-sequential");
+  }
   const projectRoot = resolve(nonEmptyString(root.projectRoot, "projectRoot"));
   const evidenceFile = resolve(nonEmptyString(root.evidenceFile, "evidenceFile"));
   const evidenceRelative = relative(projectRoot, evidenceFile);
@@ -439,6 +450,7 @@ export function validateVerificationConfig(value: unknown): VerificationConfig {
     schemaVersion: "1", id,
     ...(workspaceStrategy === undefined ? {} : { workspaceStrategy }),
     ...(retainDiagnostics === undefined ? {} : { retainDiagnostics }),
+    ...(physicalStorageLimitBytes === undefined ? {} : { physicalStorageLimitBytes }),
     projectRoot, evidenceFile, install, turbo, tasks, outputs, mutation,
     ...(checks === undefined ? {} : { functionalChecks: checks }),
     ...(normalization === undefined ? {} : { normalization }),

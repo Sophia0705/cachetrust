@@ -1,6 +1,6 @@
 import { access, readFile, realpath } from "node:fs/promises";
 import { basename, extname, isAbsolute, resolve } from "node:path";
-import { runProcess, type ProcessResult } from "../process.js";
+import { runProcess, type DurableProcessFiles, type ProcessResult } from "../process.js";
 import type { VerificationConfig } from "./config.js";
 
 export interface ResolvedInvocation {
@@ -122,6 +122,7 @@ function declarationMatches(declared: string, name: string, version: string): bo
 export async function probePackageManager(
   config: VerificationConfig,
   signal?: AbortSignal,
+  durableFiles?: DurableProcessFiles,
 ): Promise<PackageManagerProbe> {
   const declared = await declaredPackageManager(config.projectRoot);
   const expectedDeclaration = `${config.install.packageManager}@${config.install.packageManagerVersion}`;
@@ -144,6 +145,7 @@ export async function probePackageManager(
       env,
       timeoutMs: Math.min(config.install.timeoutMs, 30_000),
       ...(signal === undefined ? {} : { signal }),
+      ...(durableFiles === undefined ? {} : { durableFiles }),
     });
   } catch {
     throw new PackageManagerError("PACKAGE_MANAGER_NOT_FOUND", "Package-manager version probe could not start");

@@ -1,6 +1,6 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
-import { runProcess, type ProcessResult } from "../process.js";
+import { runProcess, type DurableProcessFiles, type ProcessResult } from "../process.js";
 import type { VerificationConfig } from "./config.js";
 
 export interface ObservedTurboTask {
@@ -73,6 +73,7 @@ export async function runVerificationTurbo(
   cacheDir: string,
   config: VerificationConfig,
   signal?: AbortSignal,
+  durableFiles?: DurableProcessFiles,
 ): Promise<VerificationRun> {
   const runsDir = join(workspace, ".turbo", "runs");
   const before = new Set(await readdir(runsDir).catch(() => []));
@@ -94,6 +95,7 @@ export async function runVerificationTurbo(
     env,
     timeoutMs: config.turbo.timeoutMs,
     ...(signal === undefined ? {} : { signal }),
+    ...(durableFiles === undefined ? {} : { durableFiles }),
   });
   const created = (await readdir(runsDir).catch(() => [])).filter((name) => !before.has(name));
   if (created.length !== 1) {

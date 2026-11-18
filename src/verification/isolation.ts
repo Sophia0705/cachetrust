@@ -2,8 +2,10 @@ import { cp, lstat, mkdir, mkdtemp, readdir, realpath, rm } from "node:fs/promis
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fingerprintFile } from "../fingerprint.js";
 import { runProcess, type ProcessResult } from "../process.js";
+import { durableProcessFiles } from "./diagnostics.js";
 import { resolveInside, type VerificationConfig } from "./config.js";
 import { installEnvironment, type ResolvedInvocation } from "./package-manager.js";
+import { measurePhysicalStorage } from "./physical-storage.js";
 
 export interface VerificationWorkspace {
   id: "cache" | "baseline-a" | "baseline-b";
@@ -24,6 +26,16 @@ export interface VerificationIsolation {
     installSucceeded: boolean;
     lockfileVerified: boolean;
   }>;
+  storageMeasurements: Array<{
+    stage: string;
+    allocatedBytes: string;
+    logicalBytes: string;
+    files: number;
+    directories: number;
+    skippedLinks: number;
+    duplicateFileIds: number;
+  }>;
+  assertStorageWithinLimit(stage: string): Promise<void>;
   activate(id: VerificationWorkspace["id"]): Promise<VerificationWorkspace>;
   cleanup(): Promise<void>;
 }
@@ -135,6 +147,7 @@ export async function createVerificationIsolation(
     args: [...(config.install.commandArgs ?? []), ...config.install.args],
   },
   signal?: AbortSignal,
+  diagnosticRoot?: string,
 ): Promise<VerificationIsolation> {
   const outputRoots = [...new Set(config.outputs.flatMap((output) => output.include)
     .map((pattern) => pattern.endsWith("/**") ? pattern.slice(0, -3) : pattern))];
@@ -144,6 +157,23 @@ export async function createVerificationIsolation(
   const definitions = ["cache", "baseline-a", "baseline-b"] as const;
   const workspaces: VerificationWorkspace[] = [];
   const lifecycle: VerificationIsolation["lifecycle"] = [];
+  const storageMeasurements: VerificationIsolation["storageMeasurements"] = [];
+  const assertStorageWithinLimit = async (stage: string): Promise<void> => {
+    if (config.physicalStorageLimitBytes === undefined) return;
+    const measurement = await measurePhysicalStorage(root);
+    storageMeasurements.push({
+      stage,
+      allocatedBytes: String(measurement.allocatedBytes),
+      logicalBytes: String(measurement.logicalBytes),
+      files: measurement.files,
+      directories: measurement.directories,
+      skippedLinks: measurement.skippedLinks,
+      duplicateFileIds: measurement.duplicateFileIds,
+    });
+    if (measurement.allocatedBytes > BigInt(config.physicalStorageLimitBytes)) {
+      throw new IsolationError("RESOURCE_LIMIT_EXCEEDED", `Physical storage limit exceeded at ${stage}`);
+    }
+  };
   try {
     if (config.workspaceStrategy === "fixed-path-sequential") {
       const project = join(root, "slot", "project");
@@ -159,6 +189,7 @@ export async function createVerificationIsolation(
       const activate = async (id: VerificationWorkspace["id"]): Promise<VerificationWorkspace> => {
         const workspace = workspaces.find((value) => value.id === id)!;
         if (active === id) return workspace;
+        await assertStorageWithinLimit(`${id}-before-slot-reset`);
         const slot = dirname(project);
         assertOwnedPath(root, slot);
         await rm(slot, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
@@ -176,6 +207,9 @@ export async function createVerificationIsolation(
           env: installInvocation.env ?? installEnvironment(config),
           timeoutMs: config.install.timeoutMs,
           ...(signal === undefined ? {} : { signal }),
+          ...(diagnosticRoot === undefined ? {} : {
+            durableFiles: await durableProcessFiles(diagnosticRoot, `install-${id}`),
+          }),
         });
         if (isAborted(signal)) throw new IsolationError("CANCELLED", "Verification was cancelled");
         if (install.exitCode !== 0 || install.timedOut) {
@@ -186,6 +220,7 @@ export async function createVerificationIsolation(
           throw new IsolationError("LOCKFILE_CHANGED", `Frozen install changed a lockfile in ${id}`);
         }
         await assertInstalledLinksContained(project, join(project, "node_modules"));
+        await assertStorageWithinLimit(`${id}-after-install`);
         workspace.install = install;
         lifecycle.push({
           workspace: id,
@@ -203,6 +238,8 @@ export async function createVerificationIsolation(
         workspaces: workspaces as VerificationIsolation["workspaces"],
         lockfileSha256: beforeLocks,
         lifecycle,
+        storageMeasurements,
+        assertStorageWithinLimit,
         activate,
         cleanup: async () => {
           if (!root.startsWith(`${dirname(config.projectRoot)}${sep}.cachetrust-verify-`)) {
@@ -232,6 +269,9 @@ export async function createVerificationIsolation(
         env: installInvocation.env ?? installEnvironment(config),
         timeoutMs: config.install.timeoutMs,
         ...(signal === undefined ? {} : { signal }),
+        ...(diagnosticRoot === undefined ? {} : {
+          durableFiles: await durableProcessFiles(diagnosticRoot, `install-${id}`),
+        }),
       });
       if (isAborted(signal)) throw new IsolationError("CANCELLED", "Verification was cancelled");
       if (install.exitCode !== 0 || install.timedOut) {
@@ -249,6 +289,8 @@ export async function createVerificationIsolation(
       workspaces: workspaces as VerificationIsolation["workspaces"],
       lockfileSha256: beforeLocks,
       lifecycle,
+      storageMeasurements,
+      assertStorageWithinLimit,
       activate: async (id) => workspaces.find((workspace) => workspace.id === id)!,
       cleanup: async () => {
         if (!root.startsWith(`${dirname(config.projectRoot)}${sep}.cachetrust-verify-`)) {

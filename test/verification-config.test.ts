@@ -30,6 +30,14 @@ describe("verification config", () => {
       .toThrow("retainDiagnostics must be boolean");
   });
 
+  it("accepts a fixed-path physical storage cap and rejects unsafe combinations", () => {
+    expect(validateVerificationConfig({
+      ...config(), workspaceStrategy: "fixed-path-sequential", physicalStorageLimitBytes: 6_442_450_944,
+    }).physicalStorageLimitBytes).toBe(6_442_450_944);
+    expect(() => validateVerificationConfig({ ...config(), physicalStorageLimitBytes: 1_024 }))
+      .toThrow("requires fixed-path-sequential");
+  });
+
   it("accepts string install environment overrides and preserves omission", () => {
     expect(validateVerificationConfig(config()).install.environment).toBeUndefined();
     const value = config();

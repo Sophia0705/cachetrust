@@ -52,6 +52,7 @@ export interface VerificationEvidence {
     outputs: VerificationConfig["outputs"];
     mutationKind: VerificationConfig["mutation"]["kind"];
     retainDiagnostics?: boolean;
+    physicalStorageLimitBytes?: number;
     normalization?: {
       id: string;
       description: string;
@@ -100,6 +101,15 @@ export interface VerificationEvidence {
       sourceCopied: boolean;
       installSucceeded: boolean;
       lockfileVerified: boolean;
+    }>;
+    storageMeasurements?: Array<{
+      stage: string;
+      allocatedBytes: string;
+      logicalBytes: string;
+      files: number;
+      directories: number;
+      skippedLinks: number;
+      duplicateFileIds: number;
     }>;
   };
   runs: EvidenceRun[];

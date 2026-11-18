@@ -74,6 +74,7 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       id: "stale-fixture",
       ...(workspaceStrategy === undefined ? {} : { workspaceStrategy }),
       ...(workspaceStrategy === "fixed-path-sequential" ? { retainDiagnostics: true } : {}),
+      ...(workspaceStrategy === "fixed-path-sequential" ? { physicalStorageLimitBytes: 100_000_000 } : {}),
       projectRoot: project,
       evidenceFile,
       install: {
@@ -121,6 +122,12 @@ await writeFile(join(".turbo", "runs", Date.now() + "-" + Math.random() + ".json
       expect(evidence.isolation.lifecycle?.every((event) => event.slotAbsentAfterRemoval)).toBe(true);
       expect(evidence.diagnosticArtifacts?.filter((artifact) => artifact.kind === "raw-output"))
         .toHaveLength(3);
+      expect(evidence.diagnosticArtifacts?.filter((artifact) => artifact.kind === "process-lifecycle"))
+        .toHaveLength(8);
+      expect(evidence.isolation.storageMeasurements?.length).toBeGreaterThanOrEqual(9);
+      const v1Lifecycle = (await readFile(join(root, "artifacts", "logs", "v1.lifecycle.jsonl"), "utf8"))
+        .trim().split(/\r?\n/).map((line) => JSON.parse(line) as { event: string });
+      expect(v1Lifecycle.at(-1)?.event).toBe("close");
       await expect(readFile(join(root, "artifacts", "outputs", "baseline-a-v2", "dist", "output.txt"), "utf8"))
         .resolves.toBe("v2\n");
     }

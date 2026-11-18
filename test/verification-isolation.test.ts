@@ -116,6 +116,19 @@ describe("verification isolation", () => {
     expect(await readFile(join(root, "src", "input.txt"), "utf8")).toBe("original\n");
   });
 
+  it("stops a fixed-path activation when the physical storage cap is exceeded", async () => {
+    const root = await project();
+    await writeFile(join(root, "allocated.bin"), Buffer.alloc(1024 * 1024, 1));
+    const value = config(root);
+    value.workspaceStrategy = "fixed-path-sequential";
+    value.physicalStorageLimitBytes = 1;
+    const isolation = await createVerificationIsolation(value);
+    roots.push(isolation.root);
+    await expect(isolation.activate("cache"))
+      .rejects.toMatchObject({ reasonCode: "RESOURCE_LIMIT_EXCEEDED" });
+    expect(isolation.storageMeasurements.length).toBeGreaterThan(0);
+  });
+
   it("uses one inherited and overridden environment for the probe and all workspaces", async () => {
     const root = await project();
     await writeFile(join(root, "install.mjs"), [
